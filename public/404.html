@@ -1,67 +1,115 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <head>
+    <meta charset='utf-8'>
+    <title>
+      Land Registry Open Data &ndash; page not found
+    </title>
+    <link rel="stylesheet" href="/stylesheets/landing.css" type="text/css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
+    <link href="/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <meta name="Description" content="Linked Open Data resources from the Land Registry"/>
+    <meta name="Monitoring" content="Confirming site availability." />
+  </head>
+  <body class='government website lr hpi'>
+    <script type="text/javascript">
+document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+    <header class='container with-proposition' id='global-header'>
+      <div class="row">
+        <div class='header-wrapper'>
+          <div class='header-global pull-left'>
+            <div class='header-logo'>
+              <a href="https://www.gov.uk/government/organisations/land-registry" class='content'><img src="/images/lr_logo_221_80.png"></a>
+            </div>
+          </div>
+          <div class='header-proposition'>
+            <div class='content'>
+              <nav id='proposition-menu'>
+                <a id='proposition-name'>Land Registry Linked Open Data</a>
+                <div class='beta-tag'>
+                  beta
+                </div>
+                <ul id='proposition-links' class='list-inline'>
+                  <li>
+                    <a href="/app/hpi">House Price Index</a>
+                  </li>
+                  <li>
+                    <a href="/app/ppd">Price Paid Data</a>
+                  </li>
+                  <li>
+                    <a href="/app/hpi/qonsole">SPARQL query</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class='lr-top-bar'></div>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <h1>
+            Page not found
+          </h1>
+          <p>
+            We're sorry, but the web page you requested is not present on our server. Please check the spelling
+            of the page address (URL). If you require further assistance, please see the contact details below.
+          </p>
+          <h2 id="contact-us">
+            Who to contact
+          </h2>
+          <p>
+            If you are unable to access the data please <a href="http://site.landregistry.gov.uk/contact-us/form">fill in our contact form</a>.
+          </p>
+          <p>
+            For general transaction data enquiries email <a href="mailto:DRO@landregistry.gov.uk">DRO@landregistry.gov.uk</a>
+          </p>
+          <p>
+            For general price paid data enquiries contact <a href="mailto:  commercial.services@landregistry.gov.uk">commercial.services@landregistry.gov.uk</a>.
+          </p>
+        </div><!--/.col-md-12-->
+      </div>
+    </div> <!-- /.container -->
+    <footer id="footer" role="contentinfo">
+      <div class="container">
+        <h2 class="hidden">
+          Support links
+        </h2>
+        <ul class="list-inline">
+          <li>
+            <a href="http://www.nationalarchives.gov.uk/information-management/our-services/crown-copyright.htm">&copy; Crown copyright 2014&ndash;2016</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/government/organisations/land-registry/about/personal-information-charter">Personal Information Charter</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/land-registry-public-data">Land Registry Public Data</a>
+          </li>
+        </ul>
+        <div class="ogl">
+          <h2 class="pull-left">
+            <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3"><img alt="OGL" src="https://assets.digital.cabinet-office.gov.uk/static/open-government-licence_2x-d273d7eca3045d3b710a863d9bfc0b33.png"></img></a>
+          </h2>
+          <p>
+            All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3">Open Government Licence v3.0</a> except where otherwise stated
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </footer>
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21165003-6']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
 
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
-
-<body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+  </body>
 </html>

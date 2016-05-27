@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><title>Fees Calculator</title>
+<meta charset="utf-8">
+<meta name="p:domain_verify" content="05d2380d6c8bc86b1c36b9c64f3e6f58"/>
+<link href="images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<link href="stylesheets/normalize.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/global.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/fc_style.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" async src="http://www.google-analytics.com/ga.js"></script>
+<script type="text/javascript" src="js/fc_json_data.js"></script>
+<script type="text/javascript" src="js/fc_function.js"></script>
+</head>
+<body>
+<div id="content" class="centralizer">
+<div id="content_sub">
+<a id="top"></a>
+<!-- Central Content -->
+      <div id="c-content">
+      <a href="https://gov.uk/land-registry"><img src="images/lr_logo_221_80.png" alt="Land Registry logo" title="Land Registry"></img></a>
+<div id="content_div_56321">
+<h1>Fee calculator&nbsp;</h1>
+
+<div id="fc_app">
+  <fieldset id="fc_app_fieldset">
+    <legend>Choose an application type to view the corresponding fee:</legend>
+    <select id="fc_appnSel"></select>
+    <button id="fc_selectBtn" onclick="fc_select()">Select</button>
+  </fieldset>
+  <div id="fc_capturePanel">
+    <p>You have chosen:</p>
+    <p id="fc_chosen_appdesc"></p>
+    <div id="fc_furtherDetailsPanel">
+      <div id="fc_valuePanel">
+        <p>Enter the transaction value to the nearest £ (eg 49750).</p>
+        <p id="fc_valueTxt_error">Sorry only blank or numerical values are accepted.</p>
+        <label for="fc_valueTxt">Transaction value (£):</label>
+        <input type="text" maxlength="10" name="value" id="fc_valueTxt" value="" onkeypress="return isNumericKey(event);"/>
+        <p>The fee will be assessed on this value even if no transaction takes place. If you are unsure how to assess the transaction value, please consult the relevant section of the <a target='_blank' href="http://www.landregistry.gov.uk/professional/fees">Fee Order</a> <img class='new_window' alt='Link opens in a new window (external website)' src='./new_window.gif' width='13' height='13'>.</p>
+        <p>Where VAT is payable, scale fees must be paid on the VAT, inclusive consideration or rent.</p>
+      </div>
+      <div id="fc_valuePanel_id46">
+        <p>Enter the transaction value to the nearest £ (eg 49750).</p>
+        <p id="fc_valueTxt_error">Sorry only blank or numerical values are accepted.</p>
+        <label for="fc_valueTxt">Value of the land (£):</label>
+        <input type="text" maxlength="10" name="value" id="fc_valueTxt" value="" onkeypress="return isNumericKey(event);"/>
+        <p>The fee will be assessed on the value of the land. Do not use any consideration paid in the transfer. If you are unsure how to assess the transaction value, please consult the relevant section of the <a target='_blank' href="http://www.landregistry.gov.uk/professional/fees">Fee Order</a> <img class='new_window' alt='Link opens in a new window (external website)' src='./?a=3114' width='13' height='13'>.</p>
+      </div>
+      <div id="fc_rentPanel">
+        <strong>AND/OR</strong>
+        <br/>
+        <p>Enter the rent payable</p>
+        <p id="fc_rentTxt_error">Sorry only blank or numerical values are accepted.</p>
+        <label for="fc_rentTxt">Rent payable (£):</label>
+        <input type="text" maxlength="10" name="rent" id="fc_rentTxt" value="" onkeypress="return isNumericKey(event);"/>
+        <p>Rent payable is the largest amount of annual rent the lease reserves within the first five years of its term, quantified at the time of application.</p>
+        <br/>
+      </div>
+      <fieldset id="fc_voluntaryPanel">
+        <legend>Is this a Voluntary Application?</legend>
+        <input type="radio" name="fc_voluntryRadio" value="FALSE" checked />
+        <label for="voluntryRadioNo">No</label>
+        <input type="radio" name="fc_voluntryRadio" value="TRUE" />
+        <label for="voluntryRadioYes">Yes</label>
+      </fieldset>
+      <br/>
+      <button id="fc_calculateBtn" onclick="fc_calculate()">Check fee</button>
+      <button id="fc_resetBtn_last" onclick="fc_reset()">Start again</button>
+    </div>
+  </div>
+  <div id="fc_feePanel">
+    <table class="fc_resultsTable">
+      <tr>
+        <td class="fc_main">Application type</td>
+        <td><p id="fc_appdesc"></p></td>
+      <tr id="fc_appnScaleRow">
+        <td class="fc_main">Applicable fee scale</td>
+        <td><p id="fc_appnScale"></p></td>
+      </tr>
+      <tr id="fc_appnValueRow">
+        <td class="fc_main">Stated value</td>
+        <td>
+          <p id="fc_appnValue"></p>
+          <p id="fc_appnValueRentDetailsInfo">This value is based on the transaction value and/or the rent payable. </p>
+          <p id="fc_appnValueWarn">You entered either £0 or an invalid transaction value so £0 has been assumed. To enter a new value click ‘Start again’ below.</p>
+          <p id="fc_appnRentWarn">You entered either £0 or an invalid rent payable so £0 has been assumed. To enter a new value click ‘Start again’ below.</p>
+          <p id="fc_appnValueRentWarn">You entered either £0 or an invalid transaction value and rent payable so £0 for both has been assumed. To enter a new value click ‘Start again’ below.</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="fc_main">Standard Fee</td>
+        <td>
+          <p id="fc_appnFee"></p>
+          <p id="fc_voluntrySel"><i>(This figure includes a voluntary application reduction.)</i></p>
+        </td>
+      </tr>
+      <tr id="fc_appnElectronicRow">
+        <td class="fc_main">Electronic Fee</td>
+        <td>
+          <p id="fc_appnFeeElectronic"></p>
+        </td>
+      </tr>
+    </table>
+    <div  id="fc_notes">
+    <h3>Notes</h3>
+    <p id="fc_appnNotes"></p>
+    </div>
+    <p>Find out about <a href="http://www.landregistry.gov.uk/professional/fees/how-to-pay-fees">how to pay Land Registry fees.</a></p>
+    <p id="fc_appnElectronicMsg">Please note reduced fees for electronic applications only apply to Dealings of Whole.</p>
+    <p id="fc_appnElectronicPartMsg">This application can be submitted electronically, however please note reduced fees for electronic applications only apply to applications affecting the whole of a registered title.</p>
+    <br/>
+    <button id="fc_resetBtn" onclick="fc_reset()">Start again</button>
+  </div>
+</div>
+<div id="fc_white_out">
+</div>
+<noscript>
+  <p>
+  Your browser does not support JavaScript or JavaScript is turned off.
+  <br/>
+  To take advatage of the 'Fee calculator' functionality you will need a browser that supports JavaSacript and/or have JavaScript turned on.
+  <br/>
+  Please visit our <a target='_blank' href="http://www.landregistry.gov.uk/professional/fees/">Information Services fees</a> page.<img alt='Link opens in a new window (external website)' src='./images/new_window.gif' width='13' height='13'>
+  </p>
+</noscript>
+</div> <!--/#content_div_56321-->
+</div>
+</div>
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+   ga('create', 'UA-21165003-6', 'auto');
+   ga('send', 'pageview');
+</script>
+</div><!--/.centralizer-->
+</body>
+</html>
