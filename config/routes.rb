@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   root "landing#index"
   resources :landing, only: [:index]
+
+  get "documentation/hpi", to: "documentation#hpi", as: "hpi_doc"
+  get "documentation/ppd", to: "documentation#ppd", as: "ppd_doc"
 end
