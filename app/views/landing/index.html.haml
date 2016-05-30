@@ -65,7 +65,8 @@
         %a{:href => "http://www.youtube.com/watch?v=YLXgPjkHmGU", :target => "_"} YouTube video tutorial
         on using the search tool
       %li
-        %a{:href => "hpi-documentation.html"} detailed documentation about the House Price Index
+        = link_to( hpi_doc_path ) do
+          detailed documentation about the House Price Index
     %h2 Price Paid Data Report Builder
     %p
       Use
@@ -97,9 +98,9 @@
         %a{:href => "http://www.youtube.com/watch?v=g15OQ4j-bnA", :target => "_"} YouTube video tutorial
         on using the report builder.
       %li
-        %a{:href => "ppd-documentation.html"} detailed documentation
-        about the Price Paid Data,
-        the data model, and using the data.
+        = link_to( ppd_doc_path ) do
+          detailed documentation
+        about the Price Paid Data, the data model, and using the data.
     %h2 Standard Report Builder
     %p
       The
@@ -117,7 +118,7 @@
       If you would like to try out your own SPARQL queries against our
       linked data publications,  use
       = succeed "." do
-        %a{:href => "/app/hpi/qonsole"} this SPARQL form
+        %a{:href => "/app/common/qonsole"} this SPARQL form
     %p
       If you want to see the SPARQL query that is used to generate the reports in the
       HPI and PPD reporting tools described above, you can do this by selecting the
