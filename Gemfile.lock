@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/epimorphics/lr_common_styles.git
-  revision: 28be9a96ad3d651c7eb40324369af7184d92e876
+  revision: 6518547e3f477e53d31a141a43bf083cf3917673
   specs:
-    lr_common_styles (0.0.1)
+    lr_common_styles (0.1.0)
       bootstrap-sass (~> 3.3.6)
       font-awesome-rails (~> 4.6.3.0)
       govuk_elements_rails (~> 1.1.2)
@@ -16,16 +16,19 @@ GIT
       rails (~> 4.2.6)
       sass-rails (~> 5.0.4)
 
-PATH
-  remote: /home/ian/workspace/epimorphics/qonsole-rails
+GIT
+  remote: git://github.com/epimorphics/qonsole-rails.git
+  revision: 5331c35404679b4ae6bf7b2791aa9597c9fdcdf1
   specs:
-    qonsole-rails (0.1.0)
-      codemirror-rails
-      font-awesome-rails
-      haml-rails
-      jquery-rails
-      lodash-rails
-      modulejs-rails
+    qonsole-rails (0.2.0)
+      codemirror-rails (~> 5.11)
+      faraday (~> 0.9.2)
+      faraday_middleware (~> 0.10.0)
+      font-awesome-rails (~> 4.6.3.0)
+      haml-rails (~> 0.9.0)
+      jquery-rails (~> 4.1.1)
+      lodash-rails (~> 4.12.0)
+      modulejs-rails (~> 1.9.0.1)
       rails (~> 4.2.6)
 
 GEM
@@ -67,7 +70,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    autoprefixer-rails (6.3.3.1)
+    autoprefixer-rails (6.3.6.1)
       execjs
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -75,13 +78,17 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
-    byebug (9.0.4)
+    byebug (9.0.5)
     codemirror-rails (5.11)
       railties (>= 3.0, < 5)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.0)
+      faraday (>= 0.7.4, < 0.10)
     font-awesome-rails (4.6.3.0)
       railties (>= 3.2, < 5.1)
     globalid (0.3.6)
@@ -93,7 +100,7 @@ GEM
     govuk_frontend_toolkit (4.6.1)
       rails (>= 3.1.0)
       sass (>= 3.2.0)
-    govuk_template (0.17.0)
+    govuk_template (0.17.3)
       rails (>= 3.1)
     haml (4.0.7)
       tilt
@@ -132,6 +139,7 @@ GEM
     modulejs-rails (1.9.0.1)
       railties (>= 4.0)
     multi_json (1.12.1)
+    multipart-post (2.0.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     quiet_assets (1.1.0)
@@ -203,20 +211,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
   byebug
-  codemirror-rails
-  font-awesome-rails
-  govuk_elements_rails
-  govuk_frontend_toolkit
-  govuk_template
-  haml-rails
   jbuilder (~> 2.0)
   jquery-rails
-  lodash-rails
   lr_common_styles!
-  modernizr-rails
-  modulejs-rails
   qonsole-rails!
   quiet_assets
   rails (~> 4.2.6)
@@ -226,4 +224,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.5

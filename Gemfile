@@ -18,24 +18,10 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-#gem 'qonsole-rails', github: 'epimorphics/qonsole-rails'
-gem 'qonsole-rails', path: '/home/ian/workspace/epimorphics/qonsole-rails'
-#gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
+gem 'qonsole-rails', github: 'epimorphics/qonsole-rails'
+# gem 'qonsole-rails', path: '/home/ian/workspace/epimorphics/qonsole-rails'
 gem 'lr_common_styles', github: "epimorphics/lr_common_styles"
-
-# todo remove LR common deps
-gem 'lodash-rails'
-gem 'haml-rails'
-gem 'bootstrap-sass'
-gem 'font-awesome-rails'
-gem 'modernizr-rails'
-gem 'modulejs-rails'
-gem 'govuk_template'
-gem 'govuk_frontend_toolkit'
-gem 'govuk_elements_rails'
-
-# todo remove qonsole-rails deps
-gem 'codemirror-rails'
+# gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
