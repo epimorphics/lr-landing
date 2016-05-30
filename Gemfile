@@ -20,7 +20,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #gem 'qonsole-rails', github: 'epimorphics/qonsole-rails'
 gem 'qonsole-rails', path: '/home/ian/workspace/epimorphics/qonsole-rails'
-gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
+#gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
+gem 'lr_common_styles', github: "epimorphics/lr_common_styles"
 
 # todo remove LR common deps
 gem 'lodash-rails'

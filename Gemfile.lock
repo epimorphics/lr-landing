@@ -1,17 +1,6 @@
-PATH
-  remote: /home/ian/workspace/epimorphics/qonsole-rails
-  specs:
-    qonsole-rails (0.1.0)
-      codemirror-rails
-      font-awesome-rails
-      haml-rails
-      jquery-rails
-      lodash-rails
-      modulejs-rails
-      rails (~> 4.2.6)
-
-PATH
-  remote: /home/ian/workspace/land-registry/lr_common_styles
+GIT
+  remote: git://github.com/epimorphics/lr_common_styles.git
+  revision: 28be9a96ad3d651c7eb40324369af7184d92e876
   specs:
     lr_common_styles (0.0.1)
       bootstrap-sass (~> 3.3.6)
@@ -26,6 +15,18 @@ PATH
       modulejs-rails (~> 1.9.0.1)
       rails (~> 4.2.6)
       sass-rails (~> 5.0.4)
+
+PATH
+  remote: /home/ian/workspace/epimorphics/qonsole-rails
+  specs:
+    qonsole-rails (0.1.0)
+      codemirror-rails
+      font-awesome-rails
+      haml-rails
+      jquery-rails
+      lodash-rails
+      modulejs-rails
+      rails (~> 4.2.6)
 
 GEM
   remote: https://rubygems.org/
