@@ -2,13 +2,12 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.2'
+gem 'rails', '~> 4.2.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -19,14 +18,23 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+#gem 'qonsole-rails', github: 'epimorphics/qonsole-rails'
+gem 'qonsole-rails', path: '/home/ian/workspace/epimorphics/qonsole-rails'
+gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+# todo remove LR common deps
+gem 'lodash-rails'
+gem 'haml-rails'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'modernizr-rails'
+gem 'modulejs-rails'
+gem 'govuk_template'
+gem 'govuk_frontend_toolkit'
+gem 'govuk_elements_rails'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# todo remove qonsole-rails deps
+gem 'codemirror-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -36,5 +44,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'quiet_assets'
 end
 
