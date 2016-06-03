@@ -1,0 +1,99 @@
+.row
+  .col-md-12
+    .pull-right
+      %a.btn.btn-default{:href => landing_index_path} English
+
+    %h1
+      Data Agored
+    %p
+      Fel rhan o'n hymrwymiad i flaenoriaethau'r Llywodraeth i dwf economaidd a thryloywder data mae'r Gofrestrfa Tir yn cyhoeddi'r setiau data cyhoeddus canlynol:
+    %ul
+      %li
+        %a{:href => "https://www.gov.uk/government/statistical-data-sets/house-price-index-background-tables"} Tablau cefndir y Mynegai Prisiau Tai
+        – ar gael oddi ar fis Ionawr 1995 ac wedi'i ddiweddaru'n llawn bob mis.
+      %li
+        %a{:href => "http://www.cofrestrfatir.gov.uk/public/information/public-data/price-paid-data"} Data pris a dalwyd
+        – ar gael oddi ar fis Ionawr 1995 ac wedi'i ddiweddaru'n llawn bob mis.
+      %li
+        %a{:href => "http://www.cofrestrfatir.gov.uk/public/information/public-data/transaction-data"} Data Trafodiad
+        – ar gael oddi ar fis Rhagfyr 2011.
+    %p
+      Mae'r setiau data uchod ar gael ar ffurfiau
+      %a{:href => "http://en.wikipedia.org/wiki/Comma-separated_values"} csv
+      a
+      %a{:href => "http://en.wikipedia.org/wiki/Linked_data"} data cysylltiedig
+      gyda Data Pris a Dalwyd ar gael ar ffurf txt hefyd. Gellir llwytho'r setiau data hyn i lawr yn llawn trwy fynd i'n
+      = succeed "." do
+        %a{:href => "http://www.cofrestrfatir.gov.uk/professional/market-trend-data/public-data"} Data Cyhoeddus
+      = succeed "." do
+        %a{:href => "#linked-data"} isod
+    %p
+      %strong
+        I'n cwsmeriaid Pris a Dalwyd a Mynegai Prisiau Tai nad oes angen y set data lawn arnynt, ond sydd â
+        diddordeb mewn creu adroddiadau pwrpasol, rydym wedi datblygu'r dewisiadau canlynol:
+    %h2
+      %a{:href => "/app/hpi"} Chwilio'r Mynegai Prisiau Tai
+    %p
+      Defnyddiwch y chwiliad hwn i ganfod prisiau cyfartalog, nifer y gwerthiannau a'r math o eiddo ar gyfer lleoliad penodedig dros gyfnod penodol. Mae'r Mynegai Prisiau Tai yn cymharu pris cyfartalog tai heddiw â'r hyn oedd ei bris ym mis Ionawr 1995, gyda'r mynegai wedi'i osod ar 100. Mae'n cynnwys ffigurau ar lefel genedlaethol, ranbarthol, sir ac Awdurdod Lleol. I gael rhagor o wybodaeth ewch i
+      = succeed "." do
+        %a{:href => "http://www.cofrestrfatir.gov.uk/public/house-prices-and-sales/about-hpi"} Ein Mynegai Prisiau Tai
+    %h2
+      %a{:href => "/app/ppd"} Lluniwr Adroddiad Data Pris a Dalwyd
+    %p
+      Defnyddiwch y chwiliad hwn i greu adroddiadau pwrpasol gan ddefnyddio ein data pris a dalwyd. Gellir seilio adroddiadau ar leoliad, daliadaeth, pris a dalwyd neu fath o eiddo dros gyfnod penodol.
+    %p
+      Mae ein data pris a dalwyd yn olrhain gwerthiannau eiddo preswyl yng Nghymru a Lloegr a gyflwynir i ni i'w cofrestru. Mae'r set ddata yn ffynhonnell ddibynadwy o wybodaeth prisiau tai ac mae'n cynnwys dros 18.5 miliwn o gofnodion yn dyddio yn ôl i fis Ionawr 1995. I gael rhagor o wybodaeth am y set ddata hon a'r hyn mae'n ei gynnwys a'r hyn nad yw'n ei chynnwys, gweler y
+      = succeed "." do
+        %a{:href => "http://www.cofrestrfatir.gov.uk/market-trend-data/public-data/price-paid-faq"} COA Data Pris a Dalwyd
+    %p
+      Rydym yn ceisio sicrhau bod ein data cyhoeddus mor gywir â phosibl, ond ni allwn warantu na fydd yn cynnwys gwallau neu’n addas at eich dibenion neu eich defnydd. Mae adroddiadau'n seiliedig ar ddata a gasglwyd ar yr adeg y cofrestrwyd y trafodiad eiddo gyda ni ac ni fydd o reidrwydd yn gyfredol gyda'r wybodaeth fwyaf diweddar. Gweler
+      %a{:href => "http://www.cofrestrfatir.gov.uk/public/information/public-data/faqs#m4"} y COA hwn
+      am ragor o wybodaeth.
+    %h2#linked-data Data cysylltiedig
+    %p
+      Yn ogystal, rydym yn cyhoeddi'r data hwn ar ffurf data cysylltiedig.
+    %p
+      Os hoffech roi cynnig ar eich ymholiadau SPARQL eich hun yn erbyn ein cyhoeddiadau data cysylltiedig, defnyddiwch
+      = succeed "." do
+        %a{:href => "/app/hpi/qonsole"} y ffurflen SPARQL hon
+    %p
+      Os hoffech weld yr ymholiad SPARQL a ddefnyddir i greu'r adroddiadau yn yr offer adrodd Mynegai Prisiau Tai a Data Pris a Dalwyd a ddisgrifiwyd uchod, gallwch wneud hyn trwy ddewis y camau 'view SPARQL query' o'r golwg 'download data' ym mhob offer chwilio. Gallwch hyd yn oed ddiwygio ac ail-redeg yr ymholiad SPARQL yn ôl yr angen.
+    %dl.dl-horizontal
+      %dt
+        %a{:href => "/data/hpi"} Mynegai Prisiau Tai
+      %dd
+        set ddata cysylltiedig 5★ gyda chysylltau i
+        %a{:href => "http://www.ons.gov.uk/"} ONS
+        a'r
+        %a{:href => "http://data.ordnancesurvey.co.uk/"} Arolwg Ordnans
+        i ddisgrifio'r rhanbarthau a gofnodwyd o fewn data'r Mynegai Prisiau Tai. Gweler
+        = succeed "." do
+          %a{:href => "/def/hpi"} diffiniadau data ar gyfer y set ddata hon
+        %br/
+        DS: Sylwer nad yw'r Gofrestrfa Tir yn gyfrifol am gynnwys na dibynadwyedd gwefannau cysylltiedig sy'n ffynonellau eraill o ddata agored na thrwyddedau y mae'r data hwn ar gael trwyddynt.
+      %dt
+        %a{:href => "/data/ppi/transaction-record"} Data pris a dalwyd
+      %dd
+        set ddata cysylltiedig 4★ sy'n cynnwys dros 400 miliwn o driawdau. Gweler
+        = succeed "." do
+          %a{:href => "/def/ppi"} diffiniadau data ar gyfer y set ddata hon
+      %dt
+        %a{:href => "/data/trans/applications"} Data Trafodiad
+      %dd
+        set ddata cysylltiedig 4★ Gweler
+        = succeed "." do
+          %a{:href => "/def/trans"} diffiniadau data ar gyfer y set ddata hon
+    %h2#contact-us
+      Â phwy i gysylltu
+    %p
+      Os na allwch gael mynediad i'r set ddata,
+      = succeed "." do
+        %a{:href => "http://www.cofrestrfatir.gov.uk/contact-us/form"}
+          llenwch ein ffurflen gysylltu
+    %p
+      Anfonwch ebost mewn perthynas ag ymholiadau data trafodiad at
+      %a{:href => "mailto:DRO@landregistry.gov.uk"} DRO@landregistry.gov.uk
+    %p
+      Ar gyfer ymholiadau cyffredinol am y Mynegai Prisiau Tai neu Ddata Pris a Dalwyd cysylltwch â
+      = succeed "." do
+        %a{:href => "mailto:  commercial.services@landregistry.gov.uk"} commercial.services@landregistry.gov.uk
