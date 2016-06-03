@@ -18,9 +18,9 @@ GIT
 
 GIT
   remote: git://github.com/epimorphics/qonsole-rails.git
-  revision: ecc9e6b69c4b7bbf7953db26818548ade9651e5d
+  revision: 50c518a1bb41412239a7f6362877036e22e53284
   specs:
-    qonsole-rails (0.2.7)
+    qonsole-rails (0.2.8)
       codemirror-rails (~> 5.11)
       faraday (~> 0.9.2)
       faraday_middleware (~> 0.10.0)
