@@ -9,7 +9,7 @@
     "owl":      "http://www.w3.org/2002/07/owl#",
     "xsd":      "http://www.w3.org/2001/XMLSchema#",
     "sr":       "http://data.ordnancesurvey.co.uk/ontology/spatialrelations/",
-    "lrhpi":    "http://landregistry.data.gov.uk/def/hpi/",
+    "ukhpi":    "http://landregistry.data.gov.uk/def/ukhpi/",
     "lrppi":    "http://landregistry.data.gov.uk/def/ppi/",
     "skos":     "http://www.w3.org/2004/02/skos/core#",
     "lrcommon": "http://landregistry.data.gov.uk/def/common/"
