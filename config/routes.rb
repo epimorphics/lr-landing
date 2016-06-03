@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :landing, only: [:index]
 
   get "doc/hpi", to: "doc#hpi", as: "hpi_doc"
+  get "doc/ukhpi", to: "doc#ukhpi", as: "ukhpi_doc"
   get "doc/ppd", to: "doc#ppd", as: "ppd_doc"
 end
