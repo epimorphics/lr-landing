@@ -15,8 +15,15 @@
     "lrcommon": "http://landregistry.data.gov.uk/def/common/"
   },
   "queries": [
-    { "name": "house price indices for Plymouth",
-      "query": "# Returns the house price indices for a particular local authority (Plymouth)\rSELECT DISTINCT\r  ?regionName ?yearmonth ?indexr ?region ?avgPriceAll ?avgDetached\r  ?avgSemi ?avgFlats ?avgTerraced ?annual ?volume\rWHERE\r{\r  values ?plymouth {<http://landregistry.data.gov.uk/data/hpi/region/city-of-plymouth/month/2013-01>}\r\r  ?plymouth\r    lrhpi:refRegion ?regionURI ;\r    lrhpi:indicesSASM ?indexr ;\r    lrhpi:refPeriod ?yearmonth ;\r    lrhpi:averagePricesSASM ?avgPriceAll ;\r    lrhpi:monthlyChange ?monthly ;\r    lrhpi:averagePricesDetachedSASM ?avgDetached ;\r    lrhpi:averagePricesSemiDetachedSASM ?avgSemi ;\r    lrhpi:averagePricesFlatMaisonetteSASM ?avgFlats ;\r    lrhpi:averagePricesTerracedSASM ?avgTerraced ;\r    lrhpi:annualChange ?annual .\r\r  OPTIONAL { ?plymouth lrhpi:salesVolume ?volume }\r\r  ?regionURI rdfs:label ?regionName .\r  FILTER (langMatches( lang(?regionName), \"EN\") )\r}\r"
+    { "name": "UK house price index by location",
+      "query": "# Returns house price index and sales volume for a particular local authority (Newport) for a given date (October 2013)\r\rSELECT DISTINCT\r  ?regionName ?date ?ukhpi ?volume\rWHERE\r{\r  values ?newport {<http://landregistry.data.gov.uk/data/ukhpi/region/newport/month/2013-10>}\r\r  ?newport\r    ukhpi:refRegion ?region;\r    ukhpi:refMonth ?date;\r    ukhpi:housePriceIndex ?ukhpi.\r    \r  OPTIONAL { \r    ?newport ukhpi:salesVolume ?volume \r  }\r \r  ?region rdfs:label ?regionName .\r  FILTER (langMatches( lang(?regionName), \"EN\") )\r}\r"
+    },
+    { "name": "all UKHPI for a place and month",
+      "query": "# Show all of the RDF properties for a particular local authority and time\r\rselect * where {\r  <http://landregistry.data.gov.uk/data/ukhpi/region/newport/month/2013-10> ?property ?value\r}\r"
+    },
+    {
+      "name": "UKHPI in a date range",
+      "query": "# House price index for all regions within a given date range\rSELECT ?region ?date ?hpi\r{\r  ?region ukhpi:refPeriodStart ?date ;\r          ukhpi:housePriceIndex ?hpi\r  FILTER (\r    ?date > \"2008-12-31\"^^xsd:date &&\r    ?date < \"2009-03-01\"^^xsd:date\r  )\r}"
     },
     { "name": "transactions in a postcode",
       "query": "# Returns the Price Paid data from the default graph for each transaction record having\r# an address with the given postcode.\r# The postcode to query is set using SPARQL 1.1's 'values' clause\r\rSELECT ?paon ?saon ?street ?town ?county ?postcode ?amount ?date ?category\rWHERE\r{\r  VALUES ?postcode {\"PL6 8RU\"^^xsd:string}\r\r  ?addr lrcommon:postcode ?postcode.\r\r  ?transx lrppi:propertyAddress ?addr ;\r          lrppi:pricePaid ?amount ;\r          lrppi:transactionDate ?date ;\r          lrppi:transactionCategory/skos:prefLabel ?category.\r\r  OPTIONAL {?addr lrcommon:county ?county}\r  OPTIONAL {?addr lrcommon:paon ?paon}\r  OPTIONAL {?addr lrcommon:saon ?saon}\r  OPTIONAL {?addr lrcommon:street ?street}\r  OPTIONAL {?addr lrcommon:town ?town}\r}\rORDER BY ?amount"
