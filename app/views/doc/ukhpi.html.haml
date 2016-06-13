@@ -1,63 +1,77 @@
 %h2 UK House Price Index Linked Data
 
-%p
-  %strong
-    WORK IN PROGRESS. This documentation needs to be updated for UKHPI.
-
 %h3
   What does the House Price Index Dataset consist of?
+
 %p
-  The House Price Index (HPI) data published each month by the Land Registry captures changes in the value of residential properties in England and Wales at regional, county, unitary authority and borough level since January 1995. The HPI dataset is generated from Land Registry Price Paid Data which is a record of every residential property transaction that is sold for full market value; more details on Price Paid Data can be found on the
-  = succeed "." do
-    %a{:href => "https://www.gov.uk/government/collections/price-paid-data"} Land Registry website
+  The UK House Price Index (UK HPI) captures changes in the value of residential properties.
 %p
-  The HPI dataset contains information on more than 190 areas in England and Wales; we do not publish HPI information for areas that have a very low number of monthly sales, for example the City of London or the Isles of Scilly. For each area we publish a House Price Index figure, this was set at a base of 100 in January 1995 and reflects the change in value of residential property since then. We also have figures for the average price of all properties in an area, for each of four property types, sales volumes, and the percent change from the previous month and year. Please note that sales volume data is not available for the last 2 months.
+  The UK HPI uses sales data collected on residential housing transactions, whether for cash or with a mortgage. Properties have been included:
+%ul.list.list-bullet
+  %li in England and Wales since January 1995,
+  %li in Scotland since January 2004 and
+  %li in Northern Ireland since January 2005.
+
 %p
-  The HPI dataset allows easy comparison of metrics in areas or between areas, for example, using the House Price Index reporting tool it is easy to
-  = succeed "." do
-    %a{:href => "http://landregistry.data.gov.uk/app/hpi/view?from_m=0&from_y=1995&loc_0=Devon&loc_uri_0=http%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fdevon&m_apd=d&m_apsd=d&source=preview_form&to_m=6&to_y=2014"} plot the change in the average price for semi-detached and detached properties in Devon since 1995
-  = succeed "." do
-    %a{:href => "http://landregistry.data.gov.uk/app/hpi/view?compare=1&from_m=0&from_y=2008&loc_0=City+of+Plymouth&loc_1=City+of+Bristol&loc_uri_0=http%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fcity-of-plymouth&loc_uri_1=http%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fcity-of-bristol&m_chm=1&source=preview_form&to_m=0&to_y=2014"} here comparing the monthly change in the average price of a property in Plymouth with Bristol between January 2008 and January 2014
+  Data is available at a national and regional level, as well as counties, local authorities and London boroughs
+
 %p
-  Land Registry publish detailed information about HPI. This can be found
-  = succeed "." do
-    %a{:href => "https://www.gov.uk/government/publications/about-the-house-price-index"} on the web site
+  The UK HPI dataset contains information on more than 441 areas in England, Scotland, Northern Ireland and Wales.
+  Please note that we do not publish HPI information for The Isles of Scilly due to its low monthly sales volumes.
 %p
-  In March 2014 the HPI linked data dataset contained in excess of 600,000 triples for 198 regions in England and Wales. The triple store is refreshed in full each month, all of the entries are regenerated to take into account any changes submitted to Land Registry.
+  For each area we publish a UK
+  %em House Price Index
+  figure. This was set at a base of 100 in January 2015, and reflects the change in
+  value of residential property since then. We also have figures for the average price of all properties in an area,
+  for each of four property types, sales volumes, and the percentage change from the previous month and year.
+  Please note that sales volume data is not available for the most-recent two months.
+
 %p
-  The linked data version of the Land Registry HPI dataset is generated from the published files and contains additional information to describe each of the reported regions, this information includes links to linked datasets published by the
-  %a{:href => "http://data.ordnancesurvey.co.uk/"} Ordnance Survey
+  Land Registry publish detailed information about UK HPI. This can be found
+  = link_to "https://www.gov.uk/government/publications/about-the-uk-house-price-index" do
+    = succeed "." do
+      on their web site
+%p
+  In June 2016 the UK HPI linked data dataset contains approximately four million triples for 441 regions in
+  England, Scotland, Northern Ireland and Wales. The triple store is refreshed in each month with data
+  from the current month and a refresh of the previous two months.
+%p
+  The linked data version of UK HPI dataset is generated from the published files and contains additional information to describe each of the reported regions, this information includes links to linked datasets published by the
+  = link_to "Ordnance Survey", "http://data.ordnancesurvey.co.uk/"
   and the
-  = succeed "." do
-    %a{:href => "http://www.ons.gov.uk/"} Office of National Statistics
-  = succeed "." do
-    %a{:href => "http://www.w3.org/DesignIssues/LinkedData.html"} W3C
+  = link_to "http://www.ons.gov.uk/" do
+    = succeed "." do
+      Office of National Statistics
 %p
   Please note that links to other sources of open, linked data are provided under the
-  %a{:href => "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"} Open Government License
-  (ONS data)
-  and
-  %a{:href => "http://www.ordnancesurvey.co.uk/docs/licences/os-opendata-licence.pdf"} Open Data License
+  = link_to "Open Government License", "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+  (ONS data) and
+  = link_to "Open Data License", "http://www.ordnancesurvey.co.uk/docs/licences/os-opendata-licence.pdf"
   (OS data). Land Registry is not responsible for the content or reliability of any linked websites.
+
 %h3 How is the House Price Index Dataset published?
 %p
-  The house price index dataset is available in several forms from the Land Registry;
+  The UK house price index dataset is available in several forms from the Land Registry:
 %ul.list.list-bullet
   %li
-    Interactively, using the
-    %a{:href => "/app/hpi"} Search the House Price Index
-    tool. This tool also includes options to download the data in CSV or Turtle and to generate downloadable files from SPARQL queries in JSON, XML, plain text or as a table.
+    interactively, using the
+    = link_to "/app/ukhpi" do
+      = succeed "." do
+        Search the UK House Price Index tool
+    This tool also includes options to download the data in CSV or Turtle and to generate downloadable files from SPARQL queries in JSON, XML, plain text or as a table.
   %li
-    For download in
-    = succeed "." do
-      %a{:href => "https://www.gov.uk/government/statistical-data-sets/house-price-index-background-tables"} CSV form or as an Excel Worksheet
+    for download in
+    = link_to "https://www.gov.uk/guidance/uk-house-price-index" do
+      = succeed "." do
+        CSV form or as an Excel Worksheet
+
 %p
-  The house price index dataset is also available in full as a 5* linked dataset which is free to use under the terms of the
-  = succeed "." do
-    %a{:href => "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"} OGL
+  The UK house price index dataset is also available in full as a 5* linked dataset which is free to use under the terms of the OGL.
+
 %h2 Linked Data Overview
 %p
-  Each month HPI data is regenerated for all of England and Wales from the Land Registry Price Paid Dataset, the HPI data is converted into linked data form and this replaces the previous named graph in the triplestore, graphs are named HPI-yyyy-mm. This process runs alongside the normal publication of HPI data which is released on the 20th working day of each month.
+  Each month UK HPI data is updated for all of Great Britain, there is a monthly value for Northern Ireland data which is updated quarterly. The UK HPI data is converted into linked data form and this replaces the previous named graph in the triplestore, graphs are named UKHPI-yyyy-mm. This process runs alongside the normal publication of UK HPI data. Publication dates are available on the Publication timetable
+
 %h3 Vocabularies
 %p
   The publication of the House Price Index Dataset as
@@ -70,296 +84,82 @@
   encoded as an
   = succeed "." do
     %a{:href => "http://www.w3.org/TR/vocab-data-cube/"} RDF data cube
-%dl
+%dl.list
   %dt
     Data Cube
     %a{:href => "http://purl.org/linked-data/cube"} http://purl.org/linked-data/cube
-  %dd
+  %dd{ style: "margin-left: 1.5em; margin-bottom: 0.5em"}
     A recommendation from the W3C for representing sets of multi-dimensional statistical data in RDF as a hypercube.
   %dt
     Land Registry HPI
     %a{:href => "http://landregistry.data.gov.uk/def/hpi"} http://landregistry.data.gov.uk/def/hpi
-  %dd
+  %dd{ style: "margin-left: 1.5em; margin-bottom: 0.5em"}
     The Land Registry HPI vocabulary is used to describe the House Price Index Dataset produced each month. The vocabulary contains terms that are used by Land Registry to describe things that are used within the House Price Index dataset.
   %dt
     OS Spatial Relations
     %a{:href => "http://data.ordnancesurvey.co.uk/ontology/spatialrelations/"} http://landregistry.data.gov.uk/def/hpi
-  %dd
+  %dd{ style: "margin-left: 1.5em; margin-bottom: 0.5em"}
     This Ordnance Survey vocabulary is used to describe basic spatial relations
   %dt
     OS Admingeo
     %a{:href => "http://data.ordnancesurvey.co.uk/ontology/admingeo/"} http://data.ordnancesurvey.co.uk/ontology/admingeo/
-  %dd
+  %dd{ style: "margin-left: 1.5em; margin-bottom: 0.5em"}
     This Ordnance Survey vocabulary is used to describe the administrative and voting area geography of Great Britain.
-%figure
-  %img{:alt => "data structure definition picture", :src => image_path( "hpi-diagram-1.png" )}/
-  %figcaption Figure 1 – HPI Data Cube data structure definition
-%figure
-  %img{:alt => "data set and observation structure picture", :src => image_path( "hpi-diagram-2.png" )}/
-  %figcaption Figure 2 – HPI DataSet and observation structure
-%h3 HPI Data
+
+%h3 UKHPI Data
 %p
-  HPI Data is stored as a named graph in a data cube with two dimensions and a number of measures. The dimensions are:
-%table.table.definitions.table-bordered.table-condensed
-  %tr
-    %td.definition-label Region
-    %td
-      %code hpi:refRegion
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/refRegion"} http://landregistry.data.gov.uk/def/hpi/refRegion
-  %tr
-    %td.definition-label Period
-    %td
-      %code hpi:refPeriod
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/refPeriod"} http://landregistry.data.gov.uk/def/hpi/refPeriod
-%p
-  And the measures are:
-%table.table.definitions.table-bordered.table-condensed
-  %tr
-    %td.definition-label
-      Region name
-    %td
-      %code
-        hpi:refRegionName
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/refRegionName"}
-        http://landregistry.data.gov.uk/def/hpi/refRegionName
-  %tr
-    %td.definition-label
-      Monthly residential property price indicies
-    %td
-      %code
-        hpi:indicies
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/indices"}
-        http://landregistry.data.gov.uk/def/hpi/indices
-  %tr
-    %td.definition-label
-      Seasonally adjusted monthly residential property price indicies
-    %td
-      %code
-        hpi:indiciesSA
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/indicesSA"}
-        http://landregistry.data.gov.uk/def/hpi/indicesSA
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted residential property price indicies
-    %td
-      %code
-        hpi:indiciesSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/indicesSASM"}
-        http://landregistry.data.gov.uk/def/hpi/indicesSASM
-  %tr
-    %td.definition-label
-      Seasonally adjusted standardised average prices
-    %td
-      %code
-        hpi:averagePricesSA
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSA"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesSA
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted standardised average prices
-    %td
-      %code
-        hpi:averagePricesSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesSASM
-  %tr
-    %td.definition-label
-      Monthly change figures represent the percentage change in average house prices relative to the previous month
-    %td
-      %code
-        hpi:monthlyChange
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/monthlyChange"}
-        http://landregistry.data.gov.uk/def/hpi/monthlyChange
-  %tr
-    %td.definition-label
-      Annual change figures represent the percentage change in average house prices relative to the same month twelve months earlier
-    %td
-      %code
-        hpi:annualChange
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/annualChange"}
-        http://landregistry.data.gov.uk/def/hpi/annualChange
-  %tr
-    %td.definition-label
-      Volume of sales upon which analysis is based
-    %td
-      %code
-        hpi:salesVolume
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/salesVolume"}
-        http://landregistry.data.gov.uk/def/hpi/salesVolume
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a detached property
-    %td
-      %code
-        hpi:averagePricesDetachedSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesDetachedSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesDetachedSASM
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a semi-detached property
-    %td
-      %code
-        hpi:averagePricesSemiDetachedSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSemiDetachedSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesSemiDetachedSASM
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a terraced property
-    %td
-      %code
-        hpi:averagePricesTerracedSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesTerracedSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesTerracedSASM
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a flat or maisonette
-    %td
-      %code
-        hpi:averagePricesFlatMaisonetteSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesFlatMaisonetteSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesFlatMaisonetteSASM
-%h3 Example
-%p
-  Each month Land Registry refresh the HPI data for the North East of England. After transformation and upload to the Land Registry triplestore the data for that region for December 2013 can be found here:
-  %a{:href => "http://landregistry.data.gov.uk/data/hpi/region/north-east/month/2013-12"} http://landregistry.data.gov.uk/data/hpi/region/north-east/month/2013-12
-%p
-  Note that these figures can change by very small amounts each month.
-%p
-  The triples generated for this transaction are:
-%pre
-  :preserve
-    <http://landregistry.data.gov.uk/data/hpi/region/north-east/month/2013-12>
-      a       qb:Observation , hpi:MonthlyIndicesByRegion ;
-      hpi:annualChange -1.70 ;
-      hpi:averagePricesDetachedSASM 177837 ;
-      hpi:averagePricesFlatMaisonetteSASM 65769 ;
-      hpi:averagePricesSA 95640 ;
-      hpi:averagePricesSASM 95640 ;
-      hpi:averagePricesSemiDetachedSASM 94068 ;
-      hpi:averagePricesTerracedSASM 64338 ;
-      hpi:indices 176.90 ;
-      hpi:indicesSA 175.24 ;
-      hpi:indicesSASM 175.24 ;
-      hpi:monthlyChange -0.70 ;
-      hpi:refPeriod "2013-12"^^xs:gYearMonth ;
-      hpi:refRegion <http://landregistry.data.gov.uk/id/region/north-east> ;
-      hpi:refRegionName "North East" ;
-      hpi:salesVolume 3104 ;
-      qb:dataSet <http://landregistry.data.gov.uk/data/hpi/dataset> .
-                %p
-  We hold additional triples for the region including links to OS and ONS and a Welsh Language version of the region name:
-%pre
-  :preserve
-    <http://landregistry.data.gov.uk/id/region/north-east>
-      a       admingeo:EuropeanRegion , hpi:Region ;
-      rdfs:label "Gogledd Ddwyrain Lloegr"@cy , "North East"@en ;
-      sr:contains
-        <http://landregistry.data.gov.uk/id/region/stockton-on-tees> ,
-        <http://landregistry.data.gov.uk/id/region/hartlepool> ,
-        <http://landregistry.data.gov.uk/id/region/middlesbrough> ,
-        <http://landregistry.data.gov.uk/id/region/durham> ,
-        <http://landregistry.data.gov.uk/id/region/darlington> ,
-        <http://landregistry.data.gov.uk/id/region/northumberland> ,
-        <http://landregistry.data.gov.uk/id/region/tyne-and-wear> ,
-        <http://landregistry.data.gov.uk/id/region/redcar-and-cleveland> ;
-      sr:within
-        <http://landregistry.data.gov.uk/id/region/england-and-wales> ;
-      owl:sameAs
-        <http://data.ordnancesurvey.co.uk/id/7000000000041422> ,
-        <http://statistics.data.gov.uk/id/statistical-geography/E12000001> ;
-      skos:prefLabel "Gogledd Ddwyrain Lloegr"@cy , "North East"@en .      %h2 How to query the dataset
-%p
-  There are several ways to query the House Price Index dataset.
-%h3
+  UKHPI Data is stored as a named graph in a data cube with two dimensions and a variety of measures.
   The
-  %a{:href => "/app/hpi"} House Price Index reporting tool
+  = link_to "Data Structure Definition (DSD)", controller: :doc, action: :ukhpi_dsd
+  file defines this structure, and can be used by both data users
+  and programs to understand how the data is structured.
+
+%h2 The UK House Price Index reporting tool
 %p
-  The report tool is the easiest way to query the House Price Index dataset, it allows the easy creation of queries using a form and results can be downloaded in various forms. The report builder can also be used to generate SPARQL queries that can be amended and re-run as required.
+  The
+  = link_to "report tool", "/app/ukhpi"
+  is the easiest way to query the UKHouse Price Index dataset. It allows the easy creation of queries using a form and results can be downloaded in various forms. The report builder can also be used to generate SPARQL queries that can be amended and re-run as required.
 %p
   Please note that when choosing the CSV option for downloaded data then only the data items shown in the result on screen will be included in the CSV. For Turtle downloads all data items will be included as will the result from the SPARQL query if re-run.
-%h3
-  SPARQL
+
+%h3 SPARQL
 %p
-  Alongside the report builder we have created a SPARQL query page that can be found here
+  Alongside the report builder we have created a SPARQL query page that can be found at
   = succeed "." do
-    %a{:href => "http://landregistry.data.gov.uk/app/hpi/qonsole"} http://landregistry.data.gov.uk/app/hpi/qonsole
+    =link_to "http://landregistry.data.gov.uk/app/ukhpi/qonsole"
 %p
-  We also have made a
-  %a{:href => "http://semanticweb.org/wiki/SPARQL_endpoint"} SPARQL endpoint
-  available:
-  %code http://landregistry.data.gov.uk/landregistry/query
-  which can be used to query against.
-%h3
-  Via the API
-%p
-  It is possible to query the Price Paid Dataset directly through the API, this largely removes the need to know how to use SPARQL as long as the structure of the data is known.  Using the example transaction above we know that there is data for the North east of England. With that information we can enter this URL into a web browser
+  We also have made a SPARQL endpoint available:
 %pre
-  %a{:href => "http://landregistry.data.gov.uk/data/hpi/region/north-east"} http://landregistry.data.gov.uk/data/hpi/region/north-east
+  http://landregistry.data.gov.uk/landregistry/query
 %p
-  Note that this query will return all data for that region from the current month back to January 1995. Because Land Registry do not publish Sales Volumes with the same frequency as other data there will be no Sales Volume figure for the first two months displayed.  By default a count of the results generated for the query is displayed on screen.
+  which can be used to run queries against from a SPARQL processing tool or your application.
+
+%h3 Via the API
+%p
+  It is possible to query the UKHPI dataset directly through an
+  %em application programming interface (API).
+  This largely removes the need to know how to use SPARQL as long as the structure of the data is known. Using the example transaction above we know that there is data for the North east of England. With that information we can enter this URL into a web browser
+%pre
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/north-east"
+%p
+  Note that this query will return all data for that region from the current month back to January 1995. Because Land Registry do not publish Sales Volumes with the same frequency as other data there will be no Sales Volume figure for the first two months displayed. By default a count of the results generated for the query is displayed on screen.
 %p
   There are options to generate the data displayed for download in another format, for example csv, note that the results will be limited to the same number of results displayed on screen.
 %p
-  Similarly other areas can be queried, in this example figures for all of England and Wales:
+  Similarly other areas can be queried. In the following example, figures for all of England and Wales are shown:
 %pre
-  %a{:href => "http://landregistry.data.gov.uk/data/hpi/region/england-and-wales"} http://landregistry.data.gov.uk/data/hpi/region/england-and-wales
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales"
 %p
   The query can be extended to give specific months:
 %pre
-  %a{:href => "http://landregistry.data.gov.uk/data/hpi/region/england-and-wales/month/2014-01"} http://landregistry.data.gov.uk/data/hpi/region/england-and-wales/month/2014-01
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales/month/2014-01"
 %p
-  It is also possible to select ranges and sort the data returned, this example returns figures for England and Wales where the monthly change is between 1 and 10% sorted on the reporting period
+  It is also possible to select ranges and sort the data returned. The following example returns
+  figures for England and Wales where the monthly change is between 1% and 10%, sorted on the reporting period:
 %pre
-  %a{:href => "http://landregistry.data.gov.uk/data/hpi/region/england-and-wales?max-monthlyChange=100&min-monthlyChange=1&_page=0&_sort=refPeriod"}
-    http://landregistry.data.gov.uk/data/hpi/region/england-and-wales?max-monthlyChange=100&amp;min-monthlyChange=1&amp;_page=0&amp;_sort=refPeriod
-%p
-  It is possible to change the results displayed using the ‘Show Search Form’ button at the top of the page and the filters on the page allow easy sorting or filtering of results.
-%h3
-  Example SPARQL query
-%p
-  This is a cut down version of the query generated by the reporting tool using the ‘download’ option that will return the monthly change for the North east from January 1995 to May 2014.
-%p
-  Note the use of the OPTIONAL keyword, because there is no monthly change for the first month of HPI data OPTIONAL is used to return the other metrics and a blank value for hpi_monthlyChange. If OPTIONAL is omitted then one less row is returned by the query.
-%pre
-  :preserve
-    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    prefix owl: <http://www.w3.org/2002/07/owl#>
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-    prefix sr: <http://data.ordnancesurvey.co.uk/ontology/spatialrelations/>
-    prefix lrhpi: <http://landregistry.data.gov.uk/def/hpi/>
-    prefix lrppi: <http://landregistry.data.gov.uk/def/ppi/>
-    prefix skos: <http://www.w3.org/2004/02/skos/core#>
-    prefix lrcommon: <http://landregistry.data.gov.uk/def/common/>
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales?max-monthlyChange=100&min-monthlyChange=1&_page=0&_sort=refPeriod"
 
-    PREFIX  hpi:  <http://landregistry.data.gov.uk/def/hpi/>
-    PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
-
-    SELECT  ?item ?hpi_refPeriod ?hpi_refRegionName ?hpi_monthlyChange
-    WHERE
-      { ?item hpi:indices ?hpi_indices .
-        ?item hpi:refPeriod ?hpi_refPeriod .
-        ?item hpi:refRegion <http://landregistry.data.gov.uk/id/region/north-east>
-        BIND(<http://landregistry.data.gov.uk/id/region/north-east> AS ?hpi_refRegion)
-        ?item hpi:refRegionName ?hpi_refRegionName .
-    OPTIONAL
-          { ?item hpi:monthlyChange ?hpi_monthlyChange }
-        FILTER ( ?hpi_refPeriod >= "1995-01"^^xsd:gYearMonth )
-        FILTER ( ?hpi_refPeriod <= "2014-06"^^xsd:gYearMonth )
-      }
-    ORDER BY DESC(?hpi_refPeriod)
+%p
+  It is possible to change the results displayed using the
+  %code customise your search
+  button at the top of the page and the filters on the page allow easy sorting or filtering of results.
