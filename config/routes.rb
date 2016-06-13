@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "doc/hpi", to: "doc#hpi", as: "hpi_doc"
   get "doc/ukhpi", to: "doc#ukhpi", as: "ukhpi_doc"
   get "doc/ppd", to: "doc#ppd", as: "ppd_doc"
+  get "doc/ukhpi-dsd", to: "doc#ukhpi_dsd"
 end
