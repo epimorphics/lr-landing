@@ -126,7 +126,7 @@
 %p
   Alongside the report builder we have created a SPARQL query page that can be found at
   = succeed "." do
-    =link_to "http://landregistry.data.gov.uk/app/ukhpi/qonsole"
+    = link_to "/app/qonsole"
 %p
   We also have made a SPARQL endpoint available:
 %pre
@@ -140,7 +140,8 @@
   %em application programming interface (API).
   This largely removes the need to know how to use SPARQL as long as the structure of the data is known. Using the example transaction above we know that there is data for the North east of England. With that information we can enter this URL into a web browser
 %pre
-  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/north-east"
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/north-east", "/data/ukhpi/region/north-east"
+
 %p
   Note that this query will return all data for that region from the current month back to January 1995. Because Land Registry do not publish Sales Volumes with the same frequency as other data there will be no Sales Volume figure for the first two months displayed. By default a count of the results generated for the query is displayed on screen.
 %p
@@ -148,16 +149,19 @@
 %p
   Similarly other areas can be queried. In the following example, figures for all of England and Wales are shown:
 %pre
-  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales"
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales", "/data/ukhpi/region/england-and-wales"
+
 %p
   The query can be extended to give specific months:
 %pre
-  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales/month/2014-01"
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales/month/2014-01", "/data/ukhpi/region/england-and-wales/month/2014-01"
+
 %p
   It is also possible to select ranges and sort the data returned. The following example returns
   figures for England and Wales where the monthly change is between 1% and 10%, sorted on the reporting period:
 %pre
-  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales?max-monthlyChange=100&min-monthlyChange=1&_page=0&_sort=refPeriod"
+  = link_to "http://landregistry.data.gov.uk/data/ukhpi/region/england-and-wales?max-percentageChange=100&min-percentageChange=1&_page=0&_sort=refPeriod", "/data/ukhpi/region/england-and-wales?max-percentageChange=100&min-percentageChange=1&_page=0&_sort=refMonth"
+
 
 %p
   It is possible to change the results displayed using the
