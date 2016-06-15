@@ -1,0 +1,24 @@
+%h1 Change to House Price Index data
+%p
+  From 14 June 2016 the Land Registry House Price Index was replaced by the
+  %strong UK House Price Index,
+  incorporating data from Land Registry, Registers of Scotland
+  and Land & Property Services Northern Ireland. The new index
+  is calculated by the Office for National statistics.
+  As a result a new search tool has been developed, and the old HPI search
+  tool has been retired.
+%p
+  Read more about
+  %a{ href: "https://www.gov.uk/government/publications/about-the-uk-house-price-index/about-the-uk-house-price-index" }
+    the new UK HPI.
+
+%p
+  This page will automatically redirect to the new UK House Price Index search
+  tool after a short delay, or you can
+  %a{ href: "/app/ukhpi" }
+    go there directly.
+
+:javascript
+  (function(){
+   setTimeout(function(){ window.location="/app/ukhpi"; }, 10 * 1000);
+  })();

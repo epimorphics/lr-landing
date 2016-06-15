@@ -32,6 +32,10 @@
         UK House Price Index
       on behalf of Office for National Statistics, Registers of Scotland and
       Land and Property Services Northern Ireland.
+      Read
+      = link_to "/app/doc/ukhpi" do
+        = succeed "." do
+          more about the UKHPI data
 
     %h2.heading-medium Bespoke reports
     %p
@@ -101,7 +105,7 @@
       If you would like to try out your own SPARQL queries against our
       linked data publications,  use
       = succeed "." do
-        %a{:href => "/app/common/qonsole"} this SPARQL form
+        %a{:href => "/app/qonsole"} this SPARQL form
     %p
       If you want to see the SPARQL query that is used to generate the reports in the
       HPI and PPD reporting tools described above, you can do this by selecting the
