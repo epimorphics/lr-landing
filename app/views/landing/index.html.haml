@@ -15,6 +15,18 @@
       %li
         %a{:href => "https://www.gov.uk/land-registry-transaction-data"} Transaction data
         updated monthly, data available from December 2011.
+      %li
+        %a{href: "https://www.gov.uk/government/collections/uk-house-price-index-reports#about-the-uk-hpi"}
+          UK House Price Index downloads
+        updated monthly, data available from January 1995.
+        %br
+        Land Registry publish the
+        %a{ href: "http://landregistry.data.gov.uk/app/ukhpi"}
+          UK House Price Index
+        on behalf of Office for National Statistics, Registers of Scotland and
+        Land and Property Services Northern Ireland.
+
+
     %p
       These datasets are provided in
       %a{:href => "http://en.wikipedia.org/wiki/Comma-separated_values"} comma-separated value (csv)
@@ -25,17 +37,6 @@
       = succeed "." do
         %a{:href => "https://www.gov.uk/government/publications/land-registry-data"} Public Data
 
-    %h2.heading-medium UK House Price Index
-    %p
-      In addition to the above data Land Registry also publish the
-      %a{ href: "http://landregistry.data.gov.uk/app/ukhpi"}
-        UK House Price Index
-      on behalf of Office for National Statistics, Registers of Scotland and
-      Land and Property Services Northern Ireland.
-      Read
-      = link_to "/app/doc/ukhpi" do
-        = succeed "." do
-          more about the UKHPI data
 
     %h2.heading-medium Bespoke reports
     %p
@@ -44,15 +45,34 @@
     %ul.list.list-bullet
       %li
         Search the
-        %a{:href => "/app/ukhpi"} UK house price index
+        %a{:href => "#ukhpi"} UK house price index
       %li
         Build a
-        %a{:href => "/app/ppd"} price paid data report
+        %a{:href => "#ppd"} price paid data report
       %li
         Build a
-        %a{:href => "/app/standard-reports"} standard price paid data report
+        %a{:href => "#standard-reports"} standard price paid data report
 
-    %h2.heading-medium Price Paid Data Report Builder
+    %h2#ukhpi.heading-medium Search the UK House Price Index
+    %p
+      Use the
+      %a{ href: "/app/ukhpi" } UK house price index search tool
+      to identify a specific subset of the index data you’re interested in, and then download it.
+      Reports can be broken down by countries, regions, counties or local authorities over a
+      defined period of time dating back to January 1995. They can then be further tailored to
+      a variety of reporting options including indicators, property categories or sales volumes.
+    %p
+      Further information: read more about
+      = succeed "." do
+        %a{ href: "https://www.gov.uk/government/publications/about-the-uk-house-price-index/about-the-uk-house-price-index#searching-the-uk-house-price-index"}
+          searching the UKHPI
+      or
+      = link_to "/app/doc/ukhpi" do
+        = succeed "." do
+          more about the UKHPI data
+
+
+    %h2#ppd.heading-medium Price Paid Data Report Builder
     %p
       Use
       %a{:href => "/app/ppd"} Price Paid Data Reports
@@ -88,7 +108,7 @@
           detailed documentation
         about the Price Paid Data, the data model, and using the data.
 
-    %h2.heading-medium Standard Report Builder
+    %h2#standard-reports.heading-medium Standard Report Builder
     %p
       The
       %a{:href => "/app/standard-reports"} Standard Report Builder
@@ -130,12 +150,25 @@
         Read the
         = succeed "." do
           %a{:href => "/def/trans"} data definitions for the transactions dataset
+      %dt
+        %a{ href: "/data/ukhpi" } UK HPI
+      %dd
+        5★ linked dataset.
+        Read the
+        = succeed "." do
+          %a{:href => "/def/ukhpi"} data definitions for the UK HPI dataset
+
     %h2.heading-medium#contact-us
       Who to contact
     %p
       If you need help to access the data, please
       = succeed "." do
         %a{:href => "http://landregistry.custhelp.com/app/contactus_general/"} use our contact form
+    %p
+      For UK House Price Index enquiries please see
+      = succeed "." do
+        %a{ href: "https://www.gov.uk/government/publications/about-the-uk-house-price-index/about-the-uk-house-price-index#contact"}
+          About the House Price Index - Contacts
     %p
       For general transaction data enquiries email
       %a{:href => "mailto:DRO@landregistry.gov.uk"} DRO@landregistry.gov.uk
