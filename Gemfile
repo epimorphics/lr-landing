@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.6'
+gem 'rails', '~> 5.0.0.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -20,7 +19,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'qonsole-rails', github: 'epimorphics/qonsole-rails'
 # gem 'qonsole-rails', path: '/home/ian/workspace/epimorphics/qonsole-rails'
-gem 'lr_common_styles', github: "epimorphics/lr_common_styles"
+gem 'lr_common_styles', github: 'epimorphics/lr_common_styles'
 # gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
 
 group :development, :test do
@@ -31,6 +30,4 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-  gem 'quiet_assets'
 end
-
