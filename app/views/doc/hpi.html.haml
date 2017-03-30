@@ -2,9 +2,9 @@
 %h3
   What does the House Price Index Dataset consist of?
 %p
-  The House Price Index (HPI) data published each month by the Land Registry captures changes in the value of residential properties in England and Wales at regional, county, unitary authority and borough level since January 1995. The HPI dataset is generated from Land Registry Price Paid Data which is a record of every residential property transaction that is sold for full market value; more details on Price Paid Data can be found on the
+  The House Price Index (HPI) data published each month by HM Land Registry captures changes in the value of residential properties in England and Wales at regional, county, unitary authority and borough level since January 1995. The HPI dataset is generated from Land Registry Price Paid Data which is a record of every residential property transaction that is sold for full market value; more details on Price Paid Data can be found on the
   = succeed "." do
-    %a{:href => "https://www.gov.uk/government/collections/price-paid-data"} Land Registry website
+    %a{:href => "https://www.gov.uk/government/collections/price-paid-data"} HM Land Registry website
 %p
   The HPI dataset contains information on more than 190 areas in England and Wales; we do not publish HPI information for areas that have a very low number of monthly sales, for example the City of London or the Isles of Scilly. For each area we publish a House Price Index figure, this was set at a base of 100 in January 1995 and reflects the change in value of residential property since then. We also have figures for the average price of all properties in an area, for each of four property types, sales volumes, and the percent change from the previous month and year. Please note that sales volume data is not available for the last 2 months.
 %p
@@ -14,13 +14,13 @@
   = succeed "." do
     %a{:href => "http://landregistry.data.gov.uk/app/hpi/view?compare=1&from_m=0&from_y=2008&loc_0=City+of+Plymouth&loc_1=City+of+Bristol&loc_uri_0=http%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fcity-of-plymouth&loc_uri_1=http%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fcity-of-bristol&m_chm=1&source=preview_form&to_m=0&to_y=2014"} here comparing the monthly change in the average price of a property in Plymouth with Bristol between January 2008 and January 2014
 %p
-  Land Registry publish detailed information about HPI. This can be found
+  HM Land Registry publish detailed information about HPI. This can be found
   = succeed "." do
     %a{:href => "https://www.gov.uk/government/publications/about-the-house-price-index"} on the web site
 %p
-  In March 2014 the HPI linked data dataset contained in excess of 600,000 triples for 198 regions in England and Wales. The triple store is refreshed in full each month, all of the entries are regenerated to take into account any changes submitted to Land Registry.
+  In March 2014 the HPI linked data dataset contained in excess of 600,000 triples for 198 regions in England and Wales. The triple store is refreshed in full each month, all of the entries are regenerated to take into account any changes submitted to HM Land Registry.
 %p
-  The linked data version of the Land Registry HPI dataset is generated from the published files and contains additional information to describe each of the reported regions, this information includes links to linked datasets published by the
+  The linked data version of the HM Land Registry HPI dataset is generated from the published files and contains additional information to describe each of the reported regions, this information includes links to linked datasets published by the
   %a{:href => "http://data.ordnancesurvey.co.uk/"} Ordnance Survey
   and the
   = succeed "." do
@@ -33,10 +33,10 @@
   (ONS data)
   and
   %a{:href => "http://www.ordnancesurvey.co.uk/docs/licences/os-opendata-licence.pdf"} Open Data License
-  (OS data). Land Registry is not responsible for the content or reliability of any linked websites.
+  (OS data). HM Land Registry is not responsible for the content or reliability of any linked websites.
 %h3 How is the House Price Index Dataset published?
 %p
-  The house price index dataset is available in several forms from the Land Registry;
+  The house price index dataset is available in several forms from HM Land Registry;
 %ul.list.list-bullet
   %li
     Interactively, using the
@@ -52,7 +52,7 @@
     %a{:href => "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"} OGL
 %h2 Linked Data Overview
 %p
-  Each month HPI data is regenerated for all of England and Wales from the Land Registry Price Paid Dataset, the HPI data is converted into linked data form and this replaces the previous named graph in the triplestore, graphs are named HPI-yyyy-mm. This process runs alongside the normal publication of HPI data which is released on the 20th working day of each month.
+  Each month HPI data is regenerated for all of England and Wales from the HM Land Registry Price Paid Dataset, the HPI data is converted into linked data form and this replaces the previous named graph in the triplestore, graphs are named HPI-yyyy-mm. This process runs alongside the normal publication of HPI data which is released on the 20th working day of each month.
 %h3 Vocabularies
 %p
   The publication of the House Price Index Dataset as
@@ -61,7 +61,7 @@
   %a{:href => "http://www.w3.org/TR/rdf-schema/"} RDFS
   or
   %a{:href => "http://www.w3.org/TR/owl2-overview/"} OWL
-  vocabularies, one Land Registry vocabulary and two Ordnance Survey vocabularies. In addition, the data is
+  vocabularies, one HM Land Registry vocabulary and two Ordnance Survey vocabularies. In addition, the data is
   encoded as an
   = succeed "." do
     %a{:href => "http://www.w3.org/TR/vocab-data-cube/"} RDF data cube
@@ -72,10 +72,10 @@
   %dd
     A recommendation from the W3C for representing sets of multi-dimensional statistical data in RDF as a hypercube.
   %dt
-    Land Registry HPI
+    HM Land Registry HPI
     %a{:href => "http://landregistry.data.gov.uk/def/hpi"} http://landregistry.data.gov.uk/def/hpi
   %dd
-    The Land Registry HPI vocabulary is used to describe the House Price Index Dataset produced each month. The vocabulary contains terms that are used by Land Registry to describe things that are used within the House Price Index dataset.
+    The HM Land Registry HPI vocabulary is used to describe the House Price Index Dataset produced each month. The vocabulary contains terms that are used by Land Registry to describe things that are used within the House Price Index dataset.
   %dt
     OS Spatial Relations
     %a{:href => "http://data.ordnancesurvey.co.uk/ontology/spatialrelations/"} http://landregistry.data.gov.uk/def/hpi
@@ -230,7 +230,7 @@
         http://landregistry.data.gov.uk/def/hpi/averagePricesFlatMaisonetteSASM
 %h3 Example
 %p
-  Each month Land Registry refresh the HPI data for the North East of England. After transformation and upload to the Land Registry triplestore the data for that region for December 2013 can be found here:
+  Each month HM Land Registry refresh the HPI data for the North East of England. After transformation and upload to the Land Registry triplestore the data for that region for December 2013 can be found here:
   %a{:href => "http://landregistry.data.gov.uk/data/hpi/region/north-east/month/2013-12"} http://landregistry.data.gov.uk/data/hpi/region/north-east/month/2013-12
 %p
   Note that these figures can change by very small amounts each month.
@@ -256,7 +256,7 @@
       hpi:refRegionName "North East" ;
       hpi:salesVolume 3104 ;
       qb:dataSet <http://landregistry.data.gov.uk/data/hpi/dataset> .
-                %p
+%p
   We hold additional triples for the region including links to OS and ONS and a Welsh Language version of the region name:
 %pre
   :preserve
@@ -306,7 +306,7 @@
 %pre
   %a{:href => "http://landregistry.data.gov.uk/data/hpi/region/north-east"} http://landregistry.data.gov.uk/data/hpi/region/north-east
 %p
-  Note that this query will return all data for that region from the current month back to January 1995. Because Land Registry do not publish Sales Volumes with the same frequency as other data there will be no Sales Volume figure for the first two months displayed.  By default a count of the results generated for the query is displayed on screen.
+  Note that this query will return all data for that region from the current month back to January 1995. Because HM Land Registry do not publish Sales Volumes with the same frequency as other data there will be no Sales Volume figure for the first two months displayed.  By default a count of the results generated for the query is displayed on screen.
 %p
   There are options to generate the data displayed for download in another format, for example csv, note that the results will be limited to the same number of results displayed on screen.
 %p

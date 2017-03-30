@@ -30,6 +30,6 @@ module LrLanding
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.x.lr_page_title = "Welcome to House Price Data from Land Registry"
+    config.x.lr_page_title = "Welcome to House Price Data from HM Land Registry"
   end
 end
