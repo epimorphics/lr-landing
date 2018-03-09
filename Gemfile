@@ -22,6 +22,8 @@ gem 'qonsole-rails', github: 'epimorphics/qonsole-rails'
 gem 'lr_common_styles', github: 'epimorphics/lr_common_styles'
 # gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
 
+gem 'haml-rails', '~> 1.0.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
