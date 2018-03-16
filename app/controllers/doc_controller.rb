@@ -7,6 +7,10 @@ class DocController < ApplicationController
   end
 
   def ukhpi_user_guide
-    send_file 'app/views/doc/ukhpi-user-guide.pdf', type: 'application/pdf'
+    send_file(
+      'app/views/doc/ukhpi-user-guide.pdf',
+      type: 'application/pdf',
+      disposition: :inline
+    )
   end
 end
