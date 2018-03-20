@@ -18,9 +18,9 @@ GIT
 
 GIT
   remote: git://github.com/epimorphics/qonsole-rails.git
-  revision: 808efa8b4f0c8e2aa71279625daf23577350e0a1
+  revision: 0268723370ab9f4c37c6ba6323d7799757f7e289
   specs:
-    qonsole-rails (0.4.0)
+    qonsole-rails (0.5.2)
       codemirror-rails (~> 5.11)
       faraday (~> 0.14.0)
       faraday_middleware (~> 0.12.2)
@@ -138,7 +138,7 @@ GEM
     json (1.8.6)
     lodash-rails (4.17.5)
       railties (>= 3.1)
-    loofah (2.2.0)
+    loofah (2.2.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -152,7 +152,7 @@ GEM
       railties (>= 4.0)
     multi_json (1.13.1)
     multipart-post (2.0.0)
-    nio4r (2.2.0)
+    nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     rack (2.0.4)
