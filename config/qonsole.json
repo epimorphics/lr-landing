@@ -3,6 +3,10 @@
     "default": "/landregistry/query",
     "dev": "http://lr-pres-dev-c.epimorphics.net/landregistry/query"
   },
+  "alias": {
+    "default": null,
+    "dev": null
+  },
   "prefixes": {
     "rdf":      "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs":     "http://www.w3.org/2000/01/rdf-schema#",
@@ -30,5 +34,3 @@
     }
   ]
 }
-
-
