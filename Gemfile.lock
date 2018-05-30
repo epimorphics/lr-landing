@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/epimorphics/lr_common_styles.git
+  remote: https://github.com/epimorphics/lr_common_styles
   revision: 64d1f4ef0318ebcd5b26cc038c7736fabf2ca04a
   specs:
     lr_common_styles (1.4.5)
@@ -17,7 +17,7 @@ GIT
       sass-rails (~> 5.0.4)
 
 GIT
-  remote: git://github.com/epimorphics/qonsole-rails.git
+  remote: https://github.com/epimorphics/qonsole-rails
   revision: 0268723370ab9f4c37c6ba6323d7799757f7e289
   specs:
     qonsole-rails (0.5.2)
@@ -81,7 +81,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
-    byebug (10.0.0)
+    byebug (10.0.2)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
     concurrent-ruby (1.0.5)
@@ -216,7 +216,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.6)
+    uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
     web-console (2.3.0)
       activemodel (>= 4.0)

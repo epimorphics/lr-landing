@@ -17,9 +17,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'qonsole-rails', github: 'epimorphics/qonsole-rails'
+gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
 # gem 'qonsole-rails', path: '/home/ian/workspace/epimorphics/qonsole-rails'
-gem 'lr_common_styles', github: 'epimorphics/lr_common_styles'
+gem 'lr_common_styles', git: 'https://github.com/epimorphics/lr_common_styles'
 # gem 'lr_common_styles', path: '/home/ian/workspace/land-registry/lr_common_styles'
 
 gem 'haml-rails', '~> 1.0.0'
