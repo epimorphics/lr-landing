@@ -96,7 +96,7 @@ function setFolder() {
 	$.ajax({
     type: 'GET',
     dataType: "jsonp",
-    url: "http://www.timeapi.org/utc/now.json?callback=?",
+    url: "//www.timeapi.org/utc/now.json?callback=?",
     success: function(data) {
 	 //Got date from timeapi.org
     today= Date(data.dateString);
@@ -163,5 +163,3 @@ return htmlstring;
 		$('#ppdyeardata').empty();
 		$('#ppdyeardata').html(replaceWithwelsh(html));
 	});
-
-
