@@ -9,6 +9,7 @@ function fc_select(){
 	$.each(data.applications, function(i, application) {
 		if(0 === $('#fc_appnSel :selected').val()){
 			// First element in the dropdown has been selected, setup the form again
+			gAnalyticsReportApplicationType(application.appdesc);
 			setup();
 			return false;
 		}else if(application.id == $('#fc_appnSel :selected').val()){
@@ -22,12 +23,16 @@ function fc_select(){
 				$('#fc_feePanel').hide();
 				if(application.eFee !== null){
 					$("#fc_appnElectronicRow").show();
-					if (application.ePartMsg !== null) {
+					if (application.eOtherPartMsg === -1) {
+						$("#fc_appnElectronicOtherPartMsg").show();
+					}
+					else if (application.ePartMsg !== null) {
 						$("#fc_appnElectronicPartMsg").show();
 					} else {
 						$("#fc_appnElectronicMsg").show();
 					}
 				}else {
+					$("#fc_appnElectronicOtherPartMsg").hide();
 					$("#fc_appnElectronicPartMsg").hide();
 					$("#fc_appnElectronicMsg").hide();
 				}
@@ -47,12 +52,16 @@ function fc_select(){
 				$('#fc_feePanel').hide();
 				if(application.eFee !== null){
 					$("#fc_appnElectronicRow").show();
-					if (application.ePartMsg !== null) {
+					if (application.eOtherPartMsg === -1) {
+						$("#fc_appnElectronicOtherPartMsg").show();
+					}
+					else if (application.ePartMsg !== null) {
 						$("#fc_appnElectronicPartMsg").show();
 					} else {
 						$("#fc_appnElectronicMsg").show();
 					}
 				}else {
+					$("#fc_appnElectronicOtherPartMsg").hide();
 					$("#fc_appnElectronicPartMsg").hide();
 					$("#fc_appnElectronicMsg").hide();
 				}
@@ -70,12 +79,16 @@ function fc_select(){
 				$('#fc_feePanel').hide();
 				if(application.eFee !== null){
 					$("#fc_appnElectronicRow").show();
-					if (application.ePartMsg !== null) {
+					if (application.eOtherPartMsg === -1) {
+						$("#fc_appnElectronicOtherPartMsg").show();
+					}
+					else if (application.ePartMsg !== null) {
 						$("#fc_appnElectronicPartMsg").show();
 					} else {
 						$("#fc_appnElectronicMsg").show();
 					}
 				}else {
+					$("#fc_appnElectronicOtherPartMsg").hide();
 					$("#fc_appnElectronicPartMsg").hide();
 					$("#fc_appnElectronicMsg").hide();
 				}
@@ -97,7 +110,9 @@ function fc_select(){
 				$('#fc_voluntaryPanel').hide();
 				if(application.eFee !== null){
 					$("#fc_appnElectronicRow").show();
-					if (application.ePartMsg !== null) {
+					if (application.eOtherPartMsg === -1){
+						$("#fc_appnElectronicOtherPartMsg").show();
+					} else if (application.ePartMsg !== null) {
 						$("#fc_appnElectronicPartMsg").show();
 					} else {
 						if(application.appcode == 'NA') {
@@ -107,12 +122,14 @@ function fc_select(){
 						}
 					}
 				}else {
+					$("#fc_appnElectronicOtherPartMsg").hide();
 					$("#fc_appnElectronicPartMsg").hide();
 					$("#fc_appnElectronicMsg").hide();
 				}
 
 				displayInfo(application,'N',0,0,0);
 			}
+			gAnalyticsReportApplicationType(application.appdesc);
 			return false;
 		}
 	});
@@ -236,6 +253,7 @@ function setup(){
 	$("#fc_appnElectronicRow").hide();
 	$("#fc_appnElectronicMsg").hide();
 	$("#fc_appnElectronicPartMsg").hide();
+	$("#fc_appnElectronicOtherPartMsg").hide();
 	$('#fc_appnSel').append($('<option/>').attr("value", 0).text("Choose an application type"));
 	// Load the dropdown list of applications
 	$.each(sortByKey(data.applications,"appdesc"), function(i, option) {
@@ -261,7 +279,7 @@ function fc_reset(){
 	$('#fc_appnSel').val("0");
 	$('#fc_valueTxt').val("");
 	$('#fc_rentTxt').val("");
-	$('input:radio[name=fc_voluntryRadio]').filter('[value=FALSE]').attr('checked', true);
+	$('input:radio[name=fc_voluntryRadio]').filter('[value=FALSE]').prop('checked', true);
 	$('#fc_capturePanel').hide();
 	$('#fc_feePanel').hide();
 	$("#fc_appnElectronicRow").hide();
@@ -275,6 +293,9 @@ function fc_reset(){
 	//Chrome Bug: White out
 	white_out();
 
+	$("#fc_appnElectronicMsg").hide();
+	$("#fc_appnElectronicPartMsg").hide();
+	$("#fc_appnElectronicOtherPartMsg").hide();
 }
 
 function isNumericKey(e){
@@ -325,4 +346,14 @@ function white_out(){
 	//the browser to empty the cache for that placeholder area.
 	$('#fc_white_out').show();
 	$('#fc_white_out').hide();
+}
+
+function gAnalyticsReportApplicationType(applicationDescription){
+	//Report the application type that was selected to Google Analytics
+	ga('send', {
+		hitType: 'event',
+		eventCategory: 'application type',
+		eventAction: 'select',
+		eventLabel: applicationDescription
+	});
 }
