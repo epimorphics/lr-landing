@@ -15,4 +15,9 @@ class LandingTest < ActionDispatch::IntegrationTest
     assert_select 'h1', 'Data Agored'
     assert_select 'main p:nth-child(3)', /Gofrestrfa Tir/
   end
+
+  test 'version number is visible' do
+    get '/'
+    assert_select '.o-version', /#{Version::VERSION}/
+  end
 end
