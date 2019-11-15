@@ -8,3 +8,7 @@ Metrics/LineLength:
 Style/ClassAndModuleChildren:
   Exclude:
     - test/**/*
+
+Style/Documentation:
+  Exclude:
+    - test/**/*
