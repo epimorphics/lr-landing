@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
@@ -6,13 +8,13 @@ require File.expand_path('../config/environment', __dir__)
 # of that file
 # require "rails/test_help"
 
-require "active_support/test_case"
-require "action_controller"
-require "action_controller/test_case"
-require "action_dispatch/testing/integration"
-require "rails/generators/test_case"
+require 'active_support/test_case'
+require 'action_controller'
+require 'action_controller/test_case'
+require 'action_dispatch/testing/integration'
+require 'rails/generators/test_case'
 
-require "active_support/testing/autorun"
+require 'active_support/testing/autorun'
 
 class ActionController::TestCase
   def before_setup # :nodoc:
