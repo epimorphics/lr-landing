@@ -5,4 +5,5 @@ Raven.configure do |config|
   config.current_environment = ENV['DEPLOYMENT_ENVIRONMENT'] || Rails.env
   config.environments = %w[production test]
   config.release = Version::VERSION
+  config.tags = { app: 'lr-landing' }
 end
