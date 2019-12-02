@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require File.expand_path('boot', __dir__)
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
+require 'active_model/railtie'
 # require "active_job/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
-require "rails/test_unit/railtie"
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
+require 'sprockets/railtie'
+require 'rails/test_unit/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-require "qonsole_rails"
+require 'qonsole_rails'
 
 module LrLanding
   # :nodoc:
@@ -31,6 +33,6 @@ module LrLanding
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.x.lr_page_title = "Welcome to House Price Data from HM Land Registry"
+    config.x.lr_page_title = 'Welcome to House Price Data from HM Land Registry'
   end
 end

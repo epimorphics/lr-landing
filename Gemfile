@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -23,6 +25,7 @@ gem 'lr_common_styles', git: 'https://github.com/epimorphics/lr_common_styles'
 # gem 'lr_common_styles', path: '/home/ian/projects/hmlr/lr_common_styles'
 
 gem 'haml-rails', '~> 2.0.0'
+gem 'sentry-raven'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
