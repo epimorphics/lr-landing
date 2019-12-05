@@ -3,8 +3,7 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.6.5
-  - latest
+  - 2.6
 before_install: gem install bundler -v 2.0.2
 script:
   - RAILS_ENV=test bundle exec rails -t
