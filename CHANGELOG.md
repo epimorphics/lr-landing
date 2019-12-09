@@ -4,6 +4,11 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.0.5 - 2019-12-09
+
+- Pull in updated `qonsole-rails` to resolve Sentry warning
+  of unbound variable `e`
+
 ## 2019-11-15 - 1.0.4
 
 - Gem dependency updates for CVE-2019-15587
