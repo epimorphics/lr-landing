@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/epimorphics/qonsole-rails
-  revision: 8ca878ea01bd20638863ca1b842e3a0de0376327
+  revision: 70cead3804fb36956bcf400997028551024fda6a
   specs:
     qonsole-rails (0.5.7)
       codemirror-rails (~> 5.11)
