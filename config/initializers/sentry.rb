@@ -1,9 +1,9 @@
 # frozen-string-literal: true
 
 Raven.configure do |config|
-  config.dsn = 'https://1150348b449a444bb3ac47ddd82b37c4:5fd368489fe44c0f83f1f2e5df10a7ef@sentry.io/251669'
+  config.dsn = 'https://0296b9563a944ef4bb6e41ffdc3fe4d2@sentry.io/1859729'
   config.current_environment = ENV['DEPLOYMENT_ENVIRONMENT'] || Rails.env
   config.environments = %w[production test]
   config.release = Version::VERSION
-  config.tags = { app: 'lr-landing' }
+  config.tags = { app: 'lr-dgu-landing' }
 end

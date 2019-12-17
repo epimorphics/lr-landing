@@ -4,6 +4,11 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.1.0 - 2019-12-17
+
+- Changed minor version number as we've switched to using a
+  separate Sentry project for this app.
+
 ## 1.0.7 - 2019-12-16
 
 - Update qonsole-rails to (hopefully) reduce Sentry noise due to
