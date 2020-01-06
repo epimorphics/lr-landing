@@ -1,11 +1,9 @@
 {
   "endpoints": {
-    "default": "/landregistry/query",
-    "dev": "http://lr-pres-dev-c.epimorphics.net/landregistry/query"
+    "default": "/landregistry/query"
   },
   "alias": {
-    "default": null,
-    "dev": null
+    "default": null
   },
   "prefixes": {
     "rdf":      "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
