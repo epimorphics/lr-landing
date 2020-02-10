@@ -4,6 +4,10 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.2.0 - 2020-02-10
+
+- Fix for Qonsole character encoding bug, GH-21
+
 ## 1.1.0 - 2019-12-17
 
 - Changed minor version number as we've switched to using a
