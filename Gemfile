@@ -3,9 +3,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 6.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -17,15 +17,18 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
+gem 'puma'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'webpacker'
 
-gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
-# gem 'qonsole-rails', path: '/home/ian/projects/epimorphics/qonsole-rails'
-gem 'lr_common_styles', git: 'https://github.com/epimorphics/lr_common_styles'
-# gem 'lr_common_styles', path: '/home/ian/projects/hmlr/lr_common_styles'
+# gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
+gem 'qonsole-rails', path: '/home/ian/projects/epimorphics/qonsole-rails'
+# gem 'lr_common_styles', git: 'https://github.com/epimorphics/lr_common_styles'
+gem 'lr_common_styles', path: '/home/ian/projects/hmlr/lr_common_styles'
 
 gem 'haml-rails', '~> 2.0.0'
 gem 'sentry-raven'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

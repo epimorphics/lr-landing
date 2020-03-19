@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "4.2.2",
+    "codemirror": "^5.52.0",
+    "datatables.net": "^1.10.20",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.15",
+    "modulejs": "^2.7.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
+}
