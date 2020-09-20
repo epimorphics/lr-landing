@@ -8,6 +8,8 @@ Qonsole
 
 - WCAG conformance updates, including updating to the upstream
   `lr_common_styles`
+- removed UKHPI documentation, now that this is available from the
+  UKHPI app itself
 
 ## 1.2.2 - 2020-07-06
 
