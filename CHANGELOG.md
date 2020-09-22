@@ -4,6 +4,10 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.3.1 - 2020-09-22 (Ian)
+
+- added skip-to-main-content link
+
 ## 1.3.0 - 2020-09-20 (Ian)
 
 - WCAG conformance updates, including updating to the upstream
