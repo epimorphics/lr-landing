@@ -32,9 +32,45 @@
     How accessible this website is
 
   %p
-    We believe that this website is compliant with the requirements of Web Content
-    Accessibility Guidelines 2.1 AA standard. It should not present any obstacles to
-    users with disabilities. If you do find problems accessing this service, please let us know.
+    We believe that most of this website is compliant with the requirements of
+    Web Contents Accessibility Guidelines 2.1 AA standard. The PPD explorer,
+    standard reports builder, and UKHPI should not present any obstacles to
+    users with disabilities. If you do find problems accessing these sections,
+    please let us know.
+  %p
+    We know that the SPARQL Qonsole on this website is not fully accessible.
+    In particular, we note the following issues:
+  %ul.list.list-bullet
+    %li
+      Background and foreground colours do not have sufficient contrast ratio
+      %br
+      This fails WCAG 1.4.3 Contrast (Level AA)
+      %br
+      Compatibility work to be completed by end of calendar year 2020
+    %li
+      Some input fields do not have associated labels in HTML
+      %br
+      This fails WCAG 3.3.2 Labels or Instructions (Level A)
+      %br
+      Compatibility work to be completed by end of calendar year 2020
+    %li
+      Lists do not contain only `li` elements and script supporting elements
+      (`script and `template`)
+      %br
+      This fails WCAG 4.1.2 Name, Role, Value (Level A)
+      %br
+      Compatibility work to be completed by end of calendar year 2020
+    %li
+      User cannot progress past main text area using tab key alone
+      %br
+      This fails WCAG 2.1.2 No Keyboard Trap
+      %br
+      Compatibility work to be completed by end of calendar year 2020
+
+  %p
+    We are working on an update to the SPARQL Qonsole to resolve
+    these issues and make the SPARQL Qonsole WCAG 2.1 compliant.
+    We expect this update to be completed by the end of December 2020.
 
   %h2
     What to do if you can’t access parts of this website
