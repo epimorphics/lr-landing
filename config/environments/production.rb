@@ -78,5 +78,5 @@ Rails.application.configure do
 
   config.relative_url_root = ENV['RELATIVE_URL_ROOT'] || '/app/root'
 
-  config.accessibility_document_path = '/app/root/doc/accessibility'
+  config.accessibility_document_path = '/accessibility'
 end
