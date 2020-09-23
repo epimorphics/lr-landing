@@ -21,10 +21,12 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
 # gem 'qonsole-rails', path: '/home/ian/projects/epimorphics/qonsole-rails'
+
 gem 'lr_common_styles', git: 'https://github.com/epimorphics/lr_common_styles'
 # gem 'lr_common_styles', path: '/home/ian/projects/hmlr/lr_common_styles'
 
 gem 'haml-rails', '~> 2.0.0'
+gem 'puma'
 gem 'sentry-raven'
 
 group :development, :test do

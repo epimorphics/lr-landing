@@ -77,4 +77,6 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.relative_url_root = ENV['RELATIVE_URL_ROOT'] || '/app/root'
+
+  config.accessibility_document_path = '/accessibility'
 end
