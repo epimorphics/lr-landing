@@ -4,6 +4,11 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.5.0 - 2020-10-30 (Ian)
+
+- add Welsh translation of accessibility statement
+- more complete and consistent support for Welsh language
+
 ## 1.4.0 - 2020-09-22 (Ian)
 
 - Add an initial version of the accessibility
