@@ -41,4 +41,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.accessibility_document_path = '/doc/accessibility'
+
+  # feature flag for showing the Welsh language switch affordance
+  config.welsh_language_enabled = true
 end

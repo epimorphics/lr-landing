@@ -2,7 +2,7 @@
 
 module Version
   MAJOR = 1
-  MINOR = 4
+  MINOR = 5
   REVISION = 1
   VERSION = "#{MAJOR}.#{MINOR}.#{REVISION}"
 end
