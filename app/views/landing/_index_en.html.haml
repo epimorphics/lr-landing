@@ -1,0 +1,167 @@
+.row
+  .col-md-12
+    %h1.heading-large
+      Open Data
+    %p
+      HM Land Registry publishes the following public datasets on GOV.UK
+      as part of our commitment to the Government’s priorities
+      of economic growth and data transparency:
+    %ul.list.list-bullet
+      %li
+        = link_to('Price Paid Data', 'https://www.gov.uk/about-the-price-paid-data', 'aria-label' => 'Explanation of Price Paid Data')
+        updated monthly, data available from 1995.
+      %li
+        = link_to('Transaction data', 'https://www.gov.uk/land-registry-transaction-data', 'aria-label' => 'Access transaction data')
+        updated monthly, data available from December 2011.
+      %li
+        = link_to('UK House Price Index downloads', 'https://www.gov.uk/government/collections/uk-house-price-index-reports#about-the-uk-hpi', 'aria-label' => 'UK House Price Index downloads')
+        updated monthly, data available from January 1995.
+        %br
+        HM Land Registry publish the
+        = link_to('UK House Price Index', '/app/ukhpi', 'aria-label' => 'Explore the UK house price index')
+        on behalf of Office for National Statistics, Registers of Scotland and
+        Land and Property Services Northern Ireland.
+
+
+    %p
+      These datasets are provided in
+      = link_to('comma-separated value (csv)', 'http://en.wikipedia.org/wiki/Comma-separated_values', 'aria-label' => 'wikipedia explanation of comma-separated value (csv)')
+      and
+      = link_to('linked data', 'http://en.wikipedia.org/wiki/Linked_data', 'aria-label' => 'linked data')
+      formats, with Price Paid Data also
+      available as a text file. These datasets can be downloaded in full by accessing our
+      = succeed "." do
+        = link_to('Public Data', 'https://www.gov.uk/government/publications/land-registry-data', 'aria-label' => 'overview of HMLR Public Data')
+
+
+    %h2.heading-large Bespoke reports
+    %p
+      Price Paid Data and House Price Index customers who do not require
+      the full dataset can run bespoke reports with the following tools:
+    %ul.list.list-bullet
+      %li
+        Search the
+        = link_to( 'UK house price index', '#ukhpi', 'aria-label' => 'how to find the UK house price index')
+      %li
+        Build a
+        = link_to('price paid data report', '#ppd', 'aria-label' => 'how to create a price-paid data report')
+      %li
+        Build a
+        = link_to('standard price paid data report', '#standard-reports', 'aria-label' => 'how to create a standard price-paid data report')
+
+    %h2#ukhpi.heading-medium Search the UK House Price Index
+    %p
+      Use the
+      = link_to('UK house price index search tool', '/app/ukhpi', 'aria-label' => 'Explore the UK house price index')
+      to identify a specific subset of the index data you’re interested in, and then download it.
+      Reports can be broken down by countries, regions, counties or local authorities over a
+      defined period of time dating back to January 1995. They can then be further tailored to
+      a variety of reporting options including indicators, property categories or sales volumes.
+    %p
+      Further information: read more about
+      = succeed "," do
+        = link_to('searching the UKHPI', 'https://www.gov.uk/government/publications/about-the-uk-house-price-index/about-the-uk-house-price-index#searching-the-uk-house-price-index')
+      or more
+      = succeed "." do
+        = link_to('details about the UKHPI data', '/app/ukhpi/doc')
+
+    %h2#ppd.heading-medium Price Paid Data Report Builder
+    %p
+      Use
+      = link_to('Price Paid Data Reports', '/app/ppd', 'aria-label' => 'explore price-paid data')
+      to build bespoke reports using our detailed Price Paid Data. Reports
+      can be based on location, tenure, price paid or property type over a
+      defined period of time.
+    %p
+      Our Price Paid Data tracks the residential property sales in
+      England and Wales that are lodged with us for registration. The
+      dataset is a reliable source of house price information and
+      consists of more than 24 million definitive records dating back
+      to January 1995. For more information on this dataset and
+      what it does and doesn't include, read
+      = succeed "." do
+        = link_to('about the Price Paid Data', 'https://www.gov.uk/about-the-price-paid-data', 'aria-label' => 'Explanation of Price Paid Data')
+    %p
+      We strive to ensure that our public data is as accurate as possible
+      but cannot guarantee that it is free from errors or fit for your
+      purpose or use. Reports are based on data collected at the time a
+      property transaction is registered with us and will not necessarily
+      be up to date with the most recent information. Read
+      = link_to('how accurate is the data?', 'https://www.gov.uk/government/publications/land-registry-data/public-data#accuracy-of-the-data')
+      for more information.
+
+    %h3.heading-small Further information
+    %ul.list.list-bullet
+      %li
+        = link_to( ppd_doc_path ) do
+          detailed documentation
+        about the Price Paid Data, the data model, and using the data.
+
+    %h2#standard-reports.heading-medium Standard Report Builder
+    %p
+      The
+      = link_to('Standard Report Builder', '/app/standard-reports', 'aria-label' => 'use the Standard Report Builder')
+      is provided
+      using our Price Paid Data. Use this tool to build bespoke
+      reports that are aggregated price data. This service allows
+      you to configure a report for various geographical areas in
+      England and Wales, from the country level down to postcode sectors over a defined period of time.
+    %h2.heading-large#linked-data Linked Data
+    %p
+      We also publish this data in linked data format, aiming for
+      = link_to('five star rating', 'http://5stardata.info/en/')
+    %p
+      If you would like to try out your own SPARQL queries against our
+      linked data publications,  use
+      = succeed "." do
+        = link_to('the SPARQL form', '/app/qonsole', 'aria-label' => 'use the SPARQL query editor')
+    %p
+      If you want to see the SPARQL query that is used to generate the reports in the
+      HPI and PPD reporting tools described above, you can do this by selecting the
+      'view SPARQL query' actions from the 'download data'
+      view in each search tool.
+      You can even amend and re-run the SPARQL query as required.
+    %p
+      The linked-data datasets:
+    %dl.dl-horizontal
+      %dt
+        = link_to('Price Paid Data', '/data/ppi/transaction-record', 'aria-label' => 'access to Price Paid Data transaction records')
+      %dd
+        4★ linked dataset containing over
+        400 million triples.
+        Read the
+        = succeed "." do
+          = link_to('data definitions for the PPD dataset', '/def/ppi', 'aria-label' => 'data definitions for the PPD dataset')
+      %dt
+        = link_to('Transaction Data', '/data/trans/applications', 'aria-label' => 'access to application transactions')
+      %dd
+        4★ linked dataset.
+        Read the
+        = succeed "." do
+          = link_to('data definitions for the transactions dataset', '/def/trans', 'aria-label' => 'data definitions for the transactions dataset')
+      %dt
+        = link_to('UKHPI', '/data/ukhpi' , 'aria-label' => 'the UKHPI linked-data dataset')
+      %dd
+        5★ linked dataset.
+        Read the
+        = succeed "." do
+          = link_to('data definitions for the UK HPI dataset', '/def/ukhpi', 'aria-label' => 'data definitions for the UK HPI dataset')
+
+    %h2.heading-large#contact-us
+      Who to contact
+    %p
+      If you need help to access the data, please
+      = succeed "." do
+        = link_to('use our contact form', 'https://help.landregistry.gov.uk/app/contactus_general/', 'aria-label' => 'use our contact form')
+    %p
+      For UK House Price Index enquiries please see
+      = succeed "." do
+        = link_to('About the House Price Index - Contacts', 'https://www.gov.uk/government/publications/about-the-uk-house-price-index/about-the-uk-house-price-index#contact')
+
+    %p
+      For general transaction data enquiries email
+      = mail_to('DRO@landregistry.gov.uk')
+    %p
+      For general Price Paid Data enquiries contact
+      = succeed "." do
+        = mail_to('data.services@landregistry.gov.uk')

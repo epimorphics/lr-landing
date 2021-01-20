@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,6 +26,7 @@ gem 'lr_common_styles', git: 'https://github.com/epimorphics/lr_common_styles'
 # gem 'lr_common_styles', path: '/home/ian/projects/hmlr/lr_common_styles'
 
 gem 'haml-rails', '~> 2.0.0'
+gem 'http_accept_language'
 gem 'puma'
 gem 'sentry-raven'
 
