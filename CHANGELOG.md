@@ -4,6 +4,10 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## In development
+
+- 2021-01-21 (Ian) Update Rubygem dependencies
+
 ## 1.5.2 - 2021-01-20
 
 - (Ian) Welsh-language mode enabled in all deployment environments
