@@ -1,6 +1,9 @@
 require: rubocop-rails
 
-Metrics/LineLength:
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
   Max: 100
   Exclude:
     - config/**/*
