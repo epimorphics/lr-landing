@@ -3,7 +3,7 @@ require: rubocop-rails
 AllCops:
   NewCops: enable
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
   Exclude:
     - config/**/*
