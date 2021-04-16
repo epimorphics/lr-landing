@@ -29,6 +29,7 @@ gem 'haml-rails', '~> 2.0.0'
 gem 'http_accept_language'
 gem 'puma'
 gem 'sentry-raven'
+gem 'json_rails_logger', git: 'https://github.com/epimorphics/json-rails-logger.git', branch: 'main'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
