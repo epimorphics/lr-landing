@@ -24,8 +24,6 @@ ENV RAILS_ENV=$ENVIRONMENT
 ENV RELATIVE_URL_ROOT=$RELATIVE_URL
 EXPOSE 3000
 
-# Add secrets as environment variables (used development env key temporarily)
-ENV SECRET_KEY_BASE="c73c9b7ba9910c6f9a3bdd193392f8da6cc36094dbbd3f8c5e575cfc03b09e9ad0d056e15f591bc5f39adbc2e35398ec75cbac94cef5668f8a4497853e5d0537" 
-
-# Add app entrypoint script
+# Precompile assets and add entrypoint script
+RUN rake assets:precompile
 ENTRYPOINT [ "sh", "./entrypoint.sh" ]
