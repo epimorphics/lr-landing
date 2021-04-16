@@ -6,7 +6,6 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Prerequisites for gems install
-RUN rm -rf /application/Gemfile.lock
 RUN apk add build-base \
             npm \
             tzdata \
