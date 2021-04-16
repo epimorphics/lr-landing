@@ -1,3 +1,7 @@
+# Params
+ARG ENVIRONMENT="production"
+ARG RELATIVE_URL="/"
+
 # Defining ruby version
 FROM ruby:2.6.6-alpine
 
@@ -16,8 +20,8 @@ RUN gem install bundler:2.1.4
 RUN bundle install --without="development"
 
 # Set environment variables and expose the running port
-ENV RELATIVE_URL_ROOT="/"
-ENV RAILS_ENV="production"
+ENV RAILS_ENV=$ENVIRONMENT
+ENV RELATIVE_URL_ROOT=$RELATIVE_URL
 EXPOSE 3000
 
 # Add secrets as environment variables (used development env key temporarily)
