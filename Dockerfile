@@ -16,8 +16,8 @@ RUN apk add build-base \
             git
 
 # Install bundler and gems
-RUN gem install bundler:2.1.4
-RUN bundle install --without="development"
+RUN gem install bundler
+RUN bundle install
 
 # Set environment variables and expose the running port
 ENV RAILS_ENV=$ENVIRONMENT
