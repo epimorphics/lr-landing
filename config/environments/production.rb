@@ -76,6 +76,8 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.logger = JsonRailsLogger::Logger.new($stdout)
+
   config.relative_url_root = ENV['RELATIVE_URL_ROOT'] || '/app/root'
 
   config.accessibility_document_path = '/accessibility'
