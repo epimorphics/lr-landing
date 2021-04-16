@@ -1,7 +1,20 @@
 #!/bin/bash
 
-# Compile the assets
-bundle exec rake assets:precompile
+# Set the environment
+if [ -z "$RAILS_ENV" ]
+then
+  export RAILS_ENV=production
+fi
 
-# Start the server
-bundle exec rails server
+# Handle secrets based on env
+if [ "$RAILS_ENV" == "production" ]
+then
+  if [ -z "$SECRET_KEY_BASE" ]
+  then
+    echo "Setting environment variable \$SECRET_KEY_BASE."
+    export SECRET_KEY_BASE=`./bin/rails secret`
+  fi
+fi
+
+# Run the rails app
+exec ./bin/rails server
