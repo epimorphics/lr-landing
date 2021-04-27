@@ -21,6 +21,7 @@ RUN bundle install
 
 # Set environment variables and expose the running port
 ENV RAILS_ENV=$ENVIRONMENT
+ENV RAILS_SERVE_STATIC_FILES=true
 ENV RELATIVE_URL_ROOT=$RELATIVE_URL
 EXPOSE 3000
 
