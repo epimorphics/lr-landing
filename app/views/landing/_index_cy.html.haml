@@ -93,4 +93,4 @@
     %p
       Ar gyfer ymholiadau cyffredinol am y Mynegai Prisiau Tai neu Ddata Pris a Dalwyd cysylltwch â
       = succeed "." do
-        %a{:href => "mailto:data.services@mail.landregistry.gov.uk"} data.services@mail.landregistry.gov.uk
+        = mail_to(Rails.application.config.contact_email_address)
