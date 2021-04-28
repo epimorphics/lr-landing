@@ -82,4 +82,6 @@ Rails.application.configure do
 
   # feature flag for showing the Welsh language switch affordance
   config.welsh_language_enabled = true
+
+  config.contact_email_address = 'data.services@mail.landregistry.gov.uk'
 end
