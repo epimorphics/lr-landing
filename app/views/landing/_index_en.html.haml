@@ -164,4 +164,4 @@
     %p
       For general Price Paid Data enquiries contact
       = succeed "." do
-        = mail_to('data.services@landregistry.gov.uk')
+        = mail_to(Rails.application.config.contact_email_address)

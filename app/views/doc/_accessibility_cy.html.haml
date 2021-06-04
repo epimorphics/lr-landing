@@ -79,7 +79,7 @@
     Os oes angen gwybodaeth sydd ar y wefan hon arnoch ar ffurf wahanol fel PDF
     hygyrch, print bras, hawdd ei ddeall, recordiad sain neu Braille, anfonwch
     ebost at
-    = mail_to('data.services@landregistry.gov.uk')
+    = mail_to(Rails.application.config.contact_email_address)
 
   %p
     Byddwn yn ystyried eich cais ac yn dod yn ôl atoch o fewn 5 diwrnod.
