@@ -1,6 +1,7 @@
 # Params
-ARG ENVIRONMENT="production"
-ARG RELATIVE_URL="/"
+ARG RAILS_ENV="production"
+ARG RAILS_SERVE_STATIC_FILES=true
+ARG RELATIVE_URL_ROOT="/"
 
 # Defining ruby version
 FROM ruby:2.6.6-alpine
@@ -20,9 +21,9 @@ RUN gem install bundler
 RUN bundle install
 
 # Set environment variables and expose the running port
-ENV RAILS_ENV=$ENVIRONMENT
-ENV RAILS_SERVE_STATIC_FILES=true
-ENV RELATIVE_URL_ROOT=$RELATIVE_URL
+ENV RAILS_ENV=$RAILS_ENV
+ENV RAILS_SERVE_STATIC_FILES=$RAILS_SERVE_STATIC_FILES
+ENV RELATIVE_URL_ROOT=$RELATIVE_URL_ROOT
 EXPOSE 3000
 
 # Precompile assets and add entrypoint script
