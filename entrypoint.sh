@@ -11,7 +11,6 @@ if [ "$RAILS_ENV" == "production" ]
 then
   if [ -z "$SECRET_KEY_BASE" ]
   then
-    echo "Setting environment variable \$SECRET_KEY_BASE."
     export SECRET_KEY_BASE=`./bin/rails secret`
   fi
 fi
