@@ -27,5 +27,5 @@ ENV RELATIVE_URL_ROOT=$RELATIVE_URL_ROOT
 EXPOSE 3000
 
 # Precompile assets and add entrypoint script
-RUN rake assets:precompile
+RUN RAILS_ENV=production rake assets:precompile
 ENTRYPOINT [ "sh", "./entrypoint.sh" ]
