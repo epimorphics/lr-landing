@@ -27,6 +27,7 @@ gem 'lr_common_styles', git: 'https://github.com/epimorphics/lr_common_styles'
 
 gem 'haml-rails', '~> 2.0.0'
 gem 'http_accept_language'
+gem 'json_rails_logger', git: 'https://github.com/epimorphics/json-rails-logger.git', branch: 'main'
 gem 'puma'
 gem 'sentry-raven'
 
