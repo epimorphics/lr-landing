@@ -15,3 +15,4 @@
 //= require_tree .
 //= require lodash
 //= require qonsole_rails/application
+//= require lr_common_styles/application
