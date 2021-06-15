@@ -1,10 +1,10 @@
-# Params
-ARG RAILS_ENV="production"
+ARG RUBY_VERSION=2.6.6-alpine
+ARG BUNDLER_VERSION=2.1.4
 ARG RAILS_SERVE_STATIC_FILES=true
 ARG RELATIVE_URL_ROOT="/"
 
 # Defining ruby version
-FROM ruby:2.6.6-alpine
+FROM ruby:$RUBY_VERSION
 
 # Set working dir and copy app
 WORKDIR /usr/src/app
@@ -17,7 +17,7 @@ RUN apk add build-base \
             git
 
 # Install bundler and gems
-RUN gem install bundler
+RUN gem install bundler:$BUNDLER_VERSION
 RUN bundle install
 
 # Set environment variables and expose the running port
