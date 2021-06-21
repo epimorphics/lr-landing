@@ -1,5 +1,4 @@
 ARG RUBY_VERSION=2.6.6-alpine
-ARG BUNDLER_VERSION=2.1.4
 
 # Defining ruby version
 FROM ruby:$RUBY_VERSION
@@ -13,6 +12,8 @@ RUN apk add build-base \
             npm \
             tzdata \
             git
+
+ARG BUNDLER_VERSION=2.1.4
 
 # Install bundler and gems
 RUN gem install bundler:$BUNDLER_VERSION
