@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get 'doc/ukhpi-dsd', to: redirect('/app/ukhpi/doc/ukhpi-dsd', status: 302)
   get 'doc/ukhpi-user-guide', to: redirect('/app/ukhpi/doc/ukhpi-user-guide', status: 302)
   get 'doc/accessibility', to: 'doc#accessibility'
+  get 'doc/privacy', to: 'doc#privacy'
 end
