@@ -1,7 +1,7 @@
-ARG RUBY_VERSION=2.6.6-alpine
+ARG RUBY_VERSION=2.6.6
 
 # Defining ruby version
-FROM ruby:$RUBY_VERSION
+FROM ruby:$RUBY_VERSION-alpine
 
 # Set working dir and copy app
 WORKDIR /usr/src/app
