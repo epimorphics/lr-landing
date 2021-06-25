@@ -4,6 +4,10 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.5.5 - 2021-06-25
+
+- (Joseph) Small config change to allow linking to privacy notice.
+
 ## 1.5.4 - 2021-04-27
 
 - Updated correction to email address (GH-3)
