@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/epimorphics/lr_common_styles
-  revision: 423fddbb2ee1d2a76036ef16f07eb3dc8d36de5b
+  revision: 9925ac1a57aa32db8c3d66725f6e637e057b6758
   specs:
-    lr_common_styles (1.8.1)
+    lr_common_styles (1.8.5)
       bootstrap-sass (~> 3.4.0)
       font-awesome-rails (~> 4.7.0.1)
       govuk_elements_rails (~> 2.0.0)
@@ -100,7 +100,7 @@ GEM
       faraday
     faraday_middleware (0.13.1)
       faraday (>= 0.7.4, < 1.0)
-    ffi (1.15.1)
+    ffi (1.15.3)
     font-awesome-rails (4.7.0.7)
       railties (>= 3.2, < 7)
     globalid (0.4.2)
@@ -202,7 +202,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.1.1)
     rexml (3.2.5)
-    rubocop (1.16.1)
+    rubocop (1.18.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -213,7 +213,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.7.0)
       parser (>= 3.0.1.1)
-    rubocop-rails (2.10.1)
+    rubocop-rails (2.11.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -257,7 +257,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    websocket-driver (0.7.4)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
 
