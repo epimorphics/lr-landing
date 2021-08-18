@@ -13,4 +13,4 @@ then
 fi
 
 # Run the rails app
-exec ./bin/rails server
+exec bundler exec ./bin/rails server
