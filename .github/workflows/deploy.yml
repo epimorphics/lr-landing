@@ -40,7 +40,7 @@ jobs:
       - name: "Create image"
         if: steps.mapper.outputs.image != ''
         env:
-          IMAGE: ${{ steps.mapper.outputs.image }}/${{ steps.mapper.outputs.publish }}
+          IMAGE: ${{ steps.mapper.outputs.image }}
           TAG: ${{ steps.gettag.outputs.tag }}
         shell: bash
         run: |
