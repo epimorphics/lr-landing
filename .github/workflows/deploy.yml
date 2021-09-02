@@ -40,11 +40,10 @@ jobs:
       - name: "Create image"
         if: steps.mapper.outputs.image != ''
         env:
-          IMAGE: ${{ steps.mapper.outputs.image }}
-          TAG: ${{ steps.gettag.outputs.tag }}
+          REPO: ${{ steps.mapper.outputs.image }}
         shell: bash
         run: |
-          make image
+          PAT=${{ secrets.EPI_GPR_ACCESS_TOKEN }} make image
 
       - name: Configure AWS Credentials
         if: steps.mapper.outputs.publish != ''
