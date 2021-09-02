@@ -21,8 +21,8 @@ publish: image
 	@echo Done.
 
 assets:
-	@bundle config set --local without 'development'
-	@bundle install
+	@./bin/bundle config set --local without 'development'
+	@./bin/bundle install
 	@./bin/rails assets:clean assets:precompile
 
 run:
