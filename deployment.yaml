@@ -1,5 +1,6 @@
 version: 2
 name:  epimorphics/lr-landing
+key: landing
 deployments:
   - tag: "v{ver}"
     deploy: "prod"
