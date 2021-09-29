@@ -38,3 +38,7 @@ branches respectively.
 To add a new feature or fix, create an appropriate branch,
 make a pull request, merge the code then use the DMS to update
 that particular deployment environment.
+
+## Issues
+
+Please add issues to the [shared issues list](https://github.com/epimorphics/hmlr-linked-data/issues)
