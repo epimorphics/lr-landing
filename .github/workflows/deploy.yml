@@ -5,7 +5,7 @@ on:
   workflow_dispatch: {}
   push: {}
 env:
-  ANSIBLE_REPO: epimorphics/notfound
+  ANSIBLE_REPO: epimorphics/hmlr-ansible-deployment
   ANSIBLE_REPO_REF: main
   ANSIBLE_VAULT_PASSWORD: "${{ secrets.HMLR_ANSIBLE_VAULT_PASSWORD }}"
   AWS_ACCESS_KEY_ID: "${{ secrets.BUILD_HMLR_AWS_ACCESS_KEY_ID }}"
@@ -120,7 +120,7 @@ jobs:
         then
           git config --global user.name "Github CICD"
           git config --global user.email "noreply@epimorphics.com"
-          git commit -am "Github/CICD: ${{ needs.publish.outputs.key }}:${{ needs.publish.outputs.tag }}"
+          git commit -am "Github/CICD: ${{ needs.publish.outputs.deploy }}/${{ needs.publish.outputs.key }}:${{ needs.publish.outputs.tag }}"
           git push
         else
           echo "No changes to commit"
