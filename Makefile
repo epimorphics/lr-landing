@@ -11,7 +11,7 @@ REPO?=${ECR}/${IMAGE}
 
 all: publish
 
-image: assets
+image: assets test
 	@echo Building ${REPO}:${TAG} ...
 	@docker build --tag ${REPO}:${TAG} .
 	@echo Done.
@@ -35,6 +35,7 @@ tag:
 	@echo ${TAG}
 
 test: assets
+	@./bin/bundle exec rubocop
 	@./bin/rake test
 
 clean:

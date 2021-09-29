@@ -22,17 +22,15 @@
         on behalf of Office for National Statistics, Registers of Scotland and
         Land and Property Services Northern Ireland.
 
-
     %p
       These datasets are provided in
       = link_to('comma-separated value (csv)', 'http://en.wikipedia.org/wiki/Comma-separated_values', 'aria-label' => 'wikipedia explanation of comma-separated value (csv)')
       and
-      = link_to('linked data', 'http://en.wikipedia.org/wiki/Linked_data', 'aria-label' => 'linked data')
+      = link_to('linked data', 'http://en.wikipedia.org/wiki/Linked_data', 'aria-label' => 'Wikipedia explanation of linked data')
       formats, with Price Paid Data also
       available as a text file. These datasets can be downloaded in full by accessing our
       = succeed "." do
         = link_to('Public Data', 'https://www.gov.uk/government/publications/land-registry-data', 'aria-label' => 'overview of HMLR Public Data')
-
 
     %h2.heading-large Bespoke reports
     %p
@@ -106,6 +104,7 @@
       reports that are aggregated price data. This service allows
       you to configure a report for various geographical areas in
       England and Wales, from the country level down to postcode sectors over a defined period of time.
+
     %h2.heading-large#linked-data Linked Data
     %p
       We also publish this data in linked data format, aiming for
@@ -131,7 +130,7 @@
         400 million triples.
         Read the
         = succeed "." do
-          = link_to('data definitions for the PPD dataset', '/def/ppi', 'aria-label' => 'data definitions for the PPD dataset')
+          = link_to('data definitions for the PPD dataset', '/def/ppi')
       %dt
         = link_to('Transaction Data', '/data/trans/applications', 'aria-label' => 'access to application transactions')
       %dd
@@ -152,7 +151,7 @@
     %p
       If you need help to access the data, please
       = succeed "." do
-        = link_to('use our contact form', 'https://help.landregistry.gov.uk/app/contactus_general/', 'aria-label' => 'use our contact form')
+        = link_to('use our contact form', 'https://help.landregistry.gov.uk/app/contactus_general/')
     %p
       For UK House Price Index enquiries please see
       = succeed "." do

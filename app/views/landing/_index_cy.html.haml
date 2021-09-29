@@ -1,96 +1,166 @@
 .row
   .col-md-12
-    %h1
+    %h1.heading-large
       Data Agored
     %p
-      Fel rhan o'n hymrwymiad i flaenoriaethau'r Llywodraeth i dwf economaidd a thryloywder data mae'r Gofrestrfa Tir yn cyhoeddi'r setiau data cyhoeddus canlynol:
-    %ul
+      Mae Cofrestrfa Tir EM yn cyhoeddi’r setiau data cyhoeddus canlynol fel
+      rhan o’n hymrwymiad i flaenoriaethau’r Llywodraeth i dwf economaidd
+      a thryloywder data:
+    %ul.list.list-bullet
       %li
-        %a{:href => "https://www.gov.uk/government/statistical-data-sets/house-price-index-background-tables"} Tablau cefndir y Mynegai Prisiau Tai
-        – ar gael oddi ar fis Ionawr 1995 ac wedi'i ddiweddaru'n llawn bob mis.
+        = link_to('Data Pris a Dalwyd', 'https://www.gov.uk/about-the-price-paid-data', 'aria-label' => 'Esboniad o Ddata Pris a Dalwyd')
+        sy’n cael ei ddiweddaru’n fisol, gyda data ar gael o 1995.
       %li
-        %a{:href => "http://www.cofrestrfatir.gov.uk/public/information/public-data/price-paid-data"} Data pris a dalwyd
-        – ar gael oddi ar fis Ionawr 1995 ac wedi'i ddiweddaru'n llawn bob mis.
+        = link_to('Data Trafodiad', 'https://www.gov.uk/land-registry-transaction-data', 'aria-label' => 'Mynediad at ddata trafodion')
+        sy’n cael ei ddiweddaru’n fisol, gyda data ar gael o Ragfyr 2011.
       %li
-        %a{:href => "http://www.cofrestrfatir.gov.uk/public/information/public-data/transaction-data"} Data Trafodiad
-        – ar gael oddi ar fis Rhagfyr 2011.
+        = link_to('Lawrlwythiadau Mynegai Prisiau Tai y DU', 'https://www.gov.uk/government/collections/mynegai-prisiau-tai-y-du-adroddiadau.cy', 'aria-label' => 'Lawrlwythiadau Mynegai Prisiau Tai y DU')
+        sy’n cael eu diweddaru’n fisol, gyda data ar gael o Ionawr 1995.
+        %br
+        Mae Cofrestrfa Tir EM yn cyhoeddi
+        = link_to('Mynegai Prisiau Tai y DU', '/app/ukhpi?lang=cy', 'aria-label' => 'Archwilio Mynegai Prisiau Tai y DU')
+        ar ran y Swyddfa Ystadegau Gwladol, Cofrestri’r Alban a Gwasanaethau
+        Tir ac Eiddo Gogledd Iwerddon.
+
     %p
-      Mae'r setiau data uchod ar gael ar ffurfiau
-      %a{:href => "http://en.wikipedia.org/wiki/Comma-separated_values"} csv
+      Darperir y setiau data ar ffurf
+      = link_to('gwerthoedd wedi’u gwahanu ag atalnod', 'http://en.wikipedia.org/wiki/Comma-separated_values', 'aria-label' => "Esboniad Wikipedia o werthoedd wedi’u gwahanu ag atalnod (csv)")
       a
-      %a{:href => "http://en.wikipedia.org/wiki/Linked_data"} data cysylltiedig
-      gyda Data Pris a Dalwyd ar gael ar ffurf txt hefyd. Gellir llwytho'r setiau data hyn i lawr yn llawn trwy fynd i'n
+      = link_to('data cysylltiedig', 'http://en.wikipedia.org/wiki/Linked_data', 'aria-label' => 'Esboniad Wikipedia o ddata cysylltiedig')
+      gyda Data Pris a Dalwyd ar gael ar ffurf testun hefyd.
+      Gellir lawrlwytho’r setiau data hyn yn llawn trwy fynd i’n
       = succeed "." do
-        %a{:href => "http://www.cofrestrfatir.gov.uk/professional/market-trend-data/public-data"} Data Cyhoeddus
+        = link_to('Data Cyhoeddus', 'https://www.gov.uk/government/publications/land-registry-data', 'aria-label' => 'trosolwg o Ddata Cyhoeddus CTEM')
+
+    %h2.heading-large Adroddiadau pwrpasol
+    %p
+      Gall cwsmeriaid Pris a Dalwyd a’r Mynegai Prisiau Tai nad ydynt am gael y
+      set ddata lawn greu adroddiadau pwrpasol gyda’r teclynnau canlynol:
+    %ul.list.list-bullet
+      %li
+        Chwilio
+        = link_to( 'mynegai prisiau tai y DU', '#ukhpi', 'aria-label' => 'sut i ddod o hyd i Fynegai Prisiau Tai y DU')
+      %li
+        Lluniwr
+        = link_to('adroddiad data pris a dalwyd', '#ppd', 'aria-label' => 'sut i greu adroddiad data pris a dalwyd')
+      %li
+        Lluniwr
+        = link_to('adroddiad data pris a dalwyd safonol ', '#standard-reports', 'aria-label' => 'sut i greu adroddiad data pris a dalwyd safonol')
+
+    %h2#ukhpi.heading-medium Chwilio Mynegai Prisiau Tai y DU
+    %p
+      Defnyddiwch
+      = link_to('declyn chwilio mynegai prisiau tai y DU', '/app/ukhpi?lang=cy', 'aria-label' => 'Archwilio Mynegai Prisiau Tai y DU')
+      i ganfod is-set benodol o’r data mynegai mae gennych ddiddordeb ynddo, ac yna ei lawrlwytho.
+      Gellir dadansoddi adroddiadau yn ôl gwledydd, rhanbarthau, siroedd neu awdurdodau lleol
+      dros gyfnod penodol o amser sy’n dyddio’n ôl i Ionawr 1995. Gellir eu teilwra ymhellach
+      i amrywiaeth o ddewisiadau adrodd gan gynnwys dangosyddion, categorïau eiddo neu nifer gwerthiannau.
+    %p
+      Gwybodaeth bellach: darllenwch ragor am
+      = succeed "," do
+        = link_to('am Chwilio mynegai prisiau tai y DU', 'https://www.gov.uk/government/publications/about-the-uk-house-price-index/4873585#chwilio-mynegai-prisiau-tai-y-du')
+      neu am
       = succeed "." do
-        %a{:href => "#linked-data"} isod
+        = link_to('ddata mynegai prisiau tai y DU', '/app/ukhpi/doc?lang=cy')
+
+    %h2#ppd.heading-medium Lluniwr Adroddiad Data Pris a Dalwyd
     %p
-      %strong
-        I'n cwsmeriaid Pris a Dalwyd a Mynegai Prisiau Tai nad oes angen y set data lawn arnynt, ond sydd â
-        diddordeb mewn creu adroddiadau pwrpasol, rydym wedi datblygu'r dewisiadau canlynol:
-    %h2
-      %a{:href => "/app/hpi"} Chwilio'r Mynegai Prisiau Tai
+      Defnyddiwch
+      = link_to('Adroddiadau Data Pris a Dalwyd', '/app/ppd', 'aria-label' => 'archwilio data pris a dalwyd')
+      i greu adroddiadau pwrpasol gan ddefnyddio ein Data Pris a Dalwyd. Gellir
+      seilio adroddiadau ar leoliad, daliadaeth, pris a dalwyd neu fath o eiddo
+      dros gyfnod penodol.
     %p
-      Defnyddiwch y chwiliad hwn i ganfod prisiau cyfartalog, nifer y gwerthiannau a'r math o eiddo ar gyfer lleoliad penodedig dros gyfnod penodol. Mae'r Mynegai Prisiau Tai yn cymharu pris cyfartalog tai heddiw â'r hyn oedd ei bris ym mis Ionawr 1995, gyda'r mynegai wedi'i osod ar 100. Mae'n cynnwys ffigurau ar lefel genedlaethol, ranbarthol, sir ac Awdurdod Lleol. I gael rhagor o wybodaeth ewch i
+      Mae ein Data Pris a Dalwyd yn olrhain gwerthiannau eiddo preswyl yng
+      Nghymru a Lloegr a gyflwynir inni i’w cofrestru. Mae’r set ddata’n
+      ffynhonnell ddibynadwy o wybodaeth am brisiau tai ac mae’n cynnwys dros
+      24 miliwn o gofnodion yn dyddio’n ôl i Ionawr 1995. I gael rhagor o
+      wybodaeth am y set ddata hon a’r hyn mae’n ei gynnwys a’r hyn
+      nad yw’n ei chynnwys, darllenwch
       = succeed "." do
-        %a{:href => "http://www.cofrestrfatir.gov.uk/public/house-prices-and-sales/about-hpi"} Ein Mynegai Prisiau Tai
-    %h2
-      %a{:href => "/app/ppd"} Lluniwr Adroddiad Data Pris a Dalwyd
+        = link_to('Data am y Pris a Dalwyd', 'https://www.gov.uk/about-the-price-paid-data', 'aria-label' => 'Esboniad o Ddata Pris a Dalwyd')
     %p
-      Defnyddiwch y chwiliad hwn i greu adroddiadau pwrpasol gan ddefnyddio ein data pris a dalwyd. Gellir seilio adroddiadau ar leoliad, daliadaeth, pris a dalwyd neu fath o eiddo dros gyfnod penodol.
-    %p
-      Mae ein data pris a dalwyd yn olrhain gwerthiannau eiddo preswyl yng Nghymru a Lloegr a gyflwynir i ni i'w cofrestru. Mae'r set ddata yn ffynhonnell ddibynadwy o wybodaeth prisiau tai ac mae'n cynnwys dros 18.5 miliwn o gofnodion yn dyddio yn ôl i fis Ionawr 1995. I gael rhagor o wybodaeth am y set ddata hon a'r hyn mae'n ei gynnwys a'r hyn nad yw'n ei chynnwys, gweler y
-      = succeed "." do
-        %a{:href => "http://www.cofrestrfatir.gov.uk/market-trend-data/public-data/price-paid-faq"} COA Data Pris a Dalwyd
-    %p
-      Rydym yn ceisio sicrhau bod ein data cyhoeddus mor gywir â phosibl, ond ni allwn warantu na fydd yn cynnwys gwallau neu’n addas at eich dibenion neu eich defnydd. Mae adroddiadau'n seiliedig ar ddata a gasglwyd ar yr adeg y cofrestrwyd y trafodiad eiddo gyda ni ac ni fydd o reidrwydd yn gyfredol gyda'r wybodaeth fwyaf diweddar. Gweler
-      %a{:href => "http://www.cofrestrfatir.gov.uk/public/information/public-data/faqs#m4"} y COA hwn
+      Rydym yn ceisio sicrhau bod ein data cyhoeddus mor gywir â phosibl, ond
+      ni allwn warantu na fydd yn cynnwys gwallau neu’n addas at eich dibenion
+      neu eich defnydd. Mae adroddiadau’n seiliedig ar ddata a gasglwyd ar yr
+      adeg y cofrestrwyd y trafodiad eiddo gyda ni ac ni fydd o reidrwydd yn
+      gyfredol o ran y wybodaeth fwyaf diweddar. Darllenwch
+      = link_to('pa mor gywir yw’r data?', 'https://www.gov.uk/government/publications/land-registry-data/public-data#accuracy-of-the-data')
       am ragor o wybodaeth.
-    %h2#linked-data Data cysylltiedig
+
+    %h3.heading-small Gwybodaeth bellach
+    %ul.list.list-bullet
+      %li
+        = link_to( ppd_doc_path ) do
+          dogfennaeth fanwl
+        am y Data Pris a Dalwyd, y model data, a defnyddio’r data.
+
+    %h2#standard-reports.heading-medium Lluniwr Adroddiad Safonol
     %p
-      Yn ogystal, rydym yn cyhoeddi'r data hwn ar ffurf data cysylltiedig.
+      Darperir y
+      = link_to('Lluniwr Adroddiad Safonol', '/app/standard-reports', 'aria-label' => "defnyddio’r Lluniwr Adroddiad Safonol")
+      gan ddefnyddio’n Data Pris a Dalwyd. Defnyddiwch y teclyn hwn i greu
+      adroddiadau pwrpasol sy’n ddata prisiau cyfanredol. Mae’r gwasanaeth
+      hwn yn eich caniatáu i ffurfweddu adroddiad ar gyfer gwahanol ardaloedd
+      daearyddol yng Nghymru a Lloegr, o lefel sir i sectorau cod post dros
+      gyfnod penodol o amser.
+
+    %h2.heading-large#linked-data Data cysylltiedig
     %p
-      Os hoffech roi cynnig ar eich ymholiadau SPARQL eich hun yn erbyn ein cyhoeddiadau data cysylltiedig, defnyddiwch
+      Rydym yn cyhoeddi’r data hwn ar ffurf data cysylltiedig hefyd, gan anelu at
+      = link_to('sgôr pum seren', 'http://5stardata.info/en/')
+    %p
+      Os hoffech roi cynnig ar eich ymholiadau SPARQL eich hunan yn erbyn ein
+      cyhoeddiadau data cysylltiedig, defnyddiwch
       = succeed "." do
-        %a{:href => "/app/hpi/qonsole"} y ffurflen SPARQL hon
+        = link_to('y ffurflen SPARQL hon', '/app/qonsole', 'aria-label' => 'defnyddio golygydd ymholiadau SPARQL')
     %p
-      Os hoffech weld yr ymholiad SPARQL a ddefnyddir i greu'r adroddiadau yn yr offer adrodd Mynegai Prisiau Tai a Data Pris a Dalwyd a ddisgrifiwyd uchod, gallwch wneud hyn trwy ddewis y camau 'view SPARQL query' o'r golwg 'download data' ym mhob offer chwilio. Gallwch hyd yn oed ddiwygio ac ail-redeg yr ymholiad SPARQL yn ôl yr angen.
+      Os hoffech weld yr ymholiad SPARQL a ddefnyddir i greu’r adroddiadau
+      yn y teclynnau adrodd Mynegai Prisiau Tai a Data Pris a Dalwyd a
+      ddisgrifir uchod, gallwch wneud hyn trwy ddewis y camau ‘view SPARQL query’
+      o olwg ‘download data’ ym mhob teclyn chwilio. Mae modd diwygio
+      ac ail-redeg yr ymholiad SPARQL yn ôl yr angen hyd yn oed.
+    %p
+      Y setiau data cysylltiedig:
     %dl.dl-horizontal
       %dt
-        %a{:href => "/data/hpi"} Mynegai Prisiau Tai
+        = link_to('Data pris a dalwyd', '/data/ppi/transaction-record', 'aria-label' => 'mynediad at gofnodion trafodion Data Pris a Dalwyd')
       %dd
-        set ddata cysylltiedig 5★ gyda chysylltau i
-        %a{:href => "http://www.ons.gov.uk/"} ONS
-        a'r
-        %a{:href => "http://data.ordnancesurvey.co.uk/"} Arolwg Ordnans
-        i ddisgrifio'r rhanbarthau a gofnodwyd o fewn data'r Mynegai Prisiau Tai. Gweler
+        set ddata cysylltiedig 4★
+        sy’n cynnwys dros 400 miliwn o driawdau.
+        Darllenwch y
         = succeed "." do
-          %a{:href => "/def/hpi"} diffiniadau data ar gyfer y set ddata hon
-        %br/
-        DS: Sylwer nad yw'r Gofrestrfa Tir yn gyfrifol am gynnwys na dibynadwyedd gwefannau cysylltiedig sy'n ffynonellau eraill o ddata agored na thrwyddedau y mae'r data hwn ar gael trwyddynt.
+          = link_to('diffiniadau data ar gyfer y set ddata Data Trafodion', '/def/ppi')
       %dt
-        %a{:href => "/data/ppi/transaction-record"} Data pris a dalwyd
+        = link_to('Data Trafodiad', '/data/trans/applications', 'aria-label' => 'mynediad at drafodion ceisiadau')
       %dd
-        set ddata cysylltiedig 4★ sy'n cynnwys dros 400 miliwn o driawdau. Gweler
+        set ddata cysylltiedig 4★
+        Darllenwch y
         = succeed "." do
-          %a{:href => "/def/ppi"} diffiniadau data ar gyfer y set ddata hon
+          = link_to('diffiniadau data ar gyfer set ddata Data Trafodiad', '/def/trans', 'aria-label' => 'diffiniadau data ar gyfer y set ddata trafodion')
       %dt
-        %a{:href => "/data/trans/applications"} Data Trafodiad
+        = link_to('Mynegai Prisiau Tai Y DU', '/data/ukhpi' , 'aria-label' => 'set ddata data cysylltiedig Mynegai Prisiau Tai y DU')
       %dd
-        set ddata cysylltiedig 4★ Gweler
+        set ddata cysylltiedig 5★
+        Darllenwch y
         = succeed "." do
-          %a{:href => "/def/trans"} diffiniadau data ar gyfer y set ddata hon
-    %h2#contact-us
+          = link_to('diffiniadau data ar gyfer set ddata Mynegai Prisiau Tai y DU', '/def/ukhpi', 'aria-label' => 'diffiniadau data ar gyfer set ddata Mynegai Prisiau Tai y DU')
+
+    %h2.heading-large#contact-us
       Â phwy i gysylltu
     %p
-      Os na allwch gael mynediad i'r set ddata,
+      Os oes angen cymorth arnoch i gael mynediad at y data,
       = succeed "." do
-        %a{:href => "http://www.cofrestrfatir.gov.uk/contact-us/form"}
-          llenwch ein ffurflen gysylltu
+        = link_to('defnyddiwch ein ffurflen gysylltu', 'https://help.landregistry.gov.uk/app/contactus_general_enq_w/')
     %p
-      Anfonwch ebost mewn perthynas ag ymholiadau data trafodiad at
-      %a{:href => "mailto:DRO@landregistry.gov.uk"} DRO@landregistry.gov.uk
+      Ar gyfer ymholiadau’n ymwneud â’r Mynegai Prisiau Tai, gweler
+      = succeed "." do
+        = link_to('Am y Mynegai Prisiau Tai – Cysylltu', 'https://www.gov.uk/government/publications/about-the-uk-house-price-index/4873585#cysylltu')
+
     %p
-      Ar gyfer ymholiadau cyffredinol am y Mynegai Prisiau Tai neu Ddata Pris a Dalwyd cysylltwch â
+      Ar gyfer ymholiadau’n ymwneud â data trafodiad, anfonwch ebost at
+      = mail_to('DRO@landregistry.gov.uk')
+    %p
+      Ar gyfer ymholiadau cyffredinol yn ymwneud â Data Pris a Dalwyd, cysylltwch â
       = succeed "." do
         = mail_to(Rails.application.config.contact_email_address)
