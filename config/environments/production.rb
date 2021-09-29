@@ -81,6 +81,7 @@ Rails.application.configure do
   config.relative_url_root = ENV['RELATIVE_URL_ROOT'] || '/'
 
   config.accessibility_document_path = '/accessibility'
+  config.privacy_document_path = '/privacy'
 
   # feature flag for showing the Welsh language switch affordance
   config.welsh_language_enabled = true

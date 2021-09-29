@@ -13,7 +13,7 @@ class LandingTest < ActionDispatch::IntegrationTest
     get('/', params: { lang: 'cy' })
 
     assert_select 'h1', 'Data Agored'
-    assert_select 'main p', /Gofrestrfa Tir/
+    assert_select 'main p', /Mae Cofrestrfa Tir/
   end
 
   test 'version number is visible' do
