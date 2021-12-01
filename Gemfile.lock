@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/epimorphics/json-rails-logger.git
-  revision: a911a7182f8f5d2ee3ae095f8f37488152e30d15
+  revision: 43d95935a828fb112e8799ccbde9ecd052d8864e
   branch: main
   specs:
-    json_rails_logger (0.2.2)
+    json_rails_logger (0.3.1)
       json
       lograge
       railties
@@ -280,7 +280,7 @@ GEM
     websocket-extensions (0.1.5)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   byebug
@@ -301,4 +301,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.2.21
+   2.2.22

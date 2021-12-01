@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:epimorphics/github-workflows.git
+	branch = hmlr
+	commit = fb20a3a81b36a5ae584e22d51f6c228e8c98528d
+	parent = 2b15d8011b1a293a3acef93fa0881df9b840f25e
+	method = merge
+	cmdver = 0.4.3
