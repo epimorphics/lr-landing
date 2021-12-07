@@ -29,7 +29,7 @@ assets:
 run:
 	@-docker stop lr_landing
 	@-docker rm lr_landing && sleep 20
-	@docker run -p 3000:3000 --rm --name lr_landing -e RAILS_RELATIVE_URL_ROOT='' ${REPO}:${TAG}
+	@docker run -p 3000:3000 --rm --name lr_landing ${REPO}:${TAG}
 
 tag:
 	@echo ${TAG}
