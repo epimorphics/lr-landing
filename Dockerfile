@@ -22,7 +22,7 @@ RUN bundle install
 # Params
 ARG RAILS_ENV="production"
 ARG RAILS_SERVE_STATIC_FILES="true"
-ARG RELATIVE_URL_ROOT="/app/root/"
+ARG RELATIVE_URL_ROOT="app/"
 
 # Set environment variables and expose the running port
 ENV RAILS_ENV=$RAILS_ENV
