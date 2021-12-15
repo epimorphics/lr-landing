@@ -4,6 +4,10 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.5.6 - 2021-12-15
+
+- (Mairead) Added deployment sub repo and assisting deployment files
+
 ## 1.5.5 - 2021-06-25
 
 - (Joseph) Small config change to allow linking to privacy notice.
