@@ -20,8 +20,6 @@ FROM base as builder
 
 RUN apk add --update build-base
 
-LABEL Name=lrlanding version=${APP_VERSION}
-
 # Set working dir and copy app
 WORKDIR /usr/src/app
 COPY . .
