@@ -11,7 +11,10 @@ ARG BUNDLER_VERSION=2.2.22
 RUN apk add build-base \
             npm \
             tzdata \
-            git
+            git \
+            && rm -rf /var/cache/apk/* \
+            && gem install bundler:$BUNDLER_VERSION \
+            && bundle config --global frozen 1
 
 FROM base as builder
 
@@ -23,10 +26,10 @@ LABEL Name=lrlanding version=${APP_VERSION}
 WORKDIR /usr/src/app
 COPY . .
 
-# Install bundler and gems
-RUN gem install bundler:$BUNDLER_VERSION
+# Install gems
 RUN bundle install \
-    && RAILS_ENV=production bundle exec rake assets:precompile
+    && RAILS_ENV=production bundle exec rake assets:precompile \
+    && mkdir -p 777 /usr/src/app/coverage
 
 # Start a new build stage to minimise the final image size
 FROM base
