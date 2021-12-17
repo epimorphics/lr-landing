@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:epimorphics/github-workflows.git
 	branch = hmlr
-	commit = 7cda0a81be7d5342f5724101066597f2cbceaa10
-	parent = 45de214e003b35083fdd759944d5c20ef0f87ccc
+	commit = 8bc53d3e0d86dae3c750f6ba550f7f3051e9c412
+	parent = 3db628a3050ed8f0808b20cd0d0c99229122265a
 	method = merge
 	cmdver = 0.4.3
