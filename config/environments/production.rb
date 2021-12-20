@@ -78,7 +78,7 @@ Rails.application.configure do
 
   config.logger = JsonRailsLogger::Logger.new($stdout)
 
-  config.relative_url_root = ENV['RELATIVE_URL_ROOT'] || '/'
+  config.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT'] || '/'
 
   config.accessibility_document_path = '/accessibility'
   config.privacy_document_path = '/privacy'
