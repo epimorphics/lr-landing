@@ -17,7 +17,8 @@ then
   export SECRET_KEY_BASE=`./bin/rails secret`
 fi
 
-export SCRIPT_NAME=${RELATIVE_URL_ROOT :- '/app/root'}
+export RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT:-'/app/root'}
+export SCRIPT_NAME=${RAILS_RELATIVE_URL_ROOT}
 
 exec ./bin/rails server -e ${RAILS_ENV} -b 0.0.0.0
 
