@@ -1,36 +1,47 @@
+ARG ALPINE_VERSION=3.10
 ARG RUBY_VERSION=2.6.6
 
-# Defining ruby version
-FROM ruby:$RUBY_VERSION-alpine
+# Defines base image which builder and final stage use
+FROM ruby:$RUBY_VERSION-alpine$ALPINE_VERSION as base
 
-# Set working dir and copy app
-WORKDIR /usr/src/app
-COPY . .
+# Change this if Gemfile.lock bundler version changes
+ARG BUNDLER_VERSION=2.2.22
 
 # Prerequisites for gems install
 RUN apk add build-base \
             npm \
             tzdata \
-            git
+            git \
+            && rm -rf /var/cache/apk/* \
+            && gem install bundler:$BUNDLER_VERSION \
+            && bundle config --global frozen 1
 
-ARG BUNDLER_VERSION=2.1.4
+FROM base as builder
 
-# Install bundler and gems
-RUN gem install bundler:$BUNDLER_VERSION
-RUN bundle install
+RUN apk add --update build-base
 
-# Params
-ARG RAILS_ENV="production"
-ARG RAILS_SERVE_STATIC_FILES="true"
-ARG RELATIVE_URL_ROOT="/app/root"
+# Set working dir and copy app
+WORKDIR /usr/src/app
+COPY . .
 
-# Set environment variables and expose the running port
-ENV RAILS_ENV=$RAILS_ENV
-ENV RAILS_SERVE_STATIC_FILES=$RAILS_SERVE_STATIC_FILES
-ENV RELATIVE_URL_ROOT=$RELATIVE_URL_ROOT
-ENV SCRIPT_NAME=$RELATIVE_URL_ROOT
+# Install gems
+RUN bundle install \
+    && RAILS_ENV=production bundle exec rake assets:precompile \
+    && mkdir -p 777 /usr/src/app/coverage
+
+# Start a new build stage to minimise the final image size
+FROM base
+
+RUN addgroup -S app && adduser -S -G app app
+
 EXPOSE 3000
 
-# Precompile assets and add entrypoint script
-RUN rake assets:precompile
-ENTRYPOINT [ "sh", "./entrypoint.sh" ]
+WORKDIR /usr/src/app
+
+COPY --from=builder --chown=app /usr/local/bundle /usr/local/bundle
+COPY --from=builder --chown=app /usr/src/app     .
+
+USER app
+
+COPY entrypoint.sh /app/entrypoint.sh
+ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]
