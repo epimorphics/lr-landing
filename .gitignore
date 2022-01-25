@@ -9,6 +9,7 @@
 .github-token
 .npmrc
 .tags
+.vscode
 .yarn-integrity
 /.bundle
 /log/*
@@ -17,8 +18,8 @@
 /public/packs-test
 /tmp
 coverage
-fc.json
 fc_simple.json
+fc.json
 index-names.txt
 index.json
 node_modules/
@@ -26,7 +27,3 @@ public/assets
 tags
 yarn-debug.log*
 yarn-error.log
-
-
-
-.vscode
