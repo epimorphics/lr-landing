@@ -4,6 +4,10 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.5.7 - 2021-12-01
+
+- (Joseph) Copy change in PPD documentation
+
 ## 1.5.6 - 2021-09-28
 
 - (Mairead) Updating copy change and broken link

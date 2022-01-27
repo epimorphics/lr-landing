@@ -13,3 +13,6 @@
 /tmp
 .byebug_history
 public/assets
+.github-token
+.npmrc
+.vscode
