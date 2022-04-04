@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class DocumentationControllerTest < ActionController::TestCase
+class DocumentationControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
