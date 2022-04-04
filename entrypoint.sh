@@ -11,6 +11,14 @@ then
   export RAILS_ENV=production
 fi
 
+if [ -z "API_SERVICE_URL" ]
+then
+  echo "{'ts': '`date -Iseconds`', 'message': {'text: 'You have not specified an API_SERVICE_URL', 'level': 'ERROR'}}" >&2
+  exit 1
+fi
+
+echo "{'ts': '`date -Iseconds`', 'message': {'text: 'LR-landing starting with API_SERVICE_URL ${API_SERVICE_URL}', 'level': 'INFO'}}"
+
 # Handle secrets based on env
 if [ "$RAILS_ENV" == "production" ] && [ -z "$SECRET_KEY_BASE" ]
 then
@@ -21,4 +29,3 @@ export RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT:-'/app/root'}
 export SCRIPT_NAME=${RAILS_RELATIVE_URL_ROOT}
 
 exec ./bin/rails server -e ${RAILS_ENV} -b 0.0.0.0
-
