@@ -39,6 +39,10 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  config.log_tags = %i[subdomain request_id request_method]
+  $stdout.sync = true
+  config.logger = JsonRailsLogger::Logger.new($stdout)
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
