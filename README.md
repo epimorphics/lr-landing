@@ -48,11 +48,6 @@ To mimic running the application in a deployed state you can run `make image`
 and this will run through the assets precompilation, linting and testing before
 creating a Docker image. To view the Docker container you can run `make run`
 
-To bypass the need for running locally AWS you can pass a global variable to
-the command with `ECR=local make image`
-
-You can run `make help` to view a list of other make commands available
-
 Note that in the production environment, the app will be accessed via the URL
 path `/app/root`. When running the docker image locally, you will need to
 access the application via a proxy, otherwise, the paths for JS, CSS and image
