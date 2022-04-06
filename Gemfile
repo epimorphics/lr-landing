@@ -38,3 +38,5 @@ source 'https://rubygems.pkg.github.com/epimorphics' do
   gem 'json_rails_logger'
   gem 'lr_common_styles'
 end
+
+gem 'prometheus-client', '~> 4.0'
