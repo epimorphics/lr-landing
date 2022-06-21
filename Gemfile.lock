@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/epimorphics/qonsole-rails
-  revision: 15a9e9a24bdcf59da79ca3db046f9ce6621c83fa
+  revision: b31b5d2c4489ebda258081d7da1db05cffb1011a
   specs:
     qonsole-rails (0.6.1)
       codemirror-rails (~> 5.11)
@@ -89,7 +89,7 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     ast (2.4.2)
-    autoprefixer-rails (10.3.1.0)
+    autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     bindex (0.8.1)
     bootstrap-sass (3.4.1)
@@ -110,7 +110,7 @@ GEM
       faraday
     faraday_middleware (0.13.1)
       faraday (>= 0.7.4, < 1.0)
-    ffi (1.15.3)
+    ffi (1.15.4)
     font-awesome-rails (4.7.0.7)
       railties (>= 3.2, < 7)
     globalid (0.5.2)
@@ -165,23 +165,23 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.1)
+    marcel (1.0.2)
     method_source (1.0.0)
-    mini_mime (1.1.0)
-    mini_portile2 (2.6.1)
+    mini_mime (1.1.1)
     minitest (5.14.4)
     modernizr-rails (2.7.1)
     modulejs-rails (2.2.0.0)
       railties (>= 4.0)
     multipart-post (2.1.1)
     nio4r (2.5.8)
-    nokogiri (1.12.3)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
-    parallel (1.20.1)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
+    parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
-    puma (5.4.0)
+    puma (5.5.0)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -203,7 +203,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.3.0)
+    rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
     railties (5.2.6)
       actionpack (= 5.2.6)
@@ -220,7 +220,7 @@ GEM
     request_store (1.5.0)
       rack (>= 1.4)
     rexml (3.2.5)
-    rubocop (1.19.0)
+    rubocop (1.21.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -229,9 +229,9 @@ GEM
       rubocop-ast (>= 1.9.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.10.0)
+    rubocop-ast (1.12.0)
       parser (>= 3.0.1.1)
-    rubocop-rails (2.11.3)
+    rubocop-rails (2.12.2)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -269,7 +269,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    unicode-display_width (2.0.0)
+    unicode-display_width (2.1.0)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -279,7 +279,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
 
-PLATFORMS
+  x86_64-darwin-17
   x86_64-linux
 
 DEPENDENCIES
@@ -301,4 +301,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.2.22
+   2.2.32

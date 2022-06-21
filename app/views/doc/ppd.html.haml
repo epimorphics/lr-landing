@@ -3,11 +3,11 @@
 %p
   HM Land Registry publish Price Paid Data for England and Wales on a monthly basis. New transactions are added
   to the existing price paid dataset which, in September 2015 contained over 20 million transactions.
-  Price paid data is captured for single residential properties that were sold for full market value and
+  Price paid data is captured for single residential properties that were sold for value and
   lodged with LR for registration since 1995. Each transaction generates a number of triples resulting in
   a store that holds in excess of 400 million data items. Data held does not indicate the current value of
   any individual property, it is the price paid at the time of sale. Data is compiled from the price paid
-  information supplied to HM Land Registry when a single residential property is sold for full market value.
+  information supplied to HM Land Registry when a single residential property is sold for value.
 %p
   From October 2015 we have added a new category of price paid data known as additional price paid data.
   This new data, captured since 14 October 2013, includes data about:
@@ -16,6 +16,7 @@
   %li repossessions
   %li buy-to-lets where they can be identified by a mortgage
   %li transfers to non-private individuals
+  %li sales where the property type is classed as &lsquo;Other&rsquo;
 %h2 Privacy
 %p
   In accordance with our rules price paid information has been entered as part of the register since 1 April 2000, the decision to do this was approved by the Lord Chancellor after public consultation and debate. He concluded that the inclusion, and consequent availability, of this information was in the public interest. Privacy impact assessments for the release of this data are available through the HM Land Registry website. From the privacy impact assessment;
@@ -84,7 +85,7 @@
   %li The date of the transaction
   %li Information about the property
 %p
-  A standard PPD transaction concerns a single residential property sold for full market value to private individual.
+  A standard PPD transaction concerns a single residential property sold for value to private individual.
   An additional PPD transaction concerns repossessions, buy-to-lets and transfers of property sold to non-private individuals.
 %p
   The conversion process used takes these items and generates a number of ‘triples’ that are uploaded to a triple store that’s made available using a cloud based triple store. Descriptions of linked data formats are widely described in various web resources and are not covered here, HM Land Registry generate SPARQL update (<code>.ru</code>) files each month and these are described below.
@@ -476,7 +477,7 @@
     %a{:href => "/app/qonsole"} http://landregistry.data.gov.uk/app/hpi/qonsole
 %p
   We also have made a
-  %a{:href => "http://semanticweb.org/wiki/SPARQL_endpoint"} SPARQL endpoint
+  %a{:href => "https://www.w3.org/wiki/SparqlEndpoints"} SPARQL endpoint
   available:
   %code http://landregistry.data.gov.uk/landregistry/query
   which can be used to query against.
