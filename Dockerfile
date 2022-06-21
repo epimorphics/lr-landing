@@ -1,36 +1,58 @@
-ARG RUBY_VERSION=2.6.6
+ARG ALPINE_VERSION
+ARG RUBY_VERSION
 
-# Defining ruby version
-FROM ruby:$RUBY_VERSION-alpine
+# Defines base image which builder and final stage use
+FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION} as base
+ARG BUNDLER_VERSION
 
-# Set working dir and copy app
+RUN apk add --update \
+    tzdata \
+    git \
+    nodejs \
+    && rm -rf /var/cache/apk/* \
+    && gem install bundler:$BUNDLER_VERSION \
+    && bundle config --global frozen 1
+
+FROM base as builder
+
+RUN apk add --update build-base
+
 WORKDIR /usr/src/app
-COPY . .
 
-# Prerequisites for gems install
-RUN apk add build-base \
-            npm \
-            tzdata \
-            git
+COPY config.ru Dockerfile entrypoint.sh Gemfile Gemfile.lock Rakefile ./
+COPY app app
+COPY bin bin
+COPY config config
+COPY lib lib
+COPY public public
+COPY vendor vendor
+RUN mkdir log
 
-ARG BUNDLER_VERSION=2.1.4
+# Copy the bundle config
+# **Important** the destination for this copy **must not** be in WORKDIR,
+# or there is a risk that the GitHub PAT could be part of the final image
+# in a potentially leaky way
+COPY .bundle/config /root/.bundle/config
 
-# Install bundler and gems
-RUN gem install bundler:$BUNDLER_VERSION
-RUN bundle install
+RUN ./bin/bundle config set --local without 'development test'
 
-# Params
-ARG RAILS_ENV="production"
-ARG RAILS_SERVE_STATIC_FILES="true"
-ARG RELATIVE_URL_ROOT="/app/root"
+RUN ./bin/bundle install \
+  && RAILS_ENV=production RAILS_RELATIVE_URL_PATH=/ bundle exec rake assets:precompile \
+  && mkdir -m 777 /usr/src/app/coverage
 
-# Set environment variables and expose the running port
-ENV RAILS_ENV=$RAILS_ENV
-ENV RAILS_SERVE_STATIC_FILES=$RAILS_SERVE_STATIC_FILES
-ENV RELATIVE_URL_ROOT=$RELATIVE_URL_ROOT
-ENV SCRIPT_NAME=$RELATIVE_URL_ROOT
+# Start a new build stage to minimise the final image size
+FROM base
+
+RUN addgroup -S app && adduser -S -G app app
 EXPOSE 3000
 
-# Precompile assets and add entrypoint script
-RUN rake assets:precompile
-ENTRYPOINT [ "sh", "./entrypoint.sh" ]
+WORKDIR /usr/src/app
+
+COPY --from=builder --chown=app /usr/local/bundle /usr/local/bundle
+COPY --from=builder --chown=app /usr/src/app     .
+
+USER app
+
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh "/app/entrypoint.sh"
+ENTRYPOINT ["sh", "/app/entrypoint.sh"]

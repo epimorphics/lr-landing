@@ -2,10 +2,10 @@ version: 2
 name:  epimorphics/lr-landing
 key: landing
 deployments:
-  - tag: "v{ver}"
+  - branch: "prod"
     deploy: "prod"
     publish: "prod"
-  - tag: "v{ver}-rc"
+  - branch: "preprod"
     deploy: "preprod"
     publish: "preprod"
   - branch: "dev-infrastructure"

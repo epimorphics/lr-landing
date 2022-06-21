@@ -4,8 +4,16 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.6.0 - 2022-04-07
+
+- (Ian) Adopt all of the current Epimorphics best-practice deployment patterns,
+  including shared GitHub actions, updated Makefile and Dockerfile, Prometheus
+  monitoring, and updated version of Sentry.
+- (Ian) Updated the README as part of handover.
+
 ## 1.5.7 - 2021-12-01
 
+- (Mairead) Added deployment sub repo and assisting deployment files
 - (Joseph) Copy change in PPD documentation
 
 ## 1.5.6 - 2021-09-28
