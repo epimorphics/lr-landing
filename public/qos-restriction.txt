@@ -1,0 +1,26 @@
+request restricted due to resource limitations
+
+Resource limitations may vary from time to time depending on load and other conditions.
+You are unlikely to encounter a resource limitation if you use the data API for data accesss
+from programs and  issue at most two simultaneous data requests.  Data requests include 
+SPARQL queries, data API requests.
+
+Resource limitations for APIs intended to be used by the user interface are more restrictive
+than resource limitations on the data API and SPARQL queries.  If you are trying to retrieve
+data you are likely better off using the data API or SPARQL rather than scraping the UI pages
+or using UI specific APIs.
+
+See: 
+  http://landregistry.data.gov.uk/app/doc/ukhpi
+  http://landregistry.data.gov.uk/app/root/doc/ppd
+
+If the computer issuing the data requests is behind a proxy or is part of a shared serverless
+infrastructure, requests from other users behind the same proxy or using the same 
+infrastructure may count towards your resource usage.
+
+Please contact HM Land Registry if you believe you received this response in error or have
+any questions or would like help using the data.
+
+Email data.services@landregistry.gov.uk 
+Telephone 0300 006 0478
+Web: https://help.landregistry.gov.uk/app/contactus_general/
