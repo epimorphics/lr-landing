@@ -7,11 +7,11 @@ If you wish to access HM Land Registry data in bulk, please download the bulk da
 
 If you wish to make adhoc queries of the HM Land Registry data, please use the documented data access APIs, e.g.
 
-  http://landregistry.data.gov.uk/app/root/doc/ppd
+  https://landregistry.data.gov.uk/app/root/doc/ppd
   
 or the SPARQL endpoint at:
 
-  http://landregistry.data.gov.uk/landregistry/query
+  https://landregistry.data.gov.uk/landregistry/query
   
 The data APIs and SPARQL endpoint are not intended for bulk data access and their are restrictions on access rates.
 

@@ -11,8 +11,8 @@ data you are likely better off using the data API or SPARQL rather than scraping
 or using UI specific APIs.
 
 See: 
-  http://landregistry.data.gov.uk/app/doc/ukhpi
-  http://landregistry.data.gov.uk/app/root/doc/ppd
+  https://landregistry.data.gov.uk/app/doc/ukhpi
+  https://landregistry.data.gov.uk/app/root/doc/ppd
 
 If the computer issuing the data requests is behind a proxy or is part of a shared serverless
 infrastructure, requests from other users behind the same proxy or using the same 
