@@ -1,8 +1,14 @@
 # Change log for HMLR landing page app
 
-This app presents the landing page experience for
-landregistry.data.gov.uk, including the SPARQL
-Qonsole
+This app presents the landing page experience for landregistry.data.gov.uk,
+including the SPARQL Qonsole
+
+## 1.5.8 - 2022-10-07
+
+- (Jon) Updated accessibility statement to reflect the adjusted release dates
+  for both the expected Qonsole update and preparation timestamp alongside the
+  removal of the deadlines for test revisions. Also includes minor copy changes
+  to resolve typos/punctuation issues.
 
 ## 1.5.7 - 2021-12-01
 
@@ -51,8 +57,8 @@ Qonsole
 
 - WCAG conformance updates, including updating to the upstream
   `lr_common_styles`
-- removed UKHPI documentation, now that this is available from the
-  UKHPI app itself
+- removed UKHPI documentation, now that this is available from the UKHPI app
+  itself
 
 ## 1.2.2 - 2020-07-06
 
@@ -68,23 +74,23 @@ Qonsole
 
 ## 1.1.0 - 2019-12-17
 
-- Changed minor version number as we've switched to using a
-  separate Sentry project for this app.
+- Changed minor version number as we've switched to using a separate Sentry
+  project for this app.
 
 ## 1.0.7 - 2019-12-16
 
-- Update qonsole-rails to (hopefully) reduce Sentry noise due to
-  path issues with error pages.
+- Update qonsole-rails to (hopefully) reduce Sentry noise due to path issues
+  with error pages.
 
 ## 1.0.6 - 2019-12-10
 
-- Remove a reference to an old, now obsolete, dev
-  server as a target endpoint for Qonsole
+- Remove a reference to an old, now obsolete, dev server as a target endpoint
+  for Qonsole
 
 ## 1.0.5 - 2019-12-09
 
-- Pull in updated `qonsole-rails` to resolve Sentry warning
-  of unbound variable `e`
+- Pull in updated `qonsole-rails` to resolve Sentry warning of unbound variable
+  `e`
 
 ## 2019-11-15 - 1.0.4
 
