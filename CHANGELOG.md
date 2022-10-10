@@ -3,7 +3,7 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
-## 1.5.8 - 2022-10-07
+## 1.5.8 - 2022-10-10
 
 - (Jon) Updated accessibility statement to reflect the adjusted release dates
   for both the expected Qonsole update and preparation timestamp alongside the
