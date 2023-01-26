@@ -18,6 +18,8 @@ gem 'haml-rails', '~> 2.0.0'
 gem 'http_accept_language'
 gem 'puma'
 gem 'sentry-rails', '~> 5.2'
+gem 'prometheus-client', '~> 4.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -31,12 +33,12 @@ group :development do
   gem 'web-console'
 end
 
-gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
-# gem 'qonsole-rails', path: '/home/ian/projects/epimorphics/qonsole-rails'
+# TODO: For running the app locally for testing you can set this to your local path
+# gem 'json_rails_logger', '~> 0.3.4', path: '~/Epimorphics/shared/json-rails-logger/'
+# gem 'lr_common_styles', '~> 1.9.0', path: '~/Epimorphics/clients/land-registry/projects/lr-common-styles/'
 
+# TODO: In production you want to set this to the gem from the epimorphics package repo
 source 'https://rubygems.pkg.github.com/epimorphics' do
-  gem 'json_rails_logger'
-  gem 'lr_common_styles'
+  gem 'json_rails_logger', '~> 0.3.4'
+  gem 'lr_common_styles', '~> 1.9.0'
 end
-
-gem 'prometheus-client', '~> 4.0'
