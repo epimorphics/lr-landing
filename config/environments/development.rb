@@ -44,6 +44,11 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  # Application Path can be specified in the entrypoint.sh script
+  # but falls back to a standard root value in development
+  config.relative_url_root = ENV.fetch('APPLICATION_PATH', '/')
+  # API location is not used on the landing page, but is required by all other apps
+
   config.accessibility_document_path = '/doc/accessibility'
   config.privacy_document_path = '/doc/privacy'
 
