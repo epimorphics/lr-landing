@@ -33,13 +33,16 @@ group :development do
 end
 
 # rubocop:disable Layout/LineLength
+gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
+# gem 'qonsole-rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
+
 # TODO: For running the app locally for testing you can set this to your local path
-# gem 'json_rails_logger', '~> 0.3.4', path: '~/Epimorphics/shared/json-rails-logger/'
-# gem 'lr_common_styles', '~> 1.9.0', path: '~/Epimorphics/clients/land-registry/projects/lr-common-styles/'
+# gem 'json_rails_logger', '~> 0.3.5', path: '~/Epimorphics/shared/json-rails-logger/'
+# gem 'lr_common_styles', '~> 1.9.1', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles/'
 # rubocop:enable Layout/LineLength
 
 # TODO: In production you want to set this to the gem from the epimorphics package repo
 source 'https://rubygems.pkg.github.com/epimorphics' do
-  gem 'json_rails_logger', '~> 0.3.4'
-  gem 'lr_common_styles', '~> 1.9.0'
+  gem 'json_rails_logger', '~> 0.3.5'
+  gem 'lr_common_styles', '~> 1.9.1'
 end
