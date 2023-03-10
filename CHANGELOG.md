@@ -9,9 +9,9 @@ Qonsole
 - (Jon) Minor text changes to the `Gemfile` to include instructions for running
   Epimorphics specific gems locally during the development of those gems.
 - (Jon) Updated the production `json_rails_logger` gem version to be at least the
-  current version `~>0.3.4` (this is to cover out of sync release versions)
+  current version `~>0.3.5` (this is to cover out of sync release versions)
 - (Jon) Updated the production `lr_common_styles` gem version to be at least the
-  current version `~>1.9.0` (this is to cover out of sync release versions)
+  current version `~>1.9.1` (this is to cover out of sync release versions)
 - (Jon) Refactored the version cadence creation to include a SUFFIX value if
   provided; otherwise no SUFFIX is included in the version number.
 
