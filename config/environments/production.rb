@@ -81,11 +81,11 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   # config.log_formatter = ::Logger::Formatter.new
 
-  # Application Path should be specified in the entrypoint.sh file and therefore
+  # The application root should be specified in the entrypoint.sh file and therefore
   # in Production no fall back values are passed on the basis that missing
   # configuration options represent a category of bug, and in that case the
   # deployment should fail fast and noisily.
-  config.relative_url_root = ENV['APPLICATION_PATH']
+  config.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT']
   # API location is not used on the landing page, but is required by all other apps
 
   config.accessibility_document_path = '/accessibility'
