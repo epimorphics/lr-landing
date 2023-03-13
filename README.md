@@ -71,7 +71,7 @@ writing:
 ### `entrypoint.sh`
 
 - The Rails Framework requires certain values to be set as a Global environment
-  variable when starting. To ensure the `APPLICATION_PATH` is only set
+  variable when starting. To ensure the `APPLICATION_ROOT` is only set
   in one place per application we have added this to the Entrypoint file along
   with the `SCRIPT_NAME`.
 - The Rails secret is also created here.
@@ -87,6 +87,6 @@ of the application:
 
 | name                       | description                                                          | typical value           |
 | -------------------------- | -------------------------------------------------------------------- | ----------------------- |
-| `APPLICATION_PATH`         | The path from the server root to the application                     | `/app/root`             |
+| `APPLICATION_ROOT`         | The path from the server root to the application                     | `/app/root`             |
 | `API_SERVICE_URL`          | The base URL from which data is accessed, including the HTTP scheme  | `http://localhost:8080` |
 | `SENTRY_API_KEY`           | The Sentry DSN client key for the `lr-dgu-landing` Sentry app        |                         |
