@@ -15,7 +15,7 @@ Qonsole
 - (Jon) Refactored the version cadence creation to include a SUFFIX value if
   provided; otherwise no SUFFIX is included in the version number.
 - (Jon) Renamed the global env variable `RAILS_RELATIVE_URL_ROOT` to
-  `APPLICATION_PATH` to be more clear on it's use in the `entrypoint.sh` code.
+  `APPLICATION_ROOT` to be more clear on it's use in the `entrypoint.sh` code.
 
 ## 1.6.0 - 2022-04-07
 
