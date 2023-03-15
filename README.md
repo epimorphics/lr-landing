@@ -79,7 +79,16 @@ With the proxy and Docker container running you can access the application as
 
 ### Code standards
 
-Rubocop should return zero errors or warnings
+Rubocop should return zero errors or warnings:
+
+```sh
+$ rubocop
+
+Inspecting 30 files
+..............................
+
+30 files inspected, no offenses detected
+```
 
 ### Running the tests
 
