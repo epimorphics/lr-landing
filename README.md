@@ -6,13 +6,14 @@ provides links to the various open data services (Price Paid Data Explorer,
 Standard Reports and UK Housing Price Index), and hosts the qonsole app, which
 allows users to run SPARQL queries against the linked-data dataset.
 
-Please see the other repositories in the [HM Land Registry Open Data](http://landregistry.data.gov.uk)
+Please see the other repositories in the [HM Land Registry Open Data](https://github.com/epimorphics/hmlr-linked-data/)
 project for more details:
 
-- [Price Paid Data Explorer](https://github.com/epimorphics/ppd-explorer)
+- [HMLR Common Styles](https://github.com/epimorphics/lr_common_styles)
+- [PPD Explorer](https://github.com/epimorphics/ppd-explorer)
 - [Standard Reports UI](https://github.com/epimorphics/standard-reports-ui)
-- [UK Housing Price Index](https://github.com/epimorphics/ukhpi)
-- [Qonsole](https://github.com/epimorphics/qonsole-rails)
+- [UKHPI](https://github.com/epimorphics/ukhpi)
+- [Qonsole (Rails)](https://github.com/epimorphics/qonsole-rails)
 
 ## Developer notes
 
