@@ -4,8 +4,11 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
-## 1.6.1 - 2023-01
+## 1.6.1 - 2023-03-15
 
+- (Jon) Updated the README to improve the clarity of the instructions for
+  running the application locally, as well as releasing a new version.
+- (Jon) Updated and improved the build files for the new infrastructure use.
 - (Jon) Minor text changes to the `Gemfile` to include instructions for running
   Epimorphics specific gems locally during the development of those gems.
 - (Jon) Updated the production `json_rails_logger` gem version to be at least the
