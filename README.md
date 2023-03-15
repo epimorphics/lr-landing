@@ -31,8 +31,8 @@ Begin by cloning [the Github
 repo](https://github.com/epimorphics/lr-landing) and installing the dependencies:
 
 ```sh
-git clone git@github.com:epimorphics/lr-landing.git
-cd lr-landing
+git clone git@github.com:epimorphics/lr-landing.git &&
+cd lr-landing &&
 bundle install
 ```
 
