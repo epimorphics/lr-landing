@@ -5,6 +5,7 @@ ARG RUBY_VERSION
 FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION} as base
 ARG BUNDLER_VERSION
 
+
 RUN apk add --update \
     tzdata \
     git \
@@ -19,14 +20,11 @@ RUN apk add --update build-base
 
 WORKDIR /usr/src/app
 
-COPY config.ru Dockerfile entrypoint.sh Gemfile Gemfile.lock Rakefile ./
-COPY app app
-COPY bin bin
-COPY config config
-COPY lib lib
-COPY public public
-COPY vendor vendor
-RUN mkdir log
+# Set default values to arguments to be used as environment variables
+ARG RAILS_ENV=production
+ARG APPLICATION_ROOT=/app/root
+
+COPY config.ru Gemfile Gemfile.lock Rakefile ./
 
 # Copy the bundle config
 # **Important** the destination for this copy **must not** be in WORKDIR,
@@ -34,18 +32,26 @@ RUN mkdir log
 # in a potentially leaky way
 COPY .bundle/config /root/.bundle/config
 
-RUN ./bin/bundle config set --local without 'development test'
+COPY bin bin
 
-RUN ./bin/bundle install \
-  && RAILS_ENV=production RAILS_RELATIVE_URL_PATH=/ bundle exec rake assets:precompile \
+RUN ./bin/bundle config set --local without 'development test' && ./bin/bundle install && mkdir log
+
+COPY app app
+COPY config config
+COPY lib lib
+COPY public public
+COPY vendor vendor
+
+# Compile
+
+RUN RAILS_ENV=$RAILS_ENV RAILS_RELATIVE_URL_ROOT=$APPLICATION_ROOT \
+  bundle exec rake assets:precompile \
   && mkdir -m 777 /usr/src/app/coverage
 
 # Start a new build stage to minimise the final image size
 FROM base
 
 ARG image_name
-ARG build
-ARG build_date
 ARG git_branch
 ARG git_commit_hash
 ARG github_run_number
@@ -54,7 +60,6 @@ ARG VERSION
 LABEL com.epimorphics.name=$image_name \
       com.epimorphics.branch=$git_branch \
       com.epimorphics.build=$github_run_number \
-      com.epimorphics.created=$build_date \
       com.epimorphics.commit=$git_commit_hash \
       com.epimorphics.version=$VERSION
 
@@ -64,9 +69,14 @@ EXPOSE 3000
 WORKDIR /usr/src/app
 
 COPY --from=builder --chown=app /usr/local/bundle /usr/local/bundle
-COPY --from=builder --chown=app /usr/src/app     .
+COPY --from=builder --chown=app /usr/src/app .
 
 USER app
+
+# Assign the appropriate ARG to the corresponding ENV so that it can be accessed
+# by the subsequent calls within the container
+ENV RAILS_ENV=$RAILS_ENV
+ENV APPLICATION_ROOT=$APPLICATION_ROOT
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh "/app/entrypoint.sh"
