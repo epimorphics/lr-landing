@@ -4,7 +4,7 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
-## 1.6.1 - 2023-03-15
+## 1.7.0 - 2023-03-15
 
 - (Jon) Updated the README to improve the clarity of the instructions for
   running the application locally, as well as releasing a new version.
