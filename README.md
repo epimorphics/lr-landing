@@ -39,7 +39,7 @@ bundle install
 Start the app locally for development:
 
 ```sh
-APPLICATION_ROOT=/ rails server
+rails server
 ```
 
 Visit [`localhost:3000`](http://localhost:3000/) to view the local instance.
@@ -47,10 +47,7 @@ Visit [`localhost:3000`](http://localhost:3000/) to view the local instance.
 ### Running the app locally as a Docker image
 
 It can be useful to run the compiled Docker image, that will be run by the
-production installation, locally yourself. While the Rails Framework requires
-certain values to be set as a Global environment variable when starting, the
-`API_SERVICE_URL` is only set in one place per application so we have added this
-to the Makefile file for convenience.
+production installation, locally yourself.
 
 To mimic running the application in a deployed state you can call:
 
@@ -62,7 +59,7 @@ This will run through the assets precompilation, linting and testing before
 creating a Docker image, then you can run the image with the following command:
 
 ```sh
-APPLICATION_ROOT=/ make run
+make run
 ```
 
 N.B In the production environment, the app will be accessed via the URL path `/app/root`.
@@ -143,15 +140,11 @@ contained changes as well as the ability to diff agains the previous version.
 - There is a workaround to removing the PID lock of the Rails process in the
   event of the application crashing and not releasing the process.
 - The Rails secret is created here.
-- We have to pass the `APPLICATION_ROOT` and, depending on the ivocation choice
-  also pass in the `API_SERVICE_URL`, so that they are available to the
-  `entrypoint.sh` otherwise the application will throw an error and exit before
-  starting.
 
-#### Configuration environment variables
+### Configuration environment variables
 
-We use a number of environment variables to determine the runtime behaviour of
-the application:
+We can use a number of environment variables to determine the runtime behaviour of
+the application while developing the codebase locally:
 
 | name                       | description                                                          | typical value           |
 | -------------------------- | -------------------------------------------------------------------- | ----------------------- |
