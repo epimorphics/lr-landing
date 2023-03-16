@@ -7,9 +7,11 @@ ARG BUNDLER_VERSION
 
 
 RUN apk add --update \
-    tzdata \
+    bash \
+    coreutils \
     git \
     nodejs \
+    tzdata \
     && rm -rf /var/cache/apk/* \
     && gem install bundler:$BUNDLER_VERSION \
     && bundle config --global frozen 1
@@ -22,7 +24,7 @@ WORKDIR /usr/src/app
 
 # Set default values to arguments to be used as environment variables
 ARG RAILS_ENV=production
-ARG APPLICATION_ROOT=/app/root
+ARG APPLICATION_ROOT=/
 
 COPY config.ru Gemfile Gemfile.lock Rakefile ./
 
@@ -40,7 +42,6 @@ COPY app app
 COPY config config
 COPY lib lib
 COPY public public
-COPY vendor vendor
 
 # Compile
 

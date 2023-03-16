@@ -7,6 +7,7 @@ BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
 ECR?=${ACCOUNT}.dkr.ecr.eu-west-1.amazonaws.com
 GPR_OWNER?=epimorphics
 NAME?=$(shell awk -F: '$$1=="name" {print $$2}' deployment.yaml | sed -e 's/[[:blank:]]//g')
+SHORTNAME?=$(shell echo ${NAME} | cut -f2 -d/)
 PAT?=$(shell read -p 'Github access token:' TOKEN; echo $$TOKEN)
 RUBY_VERSION?=$(shell cat .ruby-version)
 STAGE?=dev
@@ -71,10 +72,10 @@ realclean: clean
 	@rm -f ${GITHUB_TOKEN} ${BUNDLE_CFG}
 
 run:
-	@echo "Stopping lr_landing ..."
-	@-docker stop lr_landing && sleep 10
-	@echo "Starting lr_landing ..."
-	@docker run -e APPLICATION_ROOT=${APPLICATION_ROOT} -e API_SERVICE_URL=${API_SERVICE_URL} --add-host host.docker.internal:host-gateway -p 3000:3000 --rm --name lr_landing ${REPO}:${TAG}
+	@echo "Stopping ${SHORTNAME} ..."
+	@-docker stop ${SHORTNAME} && sleep 10
+	@echo "Starting ${SHORTNAME} ..."
+	@docker run -e APPLICATION_ROOT=${APPLICATION_ROOT} -e API_SERVICE_URL=${API_SERVICE_URL} --add-host host.docker.internal:host-gateway -p 3000:3000 --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 tag:
 	@echo ${TAG}
@@ -91,6 +92,7 @@ vars:
 	@echo "ECR = ${ECR}"
 	@echo "GPR_OWNER = ${GPR_OWNER}"
 	@echo "NAME = ${NAME}"
+	@echo "SHORTNAME = ${SHORTNAME}"
 	@echo "RUBY_VERSION = ${RUBY_VERSION}"
 	@echo "STAGE = ${STAGE}"
 	@echo "COMMIT = ${COMMIT}"
