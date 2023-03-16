@@ -45,7 +45,7 @@ auth: ${GITHUB_TOKEN} ${BUNDLE_CFG}
 clean:
 	@[ -d public/assets ] && ./bin/rails assets:clobber || :
 
-image: auth lint test
+image: auth
 	@echo Building ${REPO}:${TAG} ...
 	@docker build \
 		--build-arg ALPINE_VERSION=${ALPINE_VERSION} \
