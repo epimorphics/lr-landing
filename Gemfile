@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'haml-rails', '~> 2.0.0'
 gem 'http_accept_language'
+gem 'prometheus-client', '~> 4.0'
 gem 'puma'
 gem 'sentry-rails', '~> 5.2'
 
@@ -31,12 +32,17 @@ group :development do
   gem 'web-console'
 end
 
+# rubocop:disable Layout/LineLength
 gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
-# gem 'qonsole-rails', path: '/home/ian/projects/epimorphics/qonsole-rails'
+# gem 'qonsole-rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
 
+# TODO: For running the app locally for testing you can set this to your local path
+# gem 'json_rails_logger', '~> 0.3.5', path: '~/Epimorphics/shared/json-rails-logger/'
+# gem 'lr_common_styles', '~> 1.9.1', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles/'
+# rubocop:enable Layout/LineLength
+
+# TODO: In production you want to set this to the gem from the epimorphics package repo
 source 'https://rubygems.pkg.github.com/epimorphics' do
-  gem 'json_rails_logger'
-  gem 'lr_common_styles'
+  gem 'json_rails_logger', '~> 0.3.5'
+  gem 'lr_common_styles', '~> 1.9.1'
 end
-
-gem 'prometheus-client', '~> 4.0'

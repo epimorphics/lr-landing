@@ -1,92 +1,160 @@
 # HMLR linked-data applications landing site
 
-This repo provides the landing page experience for visitors
-to [landregistry.data.gov.uk](http://landregistry.data.gov.uk).
-The landing page provides links to the various open data services
-(PPD, standard reports and UKHPI), and hosts the qonsole app, which
+This repo provides the landing page experience for visitors to
+[landregistry.data.gov.uk](http://landregistry.data.gov.uk). The landing page
+provides links to the various open data services (Price Paid Data Explorer,
+Standard Reports and UK Housing Price Index), and hosts the qonsole app, which
 allows users to run SPARQL queries against the linked-data dataset.
+
+Please see the other repositories in the [HM Land Registry Open Data](https://github.com/epimorphics/hmlr-linked-data/)
+project for more details:
+
+- [HMLR Common Styles](https://github.com/epimorphics/lr_common_styles)
+- [PPD Explorer](https://github.com/epimorphics/ppd-explorer)
+- [Standard Reports UI](https://github.com/epimorphics/standard-reports-ui)
+- [UKHPI](https://github.com/epimorphics/ukhpi)
+- [Qonsole (Rails)](https://github.com/epimorphics/qonsole-rails)
 
 ## Developer notes
 
 ### Updating the code
 
-This is a pretty standard, and quite small, Rails app. Clone
-[the Github repo](https://github.com/epimorphics/lr-landing)
-to start making changes.
+This is a pretty standard, and quite small, Rails app.
 
-Please keep the [changelog](CHANGELOG.md) up-to-date, and
-increment the `Version::VERSION` identifier in line with
-semver principles.
+Please keep the [changelog](CHANGELOG.md) up-to-date, and increment the
+[`/app/lib/version.rb`](https://github.com/epimorphics/lr-landing/app/lib/version.rb)
+identifier in line with semver principles.
+
+### Running the app locally in dev mode
+
+Begin by cloning [the Github
+repo](https://github.com/epimorphics/lr-landing) and installing the dependencies:
+
+```sh
+git clone git@github.com:epimorphics/lr-landing.git &&
+cd lr-landing &&
+bundle install
+```
+
+Start the app locally for development:
+
+```sh
+APPLICATION_ROOT=/ rails server
+```
+
+Visit [`localhost:3000`](http://localhost:3000/) to view the local instance.
+
+### Running the app locally as a Docker image
+
+It can be useful to run the compiled Docker image, that will be run by the
+production installation, locally yourself. While the Rails Framework requires
+certain values to be set as a Global environment variable when starting, the
+`API_SERVICE_URL` is only set in one place per application so we have added this
+to the Makefile file for convenience.
+
+To mimic running the application in a deployed state you can call:
+
+```sh
+make image
+```
+
+This will run through the assets precompilation, linting and testing before
+creating a Docker image, then you can run the image with the following command:
+
+```sh
+APPLICATION_ROOT=/ make run
+```
+
+N.B In the production environment, the app will be accessed via the URL path `/app/root`.
+When running the docker image locally for development, you may need to access the
+application via a proxy, otherwise, the paths for JS, CSS and image assets might
+not work.
+
+Please see the *[simple web proxy](https://github.com/epimorphics/simple-web-proxy)*
+repository for one simple way of handling this on a local develpment machine.
+
+With the proxy and Docker container running you can access the application as
+[`localhost:3001/app/root/`](http://localhost:3001/app/root/)
+(note the trailing path).
 
 ### Code standards
 
-Rubocop should return zero errors or warnings
+Rubocop should return zero errors or warnings:
+
+```sh
+$ rubocop
+
+Inspecting 30 files
+..............................
+
+30 files inspected, no offenses detected
+```
 
 ### Running the tests
 
 There aren't very many tests as this is a very simple app.
 
-    rails -t
+```sh
+rails -t
+```
 
 ### Dependent gems
 
-As of 2022-04-04, most of the local (i.e. Epimorphics) gems that this project
-depends on are served via GitHub Package Registry (GPR). Specifically,
-`lr_common_styles` and `json-rails-logger`. However, `qonsole-rails` is **not**
-served via GPR at present, mostly because we are hoping to retire it in favour
-of a new implementation of Qonsole. Since `qonsole-rails` is a public repo,
-this dependency does not require us to lean on the old pattern of using an ssh
-key to serve private gems directly from a GitHub repo.
+Most of the local (i.e. Epimorphics) gems that this project depends on are served
+via GitHub Package Registry (GPR). Specifically, `lr_common_styles` and `json-rails-logger`.
 
-Accessing gems from GPR will require a personal access token PAT. To store this
-locally, use `make auth`. To create a PAT, see [the Epimorphics
-wiki](https://github.com/epimorphics/internal/wiki/Ansible-CICD#creating-a-pat-for-gpr-access).
+However, `qonsole-rails` is __not__ served via GPR at present, mostly because we
+are hoping to retire it in favour of a new implementation of Qonsole. Since
+`qonsole-rails` is a public repo, this dependency does not require us to lean on
+the old pattern of using an ssh key to serve private gems directly from a
+GitHub repo.
 
-### Pre-flight testing
+Accessing gems from GPR will require a personal access token (PAT). To store this
+locally, use `make auth` to set your GitHub Token using the PAT.
 
-To mimic running the application in a deployed state you can run `make image`
-and this will run through the assets precompilation, linting and testing before
-creating a Docker image. To view the Docker container you can run `make run`
-
-Note that in the production environment, the app will be accessed via the URL
-path `/app/root`. When running the docker image locally, you will need to
-access the application via a proxy, otherwise, the paths for JS, CSS and image
-assets will not work. Please see the [simple web
-proxy](https://github.com/epimorphics/simple-web-proxy) for one simple way of
-handling this on a local dev machine.
+To create a PAT, see [the Epimorphics wiki](https://github.com/epimorphics/internal/wiki/Ansible-CICD#creating-a-pat-for-gpr-access).
 
 ## Issues
 
-Please add issues to the [shared issues list](https://github.com/epimorphics/hmlr-linked-data/issues)
+Please add issues to the [shared issues
+list](https://github.com/epimorphics/hmlr-linked-data/issues)
 
 ## Deployment
 
-The detailed deployment mapping is decscribed in `deployment.yml`. At the time of
-writing:
+The detailed deployment mapping is decscribed in `deployment.yml`. At the time
+of writing, using the new infrastructure, the deployment process is as follows:
 
-- any commit tagged with `vNNN`, e.g: `v1.2.7` will be deployed to production
-- any commit on the `dev-infrastructure` branch will deploy the dev server in
-  using the new infrastructure
+- commits to the `dev-infrastructure` branch will deploy the dev server
+- commits to the `preprod` branch will deploy the pre-production server
+- any commit on the `prod` branch will deploy the production server as a new
+  release
+
+If the commit is a "new" release, the deployment should be tagged with the same
+version number, e.g. `1.2.3`. as set in the `/app/lib/version.rb` and a short
+annotation summarising the updates should be included in the tag.
+
+Once the production deployment has been completed and verified, please create a
+release on the repository using the same latest version number. Utilise the
+`Generate release notes from commit log` option to create specific notes on the
+contained changes as well as the ability to diff agains the previous version.
 
 ### `entrypoint.sh`
 
-- The Rails Framework requires certain values to be set as a Global environment
-  variable when starting. To ensure the `RAILS_RELATIVE_URL_ROOT` is only set
-  in one place per application we have added this to the Entrypoint file along
-  with the `SCRIPT_NAME`.
-- The Rails secret is also created here.
 - There is a workaround to removing the PID lock of the Rails process in the
   event of the application crashing and not releasing the process.
-- We have to pass the `API_SERVICE_URL` so that it is available in the
-  `entrypoint.sh` or the application will throw an error and exit before starting
+- The Rails secret is created here.
+- We have to pass the `APPLICATION_ROOT` and, depending on the ivocation choice
+  also pass in the `API_SERVICE_URL`, so that they are available to the
+  `entrypoint.sh` otherwise the application will throw an error and exit before
+  starting.
 
-## Configuration environment variables
+#### Configuration environment variables
 
-We use a number of environment variables to determine the runtime behaviour
-of the application:
+We use a number of environment variables to determine the runtime behaviour of
+the application:
 
-| name                       | description                                                          | typical value                                    |
-| -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------ |
-| `RAILS_RELATIVE_URL_ROOT`  | The path from the server root to the application                     | `/app/root`                                      |
-| `API_SERVICE_URL`          | The base URL from which data is accessed, including the HTTP scheme  | `http://localhost:8080`                          |
-| `SENTRY_API_KEY`           | The Sentry DSN client key for the `lr-dgu-landing` Sentry app        |                                                  |
+| name                       | description                                                          | typical value           |
+| -------------------------- | -------------------------------------------------------------------- | ----------------------- |
+| `APPLICATION_ROOT`         | The path from the server root to the application                     | `/app/root`             |
+| `API_SERVICE_URL`          | The base URL from which data is accessed, including the HTTP scheme  | `http://localhost:8080` |
+| `SENTRY_API_KEY`           | The Sentry DSN client key for the `lr-dgu-landing` Sentry app        |                         |

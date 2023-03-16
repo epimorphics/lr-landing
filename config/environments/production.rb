@@ -53,6 +53,17 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  # * Set cache control headers for HMLR apps to be public and cacheable
+  # * Landing Page uses a time limit of 5 minutes (300 seconds)
+  # This will affect assets served from /app/assets
+  config.static_cache_control = "public, max-age=#{5.minutes.to_i}"
+
+  # This will affect assets in /public, e.g. webpacker assets.
+  config.public_file_server.headers = {
+    'Cache-Control' => "public, max-age=#{5.minutes.to_i}",
+    'Expires' => 5.minutes.from_now.to_formatted_s(:rfc822)
+  }
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
@@ -70,9 +81,12 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   # config.log_formatter = ::Logger::Formatter.new
 
-  config.logger = JsonRailsLogger::Logger.new($stdout)
-
-  config.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT'] || '/'
+  # The application root should be specified in the entrypoint.sh file and therefore
+  # in Production no fall back values are passed on the basis that missing
+  # configuration options represent a category of bug, and in that case the
+  # deployment should fail fast and noisily.
+  config.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT']
+  # API location is not used on the landing page, but is required by all other apps
 
   config.accessibility_document_path = '/accessibility'
   config.privacy_document_path = '/privacy'

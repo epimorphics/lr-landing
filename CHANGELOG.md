@@ -4,6 +4,22 @@ This app presents the landing page experience for
 landregistry.data.gov.uk, including the SPARQL
 Qonsole
 
+## 1.7.0 - 2023-03-15
+
+- (Jon) Updated the README to improve the clarity of the instructions for
+  running the application locally, as well as releasing a new version.
+- (Jon) Updated and improved the build files for the new infrastructure use.
+- (Jon) Minor text changes to the `Gemfile` to include instructions for running
+  Epimorphics specific gems locally during the development of those gems.
+- (Jon) Updated the production `json_rails_logger` gem version to be at least the
+  current version `~>0.3.5` (this is to cover out of sync release versions)
+- (Jon) Updated the production `lr_common_styles` gem version to be at least the
+  current version `~>1.9.1` (this is to cover out of sync release versions)
+- (Jon) Refactored the version cadence creation to include a SUFFIX value if
+  provided; otherwise no SUFFIX is included in the version number.
+- (Jon) Renamed the global env variable `RAILS_RELATIVE_URL_ROOT` to
+  `APPLICATION_ROOT` to be more clear on it's use in the `entrypoint.sh` code.
+
 ## 1.6.0 - 2022-04-07
 
 - (Ian) Adopt all of the current Epimorphics best-practice deployment patterns,

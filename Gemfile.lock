@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/epimorphics/qonsole-rails
-  revision: b31b5d2c4489ebda258081d7da1db05cffb1011a
+  revision: 40c646990549c4e8697cf177d6bc47a6ebf09b32
   specs:
     qonsole-rails (0.6.1)
       codemirror-rails (~> 5.11)
@@ -61,7 +61,7 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.2.0)
+    autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
     bindex (0.8.1)
     bootstrap-sass (3.4.1)
@@ -76,7 +76,7 @@ GEM
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
-    faraday (0.17.5)
+    faraday (0.17.6)
       multipart-post (>= 1.2, < 3)
     faraday-encoding (0.0.5)
       faraday
@@ -125,7 +125,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.6.1)
+    json (2.6.3)
     lodash-rails (4.17.21)
       railties (>= 3.1)
     lograge (0.12.0)
@@ -145,7 +145,7 @@ GEM
     modernizr-rails (2.7.1)
     modulejs-rails (2.2.0.0)
       railties (>= 4.0)
-    multipart-post (2.1.1)
+    multipart-post (2.3.0)
     nio4r (2.5.8)
     nokogiri (1.13.3-x86_64-darwin)
       racc (~> 1.4)
@@ -259,11 +259,11 @@ GEM
 GEM
   remote: https://rubygems.pkg.github.com/epimorphics/
   specs:
-    json_rails_logger (0.3.4)
+    json_rails_logger (0.3.5.3)
       json
       lograge
       railties
-    lr_common_styles (1.9.0)
+    lr_common_styles (1.9.1.1)
       bootstrap-sass (~> 3.4.0)
       font-awesome-rails (~> 4.7.0.1)
       govuk_elements_rails (~> 2.0.0)
@@ -279,6 +279,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-17
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -287,8 +288,8 @@ DEPENDENCIES
   http_accept_language
   jbuilder (~> 2.0)
   jquery-rails
-  json_rails_logger!
-  lr_common_styles!
+  json_rails_logger (~> 0.3.5)!
+  lr_common_styles (~> 1.9.1)!
   prometheus-client (~> 4.0)
   puma
   qonsole-rails!
@@ -301,4 +302,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.2.32
+   2.4.4
