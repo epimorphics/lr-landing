@@ -5,11 +5,16 @@ set -e
 rm -f ./tmp/pids/server.pid
 mkdir -pm 1777 ./tmp
 
+# This is set to the name of the application for logging purposes
+PUBLIC_NAME="LR Landing"
+
 # Set the environment
 if [ -z "$RAILS_ENV" ]
 then
   export RAILS_ENV=production
 fi
+
+echo "{\"ts\": $(date -u +%FT%T.%3NZ), \"level\": \"INFO\", \"message\": \"Initiating ${PUBLIC_NAME} application using APPLICATION_ROOT=${APPLICATION_ROOT}, API_SERVICE_URL=${API_SERVICE_URL}}"
 
 # Handle secrets based on env
 if [ "$RAILS_ENV" == "production" ] && [ -z "$SECRET_KEY_BASE" ]
@@ -21,6 +26,6 @@ fi
 export RAILS_RELATIVE_URL_ROOT=${APPLICATION_ROOT:-'/app/root'}
 export SCRIPT_NAME=${RAILS_RELATIVE_URL_ROOT}
 
-echo '{"ts": "'"$(date -u +%FT%T.%3NZ)"'", "level": "INFO", "message": "Starting LR Landing application with RAILS_ENV='"${RAILS_ENV}"'", "RAILS_RELATIVE_URL_ROOT"="'"${RAILS_RELATIVE_URL_ROOT}"'", "SCRIPT_NAME"="'"${SCRIPT_NAME}"'", "API_SERVICE_URL"="'"${API_SERVICE_URL}"'"}'
+echo "{\"ts\": $(date -u +%FT%T.%3NZ), \"level\": \"INFO\", \"message\": \"Starting ${PUBLIC_NAME} application with RAILS_ENV=\"${RAILS_ENV}\", \"RAILS_RELATIVE_URL_ROOT\"=\"${RAILS_RELATIVE_URL_ROOT}\", \"SCRIPT_NAME\"=\"${SCRIPT_NAME}\"}"
 
 exec ./bin/rails server -e "${RAILS_ENV}" -b 0.0.0.0

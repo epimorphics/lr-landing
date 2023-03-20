@@ -34,20 +34,22 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
+  
+  # Don't print a log message every time an asset file is loaded
   config.assets.quiet = true
 
   config.log_tags = %i[subdomain request_id request_method]
   $stdout.sync = true
   config.logger = JsonRailsLogger::Logger.new($stdout)
 
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
-
-  # The application path can be specified in the entrypoint.sh script
-  # but falls back to a standard root value in development
+  # The RAILS_RELATIVE_URL_ROOT should be specified in the entrypoint.sh script
+  # but this passes in a standard root value in development if the app is run
+  # directly via rails s
   config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
-  # API location is not used on the landing page, but is required by all other apps
+
+  # API_SERVICE_URL is not used on the landing page, but set in the Makefile as
+  # an env variable for the docker container when run as an image.
+  # API_SERVICE_URL is required by all other apps
 
   config.accessibility_document_path = '/doc/accessibility'
   config.privacy_document_path = '/doc/privacy'

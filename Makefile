@@ -75,7 +75,7 @@ run:
 	@echo "Stopping ${SHORTNAME} ..."
 	@-docker stop ${SHORTNAME} && sleep 10
 	@echo "Starting ${SHORTNAME} ..."
-	@docker run -e APPLICATION_ROOT=${APPLICATION_ROOT} -e API_SERVICE_URL=${API_SERVICE_URL} --add-host host.docker.internal:host-gateway -p 3000:3000 --rm --name ${SHORTNAME} ${REPO}:${TAG}
+	@docker run -e API_SERVICE_URL=${API_SERVICE_URL} --add-host host.docker.internal:host-gateway -p 3000:3000 --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 tag:
 	@echo ${TAG}

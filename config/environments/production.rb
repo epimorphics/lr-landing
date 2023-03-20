@@ -24,7 +24,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'] || true
+  config.public_file_server.enabled = ENV.fetch('RAILS_SERVE_STATIC_FILES', true)
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -64,9 +64,6 @@ Rails.application.configure do
     'Expires' => 5.minutes.from_now.to_formatted_s(:rfc822)
   }
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -78,16 +75,17 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  # config.log_formatter = ::Logger::Formatter.new
+  # The RAILS_RELATIVE_URL_ROOT env var should NOT be used in Production
+  # The default value is passed in as the compiled assets have no knowledge of
+  # the base path and utilise the config.relative_url_root value to prefix the
+  # compiled asset paths
+  config.relative_url_root = '/app/root'
 
-  # The application root should be specified in the entrypoint.sh file and therefore
-  # in Production no fall back values are passed on the basis that missing
-  # configuration options represent a category of bug, and in that case the
-  # deployment should fail fast and noisily.
-  config.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT']
-  # API location is not used on the landing page, but is required by all other apps
+  # API_SERVICE_URL is not used on the landing page, but set in the Makefile as
+  # an env variable for the docker container when run as an image.
+  # API_SERVICE_URL is required by all other LR apps except Qonsole
 
+  # Use default paths for documentation.
   config.accessibility_document_path = '/accessibility'
   config.privacy_document_path = '/privacy'
 
