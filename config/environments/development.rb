@@ -12,7 +12,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -34,28 +34,31 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-  
+
   # Don't print a log message every time an asset file is loaded
   config.assets.quiet = true
 
+  # Tag rails logs with useful information
   config.log_tags = %i[subdomain request_id request_method]
+  # When sync mode is true, all output is immediately flushed to the underlying
+  # operating system and is not buffered by Ruby internally.
   $stdout.sync = true
+  # Log the stdout output to the Epimorphics JSON logging gem
   config.logger = JsonRailsLogger::Logger.new($stdout)
 
   # The RAILS_RELATIVE_URL_ROOT should be specified in the entrypoint.sh script
   # but this passes in a standard root value in development if the app is run
-  # directly via rails s
+  # directly via `rails server`
   config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
 
   # API_SERVICE_URL is not used on the landing page, but set in the Makefile as
   # an env variable for the docker container when run as an image.
   # API_SERVICE_URL is required by all other apps
 
+  # Use default paths for documentation.
   config.accessibility_document_path = '/doc/accessibility'
   config.privacy_document_path = '/doc/privacy'
 
-  # feature flag for showing the Welsh language switch affordance
-  config.welsh_language_enabled = true
-
+  # Set the contact email address to Land Registry supplied address
   config.contact_email_address = 'data.services@mail.landregistry.gov.uk'
 end
