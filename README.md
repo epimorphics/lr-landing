@@ -2,12 +2,16 @@
 
 This repo provides the landing page experience for visitors to
 [landregistry.data.gov.uk](http://landregistry.data.gov.uk). The landing page
-provides links to the various open data services (Price Paid Data Explorer,
-Standard Reports and UK Housing Price Index), and hosts the qonsole app, which
-allows users to run SPARQL queries against the linked-data dataset.
+provides links to the various open data services ([Price Paid Data
+Explorer](http://landregistry.data.gov.uk/app/ppd), [Standard
+Reports](http://landregistry.data.gov.uk/app/standard-reports) and [UK Housing
+Price Index](http://landregistry.data.gov.uk/app/ppukhpi)), and hosts the
+qonsole app, which allows users to run SPARQL queries against the linked-data
+dataset.
 
-Please see the other repositories in the [HM Land Registry Open Data](https://github.com/epimorphics/hmlr-linked-data/)
-project for more details:
+Please see the other repositories in the [HM Land Registry Open
+Data](https://github.com/epimorphics/hmlr-linked-data/) project for more
+details:
 
 - [HMLR Common Styles](https://github.com/epimorphics/lr_common_styles)
 - [PPD Explorer](https://github.com/epimorphics/ppd-explorer)
@@ -27,8 +31,8 @@ identifier in line with semver principles.
 
 ### Running the app locally in dev mode
 
-Begin by cloning [the Github
-repo](https://github.com/epimorphics/lr-landing) and installing the dependencies:
+Begin by cloning [the Github repo](https://github.com/epimorphics/lr-landing)
+and installing the dependencies:
 
 ```sh
 git clone git@github.com:epimorphics/lr-landing.git &&
@@ -62,17 +66,18 @@ creating a Docker image, then you can run the image with the following command:
 make run
 ```
 
-N.B In the production environment, the app will be accessed via the URL path `/app/root`.
-When running the docker image locally for development, you may need to access the
-application via a proxy, otherwise, the paths for JS, CSS and image assets might
-not work.
+N.B In the production environment, the app will be accessed via the URL path
+`/app/root`. When running the docker image locally for development, you may need
+to access the application via a proxy, otherwise, the paths for JS, CSS and
+image assets might not work.
 
-Please see the *[simple web proxy](https://github.com/epimorphics/simple-web-proxy)*
-repository for one simple way of handling this on a local develpment machine.
+Please see the *[simple web
+proxy](https://github.com/epimorphics/simple-web-proxy)* repository for one
+simple way of handling this on a local develpment machine.
 
 With the proxy and Docker container running you can access the application as
-[`localhost:3001/app/root/`](http://localhost:3001/app/root/)
-(note the trailing path).
+[`localhost:3001/app/root/`](http://localhost:3001/app/root/) (note the trailing
+path).
 
 ### Code standards
 
@@ -97,19 +102,21 @@ rails -t
 
 ### Dependent gems
 
-Most of the local (i.e. Epimorphics) gems that this project depends on are served
-via GitHub Package Registry (GPR). Specifically, `lr_common_styles` and `json-rails-logger`.
+Most of the local (i.e. Epimorphics) gems that this project depends on are
+served via GitHub Package Registry (GPR). Specifically, `lr_common_styles` and
+`json-rails-logger`.
 
 However, `qonsole-rails` is __not__ served via GPR at present, mostly because we
 are hoping to retire it in favour of a new implementation of Qonsole. Since
 `qonsole-rails` is a public repo, this dependency does not require us to lean on
-the old pattern of using an ssh key to serve private gems directly from a
-GitHub repo.
+the old pattern of using an ssh key to serve private gems directly from a GitHub
+repo.
 
-Accessing gems from GPR will require a personal access token (PAT). To store this
-locally, use `make auth` to set your GitHub Token using the PAT.
+Accessing gems from GPR will require a personal access token (PAT). To store
+this locally, use `make auth` to set your GitHub Token using the PAT.
 
-To create a PAT, see [the Epimorphics wiki](https://github.com/epimorphics/internal/wiki/Ansible-CICD#creating-a-pat-for-gpr-access).
+To create a PAT, see [the Epimorphics
+wiki](https://github.com/epimorphics/internal/wiki/Ansible-CICD#creating-a-pat-for-gpr-access).
 
 ## Issues
 
@@ -143,8 +150,8 @@ contained changes as well as the ability to diff agains the previous version.
 
 ### Configuration environment variables
 
-We can use a number of environment variables to determine the runtime behaviour of
-the application while developing the codebase locally:
+We can use a number of environment variables to determine the runtime behaviour
+of the application while developing the codebase locally:
 
 | name                       | description                                                          | typical value           |
 | -------------------------- | -------------------------------------------------------------------- | ----------------------- |
