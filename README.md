@@ -48,37 +48,6 @@ rails server
 
 Visit [`localhost:3000`](http://localhost:3000/) to view the local instance.
 
-### Running the app locally as a Docker image
-
-It can be useful to run the compiled Docker image, that will be run by the
-production installation, locally yourself.
-
-To mimic running the application in a deployed state you can call:
-
-```sh
-make image
-```
-
-This will run through the assets precompilation, linting and testing before
-creating a Docker image, then you can run the image with the following command:
-
-```sh
-make run
-```
-
-N.B In the production environment, the app will be accessed via the URL path
-`/app/root`. When running the docker image locally for development, you may need
-to access the application via a proxy, otherwise, the paths for JS, CSS and
-image assets might not work.
-
-Please see the *[simple web
-proxy](https://github.com/epimorphics/simple-web-proxy)* repository for one
-simple way of handling this on a local develpment machine.
-
-With the proxy and Docker container running you can access the application as
-[`localhost:3001/app/root/`](http://localhost:3001/app/root/) (note the trailing
-path).
-
 ### Code standards
 
 Rubocop should return zero errors or warnings:
@@ -94,11 +63,55 @@ Inspecting 30 files
 
 ### Running the tests
 
-There aren't very many tests as this is a very simple app.
+While there aren't very many tests, as this is a very simple app, the tests should
+be updated when required and always verified as still passing.
 
 ```sh
 rails -t
+
+[...]
+
+Finished in 1.607288s, 4.3552 runs/s, 5.5995 assertions/s.
+7 runs, 9 assertions, 0 failures, 0 errors, 0 skips
 ```
+
+### Running the app locally as a Docker image
+
+It can be useful to run the compiled Docker image, that will be run by the
+production installation, locally yourself.
+
+To mimic running the application in a deployed state you can call:
+
+```sh
+make image
+```
+
+This will run through the assets precompilation before creating a Docker image,
+then you can run the image with the following command:
+
+```sh
+make run
+```
+
+You can use the env variables [below](#configuration-environment-variables) to
+set those values to work in your local environment if needed, for example:
+
+```sh
+APPLICATION_ROOT=/ make image run
+```
+
+N.B In the production environment, the app will be accessed via the URL path
+`/app/root`. When running the docker image locally for development, you may need
+to access the application via a proxy, otherwise, the paths for JS, CSS and
+image assets might not work.
+
+Please see the *[simple web
+proxy](https://github.com/epimorphics/simple-web-proxy)* repository for one
+simple way of handling this on a local develpment machine.
+
+With the proxy and Docker container running you can access the application as
+[`localhost:3030/app/root`](http://localhost:3030/app/root) (note the trailing
+path).
 
 ### Dependent gems
 
