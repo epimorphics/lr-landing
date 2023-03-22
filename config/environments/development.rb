@@ -46,8 +46,9 @@ Rails.application.configure do
   # Log the stdout output to the Epimorphics JSON logging gem
   config.logger = JsonRailsLogger::Logger.new($stdout)
 
-  # The RAILS_RELATIVE_URL_ROOT should be specified in the entrypoint.sh script
-  # but this passes in a standard root value in development if the app is run
+  # The RAILS_RELATIVE_URL_ROOT should be set in the entrypoint.sh script via the
+  # build-time environment variable `APPLICATION_ROOT`; however, if this is not set
+  # the following fallback is passed in as a standard root value when the app is run
   # directly via `rails server`
   config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
 
