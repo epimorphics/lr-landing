@@ -3,13 +3,6 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
-## 1.5.8 - 2022-10-10
-
-- (Jon) Updated accessibility statement to reflect the adjusted release dates
-  for both the expected Qonsole update and preparation timestamp alongside the
-  removal of the deadlines for test revisions. Also includes minor copy changes
-  to resolve typos/punctuation issues.
-
 ## 1.7.1 - 2023-03-16
 
 - (Jon) Updated the README to improve the clarity of the instructions for
@@ -40,6 +33,13 @@ including the SPARQL Qonsole
   including shared GitHub actions, updated Makefile and Dockerfile, Prometheus
   monitoring, and updated version of Sentry.
 - (Ian) Updated the README as part of handover.
+
+## 1.5.8 - 2022-10-10
+
+- (Jon) Updated accessibility statement to reflect the adjusted release dates
+  for both the expected Qonsole update and preparation timestamp alongside the
+  removal of the deadlines for test revisions. Also includes minor copy changes
+  to resolve typos/punctuation issues.
 
 ## 1.5.7 - 2021-12-01
 
