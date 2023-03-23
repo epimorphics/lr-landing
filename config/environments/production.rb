@@ -85,7 +85,7 @@ Rails.application.configure do
   # in Production no fall back values are passed on the basis that missing
   # configuration options represent a category of bug, and in that case the
   # deployment should fail fast and noisily.
-  config.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT']
+  config.relative_url_root = "/app/root"
   # API location is not used on the landing page, but is required by all other apps
 
   config.accessibility_document_path = '/accessibility'

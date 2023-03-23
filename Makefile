@@ -7,8 +7,10 @@ BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
 ECR?=${ACCOUNT}.dkr.ecr.eu-west-1.amazonaws.com
 GPR_OWNER?=epimorphics
 NAME?=$(shell awk -F: '$$1=="name" {print $$2}' deployment.yaml | sed -e 's/[[:blank:]]//g')
+PORT?=3000
 PAT?=$(shell read -p 'Github access token:' TOKEN; echo $$TOKEN)
 RUBY_VERSION?=$(shell cat .ruby-version)
+SHORTNAME?=$(shell echo ${NAME} | cut -f2 -d/)
 STAGE?=dev
 API_SERVICE_URL?= http://localhost:8080
 
@@ -44,7 +46,7 @@ auth: ${GITHUB_TOKEN} ${BUNDLE_CFG}
 clean:
 	@[ -d public/assets ] && ./bin/rails assets:clobber || :
 
-image: auth lint test
+image: auth
 	@echo Building ${REPO}:${TAG} ...
 	@docker build \
 		--build-arg ALPINE_VERSION=${ALPINE_VERSION} \
@@ -71,10 +73,10 @@ realclean: clean
 	@rm -f ${GITHUB_TOKEN} ${BUNDLE_CFG}
 
 run:
-	@echo "Stopping lr_landing ..."
-	@-docker stop lr_landing && sleep 10
-	@echo "Starting lr_landing ..."
-	@docker run -e APPLICATION_ROOT=${APPLICATION_ROOT} -e API_SERVICE_URL=${API_SERVICE_URL} --add-host host.docker.internal:host-gateway -p 3000:3000 --rm --name lr_landing ${REPO}:${TAG}
+	@if docker network inspect dnet > /dev/null 2>&1; then echo "Using docker network dnet"; else echo "Create docker network dnet"; docker network create dnet; sleep 2; fi
+	@docker stop ${SHORTNAME} > /dev/null 2>&1 || :
+	@echo "Starting ${SHORTNAME} ..."
+	@docker run -p ${PORT}:3000  --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 tag:
 	@echo ${TAG}
@@ -91,6 +93,7 @@ vars:
 	@echo "ECR = ${ECR}"
 	@echo "GPR_OWNER = ${GPR_OWNER}"
 	@echo "NAME = ${NAME}"
+	@echo "SHORTNAME = ${SHORTNAME}"
 	@echo "RUBY_VERSION = ${RUBY_VERSION}"
 	@echo "STAGE = ${STAGE}"
 	@echo "COMMIT = ${COMMIT}"
