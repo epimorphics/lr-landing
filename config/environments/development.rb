@@ -46,15 +46,13 @@ Rails.application.configure do
   # Log the stdout output to the Epimorphics JSON logging gem
   config.logger = JsonRailsLogger::Logger.new($stdout)
 
-  # The RAILS_RELATIVE_URL_ROOT should be set in the entrypoint.sh script via the
-  # build-time environment variable `APPLICATION_ROOT`; however, if this is not set
-  # the following fallback is passed in as a standard root value when the app is run
-  # directly via `rails server`
-  config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
+  # By default Rails expects that your application is running at the root (e.g. /).
+  # This configuration sets running your application inside a directory.
+  # Rails needs to know this directory to generate the appropriate routes.
+  # Alternatively you can set the RAILS_RELATIVE_URL_ROOT environment variable.
+  config.relative_url_root = '/'
 
-  # API_SERVICE_URL is not used on the landing page, but set in the Makefile as
-  # an env variable for the docker container when run as an image.
-  # API_SERVICE_URL is required by all other apps
+  # API location is not used on the landing page, but is required by all other apps
 
   # Use default paths for documentation.
   config.accessibility_document_path = '/doc/accessibility'

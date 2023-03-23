@@ -80,10 +80,10 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # The RAILS_RELATIVE_URL_ROOT env var should NOT be used in Production
-  # The default value is passed in as the compiled assets have no knowledge of
-  # the base path and utilise the config.relative_url_root value to prefix the
-  # compiled asset paths
+  # By default Rails expects that your application is running at the root (e.g. /).
+  # This configuration sets running your application inside a directory.
+  # Rails needs to know this directory to generate the appropriate routes.
+  # Alternatively you can set the RAILS_RELATIVE_URL_ROOT environment variable.
   config.relative_url_root = '/app/root'
 
   # API location is not used on the landing page, but is required by all other apps
