@@ -21,6 +21,9 @@ RUN apk add --update build-base
 
 WORKDIR /usr/src/app
 
+# Set default values to arguments to be used as environment variables
+ARG RAILS_ENV=production
+
 COPY config.ru Gemfile Gemfile.lock Rakefile ./
 COPY .bundle/config /root/.bundle/config
 COPY bin bin
@@ -34,7 +37,8 @@ COPY public public
 
 # Compile
 
-RUN RAILS_ENV=production bundle exec rake assets:precompile \
+RUN RAILS_ENV=$RAILS_ENV \
+  bundle exec rake assets:precompile \
   && mkdir -m 777 /usr/src/app/coverage
 
 # Start a new build stage to minimise the final image size

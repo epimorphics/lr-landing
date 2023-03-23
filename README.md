@@ -164,10 +164,7 @@ contained changes as well as the ability to diff agains the previous version.
 ### Configuration environment variables
 
 We can use a number of environment variables to determine the runtime behaviour
-of the application while developing the codebase locally:
 
-| name                       | description                                                          | typical value           |
-| -------------------------- | -------------------------------------------------------------------- | ----------------------- |
-| `APPLICATION_ROOT`         | The path from the server root to the application                     | `/app/root`             |
-| `API_SERVICE_URL`          | The base URL from which data is accessed, including the HTTP scheme  | `http://localhost:8080` |
-| `SENTRY_API_KEY`           | The Sentry DSN client key for the `lr-dgu-landing` Sentry app        |                         |
+| name                       | description                                                          |
+| -------------------------- | -------------------------------------------------------------------- |
+| `SENTRY_API_KEY`           | The Sentry DSN client key for the `lr-dgu-landing` Sentry app        |

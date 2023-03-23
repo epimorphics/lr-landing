@@ -86,9 +86,7 @@ Rails.application.configure do
   # compiled asset paths
   config.relative_url_root = '/app/root'
 
-  # API_SERVICE_URL is not used on the landing page, but set in the Makefile as
-  # an env variable for the docker container when run as an image.
-  # API_SERVICE_URL is required by all other LR apps except Qonsole
+  # API location is not used on the landing page, but is required by all other apps
 
   # Use default paths for documentation.
   config.accessibility_document_path = '/accessibility'
