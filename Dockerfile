@@ -22,9 +22,6 @@ RUN apk add --update build-base
 
 WORKDIR /usr/src/app
 
-# Set default values to arguments to be used as environment variables
-ARG RAILS_ENV=production
-
 COPY config.ru Gemfile Gemfile.lock Rakefile ./
 
 # Copy the bundle config
@@ -44,7 +41,7 @@ COPY public public
 
 # Compile
 
-RUN RAILS_ENV=$RAILS_ENV \
+RUN RAILS_ENV=production \
   bundle exec rake assets:precompile \
   && mkdir -m 777 /usr/src/app/coverage
 
@@ -72,8 +69,6 @@ COPY --from=builder --chown=app /usr/local/bundle /usr/local/bundle
 COPY --from=builder --chown=app /usr/src/app .
 
 USER app
-
-ENV RAILS_ENV=$RAILS_ENV
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh "/app/entrypoint.sh"
