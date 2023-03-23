@@ -3,8 +3,10 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
-## 1.7.1 - 2023-03-16
+## 1.7.1 - 2023-03-23
 
+- (Jon) Updated to handle locking the root path for individual environments as
+  well as removing unnecessary environment variables.
 - (Jon) Updated the README to improve the clarity of the instructions for
   running the application locally.
 - (Jon) Resolved incorrect traps for missing env vars in `entrypoint.sh`, added

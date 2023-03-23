@@ -75,12 +75,12 @@ Finished in 1.607288s, 4.3552 runs/s, 5.5995 assertions/s.
 7 runs, 9 assertions, 0 failures, 0 errors, 0 skips
 ```
 
-### Running the app locally as a Docker image
+### Creating and running the app locally as a Docker image
 
 It can be useful to run the compiled Docker image, that will be run by the
 production installation, locally yourself.
 
-To mimic running the application in a deployed state you can call:
+To build a docker image locally, run the following command:
 
 ```sh
 make image
@@ -93,24 +93,16 @@ then you can run the image with the following command:
 make run
 ```
 
-You can use the env variables [below](#configuration-environment-variables) to
-set those values to work in your local environment if needed, for example:
-
-```sh
-APPLICATION_ROOT=/ make image run
-```
-
-N.B In the production environment, the app will be accessed via the URL path
-`/app/root`. When running the docker image locally for development, you may need
-to access the application via a proxy, otherwise, the paths for JS, CSS and
-image assets might not work.
+N.B The docker image is built with a base path because the prodcution environment
+utilises a proxy to ensure the correct application is accessed. You will need
+to access the application via a local proxy to display the application correctly.
 
 Please see the *[simple web
 proxy](https://github.com/epimorphics/simple-web-proxy)* repository for one
 simple way of handling this on a local develpment machine.
 
 With the proxy and Docker container running you can access the application as
-[`localhost:3030/app/root`](http://localhost:3030/app/root) (note the trailing
+[`localhost:8080/app/root`](http://localhost:8080/app/root) (note the trailing
 path).
 
 ### Dependent gems
