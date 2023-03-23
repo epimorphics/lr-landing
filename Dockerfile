@@ -73,10 +73,7 @@ COPY --from=builder --chown=app /usr/src/app .
 
 USER app
 
-# Assign the appropriate ARG to the corresponding ENV so that it can be accessed
-# by the subsequent calls within the container
 ENV RAILS_ENV=$RAILS_ENV
-ENV APPLICATION_ROOT=$APPLICATION_ROOT
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh "/app/entrypoint.sh"
