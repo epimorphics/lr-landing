@@ -93,7 +93,7 @@ then you can run the image with the following command:
 make run
 ```
 
-N.B The docker image is built with a base path because the prodcution environment
+N.B The docker image is built with a base path because the production environment
 utilises a proxy to ensure the correct application is accessed. You will need
 to access the application via a local proxy to display the application correctly.
 
