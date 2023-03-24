@@ -7,12 +7,11 @@ BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
 ECR?=${ACCOUNT}.dkr.ecr.eu-west-1.amazonaws.com
 GPR_OWNER?=epimorphics
 NAME?=$(shell awk -F: '$$1=="name" {print $$2}' deployment.yaml | sed -e 's/[[:blank:]]//g')
-PORT?=3000
 PAT?=$(shell read -p 'Github access token:' TOKEN; echo $$TOKEN)
+PORT?=3000
 RUBY_VERSION?=$(shell cat .ruby-version)
 SHORTNAME?=$(shell echo ${NAME} | cut -f2 -d/)
 STAGE?=dev
-API_SERVICE_URL?= http://localhost:8080
 
 BRANCH:=$(shell git rev-parse --abbrev-ref HEAD)
 COMMIT=$(shell git rev-parse --short HEAD)
@@ -93,8 +92,8 @@ vars:
 	@echo "ECR = ${ECR}"
 	@echo "GPR_OWNER = ${GPR_OWNER}"
 	@echo "NAME = ${NAME}"
-	@echo "SHORTNAME = ${SHORTNAME}"
 	@echo "RUBY_VERSION = ${RUBY_VERSION}"
+	@echo "SHORTNAME = ${SHORTNAME}"
 	@echo "STAGE = ${STAGE}"
 	@echo "COMMIT = ${COMMIT}"
 	@echo "TAG = ${TAG}"
