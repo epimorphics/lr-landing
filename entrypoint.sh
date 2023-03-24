@@ -19,6 +19,6 @@ then
   export SECRET_KEY_BASE
 fi
 
-echo "{\"ts\":\"$(date -u +%FT%T.%3NZ)\",\"level\":\"INFO\",\"message\":\"exec ./bin/rails server -e \"${RAILS_ENV}\" -b 0.0.0.0\"}"
+echo "{\"ts\":\"$(date -u +%FT%T.%3NZ)\",\"level\":\"INFO\",\"message\":\"exec ./bin/rails server -e ${RAILS_ENV} -b 0.0.0.0\"}"
 
-exec ./bin/rails server -e "${RAILS_ENV}" -b 0.0.0.0
+exec ./bin/rails server -e ${RAILS_ENV} -b 0.0.0.0
