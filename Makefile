@@ -75,7 +75,7 @@ run:
 	@if docker network inspect dnet > /dev/null 2>&1; then echo "Using docker network dnet"; else echo "Create docker network dnet"; docker network create dnet; sleep 2; fi
 	@docker stop ${SHORTNAME} > /dev/null 2>&1 || :
 	@echo "Starting ${SHORTNAME} ..."
-	@docker run -p ${PORT}:3000  --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
+	@docker run -p ${PORT}:3000 --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 tag:
 	@echo ${TAG}
