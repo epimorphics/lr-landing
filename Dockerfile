@@ -5,7 +5,6 @@ ARG RUBY_VERSION
 FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION} as base
 ARG BUNDLER_VERSION
 
-
 RUN apk add --update \
     bash \
     coreutils \
@@ -23,13 +22,7 @@ RUN apk add --update build-base
 WORKDIR /usr/src/app
 
 COPY config.ru Gemfile Gemfile.lock Rakefile ./
-
-# Copy the bundle config
-# **Important** the destination for this copy **must not** be in WORKDIR,
-# or there is a risk that the GitHub PAT could be part of the final image
-# in a potentially leaky way
 COPY .bundle/config /root/.bundle/config
-
 COPY bin bin
 
 RUN ./bin/bundle config set --local without 'development test' && ./bin/bundle install && mkdir log
@@ -40,7 +33,6 @@ COPY lib lib
 COPY public public
 
 # Compile
-
 RUN RAILS_ENV=production \
   bundle exec rake assets:precompile \
   && mkdir -m 777 /usr/src/app/coverage
