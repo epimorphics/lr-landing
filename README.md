@@ -15,6 +15,79 @@ project for more details:
 - [UKHPI](https://github.com/epimorphics/ukhpi)
 - [Qonsole (Rails)](https://github.com/epimorphics/qonsole-rails)
 
+## Production Mode
+
+Unlike other HMLR applications, the Landing application does not run run from 
+a sub-diretory. As such Production and deveolpment mode run at teh same location.
+
+If running more than one application locally ensure that each is listerning on a
+separate port. In the case of running local docker images, the required
+configuration is captured in the `Makefile` and an image can be run by using
+
+```sh
+make image run
+```
+
+or, if the image is already built, simply
+
+```sh
+make run
+```
+
+For rails applications you can start the server locally using the following command:
+
+```sh
+rails server -e production -p <port> -b 0.0.0.0
+```
+
+To test the running application visit `localhost:<port>`.
+
+For information on how to running a proxy to mimic production and run multple services
+together see [simple-web-proxy](https://github.com/epimorphics/simple-web-proxy/edit/main/README.md)
+
+## Runtime Configuration environment variables
+
+We use a number of environment variables to determine the runtime behaviour
+of the application:
+
+| name                       | description                                                             | default value              |
+| -------------------------- | ----------------------------------------------------------------------- | -------------------------- |
+| `SENTRY_API_KEY`           | The DSN for sending reports to the PPD Sentry account                   | None                       |
+
+## Deployment
+
+The detailed deployment mapping is decscribed in `deployment.yml`. At the time
+of writing, using the new infrastructure, the deployment process is as follows:
+
+- commits to the `dev-infrastructure` branch will deploy the dev server
+- commits to the `preprod` branch will deploy the pre-production server
+- any commit on the `prod` branch will deploy the production server as a new
+  release
+
+If the commit is a "new" release, the deployment should be tagged with the same
+version number, e.g. `1.2.3`. as set in the `/app/lib/version.rb` and a short
+annotation summarising the updates should be included in the tag.
+
+Once the production deployment has been completed and verified, please create a
+release on the repository using the same latest version number. Utilise the
+`Generate release notes from commit log` option to create specific notes on the
+contained changes as well as the ability to diff agains the previous version.
+
+### `entrypoint.sh`
+
+- There is a workaround to removing the PID lock of the Rails process in the
+  event of the application crashing and not releasing the process.
+- The Rails secret is created here.
+
+### Runtime Configuration environment variables
+
+We can use a number of environment variables to determine the runtime behaviour of
+the application while developing the codebase locally:
+
+| name                       | description                                                          |
+| -------------------------- | -------------------------------------------------------------------- |
+| `SENTRY_API_KEY`           | The Sentry DSN client key for the `lr-dgu-landing` Sentry app        |
+
 ## Developer notes
 
 ### Updating the code
@@ -43,36 +116,6 @@ rails server
 ```
 
 Visit [`localhost:3000`](http://localhost:3000/) to view the local instance.
-
-### Running the app locally as a Docker image
-
-It can be useful to run the compiled Docker image, that will be run by the
-production installation, locally yourself.
-
-To mimic running the application in a deployed state you can call:
-
-```sh
-make image
-```
-
-This will run through the assets precompilation, linting and testing before
-creating a Docker image, then you can run the image with the following command:
-
-```sh
-make run
-```
-
-N.B In the production environment, the app will be accessed via the URL path `/app/root`.
-When running the docker image locally for development, you may need to access the
-application via a proxy, otherwise, the paths for JS, CSS and image assets might
-not work.
-
-Please see the *[simple web proxy](https://github.com/epimorphics/simple-web-proxy)*
-repository for one simple way of handling this on a local develpment machine.
-
-With the proxy and Docker container running you can access the application as
-[`localhost:3001/app/root/`](http://localhost:3001/app/root/)
-(note the trailing path).
 
 ### Code standards
 
@@ -116,36 +159,3 @@ To create a PAT, see [the Epimorphics wiki](https://github.com/epimorphics/inter
 Please add issues to the [shared issues
 list](https://github.com/epimorphics/hmlr-linked-data/issues)
 
-## Deployment
-
-The detailed deployment mapping is decscribed in `deployment.yml`. At the time
-of writing, using the new infrastructure, the deployment process is as follows:
-
-- commits to the `dev-infrastructure` branch will deploy the dev server
-- commits to the `preprod` branch will deploy the pre-production server
-- any commit on the `prod` branch will deploy the production server as a new
-  release
-
-If the commit is a "new" release, the deployment should be tagged with the same
-version number, e.g. `1.2.3`. as set in the `/app/lib/version.rb` and a short
-annotation summarising the updates should be included in the tag.
-
-Once the production deployment has been completed and verified, please create a
-release on the repository using the same latest version number. Utilise the
-`Generate release notes from commit log` option to create specific notes on the
-contained changes as well as the ability to diff agains the previous version.
-
-### `entrypoint.sh`
-
-- There is a workaround to removing the PID lock of the Rails process in the
-  event of the application crashing and not releasing the process.
-- The Rails secret is created here.
-
-### Configuration environment variables
-
-We can use a number of environment variables to determine the runtime behaviour of
-the application while developing the codebase locally:
-
-| name                       | description                                                          |
-| -------------------------- | -------------------------------------------------------------------- |
-| `SENTRY_API_KEY`           | The Sentry DSN client key for the `lr-dgu-landing` Sentry app        |
