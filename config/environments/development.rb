@@ -50,9 +50,11 @@ Rails.application.configure do
   # This configuration sets running your application inside a directory.
   # Rails needs to know this directory to generate the appropriate routes.
   # Alternatively you can set the RAILS_RELATIVE_URL_ROOT environment variable.
-  config.relative_url_root = '/'
+  config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
 
-  # API location is not used on the landing page, but is required by all other apps
+  # API location can be specified in the environment but defaults to the dev service
+  # Here we are still providing the API_SERVICE_URL for qonsole
+  config.api_service_url = ENV.fetch('API_SERVICE_URL', 'http://localhost:8888')
 
   # Use default paths for documentation.
   config.accessibility_document_path = '/doc/accessibility'
