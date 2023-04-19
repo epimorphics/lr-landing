@@ -26,7 +26,7 @@ module Rails
   # :nodoc:
   class Server
     # :nodoc:
-    def print_boot_information # rubocop:disable Metrics/AbcSize
+    def print_boot_information
       origin = "on #{options[:SSLEnable] ? 'https' : 'http'}://#{options[:Host]}:#{options[:Port]}"
 
       msg = {
@@ -35,7 +35,7 @@ module Rails
         message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{origin}"
       }
 
-      puts(msg.to_json)
+      puts(msg.to_json) # rubocop:disable Rails/Output
     end
   end
 end
