@@ -18,7 +18,7 @@ details:
 - [UKHPI](https://github.com/epimorphics/ukhpi)
 - [Qonsole (Rails)](https://github.com/epimorphics/qonsole-rails)
 
-## Developer notes
+## Additional Information
 
 ### Updating the code
 
