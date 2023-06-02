@@ -27,12 +27,12 @@ module Rails
   class Server
     # :nodoc:
     def print_boot_information
-      url = "on #{options[:SSLEnable] ? 'https' : 'http'}://#{options[:Host]}:#{options[:Port]}"
+      origin = "on #{options[:SSLEnable] ? 'https' : 'http'}://#{options[:Host]}:#{options[:Port]}"
 
       msg = {
         ts: DateTime.now.utc.strftime('%FT%T.%3NZ'),
         level: 'INFO',
-        message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{url}"
+        message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{origin}"
       }
 
       puts(msg.to_json) # rubocop:disable Rails/Output

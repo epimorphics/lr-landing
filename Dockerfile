@@ -32,7 +32,7 @@ COPY config config
 COPY lib lib
 COPY public public
 
-# Compile
+# Compile assets
 RUN RAILS_ENV=production \
   bundle exec rake assets:precompile \
   && mkdir -m 777 /usr/src/app/coverage

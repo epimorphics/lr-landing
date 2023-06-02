@@ -24,7 +24,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'] || true
+  config.public_file_server.enabled = ENV.fetch('RAILS_SERVE_STATIC_FILES', true)
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -37,7 +37,8 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.assets.precompile` and `config.assets.version` have moved to
+  # config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
@@ -46,8 +47,12 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
+  # Tag rails logs with useful information
   config.log_tags = %i[subdomain request_id request_method]
+  # When sync mode is true, all output is immediately flushed to the underlying
+  # operating system and is not buffered by Ruby internally.
   $stdout.sync = true
+  # Log the stdout output to the Epimorphics JSON logging gem
   config.logger = JsonRailsLogger::Logger.new($stdout)
 
   # Use a different cache store in production.
@@ -64,35 +69,34 @@ Rails.application.configure do
     'Expires' => 5.minutes.from_now.to_formatted_s(:rfc822)
   }
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = [I18n.default_locale]
+  # the I18n.default_locale when a translation can not be found).
+  config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  # config.log_formatter = ::Logger::Formatter.new
-
-  # The application root should be specified in the entrypoint.sh file and therefore
-  # in Production no fall back values are passed on the basis that missing
-  # configuration options represent a category of bug, and in that case the
-  # deployment should fail fast and noisily.
+  # The RAILS_RELATIVE_URL_ROOT env var should ONLY be used in a local environment.
+  # Here, the default value is passed in as the compiled assets have no knowledge
+  # of the base path and utilise the config.relative_url_root value to prefix the
+  # compiled asset paths
   config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
+
+  # API location can be specified in the environment
+  # But defaults to the dev service
   # API location is not used on the landing page, but is required by all other apps
 
+  # Use default paths for documentation.
   config.accessibility_document_path = '/accessibility'
   config.privacy_document_path = '/privacy'
 
   # feature flag for showing the Welsh language switch affordance
   config.welsh_language_enabled = true
 
+  # Set the contact email address to Land Registry supplied address
   config.contact_email_address = 'data.services@mail.landregistry.gov.uk'
 end
