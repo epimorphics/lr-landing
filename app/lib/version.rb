@@ -3,7 +3,7 @@
 module Version
   MAJOR = 1
   MINOR = 7
-  REVISION = 1
+  REVISION = 2
   SUFFIX = nil
   VERSION = "#{MAJOR}.#{MINOR}.#{REVISION}#{SUFFIX && ".#{SUFFIX}"}"
 end
