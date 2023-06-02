@@ -36,7 +36,7 @@ end
 # TODO: While running the rails app locally for testing you can set gems to your local path
 # ! These "local" paths do not work with a docker image - use the repo instead
 # gem 'qonsole-rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
-# gem 'json_rails_logger', '~> 0.3.5', path: '~/Epimorphics/shared/json-rails-logger/'
+# gem 'json_rails_logger', '~> 1.0.0', path: '~/Epimorphics/shared/json-rails-logger/'
 # gem 'lr_common_styles', '~> 1.9.1', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles/'
 # rubocop:enable Layout/LineLength
 
@@ -45,6 +45,6 @@ gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
 
 # TODO: In production you want to set this to the gem from the epimorphics package repo
 source 'https://rubygems.pkg.github.com/epimorphics' do
-  gem 'json_rails_logger', '~> 0.3.5'
+  gem 'json_rails_logger', '~> 1.0.0'
   gem 'lr_common_styles', '~> 1.9.1'
 end
