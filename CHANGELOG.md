@@ -3,6 +3,12 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 1.7.3.1 - 2023-07-11
+
+- (Jon) Updated the `app/controllers/application_controller.rb` to include the
+  `before_action` for the `change_default_caching_policy` method to ensure the
+  default `Cache-Control` header for all requests is set to 5 minutes (300 seconds).
+
 ## 1.7.3 - 2023-06-07
 
 - (Jon) Updated the `json_rails_logger` gem to the latest 1.0.1 patch release.
