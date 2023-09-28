@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class LandingControllerTest < ActionController::TestCase
+class LandingControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

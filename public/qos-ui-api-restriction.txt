@@ -1,0 +1,23 @@
+If you are seeing this it is because you have been programatically accessing a URL that
+it is intended for use only by HM Land Registry applications.
+
+If you wish to access HM Land Registry data in bulk, please download the bulk data file, e.g. at
+
+  https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads  
+
+If you wish to make adhoc queries of the HM Land Registry data, please use the documented data access APIs, e.g.
+
+  https://landregistry.data.gov.uk/app/root/doc/ppd
+  
+or the SPARQL endpoint at:
+
+  https://landregistry.data.gov.uk/landregistry/query
+  
+The data APIs and SPARQL endpoint are not intended for bulk data access and their are restrictions on access rates.
+
+If you believe your are seeing this message in error, or wish further help to make use of
+HM Land Registry data, please contact:
+
+Email data.services@landregistry.gov.uk 
+Telephone 0300 006 0478
+Web: https://help.landregistry.gov.uk/app/contactus_general/

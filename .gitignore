@@ -4,15 +4,26 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
-/.bundle
-
-# Ignore all logfiles and tempfiles.
-/log/*
 !/log/.keep
-/tmp
 .byebug_history
-public/assets
 .github-token
 .npmrc
+.tags
 .vscode
+.yarn-integrity
+/.bundle
+/log/*
+/node_modules
+/public/packs
+/public/packs-test
+/tmp
+coverage
+fc_simple.json
+fc.json
+index-names.txt
+index.json
+node_modules/
+public/assets
+tags
+yarn-debug.log*
+yarn-error.log

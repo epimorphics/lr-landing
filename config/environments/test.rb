@@ -7,7 +7,7 @@ Rails.application.configure do
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
-  config.cache_classes = true
+  config.cache_classes = false
 
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
@@ -15,11 +15,11 @@ Rails.application.configure do
   config.eager_load = false
 
   # Configure static file server for tests with Cache-Control for performance.
-  config.serve_static_files   = true
-  config.static_cache_control = 'public, max-age=3600'
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=3600' }
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Raise exceptions instead of rendering exception templates.
@@ -33,20 +33,24 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  # Randomize the order test cases are executed.
-  config.active_support.test_order = :random
-
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  # Tag rails logs with useful information
+  config.log_tags = %i[subdomain request_id request_method]
+  # When sync mode is true, all output is immediately flushed to the underlying
+  # operating system and is not buffered by Ruby internally.
+  $stdout.sync = true
+  # Log the stdout output to the Epimorphics JSON logging gem
+  config.logger = JsonRailsLogger::Logger.new($stdout)
 
+  # Use default paths for documentation.
   config.accessibility_document_path = '/doc/accessibility'
   config.privacy_document_path = '/doc/privacy'
 
   # feature flag for showing the Welsh language switch affordance
   config.welsh_language_enabled = true
 
+  # Set the contact email address to Land Registry supplied address
   config.contact_email_address = 'data.services@mail.landregistry.gov.uk'
 end
