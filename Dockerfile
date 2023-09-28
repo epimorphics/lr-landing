@@ -3,7 +3,6 @@ ARG RUBY_VERSION
 
 # Defines base image which builder and final stage use
 FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION} as base
-ARG BUNDLER_VERSION
 
 RUN apk add --update \
     bash \
