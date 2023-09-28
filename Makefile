@@ -3,7 +3,6 @@
 ACCOUNT?=$(shell aws sts get-caller-identity | jq -r .Account)
 ALPINE_VERSION?=3.13
 AWS_REGION?=eu-west-1
-BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
 ECR?=${ACCOUNT}.dkr.ecr.eu-west-1.amazonaws.com
 GPR_OWNER?=epimorphics
 NAME?=$(shell awk -F: '$$1=="name" {print $$2}' deployment.yaml | sed -e 's/[[:blank:]]//g')
@@ -50,7 +49,6 @@ image: auth
 	@docker build \
 		--build-arg ALPINE_VERSION=${ALPINE_VERSION} \
 		--build-arg RUBY_VERSION=${RUBY_VERSION} \
-		--build-arg BUNDLER_VERSION=${BUNDLER_VERSION} \
 		--build-arg VERSION=${VERSION} \
 		--build-arg git_branch=${BRANCH} \
 		--build-arg git_commit_hash=${COMMIT} \
@@ -88,7 +86,6 @@ vars:
 	@echo "ACCOUNT = ${ACCOUNT}"
 	@echo "ALPINE_VERSION = ${ALPINE_VERSION}"
 	@echo "AWS_REGION = ${AWS_REGION}"
-	@echo "BUNDLER_VERSION = ${BUNDLER_VERSION}"
 	@echo "ECR = ${ECR}"
 	@echo "GPR_OWNER = ${GPR_OWNER}"
 	@echo "NAME = ${NAME}"
