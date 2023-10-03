@@ -50,6 +50,7 @@ image: auth
 	@docker build \
 		--build-arg ALPINE_VERSION=${ALPINE_VERSION} \
 		--build-arg RUBY_VERSION=${RUBY_VERSION} \
+		--build-arg BUNDLER_VERSION=${BUNDLER_VERSION} \
 		--build-arg VERSION=${VERSION} \
 		--build-arg git_branch=${BRANCH} \
 		--build-arg git_commit_hash=${COMMIT} \
