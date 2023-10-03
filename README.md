@@ -2,33 +2,16 @@
 
 This repo provides the landing page experience for visitors to
 [landregistry.data.gov.uk](http://landregistry.data.gov.uk). The landing page
-provides links to the various open data services ([Price Paid Data
-Explorer](http://landregistry.data.gov.uk/app/ppd), [Standard
-Reports](http://landregistry.data.gov.uk/app/standard-reports) and [UK Housing
-Price Index](http://landregistry.data.gov.uk/app/ukhpi)), and hosts the qonsole
+provides links to the various open data services, and hosts the qonsole
 app, which allows users to run SPARQL queries against the linked-data dataset.
 
 Please see the other repositories in the [HM Land Registry Open
 Data](https://github.com/epimorphics/hmlr-linked-data/) project for more
-details:
+details.
 
-- [HMLR Common Styles](https://github.com/epimorphics/lr_common_styles)
-- [PPD Explorer](https://github.com/epimorphics/ppd-explorer)
-- [Standard Reports UI](https://github.com/epimorphics/standard-reports-ui)
-- [UKHPI](https://github.com/epimorphics/ukhpi)
-- [Qonsole (Rails)](https://github.com/epimorphics/qonsole-rails)
+## Running the app locally
 
-## Additional Information
-
-### Updating the code
-
-This is a pretty standard, and quite small, Rails app.
-
-Please keep the [changelog](CHANGELOG.md) up-to-date, and increment the
-[`/app/lib/version.rb`](https://github.com/epimorphics/lr-landing/app/lib/version.rb)
-identifier in line with semver principles.
-
-### Running the app locally in Development mode
+### In development mode
 
 Begin by cloning [the Github repo](https://github.com/epimorphics/lr-landing)
 and installing the dependencies:
@@ -54,7 +37,7 @@ API_SERVICE_URL=http://localhost:8888 rails server
 
 Visit <http://localhost:3000> to view the local instance.
 
-## Running the app locally in Production Mode
+### In production mode
 
 Unlike other HMLR applications, the Landing application does not run run from a
 sub-directory.
