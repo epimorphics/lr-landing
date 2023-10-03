@@ -88,6 +88,7 @@ vars:
 	@echo "ACCOUNT = ${ACCOUNT}"
 	@echo "ALPINE_VERSION = ${ALPINE_VERSION}"
 	@echo "AWS_REGION = ${AWS_REGION}"
+	@echo "BUNDLER_VERSION = ${BUNDLER_VERSION}"
 	@echo "ECR = ${ECR}"
 	@echo "GPR_OWNER = ${GPR_OWNER}"
 	@echo "NAME = ${NAME}"
