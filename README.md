@@ -129,7 +129,7 @@ Finished in 1.050748s, 6.6619 runs/s, 8.5653 assertions/s.
 7 runs, 9 assertions, 0 failures, 0 errors, 0 skips
 ```
 
-## Deployment
+### Deployment
 
 The detailed deployment mapping is described in `deployment.yml`. At the time of
 writing, using the new infrastructure, the deployment process is as follows:
@@ -148,7 +148,7 @@ release on the repository using the same latest version number. Utilise the
 `Generate release notes from commit log` option to create specific notes on the
 contained changes as well as the ability to diff agains the previous version.
 
-### `entrypoint.sh`
+#### `entrypoint.sh`
 
 - There is a workaround to removing the PID lock of the Rails process in the
   event of the application crashing and not releasing the process.
@@ -181,7 +181,7 @@ this locally, use `make auth` to set your GitHub Token using the PAT.
 To create a PAT, see [the Epimorphics
 wiki](https://github.com/epimorphics/internal/wiki/Ansible-CICD#creating-a-pat-for-gpr-access).
 
-## Issues
+### Issues
 
 Please add issues to the [shared issues
 list](https://github.com/epimorphics/hmlr-linked-data/issues)
