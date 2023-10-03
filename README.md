@@ -94,6 +94,16 @@ multple services together see
 With the proxy and Docker container running you can access the application as
 [`localhost:8080`](http://localhost:8080) (note the lack of trailing path).
 
+## Additional Information
+
+### Updating the code
+
+This is a pretty standard, and quite small, Rails app.
+
+Please keep the [changelog](CHANGELOG.md) up-to-date, and increment the
+[`/app/lib/version.rb`](https://github.com/epimorphics/lr-landing/app/lib/version.rb)
+identifier in line with semver principles.
+
 ### Coding standards
 
 #### Running code linting
