@@ -61,7 +61,7 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.13.0)
+    autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     bindex (0.8.1)
     bootstrap-sass (3.4.1)
@@ -263,7 +263,7 @@ GEM
       json
       lograge
       railties
-    lr_common_styles (1.9.1.2)
+    lr_common_styles (1.9.2)
       bootstrap-sass (~> 3.4.0)
       font-awesome-rails (~> 4.7.0.1)
       govuk_elements_rails (~> 2.0.0)
@@ -290,7 +290,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json_rails_logger (~> 1.0.0)!
-  lr_common_styles (~> 1.9.1)!
+  lr_common_styles (~> 1.9.2)!
   prometheus-client (~> 4.0)
   puma
   qonsole-rails!
@@ -303,4 +303,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.4.20
+   2.4.8
