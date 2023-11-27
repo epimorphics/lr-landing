@@ -263,7 +263,7 @@ GEM
       json
       lograge
       railties
-    lr_common_styles (1.9.2)
+    lr_common_styles (1.9.3)
       bootstrap-sass (~> 3.4.0)
       font-awesome-rails (~> 4.7.0.1)
       govuk_elements_rails (~> 2.0.0)
@@ -290,7 +290,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json_rails_logger (~> 1.0.0)!
-  lr_common_styles (~> 1.9.2)!
+  lr_common_styles (~> 1.9.3)!
   prometheus-client (~> 4.0)
   puma
   qonsole-rails!
