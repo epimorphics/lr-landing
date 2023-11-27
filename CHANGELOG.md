@@ -3,6 +3,10 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 1.7.5 - 2023-11-23
+
+- (Jon) Updated the `lr_common_styles` gem to the latest 1.9.3 patch release.
+
 ## 1.7.4 - 2023-11-23
 
 - (Jon) Updated the `lr_common_styles` gem to the latest 1.9.2 patch release.
