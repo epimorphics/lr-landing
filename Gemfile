@@ -37,7 +37,7 @@ end
 # ! These "local" paths do not work with a docker image - use the repo instead
 # gem 'qonsole-rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
 # gem 'json_rails_logger', '~> 1.0.0', path: '~/Epimorphics/shared/json-rails-logger/'
-# gem 'lr_common_styles', '~> 1.9.2', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles/'
+# gem 'lr_common_styles', '~> 1.9.3', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles/'
 # rubocop:enable Layout/LineLength
 
 # TODO: In production you want to set this to the gem from the epimorphics github repo
@@ -46,5 +46,5 @@ gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
 # TODO: In production you want to set this to the gem from the epimorphics package repo
 source 'https://rubygems.pkg.github.com/epimorphics' do
   gem 'json_rails_logger', '~> 1.0.0'
-  gem 'lr_common_styles', '~> 1.9.2'
+  gem 'lr_common_styles', '~> 1.9.3'
 end
