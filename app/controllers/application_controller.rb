@@ -28,5 +28,4 @@ class ApplicationController < ActionController::Base
   def change_default_caching_policy
     expires_in 5.minutes, public: true, must_revalidate: true if Rails.env.production?
   end
-
 end
