@@ -14,14 +14,14 @@ class DocumentationTest < ActionDispatch::IntegrationTest
     assert_equal(302, response.status)
   end
 
-  test 'older PPD doc link redirects with permanent 301 status' do
+  test 'older PPD doc link redirects with permanent 302 status' do
     get '/doc/ppd'
-    assert_equal(301, response.status)
+    assert_equal(302, response.status)
   end
 
-  test 'old PPD doc link redirects with permanent 301 status' do
+  test 'old PPD doc link redirects with permanent 302 status' do
     get '/app/root/doc/ppd'
-    assert_equal(301, response.status)
+    assert_equal(302, response.status)
   end
 
   test 'ppd_doc_path variable links correctly' do
