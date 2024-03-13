@@ -12,7 +12,7 @@ RUN apk add --update \
     nodejs \
     tzdata \
     && rm -rf /var/cache/apk/* \
-    && gem update --system \
+    && gem update --system 3.4.22 \
     && gem install bundler:$BUNDLER_VERSION \
     && bundle config --global frozen 1
 
