@@ -5,11 +5,10 @@ including the SPARQL Qonsole
 
 ## 1.7.6 - 2024-03-12
 
-- (Jon) Reconfigured the old ppd doc routes to temporarily redirect to `app/doc/ppd`
-  as well as set the `ppd_doc_path` variable to point to the same reconfigured
-  route; alongside adding tests querying the new route to ensure the route is
-  valid and contains the expected content as well as tests to verify the old
-  routes redirect with 302 temporary status
+- (Jon) Reconfigured the `ppd_doc_path` variable to point to the `app/doc/ppd`
+  path; alongside adding tests querying the new route to ensure the route is
+  valid and contains the expected content. All redirections for any old routes
+  will now handled by the proxy server.
 
 ## 1.7.5 - 2023-11-23
 
