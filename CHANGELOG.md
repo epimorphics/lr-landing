@@ -5,7 +5,7 @@ including the SPARQL Qonsole
 
 ## 1.7.6 - 2024-03-12
 
-- (Jon) Reconfigured the `detailed documentation` links. both english and welsh
+- (Jon) Reconfigured the `detailed documentation` links, both english and welsh,
   to point to the `app/doc/ppd` path; alongside adding tests querying the new
   route to ensure the route is valid and contains the expected content. All
   redirections for any old routes will now handled by the proxy server.
