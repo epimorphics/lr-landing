@@ -14,8 +14,14 @@ class DocumentationTest < ActionDispatch::IntegrationTest
     assert_equal(302, response.status)
   end
 
-  test 'PPD docs page' do
-    get '/doc/ppd'
+  test 'ppd_doc_path variable links correctly' do
+    get ppd_doc_path
+    assert_response :success
+  end
+
+  test 'ppd doc loads correctly' do
+    get ppd_doc_path
     assert_select 'h1', 'Price Paid Linked Data'
+    assert_select 'h2', 'What does the Price Paid Dataset consist of?'
   end
 end
