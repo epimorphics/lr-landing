@@ -3,8 +3,10 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
-## 1.7.6 - 2024-03-12
+## 1.7.6 - 2024-06
 
+- (Jon) - Updated the deployment.yaml file to mirror the new branch names post
+  branch cleanup.
 - (Jon) Reconfigured the `detailed documentation` links, both english and welsh,
   to point to the `app/doc/ppd` path; alongside adding tests querying the new
   route to ensure the route is valid and contains the expected content. All
