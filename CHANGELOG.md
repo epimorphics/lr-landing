@@ -3,6 +3,10 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 1.7.7 - 2024-08
+
+- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibiliy requirments[GH-126](https://github.com/epimorphics/lr-landing/issues/126)
+
 ## 1.7.6 - 2024-03-12
 
 - (Jon) Reconfigured the `detailed documentation` links, both english and welsh,

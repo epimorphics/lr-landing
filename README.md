@@ -22,6 +22,14 @@ cd lr-landing &&
 bundle install
 ```
 
+#### Trouble shooting bundle install
+
+If bundle install does not work add a .bundle directory and create a config
+file. So you now have .bundle/config.
+Add the following line to the config file.
+BUNDLE_RUBYGEMS__PKG__GITHUB__COM: "your-username:your-personal-access-token"
+Then run bundle install again and eveything should work.
+
 Start the app locally for development:
 
 ```sh
