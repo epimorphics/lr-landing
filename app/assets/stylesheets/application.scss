@@ -5,3 +5,12 @@
   "bootstrap",
   "qonsole_rails/application",
   "lr_common_styles/lr-common";
+
+.row {
+  li,p,dl>dt, dl>dd {
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+  
