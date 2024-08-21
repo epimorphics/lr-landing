@@ -1,7 +1,9 @@
+- content_for(:title, 'Data Agored')
 .row
   .col-md-12
     %h1.heading-large
-      Data Agored
+      = yield(:title)
+
     %p
       Mae Cofrestrfa Tir EM yn cyhoeddi’r setiau data cyhoeddus canlynol fel
       rhan o’n hymrwymiad i flaenoriaethau’r Llywodraeth i dwf economaidd
