@@ -1,8 +1,8 @@
+- content_for(:title, 'Accessibility statement')
+- content_for(:description, 'Accessibility statement for open data applications: Price Paid Data (PPD) explorer, standard reports builder and UK House Price Index (UKHPI)')
 %article
   %h1.heading-large
-    Accessibility statement for open data applications: Price Paid
-    Data (PPD) explorer, standard reports builder and UK House
-    Price Index (UKHPI)
+    = yield(:description)
 
   %p
     This website is run by HM Land Registry.  We want as many people as

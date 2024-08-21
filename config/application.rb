@@ -35,7 +35,7 @@ module Rails
         message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{origin}"
       }
 
-      puts(msg.to_json) # rubocop:disable Rails/Output
+      puts(msg.to_json)
     end
   end
 end
@@ -53,6 +53,8 @@ module LrLanding
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.enforce_available_locales = true
+    config.i18n.default_locale = :en
+    config.i18n.available_locales = %i[en cy]
   end
 end
