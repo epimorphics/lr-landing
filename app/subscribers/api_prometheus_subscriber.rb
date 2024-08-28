@@ -4,13 +4,15 @@
 class ApiPrometheusSubscriber < ActiveSupport::Subscriber
   attach_to :api
 
+  # rubocop:disable Metrics/MethodLength
   def response(event)
     response = event.payload[:response]
     duration = event.payload[:duration]
+    status = response.status.to_s
 
     Prometheus::Client.registry
                       .get(:api_status)
-                      .increment(labels: { status: response.status.to_s })
+                      .increment(labels: { status: status })
 
     Prometheus::Client.registry
                       .get(:api_requests)
@@ -20,6 +22,7 @@ class ApiPrometheusSubscriber < ActiveSupport::Subscriber
                       .get(:api_response_times)
                       .observe(duration)
   end
+  # rubocop:enable Metrics/MethodLength
 
   def connection_failure(event)
     exception = event.payload[:exception]
@@ -31,7 +34,7 @@ class ApiPrometheusSubscriber < ActiveSupport::Subscriber
 
     Prometheus::Client.registry
                       .get(:api_connection_failure)
-                      .increment(labels: { message: })
+                      .increment(labels: { message: message })
   end
 
   def service_exception(event)
@@ -42,7 +45,7 @@ class ApiPrometheusSubscriber < ActiveSupport::Subscriber
 
     Prometheus::Client.registry
                       .get(:api_service_exception)
-                      .increment(labels: { status: })
+                      .increment(labels: { status: status })
   end
 
   private
