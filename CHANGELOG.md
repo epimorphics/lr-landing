@@ -3,10 +3,26 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 1.8.0 - 2024-08
+
+- (Jon) Implemented improved boilerplate metrics integration to offer analysis of
+  current application usage stats
+- (Jon) Implemented the dynamic page title approach used in the other suite apps
+  to the accessibility and privacy translation templates
+- (Jon) Converted the privacy templates to match the same haml formatting
+  language used in the app
+- (Jon) Tweaked the application controller to improve selected language option
+  to be applied for the pages
+- (Jon) Reorganised makefile targets alphabetically as well as mirrored other
+  improvements from the other applications in the suite
+- (Jon) Updated .gitignore file to mirror the current approach in the other HMLR
+  apps
+
 ## 1.7.7 - 2024-08
 
 - (Dan) Updates gemfile to use v1.9.5 lr_common_styles
-- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibiliy requirments[GH-126](https://github.com/epimorphics/lr-landing/issues/126)
+- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibiliy
+  requirments[GH-126](https://github.com/epimorphics/lr-landing/issues/126)
 
 ## 1.7.6 - 2024-03-12
 
@@ -29,7 +45,8 @@ including the SPARQL Qonsole
 
 - (Jon) Updated the `app/controllers/application_controller.rb` to include the
   `before_action` for the `change_default_caching_policy` method to ensure the
-  default `Cache-Control` header for all requests is set to 5 minutes (300 seconds).
+  default `Cache-Control` header for all requests is set to 5 minutes (300
+  seconds).
 
 ## 1.7.3 - 2023-06-07
 
@@ -58,8 +75,8 @@ including the SPARQL Qonsole
 - (Jon) Updated and improved the build files for the new infrastructure use.
 - (Jon) Minor text changes to the `Gemfile` to include instructions for running
   Epimorphics specific gems locally during the development of those gems.
-- (Jon) Updated the production `json_rails_logger` gem version to be at least the
-  current version `~>0.3.5` (this is to cover out of sync release versions)
+- (Jon) Updated the production `json_rails_logger` gem version to be at least
+  the current version `~>0.3.5` (this is to cover out of sync release versions)
 - (Jon) Updated the production `lr_common_styles` gem version to be at least the
   current version `~>1.9.1` (this is to cover out of sync release versions)
 - (Jon) Refactored the version cadence creation to include a SUFFIX value if
