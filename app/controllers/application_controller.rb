@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   # @param [Exception] exp the exception that caused the error
   # @return [ActiveSupport::Notifications::Event] provides an object-oriented
   # interface to the event
-  def instrument_internal_error(exp)
-    ActiveSupport::Notifications.instrument('internal_error.application', exception: exp)
+  def instrument_internal_error(exception)
+    ActiveSupport::Notifications.instrument('internal_error.application', exception: exception)
   end
 end
