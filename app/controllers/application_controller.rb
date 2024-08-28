@@ -2,13 +2,12 @@
 
 # :nodoc:
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception. For APIs, you may want to use
-  # :null_session instead.
-  protect_from_forgery with: :exception
-  before_action :change_default_caching_policy
-  before_action :set_locale
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
 
-  private
+  protect_from_forgery with: :exception
+  before_action :set_locale
+  before_action :change_default_caching_policy
 
   # Set the user's preferred locale. An explicit locale set via the URL param
   # `lang` is preeminent, otherwise we look to the user's preferred language
@@ -21,8 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   # * Set cache control headers for HMLR apps to be public and cacheable
-  # * Landing Page uses a time limit of 5 minutes (300 seconds) Sets the default
-  # `Cache-Control` header for all requests, unless overridden in the action
+  # * Landing Page uses a time limit of 5 minutes (300 seconds)
+  # Sets the default `Cache-Control` header for all requests,
+  # unless overridden in the action
   def change_default_caching_policy
     expires_in 5.minutes, public: true, must_revalidate: true if Rails.env.production?
   end

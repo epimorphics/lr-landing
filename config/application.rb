@@ -34,8 +34,9 @@ module Rails
         level: 'INFO',
         message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{origin}"
       }
-
+      # rubocop:disable Rails/Output
       puts(msg.to_json)
+      # rubocop:enable Rails/Output
     end
   end
 end
