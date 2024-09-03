@@ -21,8 +21,8 @@ including the SPARQL Qonsole
 ## 1.7.7 - 2024-08
 
 - (Dan) Updates gemfile to use v1.9.5 lr_common_styles
-- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibiliy
-  requirments[GH-126](https://github.com/epimorphics/lr-landing/issues/126)
+- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibility requirements
+  [GH-126](https://github.com/epimorphics/lr-landing/issues/126)
 
 ## 1.7.6 - 2024-03-12
 
