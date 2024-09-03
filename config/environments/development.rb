@@ -57,8 +57,8 @@ Rails.application.configure do
   config.api_service_url = ENV.fetch('API_SERVICE_URL', 'http://localhost:8888')
 
   # Use default paths for documentation.
-  config.accessibility_document_path = '/doc/accessibility'
-  config.privacy_document_path = '/doc/privacy'
+  config.accessibility_document_path = '/accessibility'
+  config.privacy_document_path = '/privacy'
 
   # feature flag for showing the Welsh language switch affordance
   config.welsh_language_enabled = true

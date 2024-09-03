@@ -45,8 +45,8 @@ Rails.application.configure do
   config.logger = JsonRailsLogger::Logger.new($stdout)
 
   # Use default paths for documentation.
-  config.accessibility_document_path = '/doc/accessibility'
-  config.privacy_document_path = '/doc/privacy'
+  config.accessibility_document_path = '/accessibility'
+  config.privacy_document_path = '/privacy'
 
   # feature flag for showing the Welsh language switch affordance
   config.welsh_language_enabled = true
