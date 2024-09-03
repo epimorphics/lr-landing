@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'haml-rails', '~> 2.0.0'
 gem 'http_accept_language'
 gem 'prometheus-client', '~> 4.0'
+gem 'get_process_mem', '~> 0.2.7'
 gem 'puma'
 gem 'sentry-rails', '~> 5.2'
 
