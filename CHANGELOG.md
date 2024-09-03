@@ -5,6 +5,8 @@ including the SPARQL Qonsole
 
 ## 1.8.0 - 2024-08
 
+- (Bogdan) Fixed a bug where the language switcher was not working correctly when
+  the user was on the accessibility or privacy pages [GH-130](https://github.com/epimorphics/lr-landing/issues/130)
 - (Jon) Implemented improved boilerplate metrics integration to offer analysis of
   current application usage stats
 - (Jon) Implemented the dynamic page title approach used in the other suite apps
