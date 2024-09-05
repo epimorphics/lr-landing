@@ -3,12 +3,16 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
-## 1.8.0 - 2024-08
+## 1.8.0 - 2024-09
 
-- (Bogdan) Fixed a bug where the language selector was not working correctly when
-  the user was on the accessibility or privacy pages [GH-130](https://github.com/epimorphics/lr-landing/issues/130)
-- (Jon) Implemented improved boilerplate metrics integration to offer analysis of
-  current application usage stats
+- (Jon) Moved all mirrored configuration settings from individual environments
+  into the application configuration to reduce the need to manage multiple
+  sources of truth
+- (Bogdan) Fixed a bug where the language selector was not working correctly
+  when the user was on the accessibility or privacy pages
+  [GH-130](https://github.com/epimorphics/lr-landing/issues/130)
+- (Jon) Implemented improved boilerplate metrics integration to offer analysis
+  of current application usage stats
 - (Jon) Implemented the dynamic page title approach used in the other suite apps
   to the accessibility and privacy translation templates
 - (Jon) Converted the privacy templates to match the same haml formatting
@@ -23,8 +27,8 @@ including the SPARQL Qonsole
 ## 1.7.7 - 2024-08
 
 - (Dan) Updates gemfile to use v1.9.5 lr_common_styles
-- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibility requirements
-  [GH-126](https://github.com/epimorphics/lr-landing/issues/126)
+- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibility
+  requirements [GH-126](https://github.com/epimorphics/lr-landing/issues/126)
 
 ## 1.7.6 - 2024-03-12
 
