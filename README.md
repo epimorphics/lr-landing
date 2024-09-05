@@ -9,4 +9,4 @@ Please see the other repositories in the [HM Land Registry Open
 Data](https://github.com/epimorphics/hmlr-linked-data/) project for more
 details.
 
-For more information about this project visit [the wiki](https://github.com/epimorphics/lr-landing/wiki)
+For more information about this project visit [the wiki](https://github.com/epimorphics/lr-landing/wiki).
