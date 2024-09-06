@@ -1,7 +1,8 @@
+- content_for(:title, 'Open Data')
 .row
   .col-md-12
     %h1.heading-large
-      Open Data
+      = yield(:title)
     %p
       HM Land Registry publishes the following public datasets on GOV.UK
       as part of our commitment to the Government’s priorities

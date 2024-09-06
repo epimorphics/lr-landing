@@ -1,4 +1,4 @@
-.PHONY:	assets clean image lint publish realclean run tag test vars
+.PHONY:	assets auth check clean image lint local publish realclean run tag test vars
 
 ACCOUNT?=$(shell aws sts get-caller-identity | jq -r .Account)
 ALPINE_VERSION?=3.13
@@ -27,23 +27,27 @@ REPO?=${ECR}/${IMAGE}
 GITHUB_TOKEN=.github-token
 BUNDLE_CFG=.bundle/config
 
-all: image
-
 ${BUNDLE_CFG}: ${GITHUB_TOKEN}
 	@./bin/bundle config set --local rubygems.pkg.github.com ${GPR_OWNER}:`cat ${GITHUB_TOKEN}`
 
 ${GITHUB_TOKEN}:
 	@echo ${PAT} > ${GITHUB_TOKEN}
 
-assets:
-	@./bin/bundle config set --local without 'development'
+all: image
+
+assets: auth
+	@./bin/bundle config set --local without 'development test'
 	@./bin/bundle install
 	@./bin/rails assets:clean assets:precompile
 
 auth: ${GITHUB_TOKEN} ${BUNDLE_CFG}
 
+check: lint test
+	@echo "All checks passed."
+
 clean:
 	@[ -d public/assets ] && ./bin/rails assets:clobber || :
+	@@ rm -rf bundle coverage log node_modules
 
 image: auth
 	@echo Building ${REPO}:${TAG} ...
@@ -63,6 +67,12 @@ image: auth
 lint: assets
 	@./bin/bundle exec rubocop
 
+local:
+	@echo "Installing all packages ..."
+	@./bin/bundle install
+	@echo "Starting local server ..."
+	@./bin/rails server -p ${PORT}
+
 publish: image
 	@echo Publishing image: ${REPO}:${TAG} ...
 	@docker push ${REPO}:${TAG} 2>&1
@@ -71,16 +81,23 @@ publish: image
 realclean: clean
 	@rm -f ${GITHUB_TOKEN} ${BUNDLE_CFG}
 
-run:
+run: start
 	@if docker network inspect dnet > /dev/null 2>&1; then echo "Using docker network dnet"; else echo "Create docker network dnet"; docker network create dnet; sleep 2; fi
+	@docker run -p ${PORT}:3000 -e API_SERVICE_URL=${API_SERVICE_URL} --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
+
+server: assets start
+	@export SECRET_KEY_BASE=$(./bin/rails secret)
+	@API_SERVICE_URL=${API_SERVICE_URL} ./bin/rails server -p ${PORT}
+
+start:
 	@docker stop ${SHORTNAME} > /dev/null 2>&1 || :
 	@echo "Starting ${SHORTNAME} ..."
-	@docker run -p ${PORT}:3000 --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 tag:
 	@echo ${TAG}
 
 test: assets
+	@echo "Running unit tests ..."
 	@./bin/rails test
 
 vars:

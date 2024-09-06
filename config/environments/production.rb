@@ -89,14 +89,4 @@ Rails.application.configure do
   # API location can be specified in the environment
   # But defaults to the dev service
   # API location is not used on the landing page, but is required by all other apps
-
-  # Use default paths for documentation.
-  config.accessibility_document_path = '/accessibility'
-  config.privacy_document_path = '/privacy'
-
-  # feature flag for showing the Welsh language switch affordance
-  config.welsh_language_enabled = true
-
-  # Set the contact email address to Land Registry supplied address
-  config.contact_email_address = 'data.services@mail.landregistry.gov.uk'
 end

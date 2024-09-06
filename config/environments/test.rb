@@ -43,14 +43,4 @@ Rails.application.configure do
   $stdout.sync = true
   # Log the stdout output to the Epimorphics JSON logging gem
   config.logger = JsonRailsLogger::Logger.new($stdout)
-
-  # Use default paths for documentation.
-  config.accessibility_document_path = '/doc/accessibility'
-  config.privacy_document_path = '/doc/privacy'
-
-  # feature flag for showing the Welsh language switch affordance
-  config.welsh_language_enabled = true
-
-  # Set the contact email address to Land Registry supplied address
-  config.contact_email_address = 'data.services@mail.landregistry.gov.uk'
 end
