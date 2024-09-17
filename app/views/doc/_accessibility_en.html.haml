@@ -33,37 +33,86 @@
 
   %p
     We believe that most of this website is compliant with the requirements of
-    Web Contents Accessibility Guidelines 2.1 AA standard. The PPD explorer,
-    standard reports builder, and UKHPI should not present any obstacles to
-    users with disabilities. If you do find problems accessing these sections,
-    please let us know.
-  %p
-    We know that the SPARQL Qonsole on this website is not fully accessible.
+    Web Contents Accessibility Guidelines 2.2 AA standard. The PPD explorer,
+    standard reports builder, UKHPI, and related API pages should not present
+    any obstacles to users with disabilities. If you do find problems accessing
+    these sections, please let us know.
+  %p  
+    We know that the specialist SPARQL Qonsole form is not fully accessible.
     In particular, we note the following issues:
   %ul.list.list-bullet
     %li
-      Background and foreground colours do not have sufficient contrast ratio
+      1.3.1: Info and Relationships (Level A)
       %br
-      This fails WCAG 1.4.3 Contrast (Level AA)
+      Some lists on the site are not properly marked up and include elements other than
+      #{'<li>'} tags. This can cause screen readers to misinterpret the content structure,
+      leading to a poor user experience for those relying on assistive technologies.
     %li
-      Some input fields do not have associated labels in HTML
+      1.4.3 Contrast (Minimum) (Level AA)
       %br
-      This fails WCAG 3.3.2 Labels or Instructions (Level A)
+      Background and foreground colours do not have sufficient contrast ratio.
+    %li    
+      1.4.10: Reflow (Level AA)
+      %br
+      Certain content requires scrolling in both dimensions (vertical and horizontal),
+      especially at smaller screen sizes. This may result in a loss of information or functionality,
+      which does not meet the accessibility guideline for content reflow.
     %li
-      Lists do not contain only <code>&#060;li&#062;</code> elements and script supporting elements
-      (<code>&#060;script&#062;</code> and <code>&#060;template&#062;</code>)
+      1.4.11 Non-text Contrast (Level AA)
       %br
-      This fails WCAG 4.1.2 Name, Role, Value (Level A)
+      The perform query button has an insufficient contrast ratio between the button background and text.
     %li
-      User cannot progress past main text area using tab key alone
+      1.4.12: Text Spacing (Level AA)
       %br
-      This fails WCAG 2.1.2 No Keyboard Trap
+      Some H2 headings are too small by default, which could also impact the contrast ratio,
+      leading to readability issues for some users who need adjusted text spacing.
+    %li
+      2.1.1: Keyboard (Level A)
+      %br
+      Some functionalities, such as interacting with select buttons or dropdowns, are not fully operable
+      via a keyboard interface. All inputs should be styled properly to suggest the behaviour so as not
+      to create a barrier for users that solely rely on keyboard navigation.
+    %li
+      2.1.2 No Keyboard Trap (Level A)
+      %br
+      Users cannot progress past the main text area using the tab key alone.
+    %li
+      2.4.2: Page Titles (Level A)
+      %br
+      A more descriptive title is needed to clarify the purpose of the SPARQL form page.
+    %li
+      2.4.6: Headings and Labels (Level AA)
+      %br
+      There are multiple issues with headings and labels, including empty labels, non-descriptive form labels,
+      and missing level-one headings. Additionally, some ARIA roles assigned to elements are inappropriate,
+      which could cause confusion for assistive technology users.
+    %li
+      3.3.1: Error Identification (Level A)
+      %br
+      Errors in input fields are currently indicated only by a change in background colour without accompanying
+      text descriptions. This does not provide adequate feedback for users, particularly those with visual impairments.
+    %li
+      3.3.2 Labels or Instructions (Level A)
+      %br
+      Some input fields do not have associated labels in HTML.
+    %li
+      3.3.3: Error Suggestion (Level AA)
+      %br
+      When an input error occurs, suggestions for correction are not provided. Users are informed of errors through
+      colour changes alone, without additional context or guidance on how to fix the issue.
+    %li
+      4.1.2: Name, Role, Value (Level A)
+      %br
+      Not all form elements have associated labels. Some interface components, like the Codemirror element, are inaccessible
+      due to the absence of appropriate attributes such as titles or ARIA labels. We recognise that the hierarchy of information
+      on the page is not clear, making navigation and understanding difficult for some users. Lists do not contain only #{'<li>'}
+      elements and script supporting elements (#{'<script>'} and #{'<template>'}).
 
   %p
-    The SPARQL Qonsole is a technical interface supporting visual query
-    development. We are working on an update to the SPARQL Qonsole to generally
-    improve accessibility. We expect this update to be completed by the end of
-    March 2023.
+    The SPARQL Qonsole form is a technical interface supporting visual query development and relies on some components
+    which make immediate compliance difficult. We understand from previous research that use of the SPARQL Qonsole form
+    is limited to a small number of specialist users. In order to improve the accessibility of this component we will need
+    to replace the underlying technology. We will explore with our supplier the most effective approach for completing that work.
 
   %h2
     What to do if you can&#8217;t access parts of this website
@@ -127,19 +176,19 @@
     HM Land Registry is committed to making its website accessible, in accordance with
     the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
 
-    This website is fully compliant with the Web Content Accessibility Guidelines
-    version 2.1 AA standard.
+    This website is mostly compliant with the Web Content Accessibility Guidelines
+    version 2.2 AA standard, with the limited exceptions described above.
 
   %h3
     How we tested this website
 
   %p
-    This website has been tested on 21 Sept 2020. Tests were carried out by an external vendor,
-    using a combination of automated testing tools and manually executed test scripts.
+    This website was tested in May 2024. Tests were carried out by an external vendor, using a combination of
+    automated testing tools, manually executed test scripts and additional manual expert review.
 
   %p
     We tested our main website platform, available at
     = link_to('landregistry.data.gov.uk', 'https://landregistry.data.gov.uk')
 
   %p
-    This statement was prepared on 7 October 2022.
+    This statement was prepared in September 2024.
