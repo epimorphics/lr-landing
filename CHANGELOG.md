@@ -5,6 +5,7 @@ including the SPARQL Qonsole
 
 ## 1.8.0 - 2024-09
 
+- (Bogdan) Updated both english and welsh copies of the accessibility statement [GH-136](https://github.com/epimorphics/lr-landing/issues/136)
 - (Jon) Moved all mirrored configuration settings from individual environments
   into the application configuration to reduce the need to manage multiple
   sources of truth
