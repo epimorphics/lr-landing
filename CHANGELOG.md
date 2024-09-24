@@ -5,6 +5,24 @@ including the SPARQL Qonsole
 
 ## 1.8.0 - 2024-09
 
+- (Jon) Create a `config/initializers/load_notification_subscribers.rb` file to
+  load all the notification subscribers in the application so that they are
+  registeredly correctly
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated the application exceptions controller to instrument the
+  `ActiveSupport::Notifications` for internal errors
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated `config/initializers/prometheus.rb` to include the `Middleware
+  instrumentation` fix for the 0 memory bug by notifying Action Dispatch
+  subscribers on Prometheus initialise
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated `config/puma.rb` to include metrics plugin and port information
+  for the metrics endpoint as environment variable, with default, to enable
+  running multiple sibling HMLR apps locally if needed without port conflicts
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated the `lr_common_styles` gem to the latest 1.9.9 patch release.
+- (Bogdan) Updated both english and welsh copies of the accessibility statement
+  [GH-136](https://github.com/epimorphics/lr-landing/issues/136)
 - (Jon) Moved all mirrored configuration settings from individual environments
   into the application configuration to reduce the need to manage multiple
   sources of truth

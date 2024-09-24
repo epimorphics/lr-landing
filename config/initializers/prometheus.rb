@@ -53,3 +53,7 @@ prometheus.histogram(
   docstring: 'Histogram of back-end API response times',
   buckets: Prometheus::Client::Histogram.exponential_buckets(start: 0.0005, count: 16)
 )
+
+# Middleware instrumentation
+  # This fixes the 0 memory bug by notifying Action Dispatch subscribers on Prometheus initialise
+  ActiveSupport::Notifications.instrument('process_middleware.action_dispatch')
