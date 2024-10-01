@@ -3,6 +3,51 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 1.8.0 - 2024-09
+
+- (Jon) Create a `config/initializers/load_notification_subscribers.rb` file to
+  load all the notification subscribers in the application so that they are
+  registeredly correctly
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated the application exceptions controller to instrument the
+  `ActiveSupport::Notifications` for internal errors
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated `config/initializers/prometheus.rb` to include the `Middleware
+  instrumentation` fix for the 0 memory bug by notifying Action Dispatch
+  subscribers on Prometheus initialise
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated `config/puma.rb` to include metrics plugin and port information
+  for the metrics endpoint as environment variable, with default, to enable
+  running multiple sibling HMLR apps locally if needed without port conflicts
+  [GH-135](https://github.com/epimorphics/lr-landing/issues/135)
+- (Jon) Updated the `lr_common_styles` gem to the latest 1.9.9 patch release.
+- (Bogdan) Updated both english and welsh copies of the accessibility statement
+  [GH-136](https://github.com/epimorphics/lr-landing/issues/136)
+- (Jon) Moved all mirrored configuration settings from individual environments
+  into the application configuration to reduce the need to manage multiple
+  sources of truth
+- (Bogdan) Fixed a bug where the language selector was not working correctly
+  when the user was on the accessibility or privacy pages
+  [GH-130](https://github.com/epimorphics/lr-landing/issues/130)
+- (Jon) Implemented improved boilerplate metrics integration to offer analysis
+  of current application usage stats
+- (Jon) Implemented the dynamic page title approach used in the other suite apps
+  to the accessibility and privacy translation templates
+- (Jon) Converted the privacy templates to match the same haml formatting
+  language used in the app
+- (Jon) Tweaked the application controller to improve selected language option
+  to be applied for the pages
+- (Jon) Reorganised makefile targets alphabetically as well as mirrored other
+  improvements from the other applications in the suite
+- (Jon) Updated .gitignore file to mirror the current approach in the other HMLR
+  apps
+
+## 1.7.7 - 2024-08
+
+- (Dan) Updates gemfile to use v1.9.5 lr_common_styles
+- (Dan) Adds underlines to links in body text to meet WCAG 2.2 accessibility
+  requirements [GH-126](https://github.com/epimorphics/lr-landing/issues/126)
+
 ## 1.7.6 - 2024-06
 
 - (Jon) - Updated the deployment.yaml file to mirror the new branch names post
@@ -26,7 +71,8 @@ including the SPARQL Qonsole
 
 - (Jon) Updated the `app/controllers/application_controller.rb` to include the
   `before_action` for the `change_default_caching_policy` method to ensure the
-  default `Cache-Control` header for all requests is set to 5 minutes (300 seconds).
+  default `Cache-Control` header for all requests is set to 5 minutes (300
+  seconds).
 
 ## 1.7.3 - 2023-06-07
 
@@ -55,8 +101,8 @@ including the SPARQL Qonsole
 - (Jon) Updated and improved the build files for the new infrastructure use.
 - (Jon) Minor text changes to the `Gemfile` to include instructions for running
   Epimorphics specific gems locally during the development of those gems.
-- (Jon) Updated the production `json_rails_logger` gem version to be at least the
-  current version `~>0.3.5` (this is to cover out of sync release versions)
+- (Jon) Updated the production `json_rails_logger` gem version to be at least
+  the current version `~>0.3.5` (this is to cover out of sync release versions)
 - (Jon) Updated the production `lr_common_styles` gem version to be at least the
   current version `~>1.9.1` (this is to cover out of sync release versions)
 - (Jon) Refactored the version cadence creation to include a SUFFIX value if
