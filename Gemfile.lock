@@ -297,7 +297,7 @@ DEPENDENCIES
   prometheus-client (~> 4.0)
   puma
   qonsole-rails!
-  rails (~> 5.2.4)
+  rails (~> 5.2, >= 5.2.4.1)
   rubocop
   rubocop-rails
   sass-rails (~> 5.0)
