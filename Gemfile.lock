@@ -34,6 +34,7 @@ PATH
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rubygems.pkg.github.com/epimorphics/
   specs:
     actioncable (5.2.7)
       actionpack (= 5.2.7)
@@ -145,6 +146,10 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.6.3)
+    json_rails_logger (1.0.1)
+      json
+      lograge
+      railties
     lodash-rails (4.17.21)
       railties (>= 3.1)
     lograge (0.12.0)
@@ -274,14 +279,6 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-
-GEM
-  remote: https://rubygems.pkg.github.com/epimorphics/
-  specs:
-    json_rails_logger (1.0.1)
-      json
-      lograge
-      railties
 
 PLATFORMS
   ruby
