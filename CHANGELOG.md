@@ -3,6 +3,11 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## Unreleased
+
+- (Jon) Removed the public/fees-caluclator.html file as it is no longer needed
+  [GH-140](https://github.com/epimorphics/lr-landing/issues/140)
+
 ## 1.8.0 - 2024-09
 
 - (Jon) Create a `config/initializers/load_notification_subscribers.rb` file to
