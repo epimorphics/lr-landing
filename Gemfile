@@ -20,8 +20,7 @@ gem 'puma'
 gem 'sentry-rails'
 
 # TODO: Add this to the epimorphics package registry as a gem
-# gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
-gem 'qonsole-rails', path: '/Users/bogdanadrianmarc/Work/Epimorphics/Projects/LR/qonsole-rails'
+gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
