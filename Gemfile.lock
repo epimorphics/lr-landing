@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/bogdanadrianmarc/Work/Epimorphics/Projects/LR/qonsole-rails
+GIT
+  remote: https://github.com/epimorphics/qonsole-rails
+  revision: d832be6f5176c94db1df83df27c9808f4cc2cac8
   specs:
     qonsole-rails (1.0.0)
       faraday
