@@ -3,6 +3,10 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 2.0.1 - 2024-10
+
+- Fixed an issue with CSS for the checkboxes in the Qonsole query form
+
 ## 2.0.0 - 2024-10
 
 - Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest versions
