@@ -13,6 +13,8 @@ including the SPARQL Qonsole
   (which are now running on latest ruby and rails versions as well)
 - Upgraded rails to latest version (`7.2.1`)
 - Upgraded ruby to latest version (`3.3.5`)
+- (Jon) Removed the public/fees-caluclator.html file as it is no longer needed
+  [GH-140](https://github.com/epimorphics/lr-landing/issues/140)
 
 ## 1.8.0 - 2024-09
 
