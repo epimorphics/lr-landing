@@ -1,7 +1,5 @@
 # frozen-string-literal: true
 
-require 'version'
-
 if ENV['SENTRY_API_KEY']
   Sentry.init do |config|
     config.dsn = ENV['SENTRY_API_KEY']

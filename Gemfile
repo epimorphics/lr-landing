@@ -2,25 +2,24 @@
 
 source 'https://rubygems.org'
 
-gem 'rails'
-
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 5.2.4'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
+gem 'uglifier', '>= 1.3.0'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder'
-gem 'get_process_mem'
-gem 'haml-rails'
-gem 'http_accept_language'
-gem 'prometheus-client'
-gem 'puma'
-gem 'sentry-rails'
+gem 'jbuilder', '~> 2.0'
 
-# TODO: Add this to the epimorphics package registry as a gem
-gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
+gem 'get_process_mem', '~> 0.2.7'
+gem 'haml-rails', '~> 2.0.0'
+gem 'http_accept_language'
+gem 'prometheus-client', '~> 4.0'
+gem 'puma'
+gem 'sentry-rails', '~> 5.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -34,15 +33,19 @@ group :development do
   gem 'web-console'
 end
 
-source 'https://rubygems.pkg.github.com/epimorphics' do
-  gem 'json_rails_logger'
-  gem 'lr_common_styles'
-end
-
 # rubocop:disable Layout/LineLength
 # TODO: While running the rails app locally for testing you can set gems to your local path
 # ! These "local" paths do not work with a docker image - use the repo instead
-# gem 'qonsole-rails', path: '.../qonsole-rails'
-# gem 'json_rails_logger', path: '.../json-rails-logger'
-# gem 'lr_common_styles', path: '.../lr_common_styles'
+# gem 'qonsole-rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
+# gem 'json_rails_logger', '~> 1.0.0', path: '~/Epimorphics/shared/json-rails-logger/'
+# gem 'lr_common_styles', '~> 1.9.0', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles/'
 # rubocop:enable Layout/LineLength
+
+# TODO: In production you want to set this to the gem from the epimorphics github repo
+gem 'qonsole-rails', git: 'https://github.com/epimorphics/qonsole-rails'
+
+# TODO: In production you want to set this to the gem from the epimorphics package repo
+source 'https://rubygems.pkg.github.com/epimorphics' do
+  gem 'json_rails_logger', '~> 1.0.0'
+  gem 'lr_common_styles', '~> 1.9.0'
+end
