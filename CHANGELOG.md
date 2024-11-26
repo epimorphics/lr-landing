@@ -10,9 +10,10 @@ including the SPARQL Qonsole
 ## 2.0.0 - 2024-10
 
 - Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest versions
-  (which are now running on latest ruby and rails versions as well)
-- Upgraded rails to latest version (`7.2.1`)
-- Upgraded ruby to latest version (`3.3.5`)
+  (which are now running on ruby `3.3.5` and rails `7.2.2` as well)
+- Upgraded alpine to `3.20`
+- Upgraded rails to `7.2.2`
+- Upgraded ruby to `3.3.5`
 - (Jon) Removed the public/fees-caluclator.html file as it is no longer needed
   [GH-140](https://github.com/epimorphics/lr-landing/issues/140)
 
