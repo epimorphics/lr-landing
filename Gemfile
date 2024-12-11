@@ -11,10 +11,10 @@ gem 'uglifier'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder'
 gem 'get_process_mem'
 gem 'haml-rails'
 gem 'http_accept_language'
+gem 'jbuilder'
 gem 'prometheus-client'
 gem 'puma'
 gem 'sentry-rails'
@@ -39,10 +39,8 @@ source 'https://rubygems.pkg.github.com/epimorphics' do
   gem 'lr_common_styles'
 end
 
-# rubocop:disable Layout/LineLength
 # TODO: While running the rails app locally for testing you can set gems to your local path
 # ! These "local" paths do not work with a docker image - use the repo instead
 # gem 'qonsole-rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
 # gem 'json_rails_logger', path: '~/Epimorphics/shared/json-rails-logger'
 # gem 'lr_common_styles', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles'
-# rubocop:enable Layout/LineLength
