@@ -3,17 +3,21 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 2.0.2 - 2024-12
+
+- (Bogdan) Updated all gems, including `json_rails_logger`
+
 ## 2.0.1 - 2024-10
 
-- Fixed an issue with CSS for the checkboxes in the Qonsole query form
+- (Bogdan) Fixed an issue with CSS for the checkboxes in the Qonsole query form
 
 ## 2.0.0 - 2024-10
 
-- Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest versions
+- (Bogdan) Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest versions
   (which are now running on ruby `3.3.5` and rails `7.2.2` as well)
-- Upgraded alpine to `3.20`
-- Upgraded rails to `7.2.2`
-- Upgraded ruby to `3.3.5`
+- (Bogdan) Upgraded alpine to `3.20`
+- (Bogdan) Upgraded rails to `7.2.2`
+- (Bogdan) Upgraded ruby to `3.3.5`
 - (Jon) Removed the public/fees-caluclator.html file as it is no longer needed
   [GH-140](https://github.com/epimorphics/lr-landing/issues/140)
 
