@@ -3,6 +3,14 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## 2.0.3 - 2024-12
+
+- (Jon) Improves error metrics reporting to ensure that logging always happens
+  with the appropriate severity depending on the exception status while reducing
+  the types of errors that can trigger a an error metric and therefore a
+  notification in slack
+  [GH-149](https://github.com/epimorphics/hmlr-linked-data/issues/149)
+
 ## 2.0.2 - 2024-12
 
 - (Bogdan) Updated all gems, including `json_rails_logger`
