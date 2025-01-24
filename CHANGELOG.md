@@ -3,7 +3,7 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
-## 2.0.3 - 2024-12
+## 2.0.3 - 2025-01
 
 - (Jon) Improves error metrics reporting to ensure that logging always happens
   with the appropriate severity depending on the exception status while reducing
