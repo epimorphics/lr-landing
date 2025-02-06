@@ -3,6 +3,13 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+# 2.0.4 - 2025-02
+
+- (Jon) Removed old git reference for the qonsole_rails gem.
+- (Jon) Added the qonsole_rails gem to the source block instead.
+- (Jon) Updated several gems to their latest versions.
+- (Jon) Cleaned up commented-out paths in the Gemfile.
+
 ## 2.0.3 - 2025-01
 
 - (Jon) Improves error metrics reporting to ensure that logging always happens
