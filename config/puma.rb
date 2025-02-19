@@ -39,12 +39,14 @@ pidfile ENV.fetch('PIDFILE', 'tmp/pids/server.pid')
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
-# Uncomment the following line once ruby is updated to 2.7 or greater to allow
-# the use of the puma-metrics plugin as we're using puma 6.0.0 or greater
 # Additional metrics from the Puma server to be exposed in the /metrics endpoint
-# plugin :metrics
+plugin :metrics
+# Specifies the `metrics_port` that Puma will listen on to export metrics;
+# default is 9393.
+metrics_port = ENV.fetch('METRICS_PORT', 9393)
+
 # Bind the metric server to "url". "tcp://" is the only accepted protocol.
-# metrics_url 'tcp://0.0.0.0:9393'
+metrics_url "tcp://0.0.0.0:#{metrics_port}" if Rails.env.development?
 
 # Use a custom log formatter to emit Puma log messages in a JSON format
 log_formatter do |str|

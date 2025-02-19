@@ -17,6 +17,7 @@ gem 'http_accept_language'
 gem 'jbuilder'
 gem 'prometheus-client'
 gem 'puma'
+gem 'puma-metrics'
 gem 'sentry-rails'
 
 group :development, :test do
