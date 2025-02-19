@@ -5,5 +5,5 @@ module Version
   MINOR = 0
   REVISION = 4
   SUFFIX = nil
-  VERSION = "#{MAJOR}.#{MINOR}.#{REVISION}#{SUFFIX && ".#{SUFFIX}"}"
+  VERSION = "#{MAJOR}.#{MINOR}.#{REVISION}#{SUFFIX && ".#{SUFFIX}"}".freeze
 end
