@@ -5,6 +5,14 @@ including the SPARQL Qonsole
 
 # 2.0.4 - 2025-02
 
+- (Jon) Changed the way boot information is printed.
+- (Jon) Switched to JSON format for better compatibility with logging services.
+- (Jon) Refactored method to improve clarity and structure.
+- (Jon) Made the version string immutable by freezing it
+- (Jon) Included `puma-metrics` gem for better monitoring as now using Rails 6 or greater
+- (Jon) Updated Gemfile and Gemfile.lock to reflect the addition
+- (Jon) Set up a configurable metrics port with a default value.
+- (Jon) Updated the binding URL for the metrics server in development.
 - (Jon) Removed old git reference for the qonsole_rails gem.
 - (Jon) Added the qonsole_rails gem to the source block instead.
 - (Jon) Updated several gems to their latest versions.
