@@ -5,6 +5,10 @@ including the SPARQL Qonsole
 
 # 2.0.4 - 2025-02
 
+- (Jon) Updated log level configuration across environments
+  - Added log level setting based on environment variable.
+  - Default to 'debug' in development and 'info' in production/test.
+  [GH-63](https://github.com/epimorphics/lr-landing/issues/63)
 - (Jon) Changed the way boot information is printed.
 - (Jon) Switched to JSON format for better compatibility with logging services.
 - (Jon) Refactored method to improve clarity and structure.
@@ -36,8 +40,8 @@ including the SPARQL Qonsole
 
 ## 2.0.0 - 2024-10
 
-- (Bogdan) Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest versions
-  (which are now running on ruby `3.3.5` and rails `7.2.2` as well)
+- (Bogdan) Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest
+  versions (which are now running on ruby `3.3.5` and rails `7.2.2` as well)
 - (Bogdan) Upgraded alpine to `3.20`
 - (Bogdan) Upgraded rails to `7.2.2`
 - (Bogdan) Upgraded ruby to `3.3.5`

@@ -89,4 +89,8 @@ Rails.application.configure do
   # API location can be specified in the environment
   # But defaults to the dev service
   # API location is not used on the landing page, but is required by all other apps
+
+  # Set the log level to the value of the LOG_LEVEL environment variable, or 'info' if not set
+  config.log_level = ENV.fetch('LOG_LEVEL', 'info').to_sym
+
 end
