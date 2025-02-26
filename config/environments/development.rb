@@ -55,4 +55,8 @@ Rails.application.configure do
   # API location can be specified in the environment but defaults to the dev service
   # Here we are still providing the API_SERVICE_URL for qonsole
   config.api_service_url = ENV.fetch('API_SERVICE_URL', 'http://localhost:8888')
+
+  # Set the log level to the value of the LOG_LEVEL environment variable, or 'debug' if not set
+  config.log_level = ENV.fetch('LOG_LEVEL', 'debug').to_sym
+
 end

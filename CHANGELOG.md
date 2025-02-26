@@ -3,16 +3,48 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+# 2.0.4 - 2025-02
+
+- (Jon) Updated log level configuration across environments
+  - Added log level setting based on environment variable.
+  - Default to 'debug' in development and 'info' in production/test.
+  [GH-63](https://github.com/epimorphics/lr-landing/issues/63)
+- (Jon) Changed the way boot information is printed.
+- (Jon) Switched to JSON format for better compatibility with logging services.
+- (Jon) Refactored method to improve clarity and structure.
+- (Jon) Made the version string immutable by freezing it
+- (Jon) Included `puma-metrics` gem for better monitoring as now using Rails 6 or greater
+- (Jon) Updated Gemfile and Gemfile.lock to reflect the addition
+- (Jon) Set up a configurable metrics port with a default value.
+- (Jon) Updated the binding URL for the metrics server in development.
+- (Jon) Removed old git reference for the qonsole_rails gem.
+- (Jon) Added the qonsole_rails gem to the source block instead.
+- (Jon) Updated several gems to their latest versions.
+- (Jon) Cleaned up commented-out paths in the Gemfile.
+
+## 2.0.3 - 2025-01
+
+- (Jon) Improves error metrics reporting to ensure that logging always happens
+  with the appropriate severity depending on the exception status while reducing
+  the types of errors that can trigger a an error metric and therefore a
+  notification in slack
+  [GH-149](https://github.com/epimorphics/hmlr-linked-data/issues/149)
+
+## 2.0.2 - 2024-12
+
+- (Bogdan) Updated all gems, including `json_rails_logger`
+
 ## 2.0.1 - 2024-10
 
-- Fixed an issue with CSS for the checkboxes in the Qonsole query form
+- (Bogdan) Fixed an issue with CSS for the checkboxes in the Qonsole query form
 
 ## 2.0.0 - 2024-10
 
-- Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest versions
-  (which are now running on latest ruby and rails versions as well)
-- Upgraded rails to latest version (`7.2.1`)
-- Upgraded ruby to latest version (`3.3.5`)
+- (Bogdan) Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest
+  versions (which are now running on ruby `3.3.5` and rails `7.2.2` as well)
+- (Bogdan) Upgraded alpine to `3.20`
+- (Bogdan) Upgraded rails to `7.2.2`
+- (Bogdan) Upgraded ruby to `3.3.5`
 - (Jon) Removed the public/fees-caluclator.html file as it is no longer needed
   [GH-140](https://github.com/epimorphics/lr-landing/issues/140)
 
