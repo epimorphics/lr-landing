@@ -14,7 +14,7 @@ jobs:
       epi_gpr_access_token:  "${{ secrets.HMLR_GPR_ACCESS_TOKEN }}"
   deploy:
     needs: "publish"
-    uses:  "epimorphics/github-workflows/.github/workflows/deploy.yml@reusable"
+    uses:  "epimorphics/github-workflows/.github/workflows/deploy.yml@24.04"
     with:
       # Repostory specific
       ansible_playbook: pres.yml
