@@ -18,29 +18,6 @@ Bundler.require(*Rails.groups)
 
 require 'qonsole_rails'
 
-# Monkey-patch the bit of Rails that emits the start-up log message, so that it
-# is written out in JSON format that our combined logging service can handle
-# This version is Rails 5.x specific. A different pattern is needed for Rails 6
-# applications.
-module Rails
-  # :nodoc:
-  class Server
-    # :nodoc:
-    def print_boot_information
-      origin = "on #{options[:SSLEnable] ? 'https' : 'http'}://#{options[:Host]}:#{options[:Port]}"
-
-      msg = {
-        ts: DateTime.now.utc.strftime('%FT%T.%3NZ'),
-        level: 'INFO',
-        message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{origin}"
-      }
-      # rubocop:disable Rails/Output
-      puts(msg.to_json)
-      # rubocop:enable Rails/Output
-    end
-  end
-end
-
 module LrLanding
   # :nodoc:
   class Application < Rails::Application
@@ -67,5 +44,24 @@ module LrLanding
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :en
     config.i18n.available_locales = %i[en cy]
+  end
+end
+
+# Monkey-patch the bit of Rails that emits the start-up log message, so that it
+# is written out in JSON format that our combined logging service can handle
+module Rails
+  # :nodoc:
+  module Command
+    # :nodoc:
+    class ServerCommand
+      def print_boot_information(server, url)
+        msg = {
+          ts: DateTime.now.utc.strftime('%FT%T.%3NZ'),
+          level: 'INFO',
+          message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{url}"
+        }
+        say msg.to_json
+      end
+    end
   end
 end
