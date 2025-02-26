@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get 'doc/ukhpi-user-guide', to: redirect('/app/ukhpi/doc/ukhpi-user-guide', status: 302)
   get 'accessibility', to: 'doc#accessibility'
   get 'privacy', to: 'doc#privacy'
+
+  get '*unmatched_route', to: 'application#render_404'
 end
