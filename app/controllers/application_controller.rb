@@ -13,10 +13,12 @@ class ApplicationController < ActionController::Base
   # `lang` is preeminent, otherwise we look to the user's preferred language
   # specified via browser headers
   def set_locale
+    # Get the user's locale from the URL param `lang` or the browser headers
     user_locale = params['lang']
     user_locale ||= http_accept_language.compatible_language_from(I18n.available_locales)
 
-    I18n.locale = user_locale if Rails.application.config.welsh_language_enabled
+    # Now convert the user's locale to a symbol and set it as the I18n locale
+    I18n.locale = user_locale.to_sym if Rails.application.config.welsh_language_enabled
   end
 
   # * Set cache control headers for HMLR apps to be public and cacheable
