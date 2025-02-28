@@ -52,3 +52,6 @@ tags
 .tool-versions
 .github-token
 .npmrc
+
+# Ignore local configuration files
+*.env*
