@@ -2,10 +2,7 @@
 
 require 'version'
 
-SENTRY_ENVIRONMENT = Rails.application.config.sentry[:environment] || 'production'
-
-Rails.application.reloader.to_prepare do
-
+Rails.application.reloader.to_prepare do # rubocop:disable Metrics/BlockLength
   if ENV['SENTRY_API_KEY']
     Sentry.init do |config|
       # https://docs.sentry.io/platforms/ruby/configuration/options/#breadcrumbs-logger
@@ -21,7 +18,7 @@ Rails.application.reloader.to_prepare do
         'ActiveRecord::RecordNotFound'
       ]
       # * Set the environment name from the SENTRY_ENVIRONMENT configuration value
-      config.environment = SENTRY_ENVIRONMENT
+      config.environment = ENV.fetch('SENTRY_ENVIRONMENT', Rails.env)
       # ^ Default to only reporting info, warnings and errors to Sentry
       config.logger.level = Rails.application.config.log_level || :info
       # * Set the release version to the current version
@@ -35,8 +32,15 @@ Rails.application.reloader.to_prepare do
     end
 
     # * Set additional tags for the Sentry event to allow for better filtering in the Sentry UI
-    Rails.application.config.sentry&.each do |key, value|
-      next if key == :environment # skip as this is set above
+    # ? These tags are set in either a local .env file or the instance configuration
+    sentry_tags = {
+      'band' => ENV.fetch('SENTRY_BAND', nil),
+      'enabled' => ENV.fetch('SENTRY_ENABLED', nil),
+      'hostname' => ENV.fetch('SENTRY_HOSTNAME', nil)
+    }
+    # * Set the tags in the Sentry event
+    sentry_tags.each do |key, value|
+      next if value.blank? # ! Skip if the value is nil or empty
 
       Sentry.set_tags(key.to_s => value)
     end

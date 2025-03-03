@@ -46,12 +46,4 @@ Rails.application.configure do
 
   # Set the log level to the value of the LOG_LEVEL environment variable, or 'info' if not set
   config.log_level = ENV.fetch('LOG_LEVEL', 'info').to_sym
-
-  # Set the SENTRY_ specific environment variables as agreed with the Ops team
-  config.sentry = {
-    band: ENV.fetch('SENTRY_BAND', 'test'),
-    enabled: ENV.fetch('SENTRY_ENABLED', false),
-    environment: ENV.fetch('SENTRY_ENVIRONMENT', 'test'),
-    hostname: ENV.fetch('SENTRY_HOSTNAME', 'localhost')
-  }
 end
