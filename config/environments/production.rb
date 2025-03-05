@@ -92,5 +92,4 @@ Rails.application.configure do
 
   # Set the log level to the value of the LOG_LEVEL environment variable, or 'info' if not set
   config.log_level = ENV.fetch('LOG_LEVEL', 'info').to_sym
-
 end

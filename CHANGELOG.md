@@ -3,6 +3,13 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+# 2.0.5 - 2025-03
+
+- Improved error handling in application controller
+- Added pre-commit and pre-push hooks
+- Updated locale handling in application controller
+- Improved Sentry configuration for different environments
+
 # 2.0.4 - 2025-02
 
 - (Jon) Updated log level configuration across environments
