@@ -33,16 +33,13 @@ Rails.application.reloader.to_prepare do # rubocop:disable Metrics/BlockLength
 
     # * Set additional tags for the Sentry event to allow for better filtering in the Sentry UI
     # ? These tags are set in either a local .env file or the instance configuration
+    # ! Remove any nil values from the sentry_tags hash before setting the tags
     sentry_tags = {
       'band' => ENV.fetch('SENTRY_BAND', nil),
       'enabled' => ENV.fetch('SENTRY_ENABLED', nil),
       'hostname' => ENV.fetch('SENTRY_HOSTNAME', nil)
-    }
-    # * Set the tags in the Sentry event
-    sentry_tags.each do |key, value|
-      next if value.blank? # ! Skip if the value is nil or empty
-
-      Sentry.set_tags(key.to_s => value)
-    end
+    }.compact!
+    # * Set the tags in the Sentry event with remaining values but only if there are any
+    sentry_tags&.each { |k, v| Sentry.set_tags(k.to_s => v) }
   end
 end
