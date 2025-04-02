@@ -3,14 +3,31 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
-# 2.0.5 - 2025-03
+## 2.0.6 - 2025-04
+
+- Creation of `.env.development` to define configurations such as API URL, port,
+  and Sentry settings for the development environment
+- Introduction of a `.githooks/post-commit` script that builds a Docker image
+  after a successful commit. The script only triggers for branches that match
+  "issue", "spike", or "task"
+- Modification of `.githooks/pre-commit` and `.githooks/pre-push` to prevent
+  checks on 'hotfix', 'rebase', or 'production' branches
+- The `.gitignore` file is updated to ignore `.env` and `.env*.local` files,
+  excluding `.env.development`
+- The Makefile is modified to use the `AWS_REGION` variable when constructing
+  the ECR repository URL, making it region-aware.
+- Gemfile and Gemfile.lock updated to new gem versions
+- A `Procfile.dev` was created to allow for local development with foreman or
+  similar tools to start both the web and api processes
+
+## 2.0.5 - 2025-03
 
 - Improved error handling in application controller
 - Added pre-commit and pre-push hooks
 - Updated locale handling in application controller
 - Improved Sentry configuration for different environments
 
-# 2.0.4 - 2025-02
+## 2.0.4 - 2025-02
 
 - (Jon) Updated log level configuration across environments
   - Added log level setting based on environment variable.
@@ -20,7 +37,8 @@ including the SPARQL Qonsole
 - (Jon) Switched to JSON format for better compatibility with logging services.
 - (Jon) Refactored method to improve clarity and structure.
 - (Jon) Made the version string immutable by freezing it
-- (Jon) Included `puma-metrics` gem for better monitoring as now using Rails 6 or greater
+- (Jon) Included `puma-metrics` gem for better monitoring as now using Rails 6
+  or greater
 - (Jon) Updated Gemfile and Gemfile.lock to reflect the addition
 - (Jon) Set up a configurable metrics port with a default value.
 - (Jon) Updated the binding URL for the metrics server in development.
