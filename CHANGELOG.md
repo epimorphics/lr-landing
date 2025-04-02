@@ -5,6 +5,7 @@ including the SPARQL Qonsole
 
 ## 2.0.6 - 2025-04
 
+- Updated the `Uglifier` gem to `Terser` to allow ES6 syntax in the codebase
 - Creation of `.env.development` to define configurations such as API URL, port,
   and Sentry settings for the development environment
 - Introduction of a `.githooks/post-commit` script that builds a Docker image
