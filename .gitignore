@@ -54,4 +54,6 @@ tags
 .npmrc
 
 # Ignore local configuration files
-*.env*
+.env
+.env*.local
+!.env.development

@@ -81,6 +81,7 @@ run: start
 	@docker run -p ${PORT}:3000 -e API_SERVICE_URL=${API_SERVICE_URL} --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 server:
+	@echo "Starting server on port ${PORT}, connecting to ${API_SERVICE_URL}..."
 	@export SECRET_KEY_BASE=$(./bin/rails secret)
 	@API_SERVICE_URL=${API_SERVICE_URL} ./bin/rails server -p ${PORT}
 
