@@ -9,5 +9,6 @@ Disallow: /so
 Disallow: /anything
 Disallow: /thing
 Disallow: /app/ppd/search?
+Disallow: /app/ukhpi/browse?
 Allow: /
 
