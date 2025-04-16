@@ -58,5 +58,4 @@ Rails.application.configure do
 
   # Set the log level to the value of the LOG_LEVEL environment variable, or 'debug' if not set
   config.log_level = ENV.fetch('LOG_LEVEL', 'debug').to_sym
-
 end

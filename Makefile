@@ -4,12 +4,13 @@ ACCOUNT?=$(shell aws sts get-caller-identity | jq -r .Account)
 ALPINE_VERSION?=3.20
 AWS_REGION?=eu-west-1
 BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
-ECR?=${ACCOUNT}.dkr.ecr.eu-west-1.amazonaws.com
+ECR?=${ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
 GPR_OWNER?=epimorphics
 NAME?=$(shell awk -F: '$$1=="name" {print $$2}' deployment.yaml | sed -e 's/[[:blank:]]//g')
 PAT?=$(shell read -p 'Github access token:' TOKEN; echo $$TOKEN)
 PORT?=3000
 RUBY_VERSION?=$(shell cat .ruby-version)
+
 SHORTNAME?=$(shell echo ${NAME} | cut -f2 -d/)
 STAGE?=dev
 
@@ -81,6 +82,7 @@ run: start
 	@docker run -p ${PORT}:3000 -e API_SERVICE_URL=${API_SERVICE_URL} --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 server:
+	@echo "Starting server on port ${PORT}, connecting to ${API_SERVICE_URL}..."
 	@export SECRET_KEY_BASE=$(./bin/rails secret)
 	@API_SERVICE_URL=${API_SERVICE_URL} ./bin/rails server -p ${PORT}
 
