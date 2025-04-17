@@ -1,0 +1,5 @@
+#!/bin/sh
+# Start the web server with freshly built assets
+web: API_SERVICE_URL="$API_SERVICE_URL" PORT="$PORT" make assets server;
+# Start the API server
+api: AWS_PROFILE="$AWS_PROFILE" API_SERVICE_NAME="$API_SERVICE_NAME" API_SERVICE_TAG="$API_SERVICE_TAG" SERVER_DATASOURCE_ENDPOINT="$SERVER_DATASOURCE_ENDPOINT" make api ; sleep 3

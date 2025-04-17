@@ -7,7 +7,9 @@ gem 'rails'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
+# gem 'uglifier'
+gem 'terser' # Updating to terser for ES6+ support
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -40,6 +42,6 @@ end
 
 # TODO: While running the rails app locally for testing you can set gems to your local path
 # ! These "local" paths do not work with a docker image - use the repo instead
-# gem 'qonsole_rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
 # gem 'json_rails_logger', path: '~/Epimorphics/shared/json-rails-logger'
 # gem 'lr_common_styles', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles'
+# gem 'qonsole_rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
