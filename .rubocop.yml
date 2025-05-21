@@ -1,13 +1,52 @@
-require: rubocop-rails
+plugins: rubocop-rails
 
 AllCops:
+  TargetRubyVersion: 3.3
+  Exclude:
+    - "Gemfile"
   NewCops: enable
 
 Layout/LineLength:
   Max: 100
+  AllowedPatterns: ['^(\s*#)']
   Exclude:
+    - bin/**/*
     - config/**/*
+    - test/**/*
 
+Metrics/AbcSize:
+  Max: 30
+  Exclude:
+    - test/**/*
+    - lib/tasks/**/*
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - test/**/*
+    - lib/tasks/**/*
+
+Metrics/ClassLength:
+  CountAsOne: ["array", "hash", "heredoc", "method_call"]
+  Exclude:
+    - test/**/*
+
+Metrics/MethodLength:
+  CountAsOne: ["array", "hash", "heredoc", "method_call"]
+  Exclude:
+    - test/**/*
+    - lib/tasks/**/*
+
+Naming/MethodParameterName:
+  Exclude:
+    - test/**/*
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+    
 Style/ClassAndModuleChildren:
   Exclude:
     - test/**/*
