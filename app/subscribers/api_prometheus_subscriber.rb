@@ -4,7 +4,6 @@
 class ApiPrometheusSubscriber < ActiveSupport::Subscriber
   attach_to :api
 
-  # rubocop:disable Metrics/MethodLength
   def response(event)
     response = event.payload[:response]
     duration = event.payload[:duration]
@@ -22,7 +21,6 @@ class ApiPrometheusSubscriber < ActiveSupport::Subscriber
                       .get(:api_response_times)
                       .observe(duration)
   end
-  # rubocop:enable Metrics/MethodLength
 
   def connection_failure(event)
     exception = event.payload[:exception]
