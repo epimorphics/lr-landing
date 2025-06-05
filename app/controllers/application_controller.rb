@@ -2,12 +2,15 @@
 
 # :nodoc:
 class ApplicationController < ActionController::Base
+  include Log
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, prepend: true
   before_action :set_locale
   before_action :change_default_caching_policy
+  around_action :log_response
 
   # Set the user's preferred locale. An explicit locale set via the URL param
   # `lang` is preeminent, otherwise we look to the user's preferred language
@@ -29,6 +32,27 @@ class ApplicationController < ActionController::Base
     expires_in 5.minutes, public: true, must_revalidate: true if Rails.env.production?
   end
 
+  # Log the response time for each request
+  # This method is called around each action in the controller
+  # It measures the time taken to process the request and logs it
+  # The time is logged in milliseconds
+  # @return [void]
+  def log_response
+    start = Process.clock_gettime(Process::CLOCK_MONOTONIC, :microsecond)
+    yield
+    # Calculate elapsed time and convert to milliseconds
+    duration = (Process.clock_gettime(Process::CLOCK_MONOTONIC, :microsecond) - start) / 1000
+    Log.info(
+      'Processing request',
+      {
+        duration:,
+        method: request.method,
+        params:,
+        path: request.path,
+        status: response.status
+      }
+    )
+  end
 
   # Handle specific types of exceptions and render the appropriate error page
   # or attempt to render a generic error page if no specific error page exists
@@ -49,16 +73,27 @@ class ApplicationController < ActionController::Base
   end
 
   # Render the appropriate error page based on the exception
-  def handle_internal_error(exception)
+  def handle_internal_error(exception) # rubocop:disable Metrics/MethodLength
+    # Render the appropriate error page based on the exception
     case exception.instance_of?
     when ArgumentError
       render_error(400)
     when UnprocessableEntity
       render_error(422)
     else
-      Rails.logger.warn "No explicit error page for exception #{exception} - #{exception.class}"
-      # Instrument ActiveSupport::Notifications for internal server errors only:
-      sentry_code = instrument_internal_error(exception)
+      cname = exception.class.name
+      logged_fields = {
+        status: Rack::Utils::HTTP_STATUS_CODES[exception]
+      }
+      if Rails.env.development? || Rails.logger.debug?
+        logged_fields[:backtrace] = exception.backtrace.join("\n")
+      end
+      Log.error(
+        "No explicit error page for exception #{exception} - #{cname}",
+        logged_fields
+      )
+      # Instrument ActiveSupport::Notifications for internal errors but only for 500 errors:
+      sentry_code = instrument_application_error(exception)
       render_error(500, sentry_code)
     end
   end
@@ -82,55 +117,55 @@ class ApplicationController < ActionController::Base
   def render_error(status, sentry_code = nil)
     reset_response
 
-    status = Rack::Utils::SYMBOL_TO_STATUS_CODE[status] if status.is_a?(Symbol)
-
+    error_status = Rack::Utils::SYMBOL_TO_STATUS_CODE[status] if status.is_a?(Symbol)
     respond_to do |format|
-      format.html { render_html_error_page(status, sentry_code) }
+      format.html { render_html_error_page(error_status, sentry_code) }
       # Anything else returns the status as human readable plain string
-      format.all { render plain: Rack::Utils::HTTP_STATUS_CODES[status].to_s, status: status }
+      format.all { render plain: Rack::Utils::HTTP_STATUS_CODES[status].to_s, status: error_status }
     end
   end
 
   def render_html_error_page(status, sentry_code)
     render 'exceptions/error_page',
-           locals: { status: status, sentry_code: sentry_code },
            layout: true,
+           locals: { status: status, sentry_code: sentry_code },
            status: status
-  end
-
-  def render_request_error(user_selections, status_code)
-    # Convert status code to integer if it is a symbol
-    status_code = Rack::Utils::SYMBOL_TO_STATUS_CODE[status_code] if status_code.is_a?(Symbol)
-    respond_to do |format|
-      format.html { render_html_error_page(status_code, nil) }
-
-      format.json do
-        render(json: { status: 'request error' }, status: status_code)
-      end
-    end
   end
 
   def reset_response
     self.response_body = nil
   end
 
+  def version
+    render json: { version: Version::VERSION }
+  end
 
+  private
+
+  def set_sentry_user
+    return unless signed_in? && Rails.env.production?
+
+    Sentry.configure_scope do |scope|
+      scope.set_user(email: current_user.email)
+    end
+  end
 
   # Notify subscriber(s) of an internal error event with the payload of the
   # exception once done
   # @param [exc] exp the exception that caused the error
   # @return [ActiveSupport::Notifications::Event] provides an object-oriented
   # interface to the event
-  # !IMPORTANT: This method is not used in the codebase and is only here for reference
-  def instrument_internal_error(exc) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+
+  def instrument_application_error(exc) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     err = {
       message: exc&.message || exc,
       status: exc&.status || Rack::Utils::SYMBOL_TO_STATUS_CODE[exc]
     }
-    byebug
     err[:type] = exc.class&.name if exc&.class
     err[:cause] = exc&.cause if exc&.cause
-    err[:backtrace] = exc&.backtrace if exc&.backtrace && Rails.env.development?
+    if exc&.backtrace && (Rails.env.development? || Rails.logger.debug?)
+      err[:backtrace] = exc&.backtrace
+    end
     # Log the exception to the Rails logger with the appropriate severity
     Rails.logger.send(err[:status] < 500 ? :warn : :error, JSON.generate(err))
     # Return unless the status code is 500 or greater to ensure subscribers are NOT notified
