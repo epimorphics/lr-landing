@@ -10,6 +10,7 @@ NAME?=$(shell awk -F: '$$1=="name" {print $$2}' deployment.yaml | sed -e 's/[[:b
 PAT?=$(shell read -p 'Github access token:' TOKEN; echo $$TOKEN)
 PORT?=3000
 RUBY_VERSION?=$(shell cat .ruby-version)
+API_SERVICE_URL?=http://localhost:8081
 
 SHORTNAME?=$(shell echo ${NAME} | cut -f2 -d/)
 STAGE?=dev
@@ -79,7 +80,7 @@ realclean: clean
 
 run: start
 	@if docker network inspect dnet > /dev/null 2>&1; then echo "Using docker network dnet"; else echo "Create docker network dnet"; docker network create dnet; sleep 2; fi
-	@docker run -p ${PORT}:3000 -e API_SERVICE_URL=${API_SERVICE_URL} --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
+	@docker run -d -p ${PORT}:3000 -e API_SERVICE_URL=${API_SERVICE_URL} --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 server:
 	@echo "Starting server on port ${PORT}, connecting to ${API_SERVICE_URL}..."
