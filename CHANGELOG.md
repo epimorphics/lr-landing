@@ -3,11 +3,21 @@
 This app presents the landing page experience for landregistry.data.gov.uk,
 including the SPARQL Qonsole
 
+## Unreleased
+
+- Optimizes Docker configuration by refactoring the Dockerfile for build
+  efficiency, setting default environment variables, and refining network
+  settings.
+- Enhances logging by adding checks for environment variables and
+  better logging output for operational clarity.
+- Updates dependencies to ensure compatibility and performance.
+
 ## 2.1.0 - 2025-05
 
 - Adds structured JSON logging for improved observability.
 - Updates git hooks to ensure tests pass before commits and pushes.
-- Refactors code and updates Rubocop configuration for better code quality and consistency.
+- Refactors code and updates Rubocop configuration for better code quality and
+  consistency.
 - Updates Rails to v8.0.2 alongside respective dependencies
 
 ## 2.0.6 - 2025-04
