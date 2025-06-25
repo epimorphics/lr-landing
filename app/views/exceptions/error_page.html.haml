@@ -1,5 +1,6 @@
 - puts "Rendering error page with status: #{status.inspect}" if Rails.env.development?
 - puts "View state: #{@view_state.inspect}" if Rails.env.development?
+- content_for(:current_environment_title, EnvironmentHelper.environment_title)
 
 %article.u-clear
   - if status == 400
