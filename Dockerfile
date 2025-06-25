@@ -1,9 +1,8 @@
-ARG RUBY_VERSION=3.3.5
-ARG ALPINE_VERSION=3.20
+ARG RUBY_VERSION=3.4.4
+ARG ALPINE_VERSION=3.22
 ARG BUNDLER_VERSION=2.6.9
 # Defines base image which builder and final stage use
 FROM ruby:$RUBY_VERSION-alpine$ALPINE_VERSION AS base
-
 
 ENV DIR=/usr/src/app
 
@@ -19,6 +18,7 @@ RUN apk add --update --no-cache \
 ARG BUNDLER_VERSION
 RUN echo "Bundler version ${BUNDLER_VERSION}"
 RUN gem install bundler:$BUNDLER_VERSION
+
 # installs the required gems
 FROM base AS gems
 RUN apk add --update build-base && gem update --system
