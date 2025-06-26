@@ -21,7 +21,7 @@ RUN gem install bundler:$BUNDLER_VERSION
 
 # installs the required gems
 FROM base AS gems
-RUN apk add --update build-base && gem update --system
+RUN apk add --update build-base yaml-dev && gem update --system
 
 COPY bin bin
 COPY Gemfile Gemfile.lock ./
