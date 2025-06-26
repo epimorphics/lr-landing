@@ -10,9 +10,11 @@ including the SPARQL Qonsole
 - Optimizes Docker configuration by refactoring the Dockerfile for build
   efficiency, setting default environment variables, and refining network
   settings.
-- Enhances logging by adding checks for environment variables and
-  better logging output for operational clarity.
+- Enhances logging by adding checks for environment variables and better logging
+  output for operational clarity.
 - Updates dependencies to ensure compatibility and performance.
+- Introduced a helper module to dynamically display the current environment in
+  the UI, defaulting to "development" when not set
 
 ## 2.1.0 - 2025-05
 
