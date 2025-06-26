@@ -3,7 +3,7 @@
 module Version
   MAJOR = 2
   MINOR = 1
-  REVISION = 0
+  PATCH = 1
   SUFFIX = nil
-  VERSION = "#{MAJOR}.#{MINOR}.#{REVISION}#{SUFFIX && ".#{SUFFIX}"}".freeze
+  VERSION = "#{MAJOR}.#{MINOR}.#{PATCH}#{SUFFIX && ".#{SUFFIX}"}".freeze
 end

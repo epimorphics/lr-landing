@@ -93,7 +93,7 @@
     %h3.heading-small Gwybodaeth bellach
     %ul.list.list-bullet
       %li
-        = link_to('dogfennaeth fanwl', '/app/doc/ppd')
+        = link_to('dogfennaeth fanwl', ppd_doc_path, 'aria-label' => 'dogfennaeth fanwl ar gyfer Lluniwr Adroddiad Data Pris a Dalwyd')
         am y Data Pris a Dalwyd, y model data, a defnyddio’r data.
 
     %h2#standard-reports.heading-medium Lluniwr Adroddiad Safonol
@@ -114,7 +114,7 @@
       Os hoffech roi cynnig ar eich ymholiadau SPARQL eich hunan yn erbyn ein
       cyhoeddiadau data cysylltiedig, defnyddiwch
       = succeed "." do
-        = link_to('y ffurflen SPARQL hon', '/app/qonsole', 'aria-label' => 'defnyddio golygydd ymholiadau SPARQL')
+        = link_to('y ffurflen SPARQL hon', qonsole_rails_path, 'aria-label' => 'defnyddio golygydd ymholiadau SPARQL')
     %p
       Os hoffech weld yr ymholiad SPARQL a ddefnyddir i greu’r adroddiadau
       yn y teclynnau adrodd Mynegai Prisiau Tai a Data Pris a Dalwyd a
