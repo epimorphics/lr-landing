@@ -5,6 +5,8 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+## 2.1.1 - 2025-06
+
 - Optimizes Docker configuration by refactoring the Dockerfile for build
   efficiency, setting default environment variables, and refining network
   settings.
