@@ -1,7 +1,7 @@
 .PHONY:	assets auth check clean image lint local publish realclean run tag test vars
 
 ACCOUNT?=$(shell aws sts get-caller-identity | jq -r .Account)
-ALPINE_VERSION?=3.20
+ALPINE_VERSION?=3.22
 AWS_REGION?=eu-west-1
 BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
 ECR?=${ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
@@ -11,6 +11,7 @@ PAT?=$(shell read -p 'Github access token:' TOKEN; echo $$TOKEN)
 PORT?=3000
 RUBY_VERSION?=$(shell cat .ruby-version)
 API_SERVICE_URL?=http://localhost:8081
+RUN_VARS?=--publish
 
 SHORTNAME?=$(shell echo ${NAME} | cut -f2 -d/)
 STAGE?=dev
@@ -80,7 +81,7 @@ realclean: clean
 
 run: start
 	@if docker network inspect dnet > /dev/null 2>&1; then echo "Using docker network dnet"; else echo "Create docker network dnet"; docker network create dnet; sleep 2; fi
-	@docker run -d -p ${PORT}:3000 -e API_SERVICE_URL=${API_SERVICE_URL} --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
+	@docker run ${RUN_VARS} ${PORT}:3000 -e API_SERVICE_URL=${API_SERVICE_URL} --network dnet --rm --name ${SHORTNAME} ${REPO}:${TAG}
 
 server:
 	@echo "Starting server on port ${PORT}, connecting to ${API_SERVICE_URL}..."

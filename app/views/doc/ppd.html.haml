@@ -1,4 +1,6 @@
 - content_for(:title, 'Price Paid Linked Data')
+- content_for(:current_environment_title, EnvironmentHelper.environment_title)
+
 %h1
   = yield(:title)
 %h2 What does the Price Paid Dataset consist of?
