@@ -92,7 +92,7 @@
     %h3.heading-small Further information
     %ul.list.list-bullet
       %li
-        = link_to('detailed documentation', '/app/doc/ppd')
+        = link_to('detailed documentation', ppd_doc_path, 'aria-label' => 'detailed documentation for the Price Paid Data Report Builder')
         about the Price Paid Data, the data model, and using the data.
 
     %h2#standard-reports.heading-medium Standard Report Builder
@@ -113,7 +113,7 @@
       If you would like to try out your own SPARQL queries against our
       linked data publications,  use
       = succeed "." do
-        = link_to('the SPARQL form', '/app/qonsole', 'aria-label' => 'use the SPARQL query editor')
+        = link_to('the SPARQL form', qonsole_rails_path, 'aria-label' => 'use the SPARQL query editor')
     %p
       If you want to see the SPARQL query that is used to generate the reports in the
       HPI and PPD reporting tools described above, you can do this by selecting the
