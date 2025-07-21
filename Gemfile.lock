@@ -361,20 +361,20 @@ GEM
       json
       lograge
       railties
-    lr_common_styles (2.2.1)
-      bootstrap-sass
-      font-awesome-rails
+    lr_common_styles (2.2.2)
+      bootstrap-sass (~> 3.4)
+      font-awesome-rails (~> 4.7.0)
       govuk_elements_rails (= 3.0.2)
-      govuk_frontend_toolkit
-      govuk_template
-      haml-rails
-      jquery-rails
-      lodash-rails
-      modernizr-rails
-      modulejs-rails
+      govuk_frontend_toolkit (~> 9.0)
+      govuk_template (~> 0.26.0)
+      haml-rails (~> 2.1)
+      jquery-rails (~> 4.6)
+      lodash-rails (~> 4.17)
+      modernizr-rails (~> 2.7)
+      modulejs-rails (~> 2.2.0)
       rails (~> 8.0.0)
-      sass-rails
-    qonsole_rails (2.0.2)
+      sass-rails (~> 6.0)
+    qonsole_rails (2.1.1)
       faraday
       faraday-encoding
       faraday_middleware
