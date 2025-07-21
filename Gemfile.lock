@@ -375,18 +375,20 @@ GEM
       rails (~> 8.0.0)
       sass-rails (~> 6.0)
     qonsole_rails (2.1.1)
-      faraday
-      faraday-encoding
-      faraday_middleware
-      font-awesome-rails
-      haml-rails
-      jquery-datatables-rails
-      jquery-rails
-      lodash-rails
-      modulejs-rails
-      rails
-      rubocop
-      rubocop-rails
+      faraday (~> 2.13)
+      faraday-encoding (~> 0.0.6)
+      faraday-follow_redirects (~> 0.3.0)
+      faraday-retry (~> 2.0)
+      font-awesome-rails (~> 4.7.0)
+      haml-rails (~> 2.1)
+      jquery-datatables-rails (~> 3.4)
+      jquery-rails (~> 4.6)
+      lodash-rails (~> 4.17)
+      modulejs-rails (~> 2.2.0)
+      rails (~> 8.0)
+      rubocop (~> 1.78)
+      rubocop-ast (~> 1.46)
+      rubocop-rails (~> 2.16)
 
 PLATFORMS
   aarch64-linux-gnu
