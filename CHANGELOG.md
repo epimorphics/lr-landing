@@ -5,6 +5,16 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+## 2.1.2 - 2025-07
+
+- Updated various gems to new versions, including `qonsole_rails`,
+  `lr_common_styles`, and `reline`.
+- Notable updates include major upgrades in `faraday`, `rubocop`, `nokogiri`,
+  and dependencies such as `sentry-rails` and `thor`.
+- Modified `.rubocop.yml` to adjust the plugin configuration syntax.
+- Refactored integration tests to include language parameters in request
+  methods.
+
 ## 2.1.1 - 2025-06
 
 - Optimizes Docker configuration by refactoring the Dockerfile for build

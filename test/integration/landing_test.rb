@@ -17,7 +17,7 @@ class LandingTest < ActionDispatch::IntegrationTest
   end
 
   test 'version number is visible' do
-    get '/'
+    get('/', params: { lang: 'en' })
     assert_select '.o-version', /#{Version::VERSION}/
   end
 end
