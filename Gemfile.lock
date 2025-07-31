@@ -374,7 +374,7 @@ GEM
       modulejs-rails (~> 2.2.0)
       rails (~> 8.0.0)
       sass-rails (~> 6.0)
-    qonsole_rails (2.1.1)
+    qonsole_rails (2.1.2)
       faraday (~> 2.13)
       faraday-encoding (~> 0.0.6)
       faraday-follow_redirects (~> 0.3.0)
@@ -386,9 +386,6 @@ GEM
       lodash-rails (~> 4.17)
       modulejs-rails (~> 2.2.0)
       rails (~> 8.0)
-      rubocop (~> 1.78)
-      rubocop-ast (~> 1.46)
-      rubocop-rails (~> 2.16)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -422,4 +419,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.6.9
+   2.7.1
