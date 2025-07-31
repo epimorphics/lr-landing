@@ -7,6 +7,11 @@ including the SPARQL Qonsole
 
 ## 2.1.2 - 2025-07
 
+- Updated `qonsole_rails` version to include latest improvements
+- Upgrade dependency management to improve project stability
+- Enhance Docker handling in scripts with refined command order
+- Introduce documentation for git hooks to streamline onboarding
+- Optimise makefile by removing redundant elements
 - Updated various gems to new versions, including `qonsole_rails`,
   `lr_common_styles`, and `reline`.
 - Notable updates include major upgrades in `faraday`, `rubocop`, `nokogiri`,
