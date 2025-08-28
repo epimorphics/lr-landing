@@ -5,6 +5,13 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+- Bumped rails and all related gems to version 8.0.2.1
+- Upgraded rubocop and rubocop-rails to latest 1.x and 2.x releases
+- Updated rack to 3.2.0
+- Bumped puma, jbuilder, json, parser, regexp_parser, unicode-display_width, and
+  other gems for security and compatibility
+- Synchronised dependency constraints across related gems
+
 ## 2.1.2 - 2025-07
 
 - Updated `qonsole_rails` version to include latest improvements
