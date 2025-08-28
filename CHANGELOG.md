@@ -5,7 +5,10 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+## 2.2.1 - 2025-08
+
 - Updated LR Common Styles gem to continue to address security issues
+- Added logic to bypass pre-push checks when only markdown files are staged
 
 ## 2.2.0 - 2025-08
 
