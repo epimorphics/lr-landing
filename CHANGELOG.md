@@ -5,6 +5,10 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+- Updated LR Common Styles gem to continue to address security issues
+
+## 2.2.0 - 2025-08
+
 - Bumped rails and all related gems to version 8.0.2.1
 - Upgraded rubocop and rubocop-rails to latest 1.x and 2.x releases
 - Updated rack to 3.2.0
