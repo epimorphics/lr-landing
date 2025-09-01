@@ -15,6 +15,16 @@ if echo "$BRANCH_NAME" | grep -q '^(hotfix)|(rebase)|(production)*$'; then
  	printf '\n\033[0;32mNo checks necessary on "%s", skipping hooks... 🎉\033[0m\n' "$BRANCH_NAME"
 	exit 0
 fi
+
+# Skip hook if all staged files only markdown (.md) files
+files=$(git diff --cached --name-only)
+files_to_check=$(echo "$files" | grep '\.md$')
+
+if [ -n "$files_to_check" ] && [ -z "$(echo "$files" | grep -v '\.md$')" ]; then
+  printf '\n\033[0;32mOnly markdown files staged (%s), skipping hook.\033[0m\n' "$files_to_check"
+  exit 0
+fi
+
 # Check for existence of "new or modified" files
 if ! git update-index -q --ignore-submodules --refresh; then
 	printf '\n\033[0;31mUp-to-date check failed😖\033[0m\n'
