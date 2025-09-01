@@ -7,6 +7,7 @@ including the SPARQL Qonsole
 
 ## 2.2.1 - 2025-08
 
+- Resolved incorrect link to PPD Detailed Documentation
 - Updated LR Common Styles gem to continue to address security issues
 - Added logic to bypass pre-push checks when only markdown files are staged
 
