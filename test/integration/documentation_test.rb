@@ -15,12 +15,12 @@ class DocumentationTest < ActionDispatch::IntegrationTest
   end
 
   test 'ppd_doc_path variable links correctly' do
-    get ppd_doc_path
+    get(ppd_doc_path, params: { lang: 'cy' })
     assert_response :success
   end
 
   test 'ppd doc loads correctly' do
-    get ppd_doc_path
+    get(ppd_doc_path, params: { lang: 'en' })
     assert_select 'h1', 'Price Paid Linked Data'
     assert_select 'h2', 'What does the Price Paid Dataset consist of?'
   end
