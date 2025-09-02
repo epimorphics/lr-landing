@@ -5,6 +5,39 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+## 2.2.1 - 2025-08
+
+- Resolved incorrect link to PPD Detailed Documentation
+- Updated LR Common Styles gem to continue to address security issues
+- Added logic to bypass pre-push checks when only markdown files are staged
+
+## 2.2.0 - 2025-08
+
+- Bumped rails and all related gems to version 8.0.2.1
+- Upgraded rubocop and rubocop-rails to latest 1.x and 2.x releases
+- Updated rack to 3.2.0
+- Bumped puma, jbuilder, json, parser, regexp_parser, unicode-display_width, and
+  other gems for security and compatibility
+- Synchronised dependency constraints across related gems
+
+## 2.1.3 - 2025-07
+
+- Updated `qonsole_rails` version to include latest improvements
+- Upgrade dependency management to improve project stability
+- Enhance Docker handling in scripts with refined command order
+- Introduce documentation for git hooks to streamline onboarding
+- Optimise makefile by removing redundant elements
+
+## 2.1.2 - 2025-07
+
+- Updated various gems to new versions, including `qonsole_rails`,
+  `lr_common_styles`, and `reline`.
+- Notable updates include major upgrades in `faraday`, `rubocop`, `nokogiri`,
+  and dependencies such as `sentry-rails` and `thor`.
+- Modified `.rubocop.yml` to adjust the plugin configuration syntax.
+- Refactored integration tests to include language parameters in request
+  methods.
+
 ## 2.1.1 - 2025-06
 
 - Optimizes Docker configuration by refactoring the Dockerfile for build
