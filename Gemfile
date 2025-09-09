@@ -43,7 +43,7 @@ end
 source 'https://rubygems.pkg.github.com/epimorphics' do
   gem 'json_rails_logger'
   gem 'lr_common_styles'
-  gem 'qonsole_rails', '=2.1.0'
+  gem 'qonsole_rails'
 end
 
 # TODO: While running the rails app locally for testing you can set gems to your local path
