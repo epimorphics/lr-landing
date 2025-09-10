@@ -5,6 +5,10 @@
 @import "qonsole_rails/application";
 @import "lr_common_styles/lr-common";
 
+:root {
+  --govuk-font-size-base: 1rem;
+}
+
 .row {
   li,p,dl>dt,dl>dd {
     a {
@@ -12,3 +16,5 @@
     }
   }
 }
+.qonsole h2,
+.qonsole .query-chrome label { font-size: var(--govuk-font-size-base); }

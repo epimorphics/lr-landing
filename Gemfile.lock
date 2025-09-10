@@ -103,7 +103,7 @@ GEM
     erb (5.0.2)
     erubi (1.13.1)
     execjs (2.10.0)
-    faraday (2.13.2)
+    faraday (2.13.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -426,7 +426,7 @@ GEM
       modulejs-rails (~> 2.2.0)
       rails (~> 8.0.0)
       sass-rails (~> 6.0)
-    qonsole_rails (2.1.2)
+    qonsole_rails (2.2.1)
       faraday (~> 2.13)
       faraday-encoding (~> 0.0.6)
       faraday-follow_redirects (~> 0.3.0)
