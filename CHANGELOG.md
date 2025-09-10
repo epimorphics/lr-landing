@@ -7,7 +7,7 @@ including the SPARQL Qonsole
 
 ## 2.2.2 - 2025-09
 
-- Lock Qonsole-rails gem to v2.1.0 to resolve JSON response issue
+- Updated to use latest Qonsole-rails gem, v2.2.1, to resolve JSON response issue
   [85](https://github.com/epimorphics/qonsole-rails/issues/85)
 
 ## 2.2.1 - 2025-08
