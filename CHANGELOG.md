@@ -5,6 +5,11 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+## 2.2.2 - 2025-09
+
+- Updated to use latest Qonsole-rails gem, v2.2.1, to resolve JSON response issue
+  [85](https://github.com/epimorphics/qonsole-rails/issues/85)
+
 ## 2.2.1 - 2025-08
 
 - Resolved incorrect link to PPD Detailed Documentation
