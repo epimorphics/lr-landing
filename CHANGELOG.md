@@ -5,6 +5,8 @@ including the SPARQL Qonsole
 
 ## Unreleased
 
+- Upates accessibility statements in English and Welsh [180](https://github.com/epimorphics/lr-landing/issues/180)
+
 ## 2.2.2 - 2025-09
 
 - Updated to use latest Qonsole-rails gem, v2.2.1, to resolve JSON response issue
