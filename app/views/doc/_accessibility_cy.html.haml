@@ -36,19 +36,19 @@
   %p
     Rydym yn credu bod y rhan fwyaf o&#8217;r wefan hon yn cydymffurfio â gofynion
     safon AA Canllawiau Hygyrchedd Cynnwys Gwe fersiwn 2.2.
-    
+
   %p
     Ni ddylai&#8217;r
     archwiliwr Data Pris a Dalwyd, yr adeiladwr adroddiadau safonol, Mynegai
     Prisiau Tai y DU a thudalennau API perthnasol achosi unrhyw rwystrau i ddefnyddwyr sydd ag anableddau.
     Os ydych yn cael problemau yn cyrchu&#8217;r adrannau hyn, rhowch wybod inni.
-    
+
   %p
     Rydym yn gwybod nad yw&#8217;r ffurflen SPARQL Qonsole arbenigol yn hollol hygyrch.
     Yn arbennig, nodwn y problemau canlynol:
   %ul.list.list-bullet
     %li
-      1.3.1: Gwybodaeth a Pherthnasoedd (Lefel A)
+      1.3.5: Nodi Pwrpas Mewnbwn (Lefel AA)
       %br
       Mae angen addasu’r priodoledd cwblhau awtomatig i sicrhau profiad cyson i ddefnyddwyr darllenwyr sgrin a mewnbwn llais.
     %li
@@ -71,12 +71,6 @@
       Mae rhai penawdau H2 yn rhy fach yn ddiofyn, a allai hefyd effeithio ar y gymhareb gyferbyniad, gan arwain at
       broblemau darllenadwyedd i rai defnyddwyr y mae angen bylchu testun wedi ei addasu arnynt.
     %li
-      2.1.1: Bysellfwrdd (Lefel A)
-      %br
-      Nid yw rhai swyddogaethau, megis rhyngweithio â botymau dethol neu gwymplenni, yn gwbl weithredol trwy ryngwyneb
-      bysellfwrdd. Dylai pob mewnbwn gael ei steilio&#8217;n gywir i awgrymu&#8217;r ymddygiad er mwyn peidio â chreu rhwystr i
-      ddefnyddwyr sy&#8217;n dibynnu&#8217;n llwyr ar lywio bysellfwrdd.
-    %li
       2.1.2 Dim Trap Bysellfwrdd (Lefel A)
       %br
       Ni all defnyddwyr fynd heibio&#8217;r prif faes testun gan ddefnyddio&#8217;r allwedd tab yn unig.
@@ -84,26 +78,6 @@
       2.4.2: Teitlau Tudalen (Lefel A)
       %br
       Mae angen teitl mwy disgrifiadol i egluro pwrpas tudalen ffurflen SPARQL.
-    %li
-      2.4.6: Penawdau a Labeli (Lefel AA)
-      %br
-      Ceir nifer o broblemau gyda phenawdau a labeli, gan gynnwys labeli gwag, labeli ffurf nad ydynt yn ddisgrifiadol,
-      a phenawdau lefel un coll. Yn ogystal, mae rhai rolau ARIA a neilltuwyd i elfennau yn amhriodol, a allai achosi
-      dryswch i ddefnyddwyr technoleg gynorthwyol.
-    %li
-      3.3.1: Adnabod Gwallau (Lefel A)
-      %br
-      Ar hyn o bryd, caiff gwallau mewn meysydd mewnbwn eu nodi dim ond trwy newid mewn lliw cefndir, heb ddisgrifiadau
-      testun i gyd-fynd â&#8217;r rhain. Nid yw hyn yn rhoi adborth digonol i ddefnyddwyr, yn enwedig i&#8217;r rheiny â nam ar eu golwg.
-    %li
-      3.3.2 Labeli neu Gyfarwyddiadau (Lefel A)
-      %br
-      Nid oes gan rai meysydd mewnbwn labeli cysylltiedig mewn HTML.
-    %li
-      3.3.3: Awgrym Gwall (Lefel AA)
-      %br
-      Pan fo gwall mewnbwn yn digwydd, ni ddarperir awgrymiadau ar gyfer cywiro. Rhoddir gwybod i ddefnyddwyr am wallau
-      trwy newidiadau lliw yn unig, heb gyd-destun nac arweiniad ychwanegol ar sut i ddatrys y mater.
     %li
       4.1.2: Enw, Rôl, Gwerth (Lefel A)
       %br
@@ -116,9 +90,7 @@
     Yr hyn i&#8217;w wneud os na allwch gyrchu rhannau o&#8217;r wefan hon
 
   %p
-    Os oes angen gwybodaeth sydd ar y wefan hon arnoch ar ffurf wahanol fel PDF
-    hygyrch, print bras, hawdd ei ddeall, recordiad sain neu braille, anfonwch
-    ebost at
+    Os oes angen gwybodaeth sydd ar y wefan hon arnoch mewn fformat gwahanol fel PDF hygyrch, print bras, hawdd ei ddeall, recordiad sain neu braille, anfonwch ebost at
     = mail_to(Rails.application.config.contact_email_address)
 
   %p
