@@ -36,23 +36,17 @@
   %p
     Rydym yn credu bod y rhan fwyaf o&#8217;r wefan hon yn cydymffurfio â gofynion
     safon AA Canllawiau Hygyrchedd Cynnwys Gwe fersiwn 2.2.
-    
+
   %p
-    Ni ddylai&#8217;r
-    archwiliwr Data Pris a Dalwyd, yr adeiladwr adroddiadau safonol, Mynegai
-    Prisiau Tai y DU a thudalennau API perthnasol achosi unrhyw rwystrau i ddefnyddwyr sydd ag anableddau.
-    Os ydych yn cael problemau yn cyrchu&#8217;r adrannau hyn, rhowch wybod inni.
-    
+    Ni ddylai&#8217;r archwiliwr Data Pris a Dalwyd, yr adeiladwr adroddiadau safonol, Mynegai Prisiau Tai y DU a thudalennau API perthnasol achosi unrhyw rwystrau i ddefnyddwyr sydd ag anableddau. Os ydych yn cael problemau yn cyrchu&#8217;r adrannau hyn, rhowch wybod inni.
+
   %p
-    Rydym yn gwybod nad yw&#8217;r ffurflen SPARQL Qonsole arbenigol yn hollol hygyrch.
-    Yn arbennig, nodwn y problemau canlynol:
+    Rydym yn gwybod nad yw&#8217;r ffurflen SPARQL Qonsole arbenigol yn hollol hygyrch. Yn arbennig, nodwn y problemau canlynol:
   %ul.list.list-bullet
     %li
-      1.3.1: Gwybodaeth a Pherthnasoedd (Lefel A)
+      1.3.5: Nodi Pwrpas Mewnbwn (Lefel AA)
       %br
-      Nid yw rhai rhestrau ar y safle wedi eu marcio&#8217;n gywir ac maent yn cynnwys elfennau heblaw tagiau #{'<li>'}.
-      Gall hyn achosi darllenwyr sgrin i gamddehongli strwythur y cynnwys, gan arwain at brofiad defnyddiwr gwael i&#8217;r
-      rhai sy&#8217;n dibynnu ar dechnolegau cynorthwyol.
+      Mae angen addasu&#8217;r priodoledd cwblhau awtomatig i sicrhau profiad cyson i ddefnyddwyr darllenwyr sgrin a mewnbwn llais.
     %li
       1.4.3 Cyferbyniad (Isafswm) (Lefel AA)
       %br
@@ -71,13 +65,7 @@
       1.4.12: Bylchu Testun (Lefel AA)
       %br
       Mae rhai penawdau H2 yn rhy fach yn ddiofyn, a allai hefyd effeithio ar y gymhareb gyferbyniad, gan arwain at
-      broblemau darllenadwyedd i rai defnyddwyr y mae angen bylchu testun wedi ei addasu arnynt.
-    %li
-      2.1.1: Bysellfwrdd (Lefel A)
-      %br
-      Nid yw rhai swyddogaethau, megis rhyngweithio â botymau dethol neu gwymplenni, yn gwbl weithredol trwy ryngwyneb
-      bysellfwrdd. Dylai pob mewnbwn gael ei steilio&#8217;n gywir i awgrymu&#8217;r ymddygiad er mwyn peidio â chreu rhwystr i
-      ddefnyddwyr sy&#8217;n dibynnu&#8217;n llwyr ar lywio bysellfwrdd.
+      problemau darllenadwyedd i rai defnyddwyr y mae angen bylchu testun wedi ei addasu arnynt.
     %li
       2.1.2 Dim Trap Bysellfwrdd (Lefel A)
       %br
@@ -87,46 +75,18 @@
       %br
       Mae angen teitl mwy disgrifiadol i egluro pwrpas tudalen ffurflen SPARQL.
     %li
-      2.4.6: Penawdau a Labeli (Lefel AA)
-      %br
-      Ceir nifer o broblemau gyda phenawdau a labeli, gan gynnwys labeli gwag, labeli ffurf nad ydynt yn ddisgrifiadol,
-      a phenawdau lefel un coll. Yn ogystal, mae rhai rolau ARIA a neilltuwyd i elfennau yn amhriodol, a allai achosi
-      dryswch i ddefnyddwyr technoleg gynorthwyol.
-    %li
-      3.3.1: Adnabod Gwallau (Lefel A)
-      %br
-      Ar hyn o bryd, caiff gwallau mewn meysydd mewnbwn eu nodi dim ond trwy newid mewn lliw cefndir, heb ddisgrifiadau
-      testun i gyd-fynd â&#8217;r rhain. Nid yw hyn yn rhoi adborth digonol i ddefnyddwyr, yn enwedig i&#8217;r rheiny â nam ar eu golwg.
-    %li
-      3.3.2 Labeli neu Gyfarwyddiadau (Lefel A)
-      %br
-      Nid oes gan rai meysydd mewnbwn labeli cysylltiedig mewn HTML.
-    %li
-      3.3.3: Awgrym Gwall (Lefel AA)
-      %br
-      Pan fo gwall mewnbwn yn digwydd, ni ddarperir awgrymiadau ar gyfer cywiro. Rhoddir gwybod i ddefnyddwyr am wallau
-      trwy newidiadau lliw yn unig, heb gyd-destun nac arweiniad ychwanegol ar sut i ddatrys y mater.
-    %li
       4.1.2: Enw, Rôl, Gwerth (Lefel A)
       %br
-      Nid oes gan bob elfen ffurf labeli cysylltiedig. Mae rhai cydrannau rhyngwyneb, fel yr elfen Codemirror, yn anhygyrch
-      oherwydd absenoldeb priodoleddau priodol megis teitlau neu labeli ARIA. Rydym yn cydnabod nad yw hierarchaeth y
-      wybodaeth ar y dudalen yn glir, gan wneud llywio a deall yn anodd i rai defnyddwyr. Nid yw rhestrau yn cynnwys elfennau
-      #{'<li>'} ac elfennau ategol sgript (#{'<script>'} and #{'<template>'}) yn unig
+      Mae gan y rhan fwyaf o elfennau ffurf labeli cysylltiedig. Rydym yn ymwybodol nad oes gan y panel golygu cod label cysylltiedig.
 
   %p
-    Rhyngwyneb technegol sy&#8217;n cefnogi datblygiad ymholiad gweledol yw&#8217;r ffurflen SPARQL Qonsole ac mae&#8217;n dibynnu ar rai
-    cydrannau sy&#8217;n gwneud cydymffurfio ar unwaith yn anodd. Rydym yn deall o ymchwil blaenorol bod defnyddio&#8217;r ffurflen
-    SPARQL Qonsole wedi ei gyfyngu i nifer fach o ddefnyddwyr arbenigol. Er mwyn gwella hygyrchedd y gydran hon, bydd angen
-    inni ddisodli&#8217;r dechnoleg sylfaenol. Byddwn yn archwilio&#8217;r dull mwyaf effeithiol o gwblhau&#8217;r gwaith hwnnw gyda&#8217;n cyflenwr. 
+    Rhyngwyneb technegol sy&#8217;n cefnogi datblygiad ymholiad gweledol yw&#8217;r ffurflen SPARQL Qonsole. Rydym yn deall o ymchwil blaenorol bod defnyddio&#8217;r ffurflen SPARQL Qonsole wedi ei gyfyngu i nifer fach o ddefnyddwyr arbenigol. Er mwyn gwella hygyrchedd y gydran hon, mae angen inni ddiweddaru&#8217;r rhyngwyneb defnyddiwr, a&#8217;n nod fydd gwneud hyn yn y dyfodol.
 
   %h2
     Yr hyn i&#8217;w wneud os na allwch gyrchu rhannau o&#8217;r wefan hon
 
   %p
-    Os oes angen gwybodaeth sydd ar y wefan hon arnoch ar ffurf wahanol fel PDF
-    hygyrch, print bras, hawdd ei ddeall, recordiad sain neu braille, anfonwch
-    ebost at
+    Os oes angen gwybodaeth sydd ar y wefan hon arnoch mewn fformat gwahanol fel PDF hygyrch, print bras, hawdd ei ddeall, recordiad sain neu braille, anfonwch ebost at
     = mail_to(Rails.application.config.contact_email_address)
 
   %p
@@ -136,17 +96,14 @@
     Rhoi gwybod am broblemau hygyrchedd gyda&#8217;r wefan hon
 
   %p
-    Rydym bob amser yn ceisio gwella hygyrchedd y wefan hon. Os ydych yn dod o
-    hyd i unrhyw broblemau nad ydynt wedi eu rhestru ar y dudalen hon neu&#8217;n
-    credu nad ydym yn bodloni&#8217;r gofynion hygyrchedd, cysylltwch â&#8217;r Ganolfan
-    Gwasanaethau Cwsmeriaid:
+    Rydym bob amser yn ceisio gwella hygyrchedd y wefan hon. Os ydych yn dod o hyd i unrhyw broblemau nad ydynt wedi eu rhestru ar y dudalen hon neu&#8217;n credu nad ydym yn bodloni&#8217;r gofynion hygyrchedd, cysylltwch â&#8217;r Ganolfan Gwasanaethau Cwsmeriaid:
 
   %ul.list.list-bullet
     %li
       trwy&#8217;r ffôn &#8211;
       = link_to('0300 006 0422', 'tel:+443000060422')
     %li
-      trwy&#8217;r post &#8211; HM Land Registry Citizen Centre, PO Box 74, Gloucester, GL14 9BB
+      trwy&#8217;r post &#8211; HM Land Registry Citizen Centre, PO Box 7806, Bilston WV1 9QR
     %li
       = link_to('ar-lein', 'https://www.gov.uk/guidance/contact-hm-land-registry.cy')
 
@@ -154,10 +111,7 @@
     Gweithdrefn orfodi
 
   %p
-    Mae&#8217;r Comisiwn Cydraddoldeb a Hawliau Dynol yn gyfrifol am orfodi
-    Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau a Chymwysiadau
-    Symudol) (Rhif 2) 2018 (y &#8216;rheoliadau hygyrchedd&#8217;). Os nad ydych yn hapus
-    â&#8217;r modd yr ydym yn ymateb i&#8217;ch cwyn, cysylltwch â&#8217;r
+    Mae&#8217;r Comisiwn Cydraddoldeb a Hawliau Dynol yn gyfrifol am orfodi Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau a Chymwysiadau Symudol) (Rhif 2) 2018, a ddiwygiwyd yn 2022 (y &#8216;rheoliadau hygyrchedd&#8217;). Os nad ydych yn hapus â&#8217;r modd yr ydym yn ymateb i&#8217;ch cwyn, cysylltwch â&#8217;r
     = succeed '.' do
       = link_to('Gwasanaeth Cynghori a Chymorth Cydraddoldeb', 'http://eass-ws.custhelp.com/app/home')
 
@@ -165,8 +119,7 @@
     Cysylltu â ni dros y ffôn neu ymweld â ni&#8217;n bersonol
 
   %p
-    Rydym yn darparu gwasanaeth cyfnewid testun i bobl sy&#8217;n F/fyddar, sydd â nam ar y
-    clyw neu sydd â nam ar y lleferydd.
+    Rydym yn darparu gwasanaeth cyfnewid testun i bobl sy&#8217;n F/fyddar, sydd â nam ar y clyw neu sydd â nam ar y lleferydd.
   %p
     Mae dolenni sain gan ein swyddfeydd, neu os ydych yn cysylltu â ni cyn eich
     ymweliad, gallwn drefnu i ddehonglwr Iaith Arwyddion Prydain fod yn
@@ -181,21 +134,17 @@
     Gwybodaeth dechnegol am hygyrchedd y wefan hon
 
   %p
-    Mae Cofrestrfa Tir EF wedi ymrwymo i wneud ei gwefan yn hygyrch, yn unol â
-    Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau a Chymwysiadau
-    Symudol) (Rhif 2) 2018. Mae&#8217;r wefan hon yn yn cydymffurfio ar y cyfan â safon AA
-    Canllawiau Hygyrchedd Cynnwys Gwe fersiwn 2.2, gyda'r eithriadau cyfyngedig a ddisgrifir uchod.
+    Mae Cofrestrfa Tir EF wedi ymrwymo i wneud ei gwefan yn hygyrch, yn unol â Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau a Chymwysiadau Symudol) (Rhif 2) 2018, a ddiwygiwyd yn 2022. Mae&#8217;r wefan hon yn cydymffurfio ar y cyfan â safon AA Canllawiau Hygyrchedd Cynnwys Gwe fersiwn 2.2, gyda'r eithriadau cyfyngedig a ddisgrifir uchod.
 
   %h3
     Sut y profwyd y wefan hon
 
   %p
-    Profwyd y wefan hon ym Mai 2024. Cynhaliwyd profion gan werthwr allanol, gan ddefnyddio cyfuniad o offer profi
-    awtomataidd, sgriptiau prawf a weithredwyd â llaw ac adolygiad arbenigol ychwanegol a weithredwyd â llaw.
+    Profwyd y wefan hon yng Ngorffennaf 2025. Cynhaliwyd profion gan werthwr allanol, gan ddefnyddio cyfuniad o offer profi awtomataidd, sgriptiau prawf a weithredwyd â llaw ac adolygiad arbenigol ychwanegol a weithredwyd â llaw.
 
   %p
     Profwyd ein prif blatfform gwefan, sydd ar gael ar
     = link_to('landregistry.data.gov.uk', 'https://landregistry.data.gov.uk')
 
   %p
-    Paratowyd y datganiad hwn ym Medi 2024.
+    Paratowyd y datganiad hwn yn Awst 2025.
