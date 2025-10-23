@@ -1,26 +1,43 @@
-# Change log for HMLR landing page app
+# Changelog
 
-This app presents the landing page experience for landregistry.data.gov.uk,
-including the SPARQL Qonsole
+All notable changes to this project will be documented in this file.
 
-## Unreleased
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 2.2.3 - 2025-09
+## [Unreleased]
 
-- Upates accessibility statements in English and Welsh [180](https://github.com/epimorphics/lr-landing/issues/180)
+## [2.2.3] - 2025-09
 
-## 2.2.2 - 2025-09
+### Changed
 
-- Updated to use latest Qonsole-rails gem, v2.2.1, to resolve JSON response issue
-  [85](https://github.com/epimorphics/qonsole-rails/issues/85)
+- Updated accessibility statements in English and Welsh
+  [#180](https://github.com/epimorphics/lr-landing/issues/180)
 
-## 2.2.1 - 2025-08
+## [2.2.2] - 2025-09
 
-- Resolved incorrect link to PPD Detailed Documentation
-- Updated LR Common Styles gem to continue to address security issues
+### Changed
+
+- Updated to use latest Qonsole-rails gem, v2.2.1, to resolve JSON response
+  issue [#85](https://github.com/epimorphics/qonsole-rails/issues/85)
+
+## [2.2.1] - 2025-08
+
+### Added
+
 - Added logic to bypass pre-push checks when only markdown files are staged
 
-## 2.2.0 - 2025-08
+### Changed
+
+- Updated LR Common Styles gem to continue to address security issues
+
+### Fixed
+
+- Resolved incorrect link to PPD Detailed Documentation
+
+## [2.2.0] - 2025-08
+
+### Changed
 
 - Bumped rails and all related gems to version 8.0.2.1
 - Upgraded rubocop and rubocop-rails to latest 1.x and 2.x releases
@@ -29,113 +46,154 @@ including the SPARQL Qonsole
   other gems for security and compatibility
 - Synchronised dependency constraints across related gems
 
-## 2.1.3 - 2025-07
+## [2.1.3] - 2025-07
+
+### Changed
 
 - Updated `qonsole_rails` version to include latest improvements
-- Upgrade dependency management to improve project stability
-- Enhance Docker handling in scripts with refined command order
-- Introduce documentation for git hooks to streamline onboarding
-- Optimise makefile by removing redundant elements
+- Upgraded dependency management to improve project stability
+- Enhanced Docker handling in scripts with refined command order
+- Optimised makefile by removing redundant elements
 
-## 2.1.2 - 2025-07
+### Added
+
+- Introduced documentation for git hooks to streamline onboarding
+
+## [2.1.2] - 2025-07
+
+### Changed
 
 - Updated various gems to new versions, including `qonsole_rails`,
-  `lr_common_styles`, and `reline`.
+  `lr_common_styles`, and `reline`
 - Notable updates include major upgrades in `faraday`, `rubocop`, `nokogiri`,
-  and dependencies such as `sentry-rails` and `thor`.
-- Modified `.rubocop.yml` to adjust the plugin configuration syntax.
-- Refactored integration tests to include language parameters in request
-  methods.
+  and dependencies such as `sentry-rails` and `thor`
+- Modified `.rubocop.yml` to adjust the plugin configuration syntax
+- Refactored integration tests to include language parameters in request methods
 
-## 2.1.1 - 2025-06
+## [2.1.1] - 2025-06
 
-- Optimizes Docker configuration by refactoring the Dockerfile for build
-  efficiency, setting default environment variables, and refining network
-  settings.
-- Enhances logging by adding checks for environment variables and better logging
-  output for operational clarity.
-- Updates dependencies to ensure compatibility and performance.
+### Added
+
 - Introduced a helper module to dynamically display the current environment in
   the UI, defaulting to "development" when not set
 
-## 2.1.0 - 2025-05
+### Changed
 
-- Adds structured JSON logging for improved observability.
-- Updates git hooks to ensure tests pass before commits and pushes.
-- Refactors code and updates Rubocop configuration for better code quality and
-  consistency.
-- Updates Rails to v8.0.2 alongside respective dependencies
+- Optimised Docker configuration by refactoring the Dockerfile for build
+  efficiency, setting default environment variables, and refining network
+  settings
+- Enhanced logging by adding checks for environment variables and better logging
+  output for operational clarity
+- Updated dependencies to ensure compatibility and performance
 
-## 2.0.6 - 2025-04
+## [2.1.0] - 2025-05
+
+### Added
+
+- Added structured JSON logging for improved observability
+- Updated git hooks to ensure tests pass before commits and pushes
+
+### Changed
+
+- Refactored code and updated Rubocop configuration for better code quality and
+  consistency
+- Updated Rails to v8.0.2 alongside respective dependencies
+
+## [2.0.6] - 2025-04
+
+### Changed
 
 - Updated the `Uglifier` gem to `Terser` to allow ES6 syntax in the codebase
-- Creation of `.env.development` to define configurations such as API URL, port,
-  and Sentry settings for the development environment
-- Introduction of a `.githooks/post-commit` script that builds a Docker image
-  after a successful commit. The script only triggers for branches that match
-  "issue", "spike", or "task"
-- Modification of `.githooks/pre-commit` and `.githooks/pre-push` to prevent
-  checks on 'hotfix', 'rebase', or 'production' branches
-- The `.gitignore` file is updated to ignore `.env` and `.env*.local` files,
+- Modified `.githooks/pre-commit` and `.githooks/pre-push` to prevent checks on
+  'hotfix', 'rebase', or 'production' branches
+- Updated Gemfile and Gemfile.lock to new gem versions
+- Modified the Makefile to use the `AWS_REGION` variable when constructing the
+  ECR repository URL, making it region-aware
+- Updated the `.gitignore` file to ignore `.env` and `.env*.local` files,
   excluding `.env.development`
-- The Makefile is modified to use the `AWS_REGION` variable when constructing
-  the ECR repository URL, making it region-aware.
-- Gemfile and Gemfile.lock updated to new gem versions
-- A `Procfile.dev` was created to allow for local development with foreman or
+
+### Added
+
+- Created `.env.development` to define configurations such as API URL, port, and
+  Sentry settings for the development environment
+- Introduced a `.githooks/post-commit` script that builds a Docker image after a
+  successful commit. The script only triggers for branches that match "issue",
+  "spike", or "task"
+- Created a `Procfile.dev` to allow for local development with foreman or
   similar tools to start both the web and api processes
 
-## 2.0.5 - 2025-03
+## [2.0.5] - 2025-03
+
+### Added
+
+- Added pre-commit and pre-push hooks
+
+### Changed
 
 - Improved error handling in application controller
-- Added pre-commit and pre-push hooks
 - Updated locale handling in application controller
 - Improved Sentry configuration for different environments
 
-## 2.0.4 - 2025-02
+## [2.0.4] - 2025-02
 
-- (Jon) Updated log level configuration across environments
-  - Added log level setting based on environment variable.
-  - Default to 'debug' in development and 'info' in production/test.
-  [GH-63](https://github.com/epimorphics/lr-landing/issues/63)
-- (Jon) Changed the way boot information is printed.
-- (Jon) Switched to JSON format for better compatibility with logging services.
-- (Jon) Refactored method to improve clarity and structure.
-- (Jon) Made the version string immutable by freezing it
-- (Jon) Included `puma-metrics` gem for better monitoring as now using Rails 6
-  or greater
-- (Jon) Updated Gemfile and Gemfile.lock to reflect the addition
-- (Jon) Set up a configurable metrics port with a default value.
-- (Jon) Updated the binding URL for the metrics server in development.
-- (Jon) Removed old git reference for the qonsole_rails gem.
-- (Jon) Added the qonsole_rails gem to the source block instead.
-- (Jon) Updated several gems to their latest versions.
-- (Jon) Cleaned up commented-out paths in the Gemfile.
+### Added
 
-## 2.0.3 - 2025-01
+- Included `puma-metrics` gem for better monitoring as now using Rails 6 or
+  greater
+- Updated Gemfile and Gemfile.lock to reflect the addition
+- Set up a configurable metrics port with a default value
 
-- (Jon) Improves error metrics reporting to ensure that logging always happens
-  with the appropriate severity depending on the exception status while reducing
-  the types of errors that can trigger a an error metric and therefore a
-  notification in slack
-  [GH-149](https://github.com/epimorphics/hmlr-linked-data/issues/149)
+### Changed
 
-## 2.0.2 - 2024-12
+- Updated log level configuration across environments
+  [#63](https://github.com/epimorphics/lr-landing/issues/63)
+- Changed the way boot information is printed
+- Switched to JSON format for better compatibility with logging services
+- Refactored method to improve clarity and structure
+- Made the version string immutable by freezing it
+- Updated several gems to their latest versions
+- Cleaned up commented-out paths in the Gemfile
+- Updated the binding URL for the metrics server in development
+- Removed old git reference for the qonsole_rails gem
+- Added the qonsole_rails gem to the source block instead
 
-- (Bogdan) Updated all gems, including `json_rails_logger`
+## [2.0.3] - 2025-01
 
-## 2.0.1 - 2024-10
+### Changed
 
-- (Bogdan) Fixed an issue with CSS for the checkboxes in the Qonsole query form
+- Improved error metrics reporting to ensure that logging always happens with
+  the appropriate severity depending on the exception status while reducing the
+  types of errors that can trigger an error metric and therefore a notification
+  in slack [#149](https://github.com/epimorphics/hmlr-linked-data/issues/149)
 
-## 2.0.0 - 2024-10
+## [2.0.2] - 2024-12
 
-- (Bogdan) Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest
-  versions (which are now running on ruby `3.3.5` and rails `7.2.2` as well)
-- (Bogdan) Upgraded alpine to `3.20`
-- (Bogdan) Upgraded rails to `7.2.2`
-- (Bogdan) Upgraded ruby to `3.3.5`
-- (Jon) Removed the public/fees-caluclator.html file as it is no longer needed
-  [GH-140](https://github.com/epimorphics/lr-landing/issues/140)
+### Changed
+
+- Updated all gems, including `json_rails_logger`
+
+## [2.0.1] - 2024-10
+
+### Fixed
+
+- Fixed an issue with CSS for the checkboxes in the Qonsole query form
+
+## [2.0.0] - 2024-10
+
+### Changed
+
+- Upgraded the `qonsole-rails` and `lr_common_styles` gems to latest versions
+  (which are now running on ruby `3.3.5` and rails `7.2.2` as well)
+- Upgraded alpine to `3.20`
+- Upgraded rails to `7.2.2`
+- Upgraded ruby to `3.3.5`
+
+### Removed
+
+- Removed the public/fees-caluclator.html file as it is no longer needed
+  [#140](https://github.com/epimorphics/lr-landing/issues/140)
+
+---
 
 ## 1.8.0 - 2024-09
 
