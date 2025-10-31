@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 
   protect_from_forgery with: :exception, prepend: true
+  # before_action :log_resource_usage
   before_action :set_locale
   before_action :change_default_caching_policy
   around_action :log_response
@@ -58,14 +59,15 @@ class ApplicationController < ActionController::Base
   # or attempt to render a generic error page if no specific error page exists
   unless Rails.application.config.consider_all_requests_local
     rescue_from StandardError do |e|
+      puts "[ApplicationController] Caught exception: #{e.class}: #{e.message}"
       # Trigger the appropriate error handling method based on the exception
       case e.class
       when ActionController::RoutingError, ActionView::MissingTemplate
-        :render404
+        :render_404
       when ActionController::InvalidCrossOriginRequest
-        :render403
+        :render_403
       when ActionController::BadRequest, ActionController::ParameterMissing
-        :render400
+        :render_400
       else
         :handle_internal_error
       end
@@ -81,17 +83,17 @@ class ApplicationController < ActionController::Base
     when UnprocessableEntity
       render_error(422)
     else
-      cname = exception.class.name
       logged_fields = {
         status: Rack::Utils::HTTP_STATUS_CODES[exception]
       }
-      if Rails.env.development? || Rails.logger.debug?
+      if Rails.logger.debug?
         logged_fields[:backtrace] = exception.backtrace.join("\n")
       end
       Log.error(
-        "No explicit error page for exception #{exception} - #{cname}",
+        "No explicit error page for #{exception.class.name} - #{exception}",
         logged_fields
       )
+
       # Instrument ActiveSupport::Notifications for internal errors but only for 500 errors:
       sentry_code = instrument_application_error(exception)
       render_error(500, sentry_code)
@@ -117,11 +119,11 @@ class ApplicationController < ActionController::Base
   def render_error(status, sentry_code = nil)
     reset_response
 
-    error_status = Rack::Utils::SYMBOL_TO_STATUS_CODE[status] if status.is_a?(Symbol)
+    status = Rack::Utils::SYMBOL_TO_STATUS_CODE[status] if status.is_a?(Symbol)
     respond_to do |format|
-      format.html { render_html_error_page(error_status, sentry_code) }
+      format.html { render_html_error_page(status, sentry_code) }
       # Anything else returns the status as human readable plain string
-      format.all { render plain: Rack::Utils::HTTP_STATUS_CODES[status].to_s, status: error_status }
+      format.all { render plain: Rack::Utils::HTTP_STATUS_CODES[status].to_s, status: status }
     end
   end
 
@@ -142,6 +144,8 @@ class ApplicationController < ActionController::Base
 
   private
 
+  #! UNUSED METHOD - kept for reference
+  # Set the Sentry user context for error tracking
   def set_sentry_user
     return unless signed_in? && Rails.env.production?
 
@@ -168,10 +172,38 @@ class ApplicationController < ActionController::Base
     end
     # Log the exception to the Rails logger with the appropriate severity
     Rails.logger.send(err[:status] < 500 ? :warn : :error, JSON.generate(err))
-    # Return unless the status code is 500 or greater to ensure subscribers are NOT notified
+    # Return unless the status code is 500 or greater to ensure metrics subscribers are NOT notified
     return unless err[:status] >= 500
 
     # Instrument the internal error event to notify subscribers of the error
     ActiveSupport::Notifications.instrument('internal_error.application', exception: err)
+  end
+
+  # Get the current process resource usage using the `ps` command
+  # -o format ~ User-defined format.  format is a single argument in the
+  #             form of a blank-separated or comma-separated list, which
+  #             offers a way to specify individual output columns.
+  # psr: processor number last used
+  # etime: elapsed time since the process started
+  # pcpu: percentage of CPU used by the process
+  # pmem: percentage of memory used by the process
+  # rss: resident set size (physical memory used) in kilobytes
+  # vsz: virtual memory size in kilobytes
+  # -p pid    ~ Select by process ID
+  # Source: https://discuss.rubyonrails.org/t/how-to-reduce-memory-footprint-of-a-rails-app/39388/6
+  # Reference: https://man7.org/linux/man-pages/man1/ps.1.html
+  def log_resource_usage
+    if Rails.env.production? # && Rails.logger.debug?
+      x,psr,etime,pcpu,pmem,rss,vsz = `ps -o psr,etime,pcpu,pmem,rss,vsz -p #{Process.pid}`&.split('\n')[1]&.split(/\s+/)
+      resources = { psr:, etime:, pcpu:, pmem:, rss:, vsz: }
+      Rails.logger.info(
+        "***DEBUG: resource_usage:
+          rails_env=#{Rails.env}
+          pid=#{Process.pid}
+          #{resources.compact!.map { |k, v| "#{k}=#{v}" }.join(' ')}
+          req_method=#{request.method}
+          req_uri=#{request.url}
+      ")
+    end
   end
 end
