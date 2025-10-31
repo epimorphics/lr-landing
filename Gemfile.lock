@@ -485,6 +485,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  derailed_benchmarks
   get_process_mem
   haml-rails
   http_accept_language
@@ -504,6 +505,7 @@ DEPENDENCIES
   sass-rails
   sentry-rails
   solargraph
+  stackprof
   terser
   web-console
 
