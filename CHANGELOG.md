@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.4] - 2025-11
+
+### Added
+
+- Benchmarking and profiling tools were added for performance analysis
+- System tools for resource introspection were added
+- Hooks and helpers for internal resource usage logging were added
+
+### Changed
+
+- Core and third-party libraries were upgraded to latest versions for security
+  and stability
+- Dependency constraints were updated and bundled dependencies were bumped
+- Logging configuration in development environment was standardised and tidied
+- Exception rescue paths were updated to clarify outcomes
+- Error handling and resource logging were improved
+
+### Fixed
+
+- Missing status in metrics subscriber was handled to prevent exceptions during
+  metrics emission
+
 ## [2.2.3] - 2025-09
 
 ### Changed
