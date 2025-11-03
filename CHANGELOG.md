@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Exception rescue paths were updated to clarify outcomes
 - Error handling and resource logging were improved
 
+### Removed
+
+- Removed deprecated `to_time_preserves_timezone` configuration for Rails 8.1+
+  compatibility
+
 ### Fixed
 
 - Missing status in metrics subscriber was handled to prevent exceptions during
