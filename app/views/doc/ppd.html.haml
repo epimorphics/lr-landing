@@ -92,7 +92,7 @@
   A standard PPD transaction concerns a single residential property sold for value to private individual.
   An additional PPD transaction concerns repossessions, buy-to-lets and transfers of property sold to non-private individuals.
 %p
-  The conversion process used takes these items and generates a number of ‘triples’ that are uploaded to a triple store that’s made available using a cloud based triple store. Descriptions of linked data formats are widely described in various web resources and are not covered here, HM Land Registry generate SPARQL update (<code>.ru</code>) files each month and these are described below.
+  The conversion process used takes these items and generates a number of &#8216;triples&#8217; that are uploaded to a triple store that&#8217;s made available using a cloud based triple store. Descriptions of linked data formats are widely described in various web resources and are not covered here, HM Land Registry generate SPARQL update (<code>.ru</code>) files each month and these are described below.
 %p
   To describe a transaction we have the following information:
 %p
@@ -317,7 +317,7 @@
   %code ppi:publishDate
   property.  This has since been removed.
 %p
-  The record status was part of the first release of price paid data and has since been made obsolete but remains in the store so that queries that included it will still run. All transactions will have a record status of ‘add’.
+  The record status was part of the first release of price paid data and has since been made obsolete but remains in the store so that queries that included it will still run. All transactions will have a record status of &#8216;add&#8217;.
 %p
   The triples generated for this transaction are:
 %pre
@@ -478,7 +478,7 @@
 %p
   Alongside the report builder we have created a SPARQL query page that can be found here
   = succeed "." do
-    %a{:href => "/app/qonsole"} http://landregistry.data.gov.uk/app/hpi/qonsole
+    %a{:href => "/app/qonsole"} http://landregistry.data.gov.uk/app/qonsole
 %p
   We also have made a
   %a{:href => "https://www.w3.org/wiki/SparqlEndpoints"} SPARQL endpoint
@@ -489,7 +489,7 @@
   Included at the end of this document is an example of a SPARQL query using FILTER to restrict the results returned.
 %h3 Via the API
 %p
-  It is possible to query the Price Paid Dataset directly through the API, this largely removes the need to know how to use SPARQL as long as the structure of the data is known.  Using the example transaction above we know that there is a street called ‘Pear Tree Street’ and that street is part of the address within the PPI data structure. With that information we can enter this URL into a web browser
+  It is possible to query the Price Paid Dataset directly through the API, this largely removes the need to know how to use SPARQL as long as the structure of the data is known.  Using the example transaction above we know that there is a street called &#8216;Pear Tree Street&#8217; and that street is part of the address within the PPI data structure. With that information we can enter this URL into a web browser
 %pre
   %a{:href => "http://landregistry.data.gov.uk/data/ppi/address?&street=PEAR%20TREE%20STREET"} http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET
 %p
@@ -510,7 +510,7 @@
   Which reveals that there are 9 entries that satisfy that query. A query for the county of Derbyshire reveals that there are 177,264 transactions (both queries correct as of June 2014). Note that for some queries the count function has been disabled due to the size of the dataset, this is particularly relevant for queries at the transaction-record level, for example this query will return new build properties in Derbyshire adding the count function will result in a warning message.:
 %pre
   %a{:href => "http://landregistry.data.gov.uk/data/ppi/transaction-record?&propertyAddress.county=DERBYSHIRE&newBuild=false"} http://landregistry.data.gov.uk/data/ppi/transaction-record?&amp;propertyAddress.county=DERBYSHIRE&amp;newBuild=false
-%h3 Example SPARQL query using ‘filter’
+%h3 Example SPARQL query using &#8216;filter&#8217;
 %p
   This is an example of a custom SPARQL query that we used.
   The customer request was to use a SPARQL query to find property where part of the PAON was Alveston within postcode CV37 7AE.  This can be easily done using the Price Paid report Builder but using SPARQL can be more flexible when dealing with multiple PAONs.
@@ -581,7 +581,7 @@
     ?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon
      FILTER regex(?ppd_propertyAddressPaon,'alve','i')
 %p
-  These lines identify PAON as part of the select and that the result should be filtered to find the string ‘alve’ anywhere within the PAON, the third argument specifies that the string is not case sensitive.
+  These lines identify PAON as part of the select and that the result should be filtered to find the string &#8216;alve&#8217; anywhere within the PAON, the third argument specifies that the string is not case sensitive.
 %p
   This gives a WHERE clause that looks like this and, when run, will return a single property transaction for Alveston Cottage
 %pre
@@ -605,7 +605,7 @@
 %p
   More than one string can be searched for using
   %code ||
-  to separate each argument, to return PAONs that contain the string ‘alve’ or the number 5 (stored as a string not numeric):
+  to separate each argument, to return PAONs that contain the string &#8216;alve&#8217; or the number 5 (stored as a string not numeric):
 %pre
   :preserve
     ?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon

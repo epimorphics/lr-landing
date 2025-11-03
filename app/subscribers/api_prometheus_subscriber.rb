@@ -7,7 +7,7 @@ class ApiPrometheusSubscriber < ActiveSupport::Subscriber
   def response(event)
     response = event.payload[:response]
     duration = event.payload[:duration]
-    status = response.status.to_s
+    status = response&.dig(:status).to_s
 
     Prometheus::Client.registry
                       .get(:api_status)
