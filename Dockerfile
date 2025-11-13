@@ -12,6 +12,7 @@ RUN apk add --update --no-cache \
     git \
     nodejs \
     tzdata \
+    procps \
     && gem update --system
 
 # for Bundler
