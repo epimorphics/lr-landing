@@ -32,6 +32,8 @@ end
 group :development do
   gem 'ruby-lsp'
   gem 'solargraph'
+  gem 'derailed_benchmarks'
+  gem 'stackprof'
   # Devtools panel for Rails development - loading from the GitHub repo
   # (https://github.com/dejan/rails_panel/issues/209#issuecomment-2621877079_)
   gem 'meta_request', github: 'dejan/rails_panel', ref: 'meta_request-v0.8.5'
