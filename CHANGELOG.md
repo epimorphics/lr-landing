@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Introduced feature tests for branding and home page functionality for use in
+  the Cucumber and Puppetteer Integration Tests (CuPIT).
+- Added a specification file outlining landing page elements which sets up basic
+  scenarios to verify logo presence, page titles and content.
+
+### Changed
+
+- Updated .gitignore rules to include .DS_Store files and prevent unnecessary
+  tracking of Mac OS system files
+- Generalises .env exclusion to cover all variations, except the development one,
+  for better secrets management
+
 ## [2.2.4] - 2025-11
 
 ### Added
