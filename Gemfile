@@ -5,7 +5,6 @@ source 'https://rubygems.org'
 gem 'rails'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 # gem 'uglifier'
 gem 'terser' # Updating to terser for ES6+ support
