@@ -10,18 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Load dependencies first (libraries, gems, engines) before custom application code.
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require lodash
 //= require qonsole_rails/application
 //= require lr_common_styles/application
-
-// LR Common Styles specific
-//= link favicon/apple-touch-icon.png
-//= link favicon/favicon-32x32.png
-//= link favicon/favicon-16x16.png
-//= link favicon/manifest.json
-//= link favicon/safari-pinned-tab.svg
-//= link favicon/favicon.ico
-//= link favicon/browserconfig.xml
+//
+// Load custom application code last to ensure all dependencies are available.
+// IMPORTANT: Keep require_tree at the end to avoid loading order issues.
+//= require_tree .
