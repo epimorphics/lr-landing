@@ -4,35 +4,44 @@ source 'https://rubygems.org'
 
 gem 'rails'
 
-# Use SCSS for stylesheets
-# Use Uglifier as compressor for JavaScript assets
-# gem 'uglifier'
-gem 'terser' # Updating to terser for ES6+ support
+# Use Puma as the app server
+gem 'puma'
 
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'get_process_mem'
+# JavaScript asset compressor
+gem 'terser' # Updating to terser for ES6+ support
+
+gem 'autoprefixer-rails'
+gem 'bootstrap', '~> 5.3.2'
+gem 'dartsass-sprockets', '~> 3.2'
+
 gem 'haml-rails'
+
+gem 'get_process_mem'
 gem 'http_accept_language'
-gem 'jbuilder'
 gem 'prometheus-client'
-gem 'puma'
 gem 'puma-metrics'
-gem 'sentry-rails'
+
+# Sentry uses stackprof for performance profiling, has to be loaded before Sentry
+gem 'stackprof'
+gem 'sentry-rails' # rubocop:disable Bundler/OrderedGems
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'dotenv'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rubocop'
   gem 'rubocop-rails'
 end
 
 group :development do
+  gem 'derailed_benchmarks'
   gem 'ruby-lsp'
   gem 'solargraph'
-  gem 'derailed_benchmarks'
-  gem 'stackprof'
   # Devtools panel for Rails development - loading from the GitHub repo
   # (https://github.com/dejan/rails_panel/issues/209#issuecomment-2621877079_)
   gem 'meta_request', github: 'dejan/rails_panel', ref: 'meta_request-v0.8.5'
