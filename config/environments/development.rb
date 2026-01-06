@@ -38,8 +38,8 @@ Rails.application.configure do
   # Don't print a log message every time an asset file is loaded
   config.assets.quiet = true
 
-  # Set the log level to the value of the LOG_LEVEL environment variable, or 'debug' if not set
-  config.log_level = ENV.fetch('LOG_LEVEL', 'debug').to_sym
+  # Enable SASS source maps in development for easier debugging
+  config.sass.inline_source_maps = true
   # Tag rails logs with useful information
   config.log_tags = %i[subdomain request_id request_method]
   # When sync mode is true, all output is immediately flushed to the underlying
@@ -47,6 +47,8 @@ Rails.application.configure do
   $stdout.sync = true
   # Log the stdout output to the Epimorphics JSON logging gem
   config.logger = JsonRailsLogger::Logger.new($stdout)
+  # Set the log level to the value of the LOG_LEVEL environment variable, or 'debug' by default
+  config.log_level = ENV.fetch('LOG_LEVEL', 'debug').to_sym
 
   # By default Rails expects that your application is running at the root (e.g. /).
   # This configuration sets running your application inside a directory.

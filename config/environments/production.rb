@@ -37,6 +37,11 @@ Rails.application.configure do
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
+  # `config.sass.style` has been deprecated in favor of `config.assets.css_compressor`
+  # Set SASS output style to compressed for smaller file sizes
+  config.sass.style = :compressed
+  # SASS source maps are disabled in production for performance
+  config.sass.inline_source_maps = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to
   # config/initializers/assets.rb
@@ -87,9 +92,10 @@ Rails.application.configure do
   # compiled asset paths
   config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
 
-  # API location can be specified in the environment
-  # But defaults to the dev service
-  # API location is not used on the landing page, but is required by all other apps
+  # API_SERVICE_URL should also be specified in the entrypoint.sh file and
+  # set in the Makefile as an env variable for the docker container when run as an image.
+  # API_SERVICE_URL is not used on the landing page, but is required by all other apps
+  # config.api_service_url = ENV.fetch('API_SERVICE_URL', nil)
 
   # Set the log level to the value of the LOG_LEVEL environment variable, or 'info' if not set
   config.log_level = ENV.fetch('LOG_LEVEL', 'info').to_sym

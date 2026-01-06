@@ -44,6 +44,9 @@ module LrLanding
     config.i18n.available_locales = %i[en cy]
     config.i18n.default_locale = :en
     config.i18n.enforce_available_locales = true
+
+    # Quiet SASS deprecation warnings coming from dependencies
+    config.sass.quiet_deps = true
   end
 end
 
