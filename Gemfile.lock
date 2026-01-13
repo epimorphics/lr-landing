@@ -95,9 +95,6 @@ GEM
     bindex (0.8.1)
     bootstrap (5.3.5)
       popper_js (>= 2.11.8, < 3)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.3.0)
     byebug (12.0.0)
     concurrent-ruby (1.3.5)
@@ -134,17 +131,17 @@ GEM
     erb (5.1.3)
     erubi (1.13.1)
     execjs (2.10.0)
-    faraday (2.13.4)
+    faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
     faraday-encoding (0.0.6)
       faraday
-    faraday-follow_redirects (0.3.0)
+    faraday-follow_redirects (0.5.0)
       faraday (>= 1, < 3)
-    faraday-net_http (3.4.1)
-      net-http (>= 0.5.0)
-    faraday-retry (2.3.2)
+    faraday-net_http (3.4.2)
+      net-http (~> 0.5)
+    faraday-retry (2.4.0)
       faraday (~> 2.0)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -255,8 +252,8 @@ GEM
     modulejs-rails (2.2.0.0)
       railties (>= 4.0)
     mutex_m (0.3.0)
-    net-http (0.6.0)
-      uri
+    net-http (0.9.1)
+      uri (>= 0.11.1)
     net-imap (0.5.12)
       date
       net-protocol
@@ -496,8 +493,8 @@ GEM
       json
       lograge
       railties
-    lr_common_styles (2.3.1)
-      bootstrap-sass (~> 3.4.1)
+    lr_common_styles (3.0.0)
+      bootstrap (~> 5.3.2)
       font-awesome-rails (~> 4.7.0)
       govuk_elements_rails (= 3.0.2)
       govuk_frontend_toolkit (~> 9.0)
@@ -508,8 +505,7 @@ GEM
       modernizr-rails (~> 2.7)
       modulejs-rails (~> 2.2.0)
       rails (~> 8.0)
-      sass-rails (~> 6.0)
-    qonsole_rails (2.3.0)
+    qonsole_rails (2.4.0)
       faraday (~> 2.13)
       faraday-encoding (~> 0.0, >= 0.0.6)
       faraday-follow_redirects (~> 0.3, >= 0.3.0)
@@ -534,7 +530,6 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bootstrap (~> 5.3.2)
   byebug
   dartsass-sprockets (~> 3.2)
   derailed_benchmarks

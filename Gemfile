@@ -15,8 +15,8 @@ gem 'jquery-rails'
 # JavaScript asset compressor
 gem 'terser' # Updating to terser for ES6+ support
 
+# Use SCSS for stylesheets, used mainly in development and test groups
 gem 'autoprefixer-rails'
-gem 'bootstrap', '~> 5.3.2'
 gem 'dartsass-sprockets', '~> 3.2'
 
 gem 'haml-rails'
