@@ -43,6 +43,9 @@ module LrLanding
 
     # Quiet SASS deprecation warnings coming from dependencies
     config.sass.quiet_deps = true
+    # Silence @import deprecation warnings during migration to @use/@forward
+    # See: https://sass-lang.com/d/import
+    config.sass.silence_deprecations = ['import']
   end
 end
 
