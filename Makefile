@@ -1,4 +1,4 @@
-.PHONY:	assets auth check clean image lint publish realclean run tag test vars
+.PHONY:	assets auth check clean image lint publish realclean run tag test update vars
 
 ALPINE_VERSION?=3.22
 BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
@@ -138,6 +138,15 @@ test: ## Run unit tests
 	@echo "Running unit tests ..."
 # Run Rails tests
 	@${RAILS} test
+
+update: ## Review and update dependencies interactively
+	@echo "Checking for outdated dependencies..."
+	@if command -v yarn &> /dev/null; then \
+		echo "Running yarn upgrade-interactive..."; \
+		yarn upgrade-interactive; \
+	fi
+	@echo "Running bundle outdated to check Ruby gems..."
+	@bundle outdated
 
 vars: ## Display environment variables
 	@echo "Docker: ${REPO}:${TAG}"
