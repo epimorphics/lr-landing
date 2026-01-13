@@ -2,19 +2,15 @@
 
 require File.expand_path('boot', __dir__)
 
-require 'rails'
 # Pick the frameworks you want:
-require 'active_model/railtie'
-# require "active_job/railtie"
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
-require 'action_view/railtie'
 require 'sprockets/railtie'
 require 'rails/test_unit/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+Bundler.require(:default, Rails.env)
 
 require 'qonsole_rails'
 
@@ -44,23 +40,32 @@ module LrLanding
     config.i18n.available_locales = %i[en cy]
     config.i18n.default_locale = :en
     config.i18n.enforce_available_locales = true
+
+    # Quiet SASS deprecation warnings coming from dependencies
+    config.sass.quiet_deps = true
+    # Silence @import deprecation warnings during migration to @use/@forward
+    # See: https://sass-lang.com/d/import
+    config.sass.silence_deprecations = ['import']
   end
 end
 
-# Monkey-patch the bit of Rails that emits the start-up log message, so that it
-# is written out in JSON format that our combined logging service can handle
+# Monkey-patch the bit of Rails that emits the start-up log message, so
+# that it is written out in JSON format that our combined logging
+# service can handle
 module Rails
   # :nodoc:
   module Command
     # :nodoc:
     class ServerCommand
       def print_boot_information(server, url)
-        msg = {
+        msg = "Starting #{server} Rails #{Rails.version} in #{Rails.env}"
+        msg += " on #{url}" if url
+        info = {
           ts: DateTime.now.utc.strftime('%FT%T.%3NZ'),
           level: 'INFO',
-          message: "Starting #{server} Rails #{Rails.version} in #{Rails.env} #{url}"
+          message: msg
         }
-        say msg.to_json
+        say info.to_json
       end
     end
   end

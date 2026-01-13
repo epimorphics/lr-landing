@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Migrated from deprecated `sass-rails` gem to `dartsass-sprockets` (Dart Sass)
+  for long-term CSS compilation support
+  [#158](https://github.com/epimorphics/lr-landing/issues/158)
+- Removed `bootstrap-sass` in favour of Bootstrap framework dependencies for
+  enhanced styling capabilities and maintainability
+- Updated asset pipeline configuration and loading order for improved
+  performance
+- Enabled Autoprefixer source maps for better CSS debugging in development
+- Streamlined Rails framework loading configuration
+- Updated Sass configuration for compatibility with new build toolchain
+
 ## [2.2.4] - 2025-11
 
 ### Added
