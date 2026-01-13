@@ -13,6 +13,8 @@
 // Load dependencies first (libraries, gems, engines) before custom application code.
 //= require jquery
 //= require jquery_ujs
+//= require popper
+//= require bootstrap
 //= require lodash
 //= require qonsole_rails/application
 //= require lr_common_styles/application
