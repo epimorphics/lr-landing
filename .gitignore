@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Ignore Mac system files
+.DS_Store
+
 # Ignore vscode config
 .vscode
 
@@ -54,6 +57,5 @@ tags
 .npmrc
 
 # Ignore local configuration files
-.env
-.env*.local
+.env*
 !.env.development

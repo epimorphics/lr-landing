@@ -1,0 +1,48 @@
+:root {
+  --govuk-font-size-base: 1rem;
+}
+
+.row {
+
+  li,
+  p,
+  dl>dt,
+  dl>dd {
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.cookie-banner {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: initial;
+  padding-inline: 3rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.o-container {
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+
+@media (min-width: 768px) {
+  .dl-horizontal {
+    dt {
+      float: left;
+      width: 160px;
+      clear: left;
+      text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    dd {
+      margin-left: 180px;
+    }
+
+  }
+}
