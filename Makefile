@@ -146,7 +146,7 @@ update: ## Review and update dependencies interactively
 		yarn upgrade-interactive; \
 	fi
 	@echo "Running bundle outdated to check Ruby gems..."
-	@bundle outdated --only-explicit
+	@bundle outdated --only-explicit ||:
 
 vars: ## Display environment variables
 	@echo "Docker: ${REPO}:${TAG}"
