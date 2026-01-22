@@ -64,7 +64,7 @@ clean: ## Clean up temporary and compiled files
 	@@ rm -rf bundle coverage log node_modules tmp
 
 compiled: ## Compile assets for production
-	@echo "Removing old compiled assets and compiling ..."
+	@echo "Cleaning and precompiling static assets ..."
 	@${RAILS} assets:clobber assets:precompile
 
 forceclean: realclean ## Remove all bundled files
