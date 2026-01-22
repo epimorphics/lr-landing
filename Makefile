@@ -141,12 +141,12 @@ test: ## Run unit tests
 
 update: ## Review and update dependencies interactively
 	@echo "Checking for outdated dependencies..."
-	@if command -v yarn &> /dev/null; then \
+	@if [ -f package.json ]; then \
 		echo "Running yarn upgrade-interactive..."; \
 		yarn upgrade-interactive; \
 	fi
 	@echo "Running bundle outdated to check Ruby gems..."
-	@bundle outdated
+	@bundle outdated --only-explicit
 
 vars: ## Display environment variables
 	@echo "Docker: ${REPO}:${TAG}"
