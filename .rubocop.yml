@@ -2,11 +2,11 @@ plugins:
   - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 3.3
   Exclude:
     - "Gemfile"
   NewCops: enable
 
+# Customised rules
 Layout/LineLength:
   Max: 100
   AllowedPatterns: ['^(\s*#)']
@@ -42,6 +42,10 @@ Naming/MethodParameterName:
   Exclude:
     - test/**/*
 
+Style/Documentation:
+  Exclude:
+    - test/**/*
+
 Style/FormatStringToken:
   Enabled: false
 
@@ -49,9 +53,6 @@ Style/OptionalBooleanParameter:
   Enabled: false
 
 Style/ClassAndModuleChildren:
-  Exclude:
-    - test/**/*
-
-Style/Documentation:
+  EnforcedStyle: nested
   Exclude:
     - test/**/*
