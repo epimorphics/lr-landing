@@ -38,6 +38,11 @@ group :development, :test do
   gem 'rubocop-rails'
 end
 
+group :test do
+  gem 'simplecov', require: false
+end
+
+
 group :development do
   gem 'derailed_benchmarks'
   gem 'ruby-lsp'
