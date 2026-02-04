@@ -1,4 +1,4 @@
-.PHONY:	assets auth check clean image lint publish realclean run tag test update vars
+.PHONY:	all assets auth bundles check checks clean compiled coverage forceclean help image lint local name publish realclean rubocop run server start stop tag test update vars version
 
 ALPINE_VERSION?=3.22
 BUNDLER_VERSION?=$(shell tail -1 Gemfile.lock | tr -d ' ')
@@ -38,7 +38,7 @@ ${GITHUB_TOKEN}:
 
 all: image ## Default target: build the Docker image
 
-assets: bundles compiled ## Compile assets for serving
+assets: bundles compiled ## Compile static assets for serving
 	@echo assets completed.
 
 auth: ${GITHUB_TOKEN} ${BUNDLE_CFG} ## Set up authentication for GitHub and Bundler
@@ -49,7 +49,6 @@ bundles: ## Install Ruby gems via Bundler
 	@${BUNDLE} install
 
 check: checks ## Alias for `checks` target
-	@echo "All checks passed."
 
 checks: lint test ## Run all checks: linting and tests
 	@echo "All checks passed."
@@ -64,8 +63,12 @@ clean: ## Clean up temporary and compiled files
 	@@ rm -rf bundle coverage log node_modules tmp
 
 compiled: ## Compile assets for production
-	@echo "Removing old compiled assets and compiling ..."
+	@echo "Cleaning and precompiling static assets ..."
 	@${RAILS} assets:clobber assets:precompile
+
+coverage: ## Display test coverage report
+	@open coverage/index.html
+	@echo "Displaying test coverage report in browser..."
 
 forceclean: realclean ## Remove all bundled files
 	@${BUNDLE} clean --force || :
@@ -74,8 +77,14 @@ help: ## Display this message
 	@echo "Available make targets:"
 	@grep -hE '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "%-20s %s\n", $$1, $$2}'
 	@echo ""
+	@echo ""
+ifdef AWS_PROFILE
 	@echo "Environment variables (optional: all variables have defaults):"
 	@make vars
+else
+	@echo "Warning: AWS_PROFILE environment variable is not set. AWS CLI commands may fail."
+	@echo "Re-run with AWS_PROFILE set to see all variables"
+endif
 
 image: auth ## Build the Docker image
 	@echo Building ${REPO}:${TAG} ...
@@ -141,12 +150,13 @@ test: ## Run unit tests
 
 update: ## Review and update dependencies interactively
 	@echo "Checking for outdated dependencies..."
-	@if command -v yarn &> /dev/null; then \
+	@if [ -f package.json ]; then \
 		echo "Running yarn upgrade-interactive..."; \
 		yarn upgrade-interactive; \
 	fi
 	@echo "Running bundle outdated to check Ruby gems..."
-	@bundle outdated
+# Let bundler handle output; treat this as informational even if deps are outdated
+	@${BUNDLE} outdated --only-explicit || true
 
 vars: ## Display environment variables
 	@echo "Docker: ${REPO}:${TAG}"
