@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/dejan/rails_panel.git
-  revision: fed66f8a4ac2d11aa05ebf7d50e1d4d1e745423f
-  ref: meta_request-v0.8.5
-  specs:
-    meta_request (0.8.5)
-      rack-contrib (>= 1.1, < 3)
-      railties (>= 3.0.0, < 9)
-
-GIT
   remote: https://github.com/marlinpierce/jquery-datatables-rails.git
   revision: ff67ccfd7b064e0512465186e962e0078d570517
   branch: master-3.5
@@ -564,7 +555,6 @@ DEPENDENCIES
   jquery-rails
   json_rails_logger!
   lr_common_styles!
-  meta_request!
   prometheus-client
   puma
   puma-metrics
