@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Upgraded 'qonsole-rails' gem to include latest accessibility updates
+  [v2.4.2](https://github.com/epimorphics/qonsole-rails/releases/tag/2.4.2)
 - Upgraded `rubocop` and updated linting configuration.
   [#208](https://github.com/epimorphics/lr-landing/issues/208)
 - Bumped development tooling: `byebug`, `solargraph`, and `ruby-lsp`.
