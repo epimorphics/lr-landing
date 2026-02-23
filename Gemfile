@@ -21,6 +21,13 @@ gem 'dartsass-sprockets', '~> 3.2'
 
 gem 'haml-rails'
 
+# The Qonsole Rails gem depends on a forked version of jquery-datatables-rails
+# to include a fix that has not yet been merged into the main repo. See:
+# https://stackoverflow.com/a/68001592/5760177
+gem 'jquery-datatables-rails', '~> 3.5.0',
+    github: 'marlinpierce/jquery-datatables-rails',
+    branch: 'master-3.5'
+
 gem 'get_process_mem'
 gem 'http_accept_language'
 gem 'prometheus-client'
@@ -38,14 +45,15 @@ group :development, :test do
   gem 'rubocop-rails'
 end
 
+group :test do
+  gem 'simplecov', require: false
+end
+
+
 group :development do
   gem 'derailed_benchmarks'
   gem 'ruby-lsp'
   gem 'solargraph'
-  # Devtools panel for Rails development - loading from the GitHub repo
-  # (https://github.com/dejan/rails_panel/issues/209#issuecomment-2621877079_)
-  gem 'meta_request', github: 'dejan/rails_panel', ref: 'meta_request-v0.8.5'
-
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console'
 

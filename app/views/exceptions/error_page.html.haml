@@ -10,8 +10,8 @@
         %p
           We're sorry, but the request you made was not understood. If you are requesting
           data via a script or program, please check the URL parameters. If you see this
-          message as a result of using the HPI or PPD applications, please let us
-          know so that we can correct the problem.
+          message as a result of using the House Price Index or Price Paid Data applications,
+          please let us know so that we can correct the problem.
 
       - elsif status == 403
         %h1.o-heading--1 Request denied
@@ -19,7 +19,7 @@
         %p
           We're sorry, but the request you made was not permitted. If you are requesting
           data via a script or program, please check the URL parameters. If you see this
-          message as a result of using the HPI or PPD applications, please let us know so
+          message as a result of using the House Price Index or Price Paid Data applications, please let us know so
           that we can correct the problem.
 
       - elsif status == 404
@@ -41,9 +41,9 @@
         %h1.o-heading--1 Application error
 
         %p
-          We're very sorry, but the request you just made resulted in an internal
-          error in the UKHPI application. If this problem persists, please use one of the contact
-          methods below to report the problem to us so that we can resolve it and
+          We're very sorry, but the request you just made resulted in an internal error
+          in the application. If this problem persists, please use one of the contact
+          methods below to report the problem to us, so that we can resolve it and
           help you get the data you require.
 
       - if sentry_code

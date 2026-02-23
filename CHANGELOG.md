@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.1] - 2026-02
+
+### Added
+
+- Added test coverage reporting with SimpleCov and a `coverage` Makefile target.
+  [#207](https://github.com/epimorphics/lr-landing/issues/207)
+
+### Changed
+
+- Upgraded 'qonsole-rails' gem to include latest accessibility updates
+  [v2.4.2](https://github.com/epimorphics/qonsole-rails/releases/tag/2.4.2)
+- Upgraded `rubocop` and updated linting configuration.
+  [#208](https://github.com/epimorphics/lr-landing/issues/208)
+- Bumped development tooling: `byebug`, `solargraph`, and `ruby-lsp`.
+  [#208](https://github.com/epimorphics/lr-landing/issues/208)
+- Bumped runtime libraries including `jquery-rails`, `puma`, and Rails for
+  compatibility and stability.
+  [#201](https://github.com/epimorphics/lr-landing/issues/201)
+- Refactored Sentry initialisation and updated logger configuration.
+- Unified Makefile targets and modernised build behaviour.
+- Updated asset pipeline precompile messaging.
+- Reconciled divergent branches and consolidated dependency updates.
+  [#206](https://github.com/epimorphics/lr-landing/issues/206)
+
+### Fixed
+
+- Handled non-zero exit codes from `bundle outdated` during dependency checks.
+- Updated git hooks to improve pre-commit / pre-push workflow.
+- Corrected exception message wording and improved error logging.
+- Fixed hooks API SERVICE URL default value.
+
+### Security
+
+- Updated several third-party libraries to address security and compatibility
+  issues.
+
 ## [2.3.0] - 2026-01
 
 ### Changed
