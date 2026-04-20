@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Updated guidance notes for PPD [#317](https://github.com/epimorphics/ppd-explorer/issues/317)
+
 ## [2.3.1] - 2026-02
 
 ### Added
