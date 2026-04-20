@@ -56,6 +56,7 @@ group :development do
   gem 'solargraph'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console'
+  gem 'haml-lint', require: false
 
   # NOTE: While running the rails app locally for testing you can set gems to your local path
   # ! These "local" paths do not work with a docker image - use the repo instead

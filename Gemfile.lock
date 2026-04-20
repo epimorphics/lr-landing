@@ -195,11 +195,19 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
+    haml-lint (0.999.999)
+      haml_lint
     haml-rails (3.0.0)
       actionpack (>= 5.1)
       activesupport (>= 5.1)
       haml (>= 4.0.6)
       railties (>= 5.1)
+    haml_lint (0.73.0)
+      haml (>= 5.0)
+      parallel (>= 1.10)
+      rainbow
+      rubocop (>= 1.0)
+      sysexits (~> 1.1)
     heapy (0.2.0)
       thor
     http_accept_language (2.1.1)
@@ -466,6 +474,7 @@ GEM
       sprockets (>= 3.0.0)
     stackprof (0.2.27)
     stringio (3.2.0)
+    sysexits (1.2.0)
     temple (0.10.4)
     terser (1.2.6)
       execjs (>= 0.3.0, < 3)
@@ -547,6 +556,7 @@ DEPENDENCIES
   derailed_benchmarks
   dotenv
   get_process_mem
+  haml-lint
   haml-rails
   http_accept_language
   jbuilder
