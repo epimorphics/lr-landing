@@ -23,5 +23,6 @@ class DocumentationTest < ActionDispatch::IntegrationTest
     get(ppd_doc_path, params: { lang: 'en' })
     assert_select 'h1', 'Price Paid Linked Data'
     assert_select 'h2', 'What does the Price Paid Dataset consist of?'
+    assert_select 'h2', 'Changes to Local Authority Boundaries Over Time'
   end
 end
