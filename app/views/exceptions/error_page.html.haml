@@ -5,7 +5,8 @@
 .row.mx-3.my-5
   .col-md-12
     %article.u-clear
-      - if status == 400
+      - case status
+      - when 400
         %h1.o-heading--1 Request not understood
         %p
           We're sorry, but the request you made was not understood. If you are requesting
@@ -13,7 +14,7 @@
           message as a result of using the House Price Index or Price Paid Data applications,
           please let us know so that we can correct the problem.
 
-      - elsif status == 403
+      - when 403
         %h1.o-heading--1 Request denied
 
         %p
@@ -22,7 +23,7 @@
           message as a result of using the House Price Index or Price Paid Data applications, please let us know so
           that we can correct the problem.
 
-      - elsif status == 404
+      - when 404
         %h1.o-heading--1 Page not found
 
         %p
@@ -30,7 +31,7 @@
           Please check the spelling of the page address (URL). If you require further
           assistance, please see the contact details below.
 
-      - elsif status == 422
+      - when 422
         %h1.o-heading--1 The change you wanted was rejected.
 
         %p
