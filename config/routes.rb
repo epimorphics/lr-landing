@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'accessibility', to: 'doc#accessibility'
   get 'privacy', to: 'doc#privacy'
 
-  get '*unmatched_route', to: 'application#render_404'
+  get '*unmatched_route', to: 'application#render404'
 end
