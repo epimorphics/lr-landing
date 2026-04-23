@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Upgraded ruby to `3.4.9` [#214](https://github.com/epimorphics/lr-landing/issues/214)
 - Updated guidance notes for PPD [#317](https://github.com/epimorphics/ppd-explorer/issues/317)
 
 ## [2.3.1] - 2026-02
