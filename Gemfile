@@ -2,14 +2,12 @@
 
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~> 8.1'
 
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '~> 7.0'
 
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # JavaScript asset compressor
@@ -35,14 +33,14 @@ gem 'puma-metrics'
 
 # Sentry uses stackprof for performance profiling, has to be loaded before Sentry
 gem 'stackprof'
-gem 'sentry-rails' # rubocop:disable Bundler/OrderedGems
+gem 'sentry-rails', '~> 6.0' # rubocop:disable Bundler/OrderedGems
 
 group :development, :test do
   gem 'byebug'
   gem 'dotenv'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'rubocop'
-  gem 'rubocop-rails'
+  gem 'rubocop', '~> 1.0', require: false
+  gem 'rubocop-rails', '~> 2.0', require: false
 end
 
 group :test do
@@ -51,7 +49,6 @@ end
 
 
 group :development do
-  gem 'derailed_benchmarks'
   gem 'ruby-lsp'
   gem 'solargraph'
   # Access an IRB console on exception pages or by using <%= console %> in views
