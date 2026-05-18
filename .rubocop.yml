@@ -4,6 +4,7 @@ plugins:
 AllCops:
   Exclude:
     - "Gemfile"
+    - "vendor/**/*"
   NewCops: enable
 
 # Customised rules
