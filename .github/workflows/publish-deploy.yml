@@ -1,13 +1,66 @@
 name: "Build & Publish Docker Image"
 on:
   workflow_dispatch: {}
-  push: {}
+  pull_request:
+    branches:
+      - dev
+      - preprod
+      - prod
+    paths:
+      # Image definition and entrypoint
+      - 'Dockerfile'
+      - 'entrypoint.sh'
+      - 'Makefile'
+      # Ruby dependencies
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '.ruby-version'
+      - '.bundle/**'
+      # Rails application
+      - 'config.ru'
+      - 'Rakefile'
+      - 'app/**'
+      - 'bin/**'
+      - 'config/**'
+      - 'lib/**'
+      - 'public/**'
+      # Workflow itself
+      - '.github/workflows/**'
+  push:
+    branches:
+      - dev
+      - preprod
+      - prod
+    paths:
+      # Image definition and entrypoint
+      - 'Dockerfile'
+      - 'entrypoint.sh'
+      - 'Makefile'
+      # Ruby dependencies
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '.ruby-version'
+      - '.bundle/**'
+      # Rails application
+      - 'config.ru'
+      - 'Rakefile'
+      - 'app/**'
+      - 'bin/**'
+      - 'config/**'
+      - 'lib/**'
+      - 'public/**'
+      # Workflow itself
+      - '.github/workflows/**'
 
 jobs:
+  verify-code:
+    uses: ./.github/workflows/verify.yml
+    secrets: inherit
   publish:
+    needs: verify-code
     uses:  "epimorphics/github-workflows/.github/workflows/publish.yml@v2"
     secrets:
-      # Repostory specific
+      # Repository specific
       aws_access_key_id:     "${{ secrets.BUILD_HMLR_AWS_ACCESS_KEY_ID }}"
       aws_secret_access_key: "${{ secrets.BUILD_HMLR_AWS_SECRET_ACCESS_KEY }}"
       # Fixed
@@ -16,7 +69,7 @@ jobs:
     needs: "publish"
     uses:  "epimorphics/github-workflows/.github/workflows/deploy.yml@v2"
     with:
-      # Repostory specific
+      # Repository specific
       ansible_playbook: pres.yml
       ansible_repo:     epimorphics/hmlr-ansible-deployment
       ansible_repo_ref: master
@@ -26,7 +79,7 @@ jobs:
       key:    "${{ needs.publish.outputs.key }}"
       tag:    "${{ needs.publish.outputs.tag }}"
     secrets:
-      # Repostory specific
+      # Repository specific
       ansible_vault_password: "${{ secrets.HMLR_ANSIBLE_VAULT_PASSWORD }}"
       aws_access_key_id:      "${{ secrets.BUILD_HMLR_AWS_ACCESS_KEY_ID }}"
       aws_secret_access_key:  "${{ secrets.BUILD_HMLR_AWS_SECRET_ACCESS_KEY }}"
