@@ -52,7 +52,8 @@ end
 # Monkey-patch the bit of Rails that emits the start-up log message, so
 # that it is written out in JSON format that our combined logging
 # service can handle
-module Rails
+# TODO: Remove this block after adopting `epilog_rails`
+module Rails # rubocop:disable Style/OneClassPerFile
   # :nodoc:
   module Command
     # :nodoc:
