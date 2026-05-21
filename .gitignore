@@ -24,8 +24,10 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore node_modules
+# Node (Playwright only — not used in the application build)
 node_modules/
+.yarn/*
+!.yarn/releases
 
 # Ignore precompiled javascript packs
 /public/packs

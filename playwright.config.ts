@@ -1,0 +1,41 @@
+import { defineConfig, devices } from '@playwright/test'
+
+const rawBaseURL = process.env['E2E_BASE_URL'] ?? 'http://localhost:3000/'
+const baseURL = rawBaseURL.endsWith('/') ? rawBaseURL : `${rawBaseURL}/`
+
+export default defineConfig({
+  testDir: 'test/playwright',
+  outputDir: 'tmp/test-results',
+  reporter: [['html', { outputFolder: 'tmp/playwright-report', open: 'never' }]],
+  timeout: 60_000,
+  workers: 1,
+
+  use: {
+    baseURL,
+    screenshot: 'only-on-failure',
+    ...(process.env['E2E_USERNAME']
+      ? {
+        httpCredentials: {
+          username: process.env['E2E_USERNAME'],
+          password: process.env['E2E_PASSWORD'] ?? '',
+        },
+      }
+      : {}),
+  },
+
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
+
+  webServer: process.env['E2E_BASE_URL']
+    ? undefined
+    : {
+      command: 'bin/rails server -p 3003',
+      url: 'http://localhost:3003',
+      reuseExistingServer: true,
+      timeout: 60_000,
+    },
+})
