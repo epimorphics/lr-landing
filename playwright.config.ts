@@ -33,8 +33,8 @@ export default defineConfig({
   webServer: process.env['E2E_BASE_URL']
     ? undefined
     : {
-      command: 'bin/rails server -p 3003',
-      url: 'http://localhost:3003',
+      command: 'bin/rails server -p 3000',
+      url: 'http://localhost:3000',
       reuseExistingServer: true,
       timeout: 60_000,
     },
