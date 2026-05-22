@@ -129,8 +129,7 @@ nvm install   # reads .nvmrc automatically
 nvm use
 ```
 
-**Install dependencies** (yarn resolves from `.yarn/releases/yarn-4.14.1.cjs` via
-`yarnPath` in `.yarnrc.yml` — no separate corepack step needed):
+**Install dependencies** (yarn uses the `yarnPath` configuration and will resolve from a locally kept version in `.yarn/releases/`, no separate corepack step needed):
 
 ```bash
 yarn install
