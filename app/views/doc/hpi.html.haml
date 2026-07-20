@@ -99,139 +99,124 @@
 %h3 HPI Data
 %p
   HPI Data is stored as a named graph in a data cube with two dimensions and a number of measures. The dimensions are:
-%table.table.definitions.table-bordered.table-condensed
-  %tr
-    %td.definition-label Region
-    %td
-      %code hpi:refRegion
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/refRegion"} http://landregistry.data.gov.uk/def/hpi/refRegion
-  %tr
-    %td.definition-label Period
-    %td
-      %code hpi:refPeriod
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/refPeriod"} http://landregistry.data.gov.uk/def/hpi/refPeriod
+%dl.definitions
+  %dt Region
+  %dd
+    %code hpi:refRegion
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/refRegion"} http://landregistry.data.gov.uk/def/hpi/refRegion
+  %dt Period
+  %dd
+    %code hpi:refPeriod
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/refPeriod"} http://landregistry.data.gov.uk/def/hpi/refPeriod
 %p
   And the measures are:
-%table.table.definitions.table-bordered.table-condensed
-  %tr
-    %td.definition-label
-      Region name
-    %td
-      %code
-        hpi:refRegionName
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/refRegionName"}
-        http://landregistry.data.gov.uk/def/hpi/refRegionName
-  %tr
-    %td.definition-label
-      Monthly residential property price indicies
-    %td
-      %code
-        hpi:indicies
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/indices"}
-        http://landregistry.data.gov.uk/def/hpi/indices
-  %tr
-    %td.definition-label
-      Seasonally adjusted monthly residential property price indicies
-    %td
-      %code
-        hpi:indiciesSA
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/indicesSA"}
-        http://landregistry.data.gov.uk/def/hpi/indicesSA
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted residential property price indicies
-    %td
-      %code
-        hpi:indiciesSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/indicesSASM"}
-        http://landregistry.data.gov.uk/def/hpi/indicesSASM
-  %tr
-    %td.definition-label
-      Seasonally adjusted standardised average prices
-    %td
-      %code
-        hpi:averagePricesSA
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSA"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesSA
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted standardised average prices
-    %td
-      %code
-        hpi:averagePricesSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesSASM
-  %tr
-    %td.definition-label
-      Monthly change figures represent the percentage change in average house prices relative to the previous month
-    %td
-      %code
-        hpi:monthlyChange
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/monthlyChange"}
-        http://landregistry.data.gov.uk/def/hpi/monthlyChange
-  %tr
-    %td.definition-label
-      Annual change figures represent the percentage change in average house prices relative to the same month twelve months earlier
-    %td
-      %code
-        hpi:annualChange
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/annualChange"}
-        http://landregistry.data.gov.uk/def/hpi/annualChange
-  %tr
-    %td.definition-label
-      Volume of sales upon which analysis is based
-    %td
-      %code
-        hpi:salesVolume
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/salesVolume"}
-        http://landregistry.data.gov.uk/def/hpi/salesVolume
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a detached property
-    %td
-      %code
-        hpi:averagePricesDetachedSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesDetachedSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesDetachedSASM
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a semi-detached property
-    %td
-      %code
-        hpi:averagePricesSemiDetachedSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSemiDetachedSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesSemiDetachedSASM
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a terraced property
-    %td
-      %code
-        hpi:averagePricesTerracedSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesTerracedSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesTerracedSASM
-  %tr
-    %td.definition-label
-      Smoothed seasonally adjusted average prices for a flat or maisonette
-    %td
-      %code
-        hpi:averagePricesFlatMaisonetteSASM
-      %br/
-      %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesFlatMaisonetteSASM"}
-        http://landregistry.data.gov.uk/def/hpi/averagePricesFlatMaisonetteSASM
+%dl.definitions
+  %dt
+    Region name
+  %dd
+    %code
+      hpi:refRegionName
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/refRegionName"}
+      http://landregistry.data.gov.uk/def/hpi/refRegionName
+  %dt
+    Monthly residential property price indicies
+  %dd
+    %code
+      hpi:indicies
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/indices"}
+      http://landregistry.data.gov.uk/def/hpi/indices
+  %dt
+    Seasonally adjusted monthly residential property price indicies
+  %dd
+    %code
+      hpi:indiciesSA
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/indicesSA"}
+      http://landregistry.data.gov.uk/def/hpi/indicesSA
+  %dt
+    Smoothed seasonally adjusted residential property price indicies
+  %dd
+    %code
+      hpi:indiciesSASM
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/indicesSASM"}
+      http://landregistry.data.gov.uk/def/hpi/indicesSASM
+  %dt
+    Seasonally adjusted standardised average prices
+  %dd
+    %code
+      hpi:averagePricesSA
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSA"}
+      http://landregistry.data.gov.uk/def/hpi/averagePricesSA
+  %dt
+    Smoothed seasonally adjusted standardised average prices
+  %dd
+    %code
+      hpi:averagePricesSASM
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSASM"}
+      http://landregistry.data.gov.uk/def/hpi/averagePricesSASM
+  %dt
+    Monthly change figures represent the percentage change in average house prices relative to the previous month
+  %dd
+    %code
+      hpi:monthlyChange
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/monthlyChange"}
+      http://landregistry.data.gov.uk/def/hpi/monthlyChange
+  %dt
+    Annual change figures represent the percentage change in average house prices relative to the same month twelve months earlier
+  %dd
+    %code
+      hpi:annualChange
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/annualChange"}
+      http://landregistry.data.gov.uk/def/hpi/annualChange
+  %dt
+    Volume of sales upon which analysis is based
+  %dd
+    %code
+      hpi:salesVolume
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/salesVolume"}
+      http://landregistry.data.gov.uk/def/hpi/salesVolume
+  %dt
+    Smoothed seasonally adjusted average prices for a detached property
+  %dd
+    %code
+      hpi:averagePricesDetachedSASM
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesDetachedSASM"}
+      http://landregistry.data.gov.uk/def/hpi/averagePricesDetachedSASM
+  %dt
+    Smoothed seasonally adjusted average prices for a semi-detached property
+  %dd
+    %code
+      hpi:averagePricesSemiDetachedSASM
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesSemiDetachedSASM"}
+      http://landregistry.data.gov.uk/def/hpi/averagePricesSemiDetachedSASM
+  %dt
+    Smoothed seasonally adjusted average prices for a terraced property
+  %dd
+    %code
+      hpi:averagePricesTerracedSASM
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesTerracedSASM"}
+      http://landregistry.data.gov.uk/def/hpi/averagePricesTerracedSASM
+  %dt
+    Smoothed seasonally adjusted average prices for a flat or maisonette
+  %dd
+    %code
+      hpi:averagePricesFlatMaisonetteSASM
+    %br/
+    %a{:href => "http://landregistry.data.gov.uk/def/hpi/averagePricesFlatMaisonetteSASM"}
+      http://landregistry.data.gov.uk/def/hpi/averagePricesFlatMaisonetteSASM
 %h3 Example
 %p
   Each month HM Land Registry refresh the HPI data for the North East of England. After transformation and upload to the Land Registry triplestore the data for that region for December 2013 can be found here:

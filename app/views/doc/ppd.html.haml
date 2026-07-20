@@ -126,112 +126,95 @@ This means:
   To describe a transaction we have the following information:
 %p
   A transaction record ID which contains
-%table.table.table-bordered.table-condensed
-  %tr
-    %td
-      A transaction
-    %td
-      %code /def/ppi/hasTransaction
-  %tr
-    %td
-      A property address
-    %td
-      %code /def/ppi/propertyAddress
+%dl.definitions
+  %dt
+    A transaction
+  %dd
+    %code /def/ppi/hasTransaction
+  %dt
+    A property address
+  %dd
+    %code /def/ppi/propertyAddress
 %p
   The predicate
   %code hasTransaction
   has a range of
   = succeed "," do
     %code Transaction
-%table.table.table-bordered.table-condensed
-  %tr
-    %td
-      The property type
-    %td
-      %a{:href => "http://landregistry.data.gov.uk/def/ppi/propertyType"}
-        %code ppi:propertyType
-  %tr
-    %td
-      The estate
-    %td
-      %a{:href => "http://landregistry.data.gov.uk/def/ppi/estateType"}
-        %code type ppi:estateType
-  %tr
-    %td
-      Transaction date
-    %td
-      %a{:href => "http://landregistry.data.gov.uk/def/ppi/transactionDate"}
-        %code ppi:transactionDate
-  %tr
-    %td
-      The price paid
-    %td
-      %a{:href => "http://landregistry.data.gov.uk/def/ppi/pricePaid"}
-        %code ppi:pricePaid
-  %tr
-    %td
-      A new build indicator
-    %td
-      %a{:href => "http://landregistry.data.gov.uk/def/ppi/newBuild"}
-        %code ppi:newBuild
-  %tr
-    %td
-      The transaction category
-    %td
-      %a{:href => "/def/ppi/transactionCategory"}
-        %code ppi:transactionCategory
+%dl.definitions
+  %dt
+    The property type
+  %dd
+    %a{:href => "http://landregistry.data.gov.uk/def/ppi/propertyType"}
+      %code ppi:propertyType
+  %dt
+    The estate
+  %dd
+    %a{:href => "http://landregistry.data.gov.uk/def/ppi/estateType"}
+      %code type ppi:estateType
+  %dt
+    Transaction date
+  %dd
+    %a{:href => "http://landregistry.data.gov.uk/def/ppi/transactionDate"}
+      %code ppi:transactionDate
+  %dt
+    The price paid
+  %dd
+    %a{:href => "http://landregistry.data.gov.uk/def/ppi/pricePaid"}
+      %code ppi:pricePaid
+  %dt
+    A new build indicator
+  %dd
+    %a{:href => "http://landregistry.data.gov.uk/def/ppi/newBuild"}
+      %code ppi:newBuild
+  %dt
+    The transaction category
+  %dd
+    %a{:href => "/def/ppi/transactionCategory"}
+      %code ppi:transactionCategory
 %p
   The predicate
   %code propertyAddress
   has a range of
   = succeed "." do
     %code Address
-%table.table.table-bordered.table-condensed
-  %tr
-    %td
-      Primary address (PAON)
-    %td
-      %code common:Paon
-  %tr
-    %td
-      Secondary address (SAON)
-    %td
-      %code common:Saon
-  %tr
-    %td
-      Street
-    %td
-      %code common:Street
-  %tr
-    %td
-      Locality
-    %td
-      %code common:Locality
-  %tr
-    %td
-      Town
-    %td
-      %code common:Town
-  %tr
-    %td
-      District
-    %td
-      %code common:District
-  %tr
-    %td
-      County
-    %td
-      %code common:County
-  %tr
-    %td
-      County
-    %td
-      %code common:County
-  %tr
-    %td
-      Postcode
-    %td
-      %code common:Postcode
+%dl.definitions
+  %dt
+    Primary address (PAON)
+  %dd
+    %code common:Paon
+  %dt
+    Secondary address (SAON)
+  %dd
+    %code common:Saon
+  %dt
+    Street
+  %dd
+    %code common:Street
+  %dt
+    Locality
+  %dd
+    %code common:Locality
+  %dt
+    Town
+  %dd
+    %code common:Town
+  %dt
+    District
+  %dd
+    %code common:District
+  %dt
+    County
+  %dd
+    %code common:County
+  %dt
+    County
+  %dd
+    %code common:County
+  %dt
+    Postcode
+  %dd
+    %code common:Postcode
 %p
   Because of the age of some data within the triple store these items are all optional, logically every address should have at least a PAON and Postcode but there are instances within the store where this information was missing or captured incorrectly. In time we hope to address this issue.
 %h2 Data Model
@@ -253,9 +236,13 @@ This means:
   The property details supplied stated that this was a flat subject to a lease, the property was a new build and it sold for £860,000 on 31st October 2013. After transformation and upload to the HM Land Registry triplestore this property transaction can be found here
 %pre
   %a{:href => "/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current"} http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current
-%p
-  This information is held as follows
 %table.table.table-bordered.table-condensed
+  %caption This information is held as follows
+  %tr
+    %th{scope: "col"} Property
+    %th{scope: "col"} Predicate
+    %th{scope: "col"} Value
+    %th{scope: "col"} Datatype
   %tr
     %td.definition-label The property type
     %td
@@ -312,9 +299,13 @@ This means:
         %code
           ppi:standardPricePaidTransaction
     %td
-%p
-  We also add:
 %table.table.table-bordered.table-condensed
+  %caption We also add:
+  %tr
+    %th{scope: "col"} Property
+    %th{scope: "col"} Predicate
+    %th{scope: "col"} Value
+    %th{scope: "col"} Datatype
   %tr
     %td.definition-label The transaction ID
     %td
@@ -367,9 +358,13 @@ This means:
       ppi:transactionCategory  ppi:standardPricePaidTransaction ;
       ppi:transactionDate "2013-10-31"^^xs:date ;
       ppi:transactionId "5FC45A71-8E90-46A0-9CBB-0017294BBAFA"^^ppi:TransactionIdDatatype .
-%p
-  For the property address we have:
 %table.table.table-bordered.table-condensed
+  %caption For the property address we have:
+  %tr
+    %th{scope: "col"} Property
+    %th{scope: "col"} Predicate
+    %th{scope: "col"} Value
+    %th{scope: "col"} Datatype
   %tr
     %td.definition-label
       Primary address (PAON)
@@ -457,9 +452,13 @@ This means:
     %td
       %code
         xs:string
-%p
-  We also add:
 %table.table.table-bordered.table-condensed
+  %caption We also add:
+  %tr
+    %th{scope: "col"} Property
+    %th{scope: "col"} Predicate
+    %th{scope: "col"} Value
+    %th{scope: "col"} Datatype
   %tr
     %td.definition-label
       The property address ID
