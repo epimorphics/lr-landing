@@ -224,7 +224,7 @@ This means:
 %h3 Example
 %p
   In December 2013 HM Land Registry received a transaction for
-%pre
+%pre{:tabindex => "0"}
   :preserve
     Flat 22
     Orchard Building 25 Pear Tree Street
@@ -234,7 +234,7 @@ This means:
     EC1V 3AP
 %p
   The property details supplied stated that this was a flat subject to a lease, the property was a new build and it sold for £860,000 on 31st October 2013. After transformation and upload to the HM Land Registry triplestore this property transaction can be found here
-%pre
+%pre{:tabindex => "0"}
   %a{:href => "/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current"} http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current
 %table.table.table-bordered.table-condensed
   %caption This information is held as follows
@@ -340,7 +340,7 @@ This means:
   The record status was part of the first release of price paid data and has since been made obsolete but remains in the store so that queries that included it will still run. All transactions will have a record status of &#8216;add&#8217;.
 %p
   The triples generated for this transaction are:
-%pre
+%pre{:tabindex => "0"}
   \&lt;http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current&gt;
   a       ppi:TransactionRecord ;
   ppi:estateType common:leasehold ;
@@ -481,7 +481,7 @@ This means:
       %code
 %p
   And the triples for this property address are:
-%pre
+%pre{:tabindex => "0"}
   :preserve
     <http://landregistry.data.gov.uk/data/ppi/address/8143663fb6492e899caae7ba3be160e7478b9792>
       a       common:BS7666Address ;
@@ -518,25 +518,25 @@ This means:
 %h3 Via the API
 %p
   It is possible to query the Price Paid Dataset directly through the API, this largely removes the need to know how to use SPARQL as long as the structure of the data is known.  Using the example transaction above we know that there is a street called &#8216;Pear Tree Street&#8217; and that street is part of the address within the PPI data structure. With that information we can enter this URL into a web browser
-%pre
+%pre{:tabindex => "0"}
   %a{:href => "http://landregistry.data.gov.uk/data/ppi/address?&street=PEAR%20TREE%20STREET"} http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET
 %p
   Note that this can be used to return all transactions for any street of that name that are held in the Price Paid dataset but because there is a limit set on the API page for the number of items returned any download in another format, for example csv, will be limited to the same number of results as displayed.
 %p
   Similarly other address items can be queried, in this example with a postcode for a different Pear Tree Street.
-%pre
+%pre{:tabindex => "0"}
   %a{:href => "http://landregistry.data.gov.uk/data/ppi/address?postcode=DE23%208PL"} http://landregistry.data.gov.uk/data/ppi/address?postcode=DE23%208PL
 %p
   And items can be combined, in this example using street and county:
-%pre
+%pre{:tabindex => "0"}
   %a{:href => "http://landregistry.data.gov.uk/data/ppi/address?&street=PEAR%20TREE%20STREET&county=DERBYSHIRE"} http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET&amp;county=DERBYSHIRE
 %p
   It is possible to return the number of rows that satisfy the query by using the count function
-%pre
+%pre{:tabindex => "0"}
   %a{:href => "http://landregistry.data.gov.uk/data/ppi/address?&street=PEAR%20TREE%20STREET&county=DERBYSHIRE&_count=yes"} http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET&amp;county=DERBYSHIRE&amp;_count=yes
 %p
   Which reveals that there are 9 entries that satisfy that query. A query for the county of Derbyshire reveals that there are 177,264 transactions (both queries correct as of June 2014). Note that for some queries the count function has been disabled due to the size of the dataset, this is particularly relevant for queries at the transaction-record level, for example this query will return new build properties in Derbyshire adding the count function will result in a warning message.:
-%pre
+%pre{:tabindex => "0"}
   %a{:href => "http://landregistry.data.gov.uk/data/ppi/transaction-record?&propertyAddress.county=DERBYSHIRE&newBuild=false"} http://landregistry.data.gov.uk/data/ppi/transaction-record?&amp;propertyAddress.county=DERBYSHIRE&amp;newBuild=false
 %h3 Example SPARQL query using &#8216;filter&#8217;
 %p
@@ -544,7 +544,7 @@ This means:
   The customer request was to use a SPARQL query to find property where part of the PAON was Alveston within postcode CV37 7AE.  This can be easily done using the Price Paid report Builder but using SPARQL can be more flexible when dealing with multiple PAONs.
 %p
   The HM Land Registry Price Paid Report builder http://landregistry.data.gov.uk/app/ppd can be used to generate a base SPARQL query for the postcode which looks like this:
-%pre
+%pre{:tabindex => "0"}
   :preserve
     prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -602,9 +602,9 @@ This means:
   The part of this query that is of most interest is the WHERE clause in the SELECT command, shown in bold in the example. This can be modified in several ways to achieve the required result, here is one example, by amending the last line before the OPTIONAL keyword and adding two lines a property name or partial name can be added to the SELECT.
 %p
   Amend the following line, adding a period at the end separated from the last character by a space:
-%pre ?item ppd:transactionId ?ppd_transactionId .
+%pre{:tabindex => "0"} ?item ppd:transactionId ?ppd_transactionId .
 %p Add these two lines to follow:
-%pre
+%pre{:tabindex => "0"}
   :preserve
     ?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon
      FILTER regex(?ppd_propertyAddressPaon,'alve','i')
@@ -612,7 +612,7 @@ This means:
   These lines identify PAON as part of the select and that the result should be filtered to find the string &#8216;alve&#8217; anywhere within the PAON, the third argument specifies that the string is not case sensitive.
 %p
   This gives a WHERE clause that looks like this and, when run, will return a single property transaction for Alveston Cottage
-%pre
+%pre{:tabindex => "0"}
   :preserve
     WHERE
       { ?ppd_propertyAddress <http://jena.apache.org/text#query> _:b0 .
@@ -634,7 +634,7 @@ This means:
   More than one string can be searched for using
   %code ||
   to separate each argument, to return PAONs that contain the string &#8216;alve&#8217; or the number 5 (stored as a string not numeric):
-%pre
+%pre{:tabindex => "0"}
   :preserve
     ?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon
     FILTER (regex(?ppd_propertyAddressPaon,'alve','i') ||
