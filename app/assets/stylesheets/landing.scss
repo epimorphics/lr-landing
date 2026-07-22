@@ -2,6 +2,40 @@
   --govuk-font-size-base: 1rem;
 }
 
+// Override govuk_elements_rails' `main { @include core-19; }`, which sets
+// fixed px font-size (16px / 19px @ 641px). Fixed px on this ancestor blocks
+// browser/OS text-size-only resizing (WCAG 1.4.4) for everything inside <main>.
+main {
+  font-size: 1.85rem;
+}
+
+// Same fix as above for govuk_elements_rails' heading classes (.heading-large,
+// .heading-medium, .heading-small), which set their own fixed px font-size via
+// the bold-36/bold-24/bold-19 mixins and so don't inherit the `main` override.
+.heading-large {
+  font-size: 2.5rem;
+
+  @media (min-width: 641px) {
+    font-size: 3rem;
+  }
+}
+
+.heading-medium {
+  font-size: 2.25rem;
+
+  @media (min-width: 641px) {
+    font-size: 2rem;
+  }
+}
+
+.heading-small {
+  font-size: 1.75rem;
+
+  @media (min-width: 641px) {
+    font-size: 2rem;
+  }
+}
+
 .row {
 
   li,

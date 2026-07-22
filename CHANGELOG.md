@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Converted fixed-`px` font sizes on the landing page's body text and
+  headings to `rem`, so text can be resized to 200% via browser/OS text-size
+  settings.
+  [#232](https://github.com/epimorphics/lr-landing/issues/232)
 - Made scrollable `pre` blocks keyboard-focusable and corrected heading
   hierarchy on the doc pages.
   [#230](https://github.com/epimorphics/lr-landing/issues/230)
