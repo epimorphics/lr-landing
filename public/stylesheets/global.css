@@ -16,7 +16,7 @@ body {
 }
 p {
   color:#2d2d2d;
-  font-size:0.875rem;
+  font-size:14px;
   line-height:18px;
 }
 .hideme { display:none; }
@@ -524,7 +524,7 @@ padding-right: 10px;
 }
 
 .rhs_fraud_p p {
-   font-size: 0.75rem;
+   font-size: 12px;
    color: #000;
    font-weight: 800;
    margin: 0px;
@@ -541,7 +541,7 @@ padding-right: 10px;
 }
 
 .rhs_survey p {
-   font-size: 0.75rem;
+   font-size: 12px;
    color: #000;
    font-weight: 800;
    margin: 0px;
@@ -586,7 +586,7 @@ padding: 6px 0px 0px 0px;
 }
 
 .rhs_tsf p {
-   font-size: 0.6875rem;
+   font-size: 11px;
    line-height: 11px;
 }
 
@@ -841,13 +841,13 @@ margin-right: 15px;
 }
 #home-mid h1 {
     padding-left: 10px;
-    font-size: 2.1875rem;
+    font-size: 35px;
     color: #b45a0c;
     font-weight: 800;
 }
 
 #home-mid h1 a {
-    font-size: 2.1875rem;
+    font-size: 35px;
     color: #b45a0c;
     font-weight: 800;
     text-decoration: none;
@@ -1095,7 +1095,7 @@ ul.tabs li a.stopTime:focus { outline:none; border:none; }
 #content .hexagon div a {
     color: #202020;
     display: table-cell;
-    font-size: 1.375rem;
+    font-size: 22px;
     line-height: 25px;
     text-decoration: none;
     vertical-align: middle;
@@ -1114,12 +1114,12 @@ ul.tabs li a.stopTime:focus { outline:none; border:none; }
 }
 #main-nav .flyout-wrap .big-desc p {
     color:#e1f0c8;
-    font-size:0.875rem;
+    font-size:14px;
     line-height:20px;
 }
 #main-nav .flyout-wrap .big-desc h3 {
     color:#fff;
-    font-size:1.25rem;
+    font-size:20px;
     padding-top:10px;
 }
 #main-nav .flyout-wrap .top-nav-divider {
@@ -1136,7 +1136,7 @@ ul.tabs li a.stopTime:focus { outline:none; border:none; }
     padding: 3px 0 3px 15px;
     position: absolute;
     color: #E1F0C8;
-    font-size: 0.875rem;
+    font-size: 14px;
     display:none !important;
 }
 .thirds {
@@ -1153,7 +1153,7 @@ ul.tabs li a.stopTime:focus { outline:none; border:none; }
 }
 .tab-box ul.auto-tabs li a {
     display: block;
-    font-size: 1rem;
+    font-size: 16px;
     padding: 6px 0 8px 10px;
     text-decoration: none;
     color: #3C5C00;
@@ -1241,7 +1241,7 @@ ul.tabs li a.stopTime:focus { outline:none; border:none; }
 a.blue-list {
     color: #11818F;
     display: block;
-    font-size: 0.8125rem;
+    font-size: 13px;
     padding: 3px 0;
     text-decoration: none;
 }
@@ -1263,12 +1263,12 @@ li.closer .big-desc {
 }
 .big-desc-top h3 {
     color: #FFFFFF;
-    font-size: 1.25rem;
+    font-size: 20px;
     padding-top: 10px;
 }
 .big-desc-top p {
     color: #E1F0C8;
-    font-size: 0.875rem;
+    font-size: 14px;
     line-height: 20px;
 }
 #home-top #hpi-data-table span {
@@ -1401,14 +1401,14 @@ ul.collapse li span.title{
 
 }
 ul.collapse li span.desc {
-    font-size: 0.875rem;
+    font-size: 14px;
     line-height: 18px;
 }
 
 .socialWidget {width:100%;float:left;clear:both;margin-top:25px;}
 
 div.spotlight-tab-content {height:90px;}
-.spotlight-tab-content h2 {color:#ACCD40; font-size: 1.1875rem; padding: 0px 20px; margin-bottom: 0px;}
+.spotlight-tab-content h2 {color:#ACCD40; font-size: 19px; padding: 0px 20px; margin-bottom: 0px;}
 .spotlight-tab-content p {color:#fff; padding: 0px 20px; margin-top: 5px;}
 .spotlight-tab-content p a, .spotlight-tab-content h2 a {color:#ACCD40;text-decoration:none;}
 .spotlight-tab-content p a:hover, .spotlight-tab-content h2 a:hover {text-decoration:underline;}
@@ -1422,12 +1422,12 @@ div.spotlight-tab-content {height:90px;}
 
 .big-desc-top p.title {
     color: #FFFFFF;
-    font-size: 1.25rem;
+    font-size: 20px;
     padding-top: 10px;
 }
 #main-nav .flyout-wrap .big-desc p.title {
     color:#fff;
-    font-size:1.25rem;
+    font-size:20px;
     padding-top:10px;
 }
 
@@ -1488,7 +1488,7 @@ width: 740px;
 
 .but_green {
     background-color: #71933b/*009900*/;
-    font-size: 1.0625rem;
+    font-size: 17px;
     font-family: arial;
 }
 
@@ -1498,7 +1498,7 @@ width: 740px;
 
 .but_grey{
     background-color: #E6E6E6;
-    font-size: 1.0625rem;
+    font-size: 17px;
     font-family: arial;
     color: #000;
 }
@@ -1509,7 +1509,7 @@ background-color: #999999;
 
 .but_orange {
     background-color: #ff9900;
-    font-size: 1.0625rem;
+    font-size: 17px;
     font-family: arial;
     color: #000;
 }
@@ -1535,7 +1535,7 @@ input[type="button"], input[type="submit"], input[type="reset"], input[type="fil
 
 .categories-list p {
     font-family: "nta",Arial,sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1.25;
     font-weight: 300;
     text-transform: none;
@@ -1556,7 +1556,7 @@ input[type="button"], input[type="submit"], input[type="reset"], input[type="fil
 
 .categories-list  li{
     font-family: "nta",Arial,sans-serif;
-    font-size: 1.1875rem;
+    font-size: 19px;
     line-height: 1.31579;
     font-weight: 400;
     text-transform: none;
@@ -1615,7 +1615,7 @@ border-top: none;
 
 .categories h2{
     font-family: "nta",Arial,sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1.25;
     font-weight: 700;
     text-transform: none;
@@ -1631,7 +1631,7 @@ border-top: none;
 
 .lhs_header {
     font-family: 'geoheadlineregular';
-    font-size: 3rem;
+    font-size: 48px;
     line-height: 1.04167;
     font-weight: 400;
     text-transform: none;
@@ -1654,7 +1654,7 @@ border-top: none;
 
 .newform p{
     color: #2d2d2d;
-    font-size: 0.875rem;
+    font-size: 14px;
     padding-top: 10px;
     margin: 0px;
 }
@@ -1861,7 +1861,7 @@ New homepage layout styles
 .panel_section ul {
     padding: 10px;
     margin: 0px;
-    font-size: 0.8125rem;
+    font-size: 13px;
 }
 
 .last_section {
@@ -1874,7 +1874,7 @@ New homepage layout styles
     /*float:right;*/
     float: left;
     padding: 2px 5px;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 800;
     color: #5a8006;
 }
@@ -1885,7 +1885,7 @@ New homepage layout styles
 }
 
 .hps_link a {
-  font-size: 0.8125rem;
+  font-size: 13px;
 }
 
 .hps_image {
@@ -1946,7 +1946,7 @@ background: none;
 
 #panel_spotlight .spotlight-tab-content h2{
    color: #000;
-   font-size:1.125rem;
+   font-size:18px;
    margin: 0px;
    padding: 10px 20px;
    font-family: ariel,sans-serif;
@@ -2049,14 +2049,14 @@ padding: 5px;
 #getsat-widget-6805 a.mylink {
     color: #000;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.125rem;
+    font-size: 18px;
     line-height: 20px;
     text-decoration: none;
 }
 
 
 #getsat-widget-6805 a.widget-link {
-    font-size: 3.75rem;
+    font-size: 60px;
     font-weight: 800;
     position: absolute;
     top: 0;
@@ -2077,7 +2077,7 @@ padding: 5px;
 
 #getsat-widget-6807 a.mylink {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.125rem;
+    font-size: 18px;
     line-height: 20px;
     text-decoration: underline;
 }
@@ -2085,7 +2085,7 @@ padding: 5px;
 
 #getsat-widget-6807 a.widget-link {
     position: absolute;
-    font-size: 2.5rem;
+    font-size: 40px;
     top: 0;
     left: 0;
     bottom: 0;
@@ -2096,7 +2096,7 @@ padding: 5px;
 
 .tsflink {
     line-height: 18px;
-    font-size: 1.125rem;
+    font-size: 18px;
     margin-top: 15px;
     padding: 10px;
     background-color: #C2FF85;
@@ -2115,14 +2115,14 @@ padding: 5px;
 #getsat-widget-6825 a.mylink {
     color: #000;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.125rem;
+    font-size: 18px;
     line-height: 20px;
     text-decoration: none;
 }
 
 
 #getsat-widget-6825 a.widget-link {
-    font-size: 3.75rem;
+    font-size: 60px;
     font-weight: 800;
     position: absolute;
     top: 0;
@@ -2146,14 +2146,14 @@ padding: 5px;
 #getsat-widget-6826 a.mylink {
     color: #000;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.125rem;
+    font-size: 18px;
     line-height: 20px;
     text-decoration: none;
 }
 
 
 #getsat-widget-6826 a.widget-link {
-    font-size: 3.75rem;
+    font-size: 60px;
     font-weight: 800;
     position: absolute;
     top: 0;
@@ -2177,14 +2177,14 @@ padding: 5px;
 #getsat-widget-6827 a.mylink {
     color: #000;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.125rem;
+    font-size: 18px;
     line-height: 20px;
     text-decoration: none;
 }
 
 
 #getsat-widget-6827 a.widget-link {
-    font-size: 3.75rem;
+    font-size: 60px;
     font-weight: 800;
     position: absolute;
     top: 0;
@@ -2208,14 +2208,14 @@ padding: 5px;
 #getsat-widget-6908 a.mylink {
     color: #000;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.125rem;
+    font-size: 18px;
     line-height: 20px;
     text-decoration: none;
 }
 
 
 #getsat-widget-6908 a.widget-link {
-    font-size: 3.75rem;
+    font-size: 60px;
     font-weight: 800;
     position: absolute;
     top: 0;
@@ -2309,7 +2309,7 @@ font-size: 3em;
 
 
 .smalltext {
-   font-size: 0.625rem;
+   font-size: 10px;
    line-height: 10px;
 }
 
