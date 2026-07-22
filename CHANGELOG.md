@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Replaced layout tables on the PPD and HPI doc pages with accessible
+  markup: definition lists for label/value pairs, and proper `<th>`
+  header cells and `<caption>` elements for genuine tabular data.
+  [#231](https://github.com/epimorphics/lr-landing/issues/231)
 - Made scrollable `pre` blocks keyboard-focusable and corrected heading
   hierarchy on the doc pages.
   [#230](https://github.com/epimorphics/lr-landing/issues/230)
