@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Removed resolved accessibility issues from statement.
+  [#162](https://github.com/epimorphics/hmlr-linked-data/issues/162)
 - Replaced layout tables on the PPD and HPI doc pages with accessible
   markup: definition lists for label/value pairs, and proper `<th>`
   header cells and `<caption>` elements for genuine tabular data.
