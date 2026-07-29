@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Removed resolved accessibility issues from statement.
+  [#162](https://github.com/epimorphics/hmlr-linked-data/issues/162)
 - Converted fixed-`px` font sizes on the landing page's body text and
   headings to `rem`, so text can be resized to 200% via browser/OS text-size
   settings.
