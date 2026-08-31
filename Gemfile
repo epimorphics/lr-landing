@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 8.1'
 
 # Use Puma as the app server
-gem 'puma', '~> 7.0'
+gem 'puma', '~> 7.2'
 
 
 # Use jquery as the JavaScript library
