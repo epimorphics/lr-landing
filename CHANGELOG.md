@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Fixed dependabot alerts by updating all gems [#239](https://github.com/epimorphics/lr-landing/issues/239)
 - Updated the end paragraph of the accessibility statement (both English and Welsh)
   to reflect the new changes [#240](https://github.com/epimorphics/lr-landing/issues/240)
 
