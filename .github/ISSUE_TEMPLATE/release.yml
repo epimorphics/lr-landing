@@ -34,6 +34,7 @@ body:
     attributes:
       label: Release checklist
       options:
+        - label: Bring all dependencies to their latest in the patch series, including Alpine, Node and Ruby
         - label: Version bumped in `app/lib/version.rb`
         - label: "`CHANGELOG.md` updated"
         - label: Version commit pushed to `dev` and CI is green
@@ -41,3 +42,4 @@ body:
         - label: "`preprod` fast-forwarded to tag and deployment verified"
         - label: "`prod` fast-forwarded to tag and deployment verified"
         - label: GitHub release created from tag (optional)
+        - label: Append `.pre` to the app version, post release
