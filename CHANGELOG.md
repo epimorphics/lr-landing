@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.3.5] - 2026-09-07
 
 - Upgraded alpine to latest (3.24) and updated the release template [#239](https://github.com/epimorphics/lr-landing/issues/239)
 - Fixed dependabot alerts by updating all gems and npm packages [#239](https://github.com/epimorphics/lr-landing/issues/239)
