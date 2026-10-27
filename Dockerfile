@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=3.4.9
+ARG RUBY_VERSION=3.4.12
 ARG ALPINE_VERSION=3.24
 ARG BUNDLER_VERSION=4.0.11
 # Defines base image which builder and final stage use

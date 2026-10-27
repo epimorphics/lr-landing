@@ -47,7 +47,7 @@ it plays no part in the application build or asset pipeline.
 ### 1. Install Ruby
 
 Use [rbenv](https://github.com/rbenv/rbenv) or [asdf](https://asdf-vm.com) to install
-the version pinned in `.ruby-version` (currently `3.4.9`).
+the version pinned in `.ruby-version` (currently `3.4.12`).
 
 With rbenv:
 
