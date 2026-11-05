@@ -106,6 +106,7 @@ To override a value, create `.env.local` and set it there. `.env.local` is gitig
 |---|---|---|
 | `API_SERVICE_URL` | `http://localhost:8888` | Backing SPARQL/data API |
 | `PORT` | `3000` | Rails server port |
+| `QONSOLE_ENDPOINT` | dev SPARQL endpoint | Where the qonsole sends queries in development; deployed, it is `/landregistry/query` on the same host |
 | `SENTRY_ENABLED` | `false` | Enable Sentry error tracking |
 | `SENTRY_AUTH_TOKEN` | — | Required only for production builds (source map upload) |
 | `SENTRY_API_KEY` | — | Required only if `SENTRY_ENABLED=true` |
