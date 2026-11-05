@@ -68,13 +68,32 @@ Configure Bundler with your token:
 ./bin/bundle config set --local rubygems.pkg.github.com epimorphics:<your-token>
 ```
 
+#### GitHub Packages token
+
+The `@epimorphics/qonsole` npm package also comes from GitHub Packages, which needs a
+token even for public packages. The same token works. Put it in your user-level Yarn
+config (`~/.yarnrc.yml`), never in the repo's `.yarnrc.yml`:
+
+```bash
+yarn config set --home npmScopes.epimorphics.npmAuthToken <your-token>
+```
+
+Elsewhere:
+
+- **CI** (`.github/actions/setup-node`) sets the same config from the workflow's
+  `GITHUB_TOKEN`, which needs `packages: read`.
+- **Docker** (`make image`) passes `.github-token` to the build as the secret
+  `github_token`; it is never written to an image layer.
+
 ### 3. Install dependencies
 
 ```bash
 ./bin/bundle install
+yarn install
 ```
 
-No Node or Yarn installation is required.
+Node (see `.nvmrc`) and Yarn (via `corepack enable`) are needed for the JavaScript
+packages the assets are built from, and for the E2E tests.
 
 ### 4. Environment variables
 

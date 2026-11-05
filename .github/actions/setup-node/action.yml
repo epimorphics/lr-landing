@@ -1,6 +1,11 @@
 name: Setup Node Environment
 description: Shared setup for Node.js scripts using Yarn
 
+inputs:
+  github-token:
+    description: Token with read:packages, for @epimorphics packages from GitHub Packages
+    required: true
+
 runs:
   using: 'composite'
   steps:
@@ -15,6 +20,13 @@ runs:
         corepack enable
         corepack prepare yarn@stable --activate
         yarn --version
+      shell: bash
+
+    # User-level config, so the token is never written into the repo's .yarnrc.yml
+    - name: Authenticate to GitHub Packages
+      run: yarn config set --home npmScopes.epimorphics.npmAuthToken "$GITHUB_PACKAGES_TOKEN"
+      env:
+        GITHUB_PACKAGES_TOKEN: ${{ inputs.github-token }}
       shell: bash
 
     - name: Install dependencies

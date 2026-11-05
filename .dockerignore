@@ -9,3 +9,10 @@ README.md
 log/
 
 public/assets/
+
+# Installed in the image from package.json; the token is passed as a build secret
+node_modules/
+.yarn/*
+!.yarn/releases
+.github-token
+tmp/
