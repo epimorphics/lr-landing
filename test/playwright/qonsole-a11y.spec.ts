@@ -1,5 +1,5 @@
 import { AxeBuilder } from '@axe-core/playwright'
-import { test, expect, QUERY_REQUEST, SMALL_QUERY } from './support/qonsole-page'
+import { test, expect, SMALL_QUERY } from './support/qonsole-page'
 import type { QonsolePage } from './support/qonsole-page'
 
 // Accessibility scans of the SPARQL query console (#247). The header and
@@ -81,7 +81,7 @@ test.describe('Accessibility', () => {
   })
 
   test('error message has no new violations', async ({ page, qonsole }) => {
-    await page.route(QUERY_REQUEST, (route) => route.fulfill({ status: 500, body: 'Internal Server Error' }))
+    await page.route(qonsole.queryRequest, (route) => route.fulfill({ status: 500, body: 'Internal Server Error' }))
     await qonsole.setQuery(SMALL_QUERY)
     await qonsole.run()
 
