@@ -253,7 +253,11 @@ test.describe('Keyboard', () => {
   })
 
   test('skip link moves focus past the editor to endpoint selection', async ({ page, qonsole }) => {
-    await page.getByRole('button', { name: /Skip SPARQL editor/ }).click()
+    // Used by keyboard, as it is hidden until focused
+    const skip = page.getByRole('button', { name: /Skip SPARQL editor/ })
+    await skip.focus()
+    await expect(skip).toBeVisible()
+    await page.keyboard.press('Enter')
     await expect(qonsole.endpointSelector).toBeFocused()
   })
 
