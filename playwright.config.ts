@@ -28,6 +28,17 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    // Screenshot baselines are kept for Chromium only
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+      testIgnore: /-visual\.spec\.ts$/,
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+      testIgnore: /-visual\.spec\.ts$/,
+    },
   ],
 
   webServer: process.env['E2E_BASE_URL']

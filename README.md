@@ -156,6 +156,10 @@ yarn test:e2e:ui
 yarn test:e2e:report
 ```
 
+Tests run in Chromium, Firefox and WebKit. To run one browser, add
+`--project=chromium` (or `firefox`, `webkit`). If the browsers are not
+installed yet, run `yarn playwright install chromium firefox webkit`.
+
 ### Running against a deployed environment
 
 Set `E2E_BASE_URL` to any URL from [Environments](#environments). For
@@ -166,6 +170,37 @@ E2E_BASE_URL=https://hmlr-preprod-pres.epimorphics.net/ \
 E2E_USERNAME=user \
 E2E_PASSWORD=secret \
 yarn test:e2e
+```
+
+### Qonsole regression suite
+
+The `test/playwright/qonsole*.spec.ts` files record how the SPARQL query
+console behaves, so that the `qonsole_rails` engine can be replaced by the
+`@epimorphics/qonsole` web component (#224) without regressions:
+
+| Spec | Checks |
+|------|--------|
+| `qonsole.spec.ts` | Example queries, result formats, prefixes, links from PPD and UKHPI, errors, keyboard use |
+| `qonsole-a11y.spec.ts` | axe scan against WCAG 2.2 AA; today's known violations are listed in `KNOWN_VIOLATIONS` |
+| `qonsole-visual.spec.ts` | Screenshot baselines (Chromium only), the visual target for the replacement's theme |
+
+Anything that depends on how the console is built (editor API, dropdown
+markup, the query request URL) is in `test/playwright/support/qonsole-page.ts`;
+when the implementation changes, that is the file to update.
+
+The queries need a real SPARQL endpoint, which a local server does not have, so
+run the suite against a deployed environment. Its queries are small enough for
+dev:
+
+```bash
+E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole
+```
+
+When the console's appearance changes on purpose, review the screenshot diffs
+in the HTML report, then update the baselines:
+
+```bash
+E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole-visual.spec.ts --update-snapshots
 ```
 
 ### In CI

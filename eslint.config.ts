@@ -58,4 +58,13 @@ export default defineConfig([
     ...playwright.configs['flat/recommended'],
     files: ['test/playwright/**/*.ts'],
   },
+
+  {
+    name: 'custom-playwright',
+    files: ['test/playwright/**/*.ts'],
+    rules: {
+      // Spec helpers that make assertions, e.g. expectErrorShown()
+      'playwright/expect-expect': ['warn', { assertFunctionPatterns: ['^expect[A-Z]'] }],
+    },
+  },
 ])
