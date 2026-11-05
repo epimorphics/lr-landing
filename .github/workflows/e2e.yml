@@ -18,10 +18,10 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-chromium-${{ hashFiles('yarn.lock') }}
+          key: playwright-${{ hashFiles('yarn.lock') }}
 
       - name: Install Playwright browsers
-        run: yarn playwright install chromium --with-deps
+        run: yarn playwright install chromium firefox webkit --with-deps
 
       - name: Run E2E tests
         env:

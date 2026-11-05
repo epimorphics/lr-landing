@@ -156,6 +156,10 @@ yarn test:e2e:ui
 yarn test:e2e:report
 ```
 
+Tests run in Chromium, Firefox and WebKit. To run one browser, add
+`--project=chromium` (or `firefox`, `webkit`). If the browsers are not
+installed yet, run `yarn playwright install chromium firefox webkit`.
+
 ### Running against a deployed environment
 
 Set `E2E_BASE_URL` to any URL from [Environments](#environments). For
