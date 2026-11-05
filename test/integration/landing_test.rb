@@ -16,6 +16,14 @@ class LandingTest < ActionDispatch::IntegrationTest
     assert_select 'main p', /Mae Cofrestrfa Tir/
   end
 
+  test 'landing page without a supported browser language falls back to English' do
+    get '/'
+    assert_select 'h1', 'Open Data'
+
+    get '/', headers: { 'Accept-Language' => 'fr' }
+    assert_select 'h1', 'Open Data'
+  end
+
   test 'version number is visible' do
     get('/', params: { lang: 'en' })
     assert_select '.o-version', /#{Version::VERSION}/
