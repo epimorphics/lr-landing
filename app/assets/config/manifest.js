@@ -1,6 +1,7 @@
 //= link_tree ../images
 //= link_directory ../javascripts .js
 //= link_directory ../stylesheets .css
+//= link @epimorphics/qonsole/dist/qonsole.js
 
 // Favicon assets now managed via the asset pipeline.
 //= link favicon/apple-touch-icon.png

@@ -1,0 +1,12 @@
+- content_for(:title, 'SPARQL Query Console')
+
+-# The shared layout has no hook for the head, and both are allowed in the body
+= stylesheet_link_tag 'qonsole-component', media: 'all'
+= javascript_include_tag '@epimorphics/qonsole/dist/qonsole.js', type: 'module'
+
+%h1.heading-large SPARQL Query Editor
+
+%epi-qonsole{ endpoints: @qonsole_config['endpoints'].to_json,
+  prefixes: @qonsole_config['prefixes'].to_json,
+  queries: @qonsole_config['queries'].to_json,
+  'allow-queries-from-u-r-l': 'true' }
