@@ -168,6 +168,37 @@ E2E_PASSWORD=secret \
 yarn test:e2e
 ```
 
+### Qonsole regression suite
+
+The `test/playwright/qonsole*.spec.ts` files record how the SPARQL query
+console behaves, so that the `qonsole_rails` engine can be replaced by the
+`@epimorphics/qonsole` web component (#224) without regressions:
+
+| Spec | Checks |
+|------|--------|
+| `qonsole.spec.ts` | Example queries, result formats, prefixes, links from PPD and UKHPI, errors, keyboard use |
+| `qonsole-a11y.spec.ts` | axe scan against WCAG 2.2 AA; today's known violations are listed in `KNOWN_VIOLATIONS` |
+| `qonsole-visual.spec.ts` | Screenshot baselines (Chromium only), the visual target for the replacement's theme |
+
+Anything that depends on how the console is built (editor API, dropdown
+markup, the query request URL) is in `test/playwright/support/qonsole-page.ts`;
+when the implementation changes, that is the file to update.
+
+The queries need a real SPARQL endpoint, which a local server does not have, so
+run the suite against a deployed environment. Its queries are small enough for
+dev:
+
+```bash
+E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole
+```
+
+When the console's appearance changes on purpose, review the screenshot diffs
+in the HTML report, then update the baselines:
+
+```bash
+E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole-visual.spec.ts --update-snapshots
+```
+
 ### In CI
 
 The **E2E Tests** workflow (`.github/workflows/e2e.yml`) is manual only: run it
