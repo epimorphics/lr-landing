@@ -1,15 +1,16 @@
-import { test, expect, normaliseQuery, qonsoleConfig, QONSOLE_IMPL, SMALL_QUERY } from './support/qonsole-page'
+import { test, expect, normaliseQuery, qonsoleConfig, SMALL_QUERY } from './support/qonsole-page'
 import type { QonsolePage } from './support/qonsole-page'
 
 // Regression suite for the SPARQL query console (#247), written against the
-// qonsole_rails engine before it is replaced by the web component (#224).
-// Assertions describe what a user sees, not how the page is built; see
-// support/qonsole-page.ts for the parts that depend on the implementation.
+// qonsole_rails engine and kept to show the web component that replaced it
+// (#224) behaves the same. Assertions describe what a user sees, not how the
+// page is built; see support/qonsole-page.ts for the parts that depend on it.
 //
-// Queries run against the live dataset, so point E2E_BASE_URL at a deployed
-// environment. The queries used are small enough for the dev hosts.
+// Queries run against the live dataset: the deployed environment's own
+// endpoint, or the dev endpoint from a local server. The queries used are
+// small enough for the dev hosts.
 
-const { queries: examples, prefixes, endpoints } = qonsoleConfig
+const { queries: examples, prefixes } = qonsoleConfig
 
 /** A query that matches nothing in the dataset */
 const EMPTY_QUERY = 'SELECT * WHERE { <http://example.com/no-such-resource> ?p ?o }'
@@ -58,7 +59,7 @@ test.describe('Page', () => {
   })
 
   test('shows the default endpoint', async ({ qonsole }) => {
-    await expect(qonsole.endpointInput).toHaveValue(endpoints['default'])
+    await expect(qonsole.endpointSelector).toHaveValue(await qonsole.defaultEndpoint())
   })
 })
 
@@ -128,11 +129,7 @@ test.describe('Result formats', () => {
   })
 
   test('DESCRIBE results are shown as text even when table is selected', async ({ qonsole }) => {
-    // Known defect in qonsole_rails: it asks the endpoint for a table, which
-    // fails with a server error. The web component switches to text (#224);
-    // remove this marker when the engine is replaced.
-    test.fail(QONSOLE_IMPL === 'engine', 'qonsole_rails asks the endpoint for a table')
-
+    // qonsole_rails asked the endpoint for a table, which failed
     await qonsole.setQuery(DESCRIBE_QUERY)
     await qonsole.selectFormat('table')
     await qonsole.run()

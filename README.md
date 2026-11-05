@@ -195,25 +195,26 @@ yarn test:e2e
 ### Qonsole regression suite
 
 The `test/playwright/qonsole*.spec.ts` files record how the SPARQL query
-console behaves, so that the `qonsole_rails` engine can be replaced by the
-`@epimorphics/qonsole` web component (#224) without regressions:
+console behaves. They were written against the `qonsole_rails` engine and now
+check that the `@epimorphics/qonsole` web component that replaced it (#224)
+behaves the same:
 
 | Spec | Checks |
 |------|--------|
 | `qonsole.spec.ts` | Example queries, result formats, prefixes, links from PPD and UKHPI, errors, keyboard use |
-| `qonsole-a11y.spec.ts` | axe scan against WCAG 2.2 AA; today's known violations are listed in `KNOWN_VIOLATIONS` |
-| `qonsole-visual.spec.ts` | Screenshot baselines (Chromium only), the visual target for the replacement's theme |
+| `qonsole-a11y.spec.ts` | axe scan against WCAG 2.2 AA; any violation fails |
+| `qonsole-visual.spec.ts` | Screenshot baselines of the HMLR theme (Chromium only), with stubbed query responses |
 
-Anything that depends on how the console is built (editor API, dropdown
-markup, the query request URL) is behind the page object in
-`test/playwright/support/`, with one implementation per console:
-`qonsole-engine.ts` (the default) and `qonsole-component.ts`.
+Anything that depends on how the console is built (shadow DOM, editor API,
+the query request URL) is behind the page object in
+`test/playwright/support/qonsole-page.ts`.
 
-The queries need a real SPARQL endpoint, which a local server does not have, so
-run the suite against a deployed environment. Its queries are small enough for
-dev:
+The queries need a SPARQL endpoint. A local server sends them to the dev
+endpoint (see `QONSOLE_ENDPOINT`), so the suite runs against `bin/rails server`
+as well as a deployed environment. Its queries are small enough for dev:
 
 ```bash
+yarn test:e2e test/playwright/qonsole
 E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole
 ```
 
@@ -221,27 +222,8 @@ When the console's appearance changes on purpose, review the screenshot diffs
 in the HTML report, then update the baselines:
 
 ```bash
-E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole-visual.spec.ts --update-snapshots
+yarn test:e2e test/playwright/qonsole-visual.spec.ts --update-snapshots
 ```
-
-#### Against the web component
-
-To check the `<epi-qonsole>` web component before it is installed here, set
-`QONSOLE_IMPL=component`. The test harness loads the deployed `/qonsole` page,
-replaces the engine inside `<main>` with `<epi-qonsole>` configured from
-`config/qonsole.json`, and serves a local build of the component. It expects
-a build in a checkout of
-[epimorphics/qonsole](https://github.com/epimorphics/qonsole) next to this
-repo; set `QONSOLE_COMPONENT_JS` to use a different bundle:
-
-```bash
-(cd ../qonsole/packages/qonsole-wc && yarn build)
-QONSOLE_IMPL=component E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole
-```
-
-Failures here are the gaps the component must close before it replaces the
-engine. The screenshot baselines are the engine's, so expect those to fail
-until the component is themed; don't update them from a component run.
 
 ### In CI
 
