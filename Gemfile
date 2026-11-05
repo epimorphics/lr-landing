@@ -19,13 +19,6 @@ gem 'dartsass-sprockets', '~> 3.2'
 
 gem 'haml-rails'
 
-# The Qonsole Rails gem depends on a forked version of jquery-datatables-rails
-# to include a fix that has not yet been merged into the main repo. See:
-# https://stackoverflow.com/a/68001592/5760177
-gem 'jquery-datatables-rails', '~> 3.5.0',
-    github: 'marlinpierce/jquery-datatables-rails',
-    branch: 'master-3.5'
-
 gem 'get_process_mem'
 gem 'http_accept_language'
 gem 'prometheus-client'
@@ -59,11 +52,9 @@ group :development do
   # ! These "local" paths do not work with a docker image - use the repo instead
   # gem 'json_rails_logger', path: '~/Epimorphics/shared/json-rails-logger'
   # gem 'lr_common_styles', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles'
-  # gem 'qonsole_rails', path: '~/Epimorphics/clients/land-registry/projects/qonsole-rails'
 end
 
 source 'https://rubygems.pkg.github.com/epimorphics' do
   gem 'json_rails_logger'
   gem 'lr_common_styles'
-  gem 'qonsole_rails'
 end
