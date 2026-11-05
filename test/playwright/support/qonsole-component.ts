@@ -9,8 +9,9 @@ import type { QonsolePage, ResultFormat } from './qonsole-common'
 //
 // The real /qonsole page is fetched from E2E_BASE_URL and the engine's markup
 // inside <main> is swapped for <epi-qonsole>, configured from
-// config/qonsole.json. The page keeps the HMLR header, footer and styles, and
-// the component sends queries straight to the endpoint on the same origin.
+// config/qonsole.json. The page keeps the HMLR header, footer and styles, the
+// component is themed by app/assets/stylesheets/qonsole-component.css, and it
+// sends queries straight to the endpoint on the same origin.
 //
 // QONSOLE_COMPONENT_JS points at the built bundle; by default a checkout of
 // epimorphics/qonsole next to this repo, built with `yarn build`.
@@ -18,6 +19,9 @@ import type { QonsolePage, ResultFormat } from './qonsole-common'
 const COMPONENT_JS = resolve(
   process.env['QONSOLE_COMPONENT_JS'] ?? '../qonsole/packages/qonsole-wc/dist/qonsole.js',
 )
+
+/** The app's theme for the component, injected as the app will include it */
+const THEME_CSS = readFileSync(resolve('app/assets/stylesheets/qonsole-component.css'), 'utf8')
 
 /** Path the harness serves the bundle from; never reaches the server */
 const COMPONENT_JS_PATH = '/__qonsole-component/qonsole.js'
@@ -43,7 +47,6 @@ function componentMarkup (): string {
       ${attribute('prefixes', prefixes)}
       ${attribute('queries', queries)}
       allow-queries-from-u-r-l="true"
-      style="display: block"
     ></epi-qonsole>
   `
 }
@@ -55,7 +58,7 @@ function harness (html: string): string {
 
   return html
     .replace(main, (_, open: string, close: string) => `${open}${componentMarkup()}${close}`)
-    .replace('</head>', `<script type="module" src="${COMPONENT_JS_PATH}"></script></head>`)
+    .replace('</head>', `<style>${THEME_CSS}</style><script type="module" src="${COMPONENT_JS_PATH}"></script></head>`)
 }
 
 export class ComponentQonsolePage implements QonsolePage {
