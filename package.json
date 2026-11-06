@@ -25,6 +25,6 @@
   },
   "packageManager": "yarn@4.18.1",
   "dependencies": {
-    "@epimorphics/qonsole": "2.0.0-rc.1"
+    "@epimorphics/qonsole": "2.0.0-rc.2"
   }
 }
