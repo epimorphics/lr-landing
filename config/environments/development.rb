@@ -59,4 +59,11 @@ Rails.application.configure do
   # API location can be specified in the environment but defaults to the dev service
   # Here we are still providing the API_SERVICE_URL for qonsole
   config.api_service_url = ENV.fetch('API_SERVICE_URL', 'http://localhost:8888')
+
+  # The qonsole's default SPARQL endpoint. Deployed, the browser sends queries to
+  # /landregistry/query on the same host (config/qonsole.json), which a local
+  # server doesn't have; the dev endpoint allows cross-origin requests instead
+  config.x.qonsole_endpoint = ENV.fetch(
+    'QONSOLE_ENDPOINT', 'https://hmlr-dev-pres.epimorphics.net/landregistry/query'
+  )
 end

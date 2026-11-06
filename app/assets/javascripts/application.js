@@ -16,7 +16,6 @@
 //= require popper
 //= require bootstrap
 //= require lodash
-//= require qonsole_rails/application
 //= require lr_common_styles/application
 //
 // Load custom application code last to ensure all dependencies are available.

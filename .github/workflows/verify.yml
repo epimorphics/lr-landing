@@ -39,5 +39,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # The asset pipeline serves @epimorphics/qonsole from node_modules
+      - name: Setup Node Environment
+        uses: ./.github/actions/setup-node
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Run Rails tests
         run: bin/rails test

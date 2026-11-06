@@ -1,17 +1,38 @@
 import { test, expect, SMALL_QUERY } from './support/qonsole-page'
 import type { QonsolePage } from './support/qonsole-page'
 
-// Screenshot baselines of the SPARQL query console (#247), taken from the
-// qonsole_rails engine. They are the visual target for theming the web
-// component that replaces it (#224): expect these to fail after the swap, and
-// review the diffs in the HTML report before updating the baselines with
-// `yarn test:e2e --update-snapshots`.
+// Screenshot baselines of the SPARQL query console (#247): the web component
+// (#224) with the HMLR theme in app/assets/stylesheets/qonsole-component.css.
+// When the appearance changes on purpose, review the diffs in the HTML report
+// before updating the baselines with `yarn test:e2e --update-snapshots`.
+//
+// Query responses are stubbed, so the baselines don't depend on the dataset
+// or on which environment's endpoint the page uses.
 //
 // Chromium only (see playwright.config.ts): one set of baselines is enough to
 // compare designs.
 
 const DESKTOP = { width: 1280, height: 900 }
 const MOBILE = { width: 375, height: 800 }
+
+/** SMALL_QUERY's results as the endpoint returns them for the table format */
+const TABLE_RESULTS = [
+  '?s\t?p\t?o',
+  '<http://landregistry.data.gov.uk/def/common/>\t<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>\t<http://www.w3.org/2002/07/owl#Ontology>',
+  '<http://landregistry.data.gov.uk/def/common/>\t<http://www.w3.org/2000/01/rdf-schema#label>\t"Common definitions for Land Registry Linked Data"@en',
+  '<http://landregistry.data.gov.uk/def/common/postcode>\t<http://www.w3.org/2000/01/rdf-schema#label>\t"postcode"@en',
+].join('\n')
+
+/** A parse error as Fuseki reports it */
+const PARSE_ERROR = [
+  'Error 400: Parse error: ',
+  'SELECT * WHERE { ?s ?p }',
+  'Encountered " "}" "} "" at line 1, column 23.',
+].join('\n')
+
+async function stubQuery (qonsole: QonsolePage, status: number, contentType: string, body: string) {
+  await qonsole.page.route(qonsole.queryRequest, (route) => route.fulfill({ status, contentType, body }))
+}
 
 async function expectMainToMatch (qonsole: QonsolePage, name: string) {
   // Keep hover styles out of the baselines
@@ -36,6 +57,7 @@ test.describe('Appearance', () => {
 
   test('with table results at desktop width', async ({ page, qonsole }) => {
     await page.setViewportSize(DESKTOP)
+    await stubQuery(qonsole, 200, 'text/tab-separated-values', TABLE_RESULTS)
     await qonsole.setQuery(SMALL_QUERY)
     await qonsole.selectFormat('table')
     await qonsole.run()
@@ -46,6 +68,7 @@ test.describe('Appearance', () => {
 
   test('with an error at desktop width', async ({ page, qonsole }) => {
     await page.setViewportSize(DESKTOP)
+    await stubQuery(qonsole, 400, 'text/plain', PARSE_ERROR)
     await qonsole.setQuery('SELECT * WHERE { ?s ?p }')
     await qonsole.run()
 
@@ -59,6 +82,7 @@ test.describe('Appearance', () => {
 
   test('with table results at mobile width', async ({ page, qonsole }) => {
     await page.setViewportSize(MOBILE)
+    await stubQuery(qonsole, 200, 'text/tab-separated-values', TABLE_RESULTS)
     await qonsole.setQuery(SMALL_QUERY)
     await qonsole.selectFormat('table')
     await qonsole.run()

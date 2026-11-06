@@ -12,8 +12,6 @@ require 'rails/test_unit/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-require 'qonsole_rails'
-
 module LrLanding
   # :nodoc:
   class Application < Rails::Application

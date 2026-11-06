@@ -15,11 +15,13 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
 
   # Set the user's preferred locale. An explicit locale set via the URL param
   # `lang` is preeminent, otherwise we look to the user's preferred language
-  # specified via browser headers
+  # specified via browser headers, then the default locale (as when the headers
+  # are missing or name no language we support)
   def set_locale
     # Get the user's locale from the URL param `lang` or the browser headers
     user_locale = params['lang']
     user_locale ||= http_accept_language.compatible_language_from(I18n.available_locales)
+    user_locale ||= I18n.default_locale
 
     # Now convert the user's locale to a symbol and set it as the I18n locale
     I18n.locale = user_locale.to_sym if Rails.application.config.welsh_language_enabled
