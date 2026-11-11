@@ -186,9 +186,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@epimorphics/qonsole@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@epimorphics/qonsole@npm:2.0.0-rc.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40epimorphics%2Fqonsole%2F2.0.0-rc.2%2F2f8de3ccc2c5dab630cd66b07fd58ef81c1237d9"
+"@epimorphics/qonsole@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@epimorphics/qonsole@npm:2.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40epimorphics%2Fqonsole%2F2.0.0%2Fd541cd4741a64b448a1a7753ac5d1c2c84e6c0fb"
   dependencies:
     "@codemirror/commands": "npm:^6.11.1"
     "@codemirror/lang-json": "npm:^6.0.2"
@@ -199,7 +199,7 @@ __metadata:
     codemirror: "npm:^6.0.2"
     codemirror-lang-sparql: "npm:^2.1.0"
     vue: "npm:^3.5.45"
-  checksum: 10c0/5a368a2dc1da25df14ec5a1909cded0a6ca99ef8a5ff4d220d8c000b9a890e313e01981936d8dee51d6cfa48b09749cfebeb204380c2ba6ae71211aa9ef01902
+  checksum: 10c0/2fa38594e987705fbb562ee163ee98f23e6bafa0d32dd795391d663c95c5baabe77fdf780c9a81e241809c7fb09e549e0a18cf2412a4557578b4a752973c7deb
   languageName: node
   linkType: hard
 
@@ -1200,7 +1200,7 @@ __metadata:
   resolution: "lr-landing@workspace:."
   dependencies:
     "@axe-core/playwright": "npm:^4.14.0"
-    "@epimorphics/qonsole": "npm:2.0.0-rc.2"
+    "@epimorphics/qonsole": "npm:2.0.0"
     "@eslint/js": "npm:^10.0.1"
     "@playwright/test": "npm:^1.60.0"
     "@stylistic/eslint-plugin": "npm:^5.10.0"
