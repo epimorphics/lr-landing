@@ -22,8 +22,10 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
-  # Raise exceptions instead of rendering exception templates.
-  config.action_dispatch.show_exceptions = false
+  # Raise exceptions instead of rendering exception templates, so a controller
+  # exception fails its test with a backtrace. Not `false`: Rails 8.1 reads that
+  # as :all. Tests of the error pages turn the middleware on for themselves.
+  config.action_dispatch.show_exceptions = :none
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
