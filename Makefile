@@ -35,7 +35,7 @@ ${GITHUB_TOKEN}:
 
 all: image ## Default target: build the Docker image
 
-auth: ${GITHUB_TOKEN} ${BUNDLE_CFG} ## Set up authentication for GitHub and Bundler
+auth: ${GITHUB_TOKEN} ${BUNDLE_CFG} ## Set up authentication for GitHub, Bundler and (via a build secret) Yarn
 	@echo "Authentication set up for GitHub and Bundler."
 
 help: ## Display this message
@@ -53,6 +53,7 @@ endif
 image: auth ## Build the Docker image
 	@echo Building ${REPO}:${TAG} ...
 	@docker build \
+		--secret id=github_token,src=${GITHUB_TOKEN} \
 		--build-arg ALPINE_VERSION=${ALPINE_VERSION} \
 		--build-arg RUBY_VERSION=${RUBY_VERSION} \
 		--build-arg BUNDLER_VERSION=${BUNDLER_VERSION} \

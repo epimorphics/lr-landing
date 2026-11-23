@@ -1,15 +1,16 @@
-import { test, expect, normaliseQuery, qonsoleConfig, QUERY_REQUEST, SMALL_QUERY } from './support/qonsole-page'
+import { test, expect, normaliseQuery, qonsoleConfig, SMALL_QUERY } from './support/qonsole-page'
 import type { QonsolePage } from './support/qonsole-page'
 
 // Regression suite for the SPARQL query console (#247), written against the
-// qonsole_rails engine before it is replaced by the web component (#224).
-// Assertions describe what a user sees, not how the page is built; see
-// support/qonsole-page.ts for the parts that depend on the implementation.
+// qonsole_rails engine and kept to show the web component that replaced it
+// (#224) behaves the same. Assertions describe what a user sees, not how the
+// page is built; see support/qonsole-page.ts for the parts that depend on it.
 //
-// Queries run against the live dataset, so point E2E_BASE_URL at a deployed
-// environment. The queries used are small enough for the dev hosts.
+// Queries run against the live dataset: the deployed environment's own
+// endpoint, or the dev endpoint from a local server. The queries used are
+// small enough for the dev hosts.
 
-const { queries: examples, prefixes, endpoints } = qonsoleConfig
+const { queries: examples, prefixes } = qonsoleConfig
 
 /** A query that matches nothing in the dataset */
 const EMPTY_QUERY = 'SELECT * WHERE { <http://example.com/no-such-resource> ?p ?o }'
@@ -58,7 +59,7 @@ test.describe('Page', () => {
   })
 
   test('shows the default endpoint', async ({ qonsole }) => {
-    await expect(qonsole.endpointInput).toHaveValue(endpoints['default'])
+    await expect(qonsole.endpointSelector).toHaveValue(await qonsole.defaultEndpoint())
   })
 })
 
@@ -67,7 +68,7 @@ test.describe('Page', () => {
 test.describe('Example queries', () => {
   for (const { name, query } of examples) {
     test(`"${name}" loads into the editor and returns results`, async ({ qonsole }) => {
-      await qonsole.example(name).click()
+      await qonsole.loadExample(name)
       await expect.poll(() => qonsole.editorText()).toContain(normaliseQuery(query).trim())
 
       await qonsole.run()
@@ -128,11 +129,7 @@ test.describe('Result formats', () => {
   })
 
   test('DESCRIBE results are shown as text even when table is selected', async ({ qonsole }) => {
-    // Known defect in qonsole_rails: it asks the endpoint for a table, which
-    // fails with a server error. The web component switches to text (#224);
-    // remove this marker when this test starts passing.
-    test.fail()
-
+    // qonsole_rails asked the endpoint for a table, which failed
     await qonsole.setQuery(DESCRIBE_QUERY)
     await qonsole.selectFormat('table')
     await qonsole.run()
@@ -195,7 +192,7 @@ test.describe('Errors and loading', () => {
   })
 
   test('shows a loading indicator while the query runs', async ({ page, qonsole }) => {
-    await page.route(QUERY_REQUEST, async (route) => {
+    await page.route(qonsole.queryRequest, async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 1500))
       await route.continue()
     })
@@ -207,19 +204,19 @@ test.describe('Errors and loading', () => {
   })
 
   test('shows an error when the query service fails', async ({ page, qonsole }) => {
-    await page.route(QUERY_REQUEST, (route) => route.fulfill({ status: 500, body: 'Internal Server Error' }))
+    await page.route(qonsole.queryRequest, (route) => route.fulfill({ status: 500, body: 'Internal Server Error' }))
     await qonsole.run()
     await expectErrorShown(qonsole)
   })
 
   test('shows an error when the query service is unavailable', async ({ page, qonsole }) => {
-    await page.route(QUERY_REQUEST, (route) => route.fulfill({ status: 502, body: '' }))
+    await page.route(qonsole.queryRequest, (route) => route.fulfill({ status: 502, body: '' }))
     await qonsole.run()
     await expectErrorShown(qonsole)
   })
 
   test('shows an error when the network request fails', async ({ page, qonsole }) => {
-    await page.route(QUERY_REQUEST, (route) => route.abort('failed'))
+    await page.route(qonsole.queryRequest, (route) => route.abort('failed'))
     await qonsole.run()
     await expectErrorShown(qonsole)
   })
@@ -253,15 +250,18 @@ test.describe('Keyboard', () => {
   })
 
   test('skip link moves focus past the editor to endpoint selection', async ({ page, qonsole }) => {
-    await page.getByRole('button', { name: /Skip SPARQL editor/ }).click()
+    // Used by keyboard, as it is hidden until focused
+    const skip = page.getByRole('button', { name: /Skip SPARQL editor/ })
+    await skip.focus()
+    await expect(skip).toBeVisible()
+    await page.keyboard.press('Enter')
     await expect(qonsole.endpointSelector).toBeFocused()
   })
 
   test('an example can be loaded and run without a mouse', async ({ page, qonsole }) => {
     const { name, query } = examples[1]
 
-    await qonsole.example(name).focus()
-    await page.keyboard.press('Enter')
+    await qonsole.loadExampleWithKeyboard(name)
     await expect.poll(() => qonsole.editorText()).toContain(normaliseQuery(query).trim())
 
     await qonsole.runButton.focus()

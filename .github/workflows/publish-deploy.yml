@@ -16,6 +16,11 @@ on:
       - 'Gemfile.lock'
       - '.ruby-version'
       - '.bundle/**'
+      # JavaScript dependencies the assets are built from
+      - 'package.json'
+      - 'yarn.lock'
+      - '.yarnrc.yml'
+      - '.yarn/releases/**'
       # Rails application
       - 'config.ru'
       - 'Rakefile'
@@ -41,6 +46,11 @@ on:
       - 'Gemfile.lock'
       - '.ruby-version'
       - '.bundle/**'
+      # JavaScript dependencies the assets are built from
+      - 'package.json'
+      - 'yarn.lock'
+      - '.yarnrc.yml'
+      - '.yarn/releases/**'
       # Rails application
       - 'config.ru'
       - 'Rakefile'

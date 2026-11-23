@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount QonsoleRails::Engine, at: '/qonsole'
+  get 'qonsole', to: 'qonsole#index'
+  # The engine's form submitted to /qonsole/query; keep any links to it working
+  get 'qonsole/query', to: redirect { |_params, request| "qonsole?#{request.query_string}".chomp('?') }
 
   root 'landing#index'
   resources :landing, only: [:index]

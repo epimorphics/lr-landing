@@ -68,13 +68,32 @@ Configure Bundler with your token:
 ./bin/bundle config set --local rubygems.pkg.github.com epimorphics:<your-token>
 ```
 
+#### GitHub Packages token
+
+The `@epimorphics/qonsole` npm package also comes from GitHub Packages, which needs a
+token even for public packages. The same token works. Put it in your user-level Yarn
+config (`~/.yarnrc.yml`), never in the repo's `.yarnrc.yml`:
+
+```bash
+yarn config set --home npmScopes.epimorphics.npmAuthToken <your-token>
+```
+
+Elsewhere:
+
+- **CI** (`.github/actions/setup-node`) sets the same config from the workflow's
+  `GITHUB_TOKEN`, which needs `packages: read`.
+- **Docker** (`make image`) passes `.github-token` to the build as the secret
+  `github_token`; it is never written to an image layer.
+
 ### 3. Install dependencies
 
 ```bash
 ./bin/bundle install
+yarn install
 ```
 
-No Node or Yarn installation is required.
+Node (see `.nvmrc`) and Yarn (via `corepack enable`) are needed for the JavaScript
+packages the assets are built from, and for the E2E tests.
 
 ### 4. Environment variables
 
@@ -87,6 +106,7 @@ To override a value, create `.env.local` and set it there. `.env.local` is gitig
 |---|---|---|
 | `API_SERVICE_URL` | `http://localhost:8888` | Backing SPARQL/data API |
 | `PORT` | `3000` | Rails server port |
+| `QONSOLE_ENDPOINT` | dev SPARQL endpoint | Where the qonsole sends queries in development; deployed, it is `/landregistry/query` on the same host |
 | `SENTRY_ENABLED` | `false` | Enable Sentry error tracking |
 | `SENTRY_AUTH_TOKEN` | — | Required only for production builds (source map upload) |
 | `SENTRY_API_KEY` | — | Required only if `SENTRY_ENABLED=true` |
@@ -175,24 +195,26 @@ yarn test:e2e
 ### Qonsole regression suite
 
 The `test/playwright/qonsole*.spec.ts` files record how the SPARQL query
-console behaves, so that the `qonsole_rails` engine can be replaced by the
-`@epimorphics/qonsole` web component (#224) without regressions:
+console behaves. They were written against the `qonsole_rails` engine and now
+check that the `@epimorphics/qonsole` web component that replaced it (#224)
+behaves the same:
 
 | Spec | Checks |
 |------|--------|
 | `qonsole.spec.ts` | Example queries, result formats, prefixes, links from PPD and UKHPI, errors, keyboard use |
-| `qonsole-a11y.spec.ts` | axe scan against WCAG 2.2 AA; today's known violations are listed in `KNOWN_VIOLATIONS` |
-| `qonsole-visual.spec.ts` | Screenshot baselines (Chromium only), the visual target for the replacement's theme |
+| `qonsole-a11y.spec.ts` | axe scan against WCAG 2.2 AA; any violation fails |
+| `qonsole-visual.spec.ts` | Screenshot baselines of the HMLR theme (Chromium only), with stubbed query responses |
 
-Anything that depends on how the console is built (editor API, dropdown
-markup, the query request URL) is in `test/playwright/support/qonsole-page.ts`;
-when the implementation changes, that is the file to update.
+Anything that depends on how the console is built (shadow DOM, editor API,
+the query request URL) is behind the page object in
+`test/playwright/support/qonsole-page.ts`.
 
-The queries need a real SPARQL endpoint, which a local server does not have, so
-run the suite against a deployed environment. Its queries are small enough for
-dev:
+The queries need a SPARQL endpoint. A local server sends them to the dev
+endpoint (see `QONSOLE_ENDPOINT`), so the suite runs against `bin/rails server`
+as well as a deployed environment. Its queries are small enough for dev:
 
 ```bash
+yarn test:e2e test/playwright/qonsole
 E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole
 ```
 
@@ -200,7 +222,7 @@ When the console's appearance changes on purpose, review the screenshot diffs
 in the HTML report, then update the baselines:
 
 ```bash
-E2E_BASE_URL=https://hmlr-dev-pres.epimorphics.net/ yarn test:e2e test/playwright/qonsole-visual.spec.ts --update-snapshots
+yarn test:e2e test/playwright/qonsole-visual.spec.ts --update-snapshots
 ```
 
 ### In CI

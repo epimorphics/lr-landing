@@ -32,6 +32,21 @@ RUN bundle config set --local without 'development test' \
     && bundle config set --local frozen 1 \
     && bundle install
 
+# installs the JavaScript packages the assets are built from (dependencies
+# only, not the Playwright test tools in devDependencies)
+FROM base AS node-modules
+WORKDIR ${DIR}
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn/releases .yarn/releases
+# @epimorphics packages come from GitHub Packages. The token is a build secret,
+# written to Yarn's user config and removed in the same step, so no image layer
+# contains it
+RUN --mount=type=secret,id=github_token,required=true \
+    yarn="node $(ls .yarn/releases/yarn-*.cjs)" \
+    && $yarn config set --home npmScopes.epimorphics.npmAuthToken "$(cat /run/secrets/github_token)" \
+    && $yarn workspaces focus --production \
+    ; status=$? ; rm -f /root/.yarnrc.yml ; exit $status
+
 # runs build to compile assets
 FROM base AS builder
 RUN apk add --update build-base && gem update --system
@@ -39,6 +54,7 @@ RUN apk add --update build-base && gem update --system
 WORKDIR ${DIR}
 # Copy the builds from the previous stages
 COPY --from=gems --chown=app /usr/local/bundle /usr/local/bundle
+COPY --from=node-modules ${DIR}/node_modules node_modules
 
 # Copy the rest of the application code
 COPY config.ru Gemfile Gemfile.lock Rakefile ./
@@ -51,9 +67,11 @@ COPY public public
 ARG RAILS_RELATIVE_URL_ROOT
 RUN echo "RAILS_RELATIVE_URL_ROOT set to: ${RAILS_RELATIVE_URL_ROOT}"
 
-# Precompile assets
+# Precompile assets. node_modules is only needed to build them, as Sprockets
+# copies what it uses into public/assets
 RUN RAILS_ENV=production \
   bundle exec rake assets:precompile \
+  && rm -rf node_modules \
   && mkdir -m 777 ${DIR}/coverage \
   && mkdir -m 777 ${DIR}/log
 
