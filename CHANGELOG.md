@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Replaced the `qonsole_rails` engine on `/qonsole` with the `<epi-qonsole>` web
+  component from `@epimorphics/qonsole` 2.0.0, themed for HMLR
+  [#224](https://github.com/epimorphics/lr-landing/issues/224). Visible changes:
+  - example queries are chosen from a dropdown instead of a row of buttons
+  - queries go straight to the SPARQL endpoint, so the `POST /qonsole/query`
+    proxy is gone; `GET /qonsole/query` redirects to `/qonsole`, keeping the
+    query string
+  - in development, queries go to the dev SPARQL endpoint, or to
+    `QONSOLE_ENDPOINT` if set
+- `@epimorphics/qonsole` is installed from GitHub Packages, which needs a token
+  with `read:packages` for local installs and Docker builds (see the README)
+- Removed jQuery DataTables, Faraday and sassc from the bundle along with the engine
+
+### Fixed
+
+- Requests with no `lang` parameter and no supported language in
+  `Accept-Language` (e.g. crawlers, `curl`) now fall back to the default locale
+  instead of failing with a 500
+
 ## [2.3.6] - 2026-10-27
 
 ### Changed
