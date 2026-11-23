@@ -15,7 +15,9 @@ class QonsoleController < ApplicationController
   def self.qonsole_config
     @qonsole_config ||= begin
       config = JSON.parse(File.read(CONFIG_FILE)).slice('endpoints', 'prefixes', 'queries')
-      endpoint = Rails.configuration.x.qonsole_endpoint
+      # An unset config.x key is an empty ActiveSupport::OrderedOptions, not
+      # nil, so .presence is needed for the default from the file to stand
+      endpoint = Rails.configuration.x.qonsole_endpoint.presence
       config['endpoints'] = config['endpoints'].merge('default' => endpoint) if endpoint
       config.freeze
     end

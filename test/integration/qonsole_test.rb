@@ -17,6 +17,15 @@ class QonsoleTest < ActionDispatch::IntegrationTest
     end
   end
 
+  # As deployed: only development sets config.x.qonsole_endpoint
+  test 'without a configured endpoint, queries go to the endpoint in config/qonsole.json' do
+    get '/qonsole'
+
+    assert_select 'epi-qonsole' do |(element)|
+      assert_equal({ 'default' => '/landregistry/query' }, JSON.parse(element['endpoints']))
+    end
+  end
+
   test 'the old query URL redirects to the console, keeping the query' do
     get '/qonsole/query?q=SELECT%20*'
 
