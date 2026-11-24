@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-# Remove any pre-existing server.pid for Rails.
-rm -f ./tmp/pids/server.pid
 mkdir -pm 1777 ./tmp
 
 # Set the environment
