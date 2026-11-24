@@ -21,6 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `@epimorphics/qonsole` is installed from GitHub Packages, which needs a token
   with `read:packages` for local installs and Docker builds (see the README)
 - Removed jQuery DataTables, Faraday and sassc from the bundle along with the engine
+- **Metric change:** `internal_application_error` counts only responses with
+  status 500, and its `message` label is now `<Class> in <controller#action>`,
+  e.g. `RuntimeError in landing#index`. It was the text of a hash that included
+  the exception's own message, so each distinct message made a new time series
+  [#252](https://github.com/epimorphics/lr-landing/issues/252).
+- **Metric change:** removed `api_status`, `api_requests`, `api_connection_failure`,
+  `api_service_exception` and `api_response_times`. lr-landing makes no
+  server-side API calls, so they were always zero.
+  **Ops:** check no rule or Grafana panel for the `landing` job expects them
+  [#252](https://github.com/epimorphics/lr-landing/issues/252).
 
 ### Fixed
 

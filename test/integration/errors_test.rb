@@ -53,7 +53,6 @@ class ErrorsTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, 'Application error'
   end
 
-  # Until #252 relabels it, the payload is the one the old handler sent
   test 'an unhandled exception is reported as an internal error' do
     events = []
     callback = ->(*, payload) { events << payload }
@@ -62,7 +61,17 @@ class ErrorsTest < ActionDispatch::IntegrationTest
       ActiveSupport::Notifications.subscribed(callback, 'internal_error.application') { get '/' }
     end
 
-    assert_equal [{ exception: { message: 'boom', status: 500, type: 'RuntimeError' } }], events
+    assert_equal [{ exception: { class: 'RuntimeError', action: 'landing#index', message: 'boom', status: 500 } }],
+                 events
+  end
+
+  # The label is bounded: it never carries the exception's message
+  test 'an unhandled exception counts in internal_application_error by class and action' do
+    with_failing_landing_page do
+      assert_difference -> { internal_error_count('RuntimeError in landing#index') }, 1 do
+        get '/'
+      end
+    end
   end
 
   test 'a client error is not reported as an internal error' do
@@ -72,6 +81,12 @@ class ErrorsTest < ActionDispatch::IntegrationTest
     ActiveSupport::Notifications.subscribed(callback, 'internal_error.application') { get '/nope' }
 
     assert_empty events
+  end
+
+  test 'a 404 does not count in internal_application_error' do
+    assert_no_difference -> { internal_error_counts.values.sum } do
+      get '/nope'
+    end
   end
 
   test 'a malformed query string renders the 400 page' do
@@ -119,6 +134,15 @@ class ErrorsTest < ActionDispatch::IntegrationTest
   end
 
   private
+
+  def internal_error_count(label)
+    internal_error_counts.fetch({ message: label }, 0)
+  end
+
+  # Every series of the counter, keyed by its labels
+  def internal_error_counts
+    Prometheus::Client.registry.get(:internal_application_error).values
+  end
 
   # LandingController has no index method (the view renders implicitly), so
   # define one that raises for the length of the block

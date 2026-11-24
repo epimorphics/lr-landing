@@ -299,6 +299,26 @@ Metrics for the presentation hosts of all HMLR apps are in
 environment has behaved over time and to line up a problem with when it
 started. Ask Ops for access.
 
+### Metrics
+
+`/metrics` is served by the Prometheus middleware. Alert rules are kept by Ops, not
+in this repository, so a change to a metric's name or labels must be agreed with
+them for the same deploy.
+
+Label values are bounded: they never contain an exception's own message, which can
+carry user input or a URL and would create a new time series per value.
+
+| Metric | Labels | Measures |
+|---|---|---|
+| `internal_application_error` | `message`: `<exception class> in <controller>#<action>`, e.g. `RuntimeError in landing#index` | Responses with status 500 |
+| `memory_used_mb` | none | Process memory, sampled after each request |
+| `process_threads` | `status`: `run`, `sleep`, `aborting`, `false` or `nil` | Threads in each state, sampled after each request |
+
+`internal_application_error` is recorded by `ApplicationPrometheusSubscriber`
+from the `internal_error.application` event that `ErrorsController` sends. The
+gauges are set by `ActionDispatchPrometheusSubscriber`. Request counts and
+durations by status are the Prometheus client's own `http_server_*` metrics.
+
 ## Dependency maintenance
 
 ```bash

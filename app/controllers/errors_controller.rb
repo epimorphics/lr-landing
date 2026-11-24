@@ -53,14 +53,24 @@ class ErrorsController < ApplicationController
 
   private
 
-  # Feeds the `internal_application_error` Prometheus counter, with the payload
-  # ApplicationController's own handler sent. #252 relabels it
+  # Feeds the `internal_application_error` Prometheus counter. Only a 500 is an
+  # internal error: every other status is one Rails chose for a request it turned
+  # away (see `rescue_responses`), and http_server_requests_total counts those
   def instrument_internal_error(exception, status)
-    return if status < 500
+    return unless status == 500
 
     ActiveSupport::Notifications.instrument(
       'internal_error.application',
-      exception: { message: exception.message, status:, type: exception.class.name }
+      exception: {
+        class: exception.class.name, action: failed_action, message: exception.message, status:
+      }
     )
+  end
+
+  # The action that failed, such as "landing#index". Rails keeps the failed
+  # request's route params when it hands the request to `exceptions_app`. Absent
+  # when no route matched
+  def failed_action
+    request.path_parameters.values_at(:controller, :action).compact.join('#').presence
   end
 end
