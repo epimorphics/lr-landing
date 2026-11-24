@@ -39,6 +39,25 @@ module LrLanding
     config.i18n.default_locale = :en
     config.i18n.enforce_available_locales = true
 
+    # Render error pages through the application, rather than the static files in
+    # public/, so they use the layout and follow the language.
+    #
+    # ActionDispatch::ShowExceptions catches the exception, maps it to a status via
+    # `rescue_responses`, resets the response, and hands the request to
+    # ErrorsController with the path rewritten to the status code. It runs outside
+    # the router, so unlike `rescue_from` it also catches routing errors. The
+    # application never decides which status an exception deserves.
+    #
+    # Dispatched straight to the controller rather than via `routes`, so the error
+    # pages have no public URLs: requesting /500 directly is just an unmatched path.
+    # The lambda defers the constant lookup until an error occurs, after autoloading
+    # is set up. `render_error` also copes with requests whose params can't be parsed
+    config.exceptions_app = ->(env) { ErrorsController.render_error(env) }
+
+    # Expected failures (404, 400, 422, ...) are already recorded by the
+    # request's completed log entry, so don't also log them as exceptions
+    config.action_dispatch.log_rescued_responses = false
+
     # Quiet SASS deprecation warnings coming from dependencies
     config.sass.quiet_deps = true
     # Silence @import deprecation warnings during migration to @use/@forward

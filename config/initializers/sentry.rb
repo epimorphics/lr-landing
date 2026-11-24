@@ -10,12 +10,13 @@ Rails.application.reloader.to_prepare do
     config.dsn = ENV.fetch('SENTRY_API_KEY', nil)
     # ! Only report errors in these environments:
     config.enabled_environments = %w[production prod preprod dev]
-    # ! Ignore exceptions that are not useful to us
-    config.excluded_exceptions += [
-      'ActionController::BadRequest',
-      'ActionController::RoutingError',
-      'ActiveRecord::RecordNotFound'
-    ]
+    # Report only the errors answered with a 500. Every exception Rails maps to
+    # another status (404, 400, 406, ...) is a request we turned away, not a fault
+    # to fix, and http_server_requests_total already counts them
+    rejected = ActionDispatch::ExceptionWrapper.rescue_responses.reject do |_, status|
+      status == :internal_server_error
+    end
+    config.excluded_exceptions |= rejected.keys
     # * Set the environment name from the SENTRY_ENVIRONMENT configuration value
     config.environment = ENV.fetch('SENTRY_ENVIRONMENT', Rails.env)
     # ^ Default to only reporting info, warnings and errors to Sentry

@@ -27,6 +27,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Requests with no `lang` parameter and no supported language in
   `Accept-Language` (e.g. crawlers, `curl`) now fall back to the default locale
   instead of failing with a 500
+- `/qonsole` sends queries to `/landregistry/query` when deployed; it was
+  POSTing to `/[object Object]` and every query returned 404
+  [#257](https://github.com/epimorphics/lr-landing/pull/257)
+- Error pages render again, with the site layout and the right status
+  [#251](https://github.com/epimorphics/lr-landing/issues/251),
+  [#215](https://github.com/epimorphics/lr-landing/issues/215). The old
+  production-only `rescue_from` caught errors but rendered nothing, so an
+  unknown path gave an empty 404 and an unhandled exception an empty 200.
+  Rails' `exceptions_app` now hands every error to `ErrorsController`:
+  - unknown paths get the branded "Page not found" page with a 404
+  - unhandled exceptions get the "Application error" page with a 500, and
+    count in `internal_application_error`
+  - malformed query strings get a 400, and non-HTML requests a plain-text
+    body with the same status
+  - an unsupported or blank `lang` is ignored instead of raising
+  - error pages are not sent with the public `Cache-Control` header
+  - Sentry reports only errors answered with a 500
 
 ## [2.3.6] - 2026-10-27
 
