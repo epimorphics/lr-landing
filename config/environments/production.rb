@@ -67,10 +67,7 @@ Rails.application.configure do
 
   # * Set cache control headers for HMLR apps to be public and cacheable
   # * Landing Page uses a time limit of 5 minutes (300 seconds)
-  # This will affect assets served from /app/assets
-  config.static_cache_control = "public, max-age=#{5.minutes.to_i}"
-
-  # This will affect assets in /public, e.g. webpacker assets.
+  # This affects everything served from /public, compiled assets included
   config.public_file_server.headers = {
     'Cache-Control' => "public, max-age=#{5.minutes.to_i}",
     'Expires' => 5.minutes.from_now.to_fs(:rfc822)

@@ -57,4 +57,7 @@ Rails.application.configure do
     Rails.logger.broadcasts.dup.each { |sink| Rails.logger.stop_broadcasting_to(sink) }
     Rails.logger.broadcast_to(file_logger)
   end
+
+  # Raise error when a before_action's only/except options reference missing actions.
+  config.action_controller.raise_on_missing_callback_actions = true
 end
