@@ -57,8 +57,4 @@ Rails.application.configure do
     Rails.logger.broadcasts.dup.each { |sink| Rails.logger.stop_broadcasting_to(sink) }
     Rails.logger.broadcast_to(file_logger)
   end
-
-  # API location can be specified in the environment
-  # But defaults to the dev service
-  config.api_service_url = ENV.fetch('API_SERVICE_URL', 'http://localhost:8888')
 end

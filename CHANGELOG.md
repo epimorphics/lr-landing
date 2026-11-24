@@ -43,6 +43,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   than following `LOG_LEVEL`, so `LOG_LEVEL=debug` no longer adds Sentry's
   tracing lines to every request
   [#253](https://github.com/epimorphics/lr-landing/issues/253).
+- Removed configuration for a data API the app doesn't call: the unused
+  `api_service_url` setting, `API_SERVICE_URL` (no longer logged by the
+  entrypoint), and `Procfile.dev`, which started a local API. The README lists
+  every variable the app and its container read
+- The production static file server is always on. `RAILS_SERVE_STATIC_FILES` is
+  no longer read: no deployment set it, and any value, `false` included, turned
+  it on. The HMLR proxy passes every request to the container, so the app must
+  serve its own assets
 - **Metric change:** removed `api_status`, `api_requests`, `api_connection_failure`,
   `api_service_exception` and `api_response_times`. lr-landing makes no
   server-side API calls, so they were always zero.
