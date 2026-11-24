@@ -79,6 +79,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Pages no longer set a session cookie. They are sent with
+  `Cache-Control: public`, so a shared cache could have stored one visitor's
+  cookie and replayed it to others. The cookie held only a CSRF token, and the
+  app accepts no forms, so forgery protection is off
 - Requests with no `lang` parameter and no supported language in
   `Accept-Language` (e.g. crawlers, `curl`) now fall back to the default locale
   instead of failing with a 500

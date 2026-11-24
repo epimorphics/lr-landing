@@ -8,11 +8,6 @@
 # it deserves: Rails has already done both, via `rescue_responses`, and passes the
 # status as the request path.
 class ErrorsController < ApplicationController
-  # The failed request may have been a form POST, and its token is not ours to
-  # check. A CSRF failure here would abandon the error page for Rails' bare
-  # failsafe response
-  skip_forgery_protection
-
   # Error pages must not be served from a shared cache after the fault is fixed
   skip_before_action :change_default_caching_policy
 
