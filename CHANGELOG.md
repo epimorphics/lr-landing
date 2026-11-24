@@ -83,6 +83,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `Cache-Control: public`, so a shared cache could have stored one visitor's
   cookie and replayed it to others. The cookie held only a CSRF token, and the
   app accepts no forms, so forgery protection is off
+- Static files are no longer sent an `Expires` header. It was fixed when the
+  app booted, so from five minutes after each deploy it was already in the
+  past. `Cache-Control: max-age` still allows five minutes of caching
 - Requests with no `lang` parameter and no supported language in
   `Accept-Language` (e.g. crawlers, `curl`) now fall back to the default locale
   instead of failing with a 500

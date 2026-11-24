@@ -67,10 +67,11 @@ Rails.application.configure do
 
   # * Set cache control headers for HMLR apps to be public and cacheable
   # * Landing Page uses a time limit of 5 minutes (300 seconds)
-  # This affects everything served from /public, compiled assets included
+  # This affects everything served from /public, compiled assets included.
+  # No `Expires`: these headers are fixed when the app boots, so a date would be
+  # in the past five minutes after each deploy, and max-age already says it
   config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{5.minutes.to_i}",
-    'Expires' => 5.minutes.from_now.to_fs(:rfc822)
+    'Cache-Control' => "public, max-age=#{5.minutes.to_i}"
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
