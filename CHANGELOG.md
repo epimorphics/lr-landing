@@ -56,6 +56,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   server-side API calls, so they were always zero.
   **Ops:** check no rule or Grafana panel for the `landing` job expects them
   [#252](https://github.com/epimorphics/lr-landing/issues/252).
+- Rails framework defaults are those of 8.1 (`config.load_defaults 8.1`). The
+  app had none, so it ran on Rails 5-era defaults
+  [#254](https://github.com/epimorphics/lr-landing/issues/254). Visible changes:
+  - `X-XSS-Protection` is `0` (was `1; mode=block`) and `X-Download-Options`
+    is no longer sent, following current browser guidance
+  - pages send a `Link` header preloading their CSS and JavaScript
+  - the session cookie is encrypted with AES-GCM and marked `SameSite=Lax`.
+    Existing session cookies are discarded. The app keeps nothing in the session
+    but the CSRF token, so nobody notices
+  - YJIT is on in production. **Ops:** it uses more memory, so watch
+    `memory_used_mb` for the `landing` job after the deploy
+- Puma writes a PID file only in development, or where `PIDFILE` is set, as in
+  the Rails 8.1 template, and the entrypoint no longer deletes one
+  [#196](https://github.com/epimorphics/lr-landing/issues/196)
+- Removed configuration that Rails no longer reads or now applies by default:
+  `config/secrets.yml` (production reads `SECRET_KEY_BASE`),
+  `config.static_cache_control`, and the empty or redundant `backtrace_silencers`,
+  `cookies_serializer`, `inflections`, `mime_types` and `wrap_parameters`
+  initializers. More parameter names are filtered from logs, as in the Rails 8.1
+  template
 
 ### Fixed
 

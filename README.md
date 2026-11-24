@@ -24,6 +24,7 @@ wiki](https://github.com/epimorphics/lr-landing/wiki).
 - [Releases](#releases)
 - [Environments](#environments)
 - [Observability](#observability)
+- [Upgrading Rails](#upgrading-rails)
 - [Dependency maintenance](#dependency-maintenance)
 
 ## Tech stack
@@ -353,6 +354,24 @@ carry user input or a URL and would create a new time series per value.
 from the `internal_error.application` event that `ErrorsController` sends. The
 gauges are set by `ActionDispatchPrometheusSubscriber`. Request counts and
 durations by status are the Prometheus client's own `http_server_*` metrics.
+
+## Upgrading Rails
+
+Bumping the `rails` gem is only half of an upgrade. Each time, also:
+
+1. Run `./bin/rails app:update` and review what it proposes file by file. It
+   offers to overwrite most of `bin/` and `config/` with the stock templates:
+   keep the genuinely new settings and reject anything that replaces
+   app-specific configuration (answer `d` at the prompt to see the diff).
+2. Use the `config/initializers/new_framework_defaults_X_Y.rb` it generates to
+   turn the new framework defaults on a few at a time, running the tests and
+   comparing response headers (`curl -I`) as you go.
+3. Once they are all on, move `config.load_defaults` in `config/application.rb`
+   forward to the new version and delete that initializer.
+
+Without the last step the app keeps running on the previous version's
+defaults. That is how it came to be on Rails 8.1 with the defaults of Rails 5
+([#254](https://github.com/epimorphics/lr-landing/issues/254)).
 
 ## Dependency maintenance
 
