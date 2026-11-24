@@ -3,5 +3,4 @@
 # Controller for main landing page.
 # Corresponds to `/` and `/landing` routes
 class LandingController < ApplicationController
-  Log.info('Requesting Landing Controller')
 end
