@@ -194,12 +194,6 @@ GEM
     lodash-rails (4.17.21)
       railties (>= 3.1)
     logger (1.7.0)
-    lograge (0.15.1)
-      actionpack (>= 4)
-      activesupport (>= 4)
-      logger
-      railties (>= 4)
-      request_store (~> 1.0)
     loofah (2.25.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.19.5)
@@ -325,8 +319,6 @@ GEM
     regexp_parser (2.12.0)
     reline (0.7.0)
       io-console (~> 0.5)
-    request_store (1.7.0)
-      rack (>= 1.4)
     reverse_markdown (3.0.2)
       nokogiri
     rexml (3.4.4)
@@ -463,10 +455,7 @@ GEM
 GEM
   remote: https://rubygems.pkg.github.com/epimorphics/
   specs:
-    json_rails_logger (3.0.0)
-      json (>= 1.8, < 5.0)
-      lograge (>= 0.10, < 2.0)
-      railties (>= 6.0, < 9.0)
+    epilog_rails (0.3.0)
     lr_common_styles (3.0.1)
       bootstrap (~> 5.3.2)
       font-awesome-rails (~> 4.7.0)
@@ -497,12 +486,12 @@ DEPENDENCIES
   byebug
   dartsass-sprockets (~> 3.2)
   dotenv
+  epilog_rails (~> 0.3)!
   get_process_mem
   haml-lint
   haml-rails
   http_accept_language
   jquery-rails
-  json_rails_logger!
   lr_common_styles!
   prometheus-client
   puma (~> 7.0)
@@ -551,6 +540,7 @@ CHECKSUMS
   diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962
   dotenv (3.2.0) sha256=e375b83121ea7ca4ce20f214740076129ab8514cd81378161f11c03853fe619d
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
+  epilog_rails (0.3.0) sha256=6d4d5328bed21b8815eaa09153299fad7578d731405353011e10e65ab6f17a89
   erb (6.0.7) sha256=c5ca6dc25b0ef974a44dc8f59fe847577122483b1968a38dec305c60bf91ee92
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   execjs (2.10.2) sha256=466cf2b49e50c0cfdff8fdb88a7a983dfab7ac0f6185c317ccb434a75c224c88
@@ -587,14 +577,12 @@ CHECKSUMS
   jaro_winkler (1.7.0) sha256=8daa05a5cd05bf7d27c1c65caa8ab0d47c05419d80210feaa17126db24044ada
   jquery-rails (4.6.1) sha256=619f3496cdcdeaae1fd6dafa52dbac3fc45b745d4e09712da4184a16b3a8d9c0
   json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
-  json_rails_logger (3.0.0) sha256=b9f8d72bfe78aa7ffbc438f8dccdaeecc56d4ee7fad521fa05093e042d370c75
   kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
   kramdown-parser-gfm (1.1.0) sha256=fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   lodash-rails (4.17.21) sha256=9a7a3d1b0ab2783e33a2bbe3ca3b1dc76f615f614994db16fe81323fcc905fc3
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
-  lograge (0.15.1) sha256=b8a6b3d45f15855f3b038ce01019317e783fa9ddf774eb20818c751438c5c761
   loofah (2.25.3) sha256=545f14eef0cc2a7de80df560530d593232b7c07e515c5c4e37532d9cb5b0185c
   lr_common_styles (3.0.1) sha256=6f4d21e479b7620c15cab526130fc67b1b869400c413a81c550465ed4338ceb3
   mail (2.9.1) sha256=06574eca475253d6c18145dd70af80d0eb970182d55053497c5f4d797ea160e8
@@ -647,7 +635,6 @@ CHECKSUMS
   rdoc (7.2.0) sha256=8650f76cd4009c3b54955eb5d7e3a075c60a57276766ebf36f9085e8c9f23192
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.7.0) sha256=5b012d8e55dbf9d450f12bde2cf7d15ff546ae80b3f8f3b30e570d431815583d
-  request_store (1.7.0) sha256=e1b75d5346a315f452242a68c937ef8e48b215b9453a77a6c0acdca2934c88cb
   reverse_markdown (3.0.2) sha256=818ebb92ce39dbb1a291690dd1ec9a6d62530d4725296b17e9c8f668f9a5b8af
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rubocop (1.90.0) sha256=9eb4c065b5c5154e4ef554c547972f3905a9eb6b53e657e580b6796b54bf8242

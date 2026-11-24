@@ -50,11 +50,10 @@ group :development do
 
   # NOTE: While running the rails app locally for testing you can set gems to your local path
   # ! These "local" paths do not work with a docker image - use the repo instead
-  # gem 'json_rails_logger', path: '~/Epimorphics/shared/json-rails-logger'
   # gem 'lr_common_styles', path: '~/Epimorphics/clients/land-registry/projects/lr_common_styles'
 end
 
 source 'https://rubygems.pkg.github.com/epimorphics' do
-  gem 'json_rails_logger'
+  gem 'epilog_rails', '~> 0.3'
   gem 'lr_common_styles'
 end

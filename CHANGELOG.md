@@ -26,6 +26,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   e.g. `RuntimeError in landing#index`. It was the text of a hash that included
   the exception's own message, so each distinct message made a new time series
   [#252](https://github.com/epimorphics/lr-landing/issues/252).
+- Logging is done by `epilog_rails` in place of `json_rails_logger` and the
+  bespoke `Log` module. Each request logs one `received` and one `completed`
+  entry (`error` for a 5xx, at ERROR), sharing a `request_id`
+  [#253](https://github.com/epimorphics/lr-landing/issues/253).
+  **Ops:** saved Kibana searches need updating:
+  - the per-request `Processing request, time taken: <n> ms` entry is gone; use
+    the `completed` entry, whose message is
+    `<METHOD> <path> (<status>) handled by <Controller>#<action> in <n>s`
+  - `request_time` is a number of seconds (it was a string), and
+    `request_status` is `received`, `completed` or `error` (it was `processing`)
+  - `path` no longer has the query string appended
+  - the `Requesting Landing Controller` and `Requesting Doc Controller` entries
+    logged at boot are gone
+- Sentry's own diagnostics log at `SENTRY_LOG_LEVEL` (default `warn`) rather
+  than following `LOG_LEVEL`, so `LOG_LEVEL=debug` no longer adds Sentry's
+  tracing lines to every request
+  [#253](https://github.com/epimorphics/lr-landing/issues/253).
+- Removed configuration for a data API the app doesn't call: the unused
+  `api_service_url` setting, `API_SERVICE_URL` (no longer logged by the
+  entrypoint), and `Procfile.dev`, which started a local API. The README lists
+  every variable the app and its container read
+- The production static file server is always on. `RAILS_SERVE_STATIC_FILES` is
+  no longer read: no deployment set it, and any value, `false` included, turned
+  it on. The HMLR proxy passes every request to the container, so the app must
+  serve its own assets
 - **Metric change:** removed `api_status`, `api_requests`, `api_connection_failure`,
   `api_service_exception` and `api_response_times`. lr-landing makes no
   server-side API calls, so they were always zero.

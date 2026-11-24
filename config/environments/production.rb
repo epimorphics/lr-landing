@@ -22,9 +22,9 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  # Disable serving static files from the `/public` folder by default since
-  # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV.fetch('RAILS_SERVE_STATIC_FILES', true)
+  # Serve /public, including the compiled assets, from the app: the HMLR proxy
+  # passes every request through to the container and serves no files itself
+  config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = :uglifier
@@ -53,13 +53,14 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # Tag rails logs with useful information
-  config.log_tags = %i[subdomain request_id request_method]
   # When sync mode is true, all output is immediately flushed to the underlying
   # operating system and is not buffered by Ruby internally.
   $stdout.sync = true
-  # Log the stdout output to the Epimorphics JSON logging gem
-  config.logger = JsonRailsLogger::Logger.new($stdout)
+  # epilog_rails sets the logger: JSON to stdout, with a pair of entries per request
+  # Don't log the rendering of each template and layout. At DEBUG these are
+  # unstructured `Rendering …` lines that epilog_rails 0.3.0 fails to suppress
+  # (epimorphics/epilog-rails#9).
+  config.action_view.logger = nil
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -91,11 +92,6 @@ Rails.application.configure do
   # of the base path and utilise the config.relative_url_root value to prefix the
   # compiled asset paths
   config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
-
-  # API_SERVICE_URL should also be specified in the entrypoint.sh file and
-  # set in the Makefile as an env variable for the docker container when run as an image.
-  # API_SERVICE_URL is not used on the landing page, but is required by all other apps
-  # config.api_service_url = ENV.fetch('API_SERVICE_URL', nil)
 
   # Set the log level to the value of the LOG_LEVEL environment variable, or 'info' if not set
   config.log_level = ENV.fetch('LOG_LEVEL', 'info').to_sym
