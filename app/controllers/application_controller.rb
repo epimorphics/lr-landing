@@ -2,10 +2,12 @@
 
 # :nodoc:
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-
-  protect_from_forgery with: :exception, prepend: true
+  # No forgery protection: the site only answers GET requests and changes
+  # nothing for anyone, so there is no request to forge. With protection on, the
+  # layout's `csrf_meta_tags` put a token in the session, so every page set a
+  # session cookie while telling shared caches it was public. Turn this back on
+  # if the app ever accepts a form, and stop caching those pages publicly
+  self.allow_forgery_protection = false
   before_action :set_locale
   before_action :change_default_caching_policy
 

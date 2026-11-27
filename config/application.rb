@@ -15,6 +15,10 @@ Bundler.require(:default, Rails.env)
 module LrLanding
   # :nodoc:
   class Application < Rails::Application
+    # Framework defaults for Rails 8.1. When upgrading Rails, move this forward
+    # too: see "Upgrading Rails" in the README
+    config.load_defaults 8.1
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -68,8 +72,8 @@ end
 
 # Monkey-patch the bit of Rails that emits the start-up log message, so
 # that it is written out in JSON format that our combined logging
-# service can handle
-# TODO: Remove this block after adopting `epilog_rails`
+# service can handle. `epilog_rails` formats Rails.logger and Puma output, but
+# this banner is printed directly by the server command
 module Rails # rubocop:disable Style/OneClassPerFile
   # :nodoc:
   module Command
